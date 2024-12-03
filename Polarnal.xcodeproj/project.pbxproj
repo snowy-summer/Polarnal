@@ -9,22 +9,26 @@
 /* Begin PBXBuildFile section */
 		6B790F9F2CFEA3080000AC03 /* PolarnalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */; };
 		6B790FA12CFEA3080000AC03 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FA02CFEA3080000AC03 /* ContentView.swift */; };
-		6B790FA32CFEA3080000AC03 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FA22CFEA3080000AC03 /* Item.swift */; };
 		6B790FA52CFEA3090000AC03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA42CFEA3090000AC03 /* Assets.xcassets */; };
 		6B790FA82CFEA3090000AC03 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA72CFEA3090000AC03 /* Preview Assets.xcassets */; };
 		6B790FAF2CFEA33C0000AC03 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FAE2CFEA33B0000AC03 /* .gitignore */; };
 		6B790FB72CFEA4430000AC03 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FB62CFEA4430000AC03 /* LogManager.swift */; };
+		6B790FB92CFEA4830000AC03 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FB82CFEA4830000AC03 /* DBManager.swift */; };
+		6B790FBC2CFEA4F40000AC03 /* FolderDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FBB2CFEA4F40000AC03 /* FolderDB.swift */; };
+		6B790FBE2CFEA50A0000AC03 /* NoteDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FBD2CFEA50A0000AC03 /* NoteDB.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6B790F9B2CFEA3080000AC03 /* Polarnal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Polarnal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarnalApp.swift; sourceTree = "<group>"; };
 		6B790FA02CFEA3080000AC03 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		6B790FA22CFEA3080000AC03 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		6B790FA42CFEA3090000AC03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B790FA72CFEA3090000AC03 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6B790FAE2CFEA33B0000AC03 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		6B790FB62CFEA4430000AC03 /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
+		6B790FB82CFEA4830000AC03 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		6B790FBB2CFEA4F40000AC03 /* FolderDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDB.swift; sourceTree = "<group>"; };
+		6B790FBD2CFEA50A0000AC03 /* NoteDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDB.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +107,8 @@
 		6B790FB32CFEA4150000AC03 /* DB */ = {
 			isa = PBXGroup;
 			children = (
-				6B790FA22CFEA3080000AC03 /* Item.swift */,
+				6B790FB82CFEA4830000AC03 /* DBManager.swift */,
+				6B790FBA2CFEA4D40000AC03 /* DBModel */,
 			);
 			path = DB;
 			sourceTree = "<group>";
@@ -122,6 +127,15 @@
 				6B790FB62CFEA4430000AC03 /* LogManager.swift */,
 			);
 			path = LogManager;
+			sourceTree = "<group>";
+		};
+		6B790FBA2CFEA4D40000AC03 /* DBModel */ = {
+			isa = PBXGroup;
+			children = (
+				6B790FBB2CFEA4F40000AC03 /* FolderDB.swift */,
+				6B790FBD2CFEA50A0000AC03 /* NoteDB.swift */,
+			);
+			path = DBModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,9 +209,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B790FB92CFEA4830000AC03 /* DBManager.swift in Sources */,
+				6B790FBC2CFEA4F40000AC03 /* FolderDB.swift in Sources */,
 				6B790FB72CFEA4430000AC03 /* LogManager.swift in Sources */,
 				6B790FA12CFEA3080000AC03 /* ContentView.swift in Sources */,
-				6B790FA32CFEA3080000AC03 /* Item.swift in Sources */,
+				6B790FBE2CFEA50A0000AC03 /* NoteDB.swift in Sources */,
 				6B790F9F2CFEA3080000AC03 /* PolarnalApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
