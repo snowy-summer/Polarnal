@@ -33,9 +33,6 @@ struct FolderListView: View {
                     }
             }
         }
-        .onAppear {
-            folderListViewModel.apply(.insertModelContext(modelContext))
-        }
     }
     
 }

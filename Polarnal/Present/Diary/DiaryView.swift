@@ -12,11 +12,13 @@ struct DiaryView: View {
     @Environment(\.modelContext) private var modelContext
     @StateObject var stateViewModel: DiaryStateViewModel
     @StateObject var uiViewModel: DiaryUIViewModel
+    @StateObject var folderViewModel: FolderListViewModel
     
     var body: some View {
         NavigationSplitView {
             FolderListView(stateViewModel: stateViewModel,
-                           uiViewModel: uiViewModel)
+                           uiViewModel: uiViewModel,
+                           folderListViewModel: folderViewModel)
             
             Divider()
             
@@ -31,29 +33,28 @@ struct DiaryView: View {
         } content: {
          
         } detail: {
-            Group {
-               
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        uiViewModel.apply(.showPhotoPicker)
-                    }) {
-                        Image(systemName: "photo")
-                    }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        stateViewModel.apply(.addNote)
-                    }) {
-                        Image(systemName: "plus")
-                    }
-                }
-            }
+            
+//            Text("1")
+//            .toolbar {
+//                ToolbarItem(placement: .navigationBarTrailing) {
+//                    Button(action: {
+//                        uiViewModel.apply(.showPhotoPicker)
+//                    }) {
+//                        Image(systemName: "photo")
+//                    }
+//                }
+//                ToolbarItem(placement: .navigationBarTrailing) {
+//                    Button(action: {
+//                        stateViewModel.apply(.addNote)
+//                    }) {
+//                        Image(systemName: "plus")
+//                    }
+//                }
+//            }
         }
         
         .sheet(item: $uiViewModel.sheetType, onDismiss: {
-            stateViewModel.fetchFolders()
+            folderViewModel.apply(.fetchFolderList)
         }) { type in
             NavigationStack {
                 switch type {
@@ -63,10 +64,13 @@ struct DiaryView: View {
                 case .editFolder(let folder):
                     AddFolderView(folder: folder)
                     
-                case .photo:
-                    PhotoPicker(selectedImage: $stateViewModel.selectedImage)
+                default:
+                    EmptyView()
                 }
             }
+        }
+        .onAppear {
+            folderViewModel.apply(.insertModelContext(modelContext))
         }
     }
     

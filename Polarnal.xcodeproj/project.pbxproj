@@ -24,6 +24,14 @@
 		6B790FCE2CFFEC6A0000AC03 /* DiaryUIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FCD2CFFEC6A0000AC03 /* DiaryUIViewModel.swift */; };
 		6B790FD12CFFEC980000AC03 /* DiaryViewSheetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FD02CFFEC980000AC03 /* DiaryViewSheetType.swift */; };
 		6B790FD52CFFEDF10000AC03 /* FolderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FD42CFFEDF10000AC03 /* FolderListViewModel.swift */; };
+		6B790FD82CFFEE6E0000AC03 /* AddFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FD72CFFEE6E0000AC03 /* AddFolderView.swift */; };
+		6B790FDA2CFFEE810000AC03 /* AddFolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FD92CFFEE810000AC03 /* AddFolderViewModel.swift */; };
+		6B790FDD2CFFEEDE0000AC03 /* TagPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FDC2CFFEEDE0000AC03 /* TagPartView.swift */; };
+		6B790FDF2CFFEEF20000AC03 /* TagCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FDE2CFFEEF20000AC03 /* TagCollectionView.swift */; };
+		6B790FE12CFFEF220000AC03 /* ColorPalettePartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FE02CFFEF220000AC03 /* ColorPalettePartView.swift */; };
+		6B790FE32CFFEF530000AC03 /* IconSelectPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FE22CFFEF530000AC03 /* IconSelectPartView.swift */; };
+		6B790FE52CFFEF7E0000AC03 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FE42CFFEF7E0000AC03 /* ColorPalette.swift */; };
+		6B790FE72CFFEFA80000AC03 /* DesignOfFolderIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FE62CFFEFA80000AC03 /* DesignOfFolderIcon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +53,14 @@
 		6B790FCD2CFFEC6A0000AC03 /* DiaryUIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryUIViewModel.swift; sourceTree = "<group>"; };
 		6B790FD02CFFEC980000AC03 /* DiaryViewSheetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewSheetType.swift; sourceTree = "<group>"; };
 		6B790FD42CFFEDF10000AC03 /* FolderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderListViewModel.swift; sourceTree = "<group>"; };
+		6B790FD72CFFEE6E0000AC03 /* AddFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFolderView.swift; sourceTree = "<group>"; };
+		6B790FD92CFFEE810000AC03 /* AddFolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFolderViewModel.swift; sourceTree = "<group>"; };
+		6B790FDC2CFFEEDE0000AC03 /* TagPartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPartView.swift; sourceTree = "<group>"; };
+		6B790FDE2CFFEEF20000AC03 /* TagCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionView.swift; sourceTree = "<group>"; };
+		6B790FE02CFFEF220000AC03 /* ColorPalettePartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalettePartView.swift; sourceTree = "<group>"; };
+		6B790FE22CFFEF530000AC03 /* IconSelectPartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSelectPartView.swift; sourceTree = "<group>"; };
+		6B790FE42CFFEF7E0000AC03 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		6B790FE62CFFEFA80000AC03 /* DesignOfFolderIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignOfFolderIcon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				6B790FA42CFEA3090000AC03 /* Assets.xcassets */,
+				6B790FE42CFFEF7E0000AC03 /* ColorPalette.swift */,
+				6B790FE62CFFEFA80000AC03 /* DesignOfFolderIcon.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -197,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				6B790FD02CFFEC980000AC03 /* DiaryViewSheetType.swift */,
+				6B790FD62CFFEE620000AC03 /* AddFolderView */,
 			);
 			path = Sheet;
 			sourceTree = "<group>";
@@ -214,6 +233,35 @@
 			isa = PBXGroup;
 			children = (
 				6B790FD42CFFEDF10000AC03 /* FolderListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6B790FD62CFFEE620000AC03 /* AddFolderView */ = {
+			isa = PBXGroup;
+			children = (
+				6B790FD72CFFEE6E0000AC03 /* AddFolderView.swift */,
+				6B790FE82CFFEFC20000AC03 /* ViewModel */,
+				6B790FDB2CFFEED30000AC03 /* Component */,
+			);
+			path = AddFolderView;
+			sourceTree = "<group>";
+		};
+		6B790FDB2CFFEED30000AC03 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				6B790FDC2CFFEEDE0000AC03 /* TagPartView.swift */,
+				6B790FDE2CFFEEF20000AC03 /* TagCollectionView.swift */,
+				6B790FE02CFFEF220000AC03 /* ColorPalettePartView.swift */,
+				6B790FE22CFFEF530000AC03 /* IconSelectPartView.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		6B790FE82CFFEFC20000AC03 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6B790FD92CFFEE810000AC03 /* AddFolderViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -289,20 +337,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B790FDD2CFFEEDE0000AC03 /* TagPartView.swift in Sources */,
 				6B790FB92CFEA4830000AC03 /* DBManager.swift in Sources */,
+				6B790FE32CFFEF530000AC03 /* IconSelectPartView.swift in Sources */,
 				6B790FD12CFFEC980000AC03 /* DiaryViewSheetType.swift in Sources */,
 				6B790FD52CFFEDF10000AC03 /* FolderListViewModel.swift in Sources */,
 				6B790FBC2CFEA4F40000AC03 /* FolderDB.swift in Sources */,
+				6B790FDF2CFFEEF20000AC03 /* TagCollectionView.swift in Sources */,
+				6B790FDA2CFFEE810000AC03 /* AddFolderViewModel.swift in Sources */,
 				6B790FB72CFEA4430000AC03 /* LogManager.swift in Sources */,
+				6B790FD82CFFEE6E0000AC03 /* AddFolderView.swift in Sources */,
 				6B790FA12CFEA3080000AC03 /* ContentView.swift in Sources */,
+				6B790FE72CFFEFA80000AC03 /* DesignOfFolderIcon.swift in Sources */,
 				6B790FCE2CFFEC6A0000AC03 /* DiaryUIViewModel.swift in Sources */,
 				6B790FC92CFFE6AA0000AC03 /* DiaryStateViewModel.swift in Sources */,
 				6B790FC42CFF25960000AC03 /* PhotoPicker.swift in Sources */,
+				6B790FE52CFFEF7E0000AC03 /* ColorPalette.swift in Sources */,
 				6B790FC72CFFE66A0000AC03 /* DiaryView.swift in Sources */,
 				6B790FC12CFF25710000AC03 /* ViewModelProtocol.swift in Sources */,
 				6B790FBE2CFEA50A0000AC03 /* NoteDB.swift in Sources */,
 				6B790F9F2CFEA3080000AC03 /* PolarnalApp.swift in Sources */,
 				6B790FCC2CFFE8120000AC03 /* FolderListView.swift in Sources */,
+				6B790FE12CFFEF220000AC03 /* ColorPalettePartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
