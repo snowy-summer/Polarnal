@@ -39,9 +39,9 @@ struct DiaryView: View {
             
             Group {
                 if let note = stateViewModel.selectedNote {
-                    Text("성공")
+                    NoteContentView(title: "")
                 } else {
-                    Text("빈 값")
+                    Text("노트를 선택 해주세요")
                 }
             }
             .toolbar {
