@@ -21,36 +21,26 @@ struct NoteListView: View {
     
     var body: some View {
         List {
-//            ForEach(stateViewModel.selectedFolder?.noteList ?? []) { note in
-//                NoteListCell(note: note)
-//                    .contextMenu {
-//                        Button(action: {
-//                            noteListViewModel.apply(.deleteNote(note))
-//                        }) {
-//                            Label("삭제", systemImage: "trash")
-//                        }
-//                    }
-//                    .onTapGesture {
-//                        stateViewModel.apply(.selectNote(note))
-//                    }
-//            }
-            // 1안
-            
             ForEach(noteListViewModel.noteList,
                     id: \.id) { note in
-                            NoteListCell(note: note)
-                                .contextMenu {
-                                    Button(action: {
-                                        noteListViewModel.apply(.deleteNote(note))
-                                    }) {
-                                        Label("삭제", systemImage: "trash")
-                                    }
-                                }
-                                .onTapGesture {
-                                    stateViewModel.apply(.selectNote(note))
-                                }
+                NoteListCell(note: note)
+                    .background(
+                        Button(action: {
+                            stateViewModel.apply(.selectNote(note))
+                        }) {
+                            Color.clear
                         }
-                    //2안
+                        .frame(maxWidth: .infinity,
+                               maxHeight: .infinity)
+                    )
+                    .contextMenu {
+                        Button(action: {
+                            noteListViewModel.apply(.deleteNote(note))
+                        }) {
+                            Label("삭제", systemImage: "trash")
+                        }
+                    }
+            }
         }
     }
 }

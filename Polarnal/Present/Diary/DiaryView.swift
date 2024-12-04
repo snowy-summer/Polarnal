@@ -34,6 +34,7 @@ struct DiaryView: View {
         } content: {
          NoteListView(stateViewModel: stateViewModel,
                       noteListViewModel: noteViewModel)
+         .navigationTitle(stateViewModel.selectedFolder?.title ?? "")
         } detail: {
             
             Group {

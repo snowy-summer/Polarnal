@@ -27,6 +27,15 @@ struct FolderListView: View {
             ForEach(folderListViewModel.folderList) { folder in
                 
                 FolderListCell(folder: folder)
+                    .background(
+                           Button(action: {
+                               stateViewModel.apply(.selectFolder(folder))
+                           }) {
+                               Color.clear
+                           }
+                           .frame(maxWidth: .infinity,
+                                  maxHeight: .infinity)
+                       )
                     .contextMenu {
                         Button(action: {
                             folderListViewModel.apply(.deleteFolder(folder))
@@ -38,9 +47,6 @@ struct FolderListView: View {
                         }) {
                             Label("편집", systemImage: "pencil")
                         }
-                    }
-                    .onTapGesture {
-                        stateViewModel.apply(.selectFolder(folder))
                     }
             }
         }
