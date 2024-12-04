@@ -21,7 +21,7 @@ struct FolderListView: View {
                 FolderListCell(folder: folder)
                     .contextMenu {
                         Button(action: {
-                            stateViewModel.apply(.deleleFolder(folder))
+                            folderListViewModel.apply(.deleteFolder(folder))
                         }) {
                             Label("삭제", systemImage: "trash")
                         }

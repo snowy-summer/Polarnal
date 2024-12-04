@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B37A7562D0026B300239987 /* FolderListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7552D0026B300239987 /* FolderListCell.swift */; };
 		6B790F9F2CFEA3080000AC03 /* PolarnalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */; };
 		6B790FA12CFEA3080000AC03 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FA02CFEA3080000AC03 /* ContentView.swift */; };
 		6B790FA52CFEA3090000AC03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA42CFEA3090000AC03 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6B37A7552D0026B300239987 /* FolderListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderListCell.swift; sourceTree = "<group>"; };
 		6B790F9B2CFEA3080000AC03 /* Polarnal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Polarnal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarnalApp.swift; sourceTree = "<group>"; };
 		6B790FA02CFEA3080000AC03 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			children = (
 				6B790FCB2CFFE8120000AC03 /* FolderListView.swift */,
 				6B790FD32CFFEDDE0000AC03 /* ViewModel */,
+				6B37A7552D0026B300239987 /* FolderListCell.swift */,
 			);
 			path = Folder;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				6B790FDA2CFFEE810000AC03 /* AddFolderViewModel.swift in Sources */,
 				6B790FB72CFEA4430000AC03 /* LogManager.swift in Sources */,
 				6B790FD82CFFEE6E0000AC03 /* AddFolderView.swift in Sources */,
+				6B37A7562D0026B300239987 /* FolderListCell.swift in Sources */,
 				6B790FA12CFEA3080000AC03 /* ContentView.swift in Sources */,
 				6B790FE72CFFEFA80000AC03 /* DesignOfFolderIcon.swift in Sources */,
 				6B790FCE2CFFEC6A0000AC03 /* DiaryUIViewModel.swift in Sources */,

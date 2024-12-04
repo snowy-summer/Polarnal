@@ -59,9 +59,9 @@ struct AddFolderView: View {
     
 }
 
-#Preview {
-    ContentView()
-        .modelContainer(for: Folder.self, inMemory: true)
-}
+//#Preview {
+//    ContentView()
+//        .modelContainer(for: Folder.self, inMemory: true)
+//}
 
 
