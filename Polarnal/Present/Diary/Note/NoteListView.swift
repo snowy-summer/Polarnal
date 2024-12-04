@@ -12,6 +12,13 @@ struct NoteListView: View {
     @ObservedObject private var stateViewModel: DiaryStateViewModel
     @ObservedObject private var noteListViewModel: NoteListViewModel
     
+    init(stateViewModel: DiaryStateViewModel,
+         noteListViewModel: NoteListViewModel) {
+        
+        self.stateViewModel = stateViewModel
+        self.noteListViewModel = noteListViewModel
+    }
+    
     var body: some View {
         List {
 //            ForEach(stateViewModel.selectedFolder?.noteList ?? []) { note in

@@ -88,11 +88,19 @@
 			isa = PBXGroup;
 			children = (
 				6B37A7582D002BB800239987 /* NoteListView.swift */,
-				6B37A75C2D002D7700239987 /* NoteListViewModel.swift */,
 				6B37A75A2D002BE300239987 /* NoteListCell.swift */,
-				6B37A75E2D00372A00239987 /* NoteListCellViewModel.swift */,
+				6B37A7602D0039A600239987 /* ViewModel */,
 			);
 			path = Note;
+			sourceTree = "<group>";
+		};
+		6B37A7602D0039A600239987 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A75C2D002D7700239987 /* NoteListViewModel.swift */,
+				6B37A75E2D00372A00239987 /* NoteListCellViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		6B790F922CFEA3080000AC03 = {

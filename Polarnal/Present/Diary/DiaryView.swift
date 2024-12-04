@@ -32,26 +32,38 @@ struct DiaryView: View {
             .padding(.bottom)
             
         } content: {
-         
+         NoteListView(stateViewModel: stateViewModel,
+                      noteListViewModel: noteViewModel)
         } detail: {
             
-//            Text("1")
-//            .toolbar {
+            Group {
+                if let note = stateViewModel.selectedNote {
+                    Text("성공")
+                } else {
+                    Text("빈 값")
+                }
+            }
+            .toolbar {
 //                ToolbarItem(placement: .navigationBarTrailing) {
-//                    Button(action: {
+                   
+//                    Button {
 //                        uiViewModel.apply(.showPhotoPicker)
-//                    }) {
+//                    } label: {
 //                        Image(systemName: "photo")
 //                    }
+//                    Button("Test Button") {
+//                               print("Button pressed")
+//                           }
 //                }
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    Button(action: {
-//                        stateViewModel.apply(.addNote)
-//                    }) {
-//                        Image(systemName: "plus")
-//                    }
-//                }
-//            }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        stateViewModel.apply(.addNote)
+                    }) {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
+            
         }
         
         .sheet(item: $uiViewModel.sheetType, onDismiss: {

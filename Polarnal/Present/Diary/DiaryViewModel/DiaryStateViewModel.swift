@@ -15,6 +15,7 @@ final class DiaryStateViewModel: ViewModelProtocol {
         case selectFolder(Folder)
         case selectedFolderClear
         case selectNote(Note)
+        case addNote
     }
     
     @Published var selectedFolder: Folder? = nil
@@ -31,12 +32,20 @@ final class DiaryStateViewModel: ViewModelProtocol {
         switch intent {
         case .selectFolder(let folder):
             selectedFolder = folder
+            selectedNote = nil
             
         case .selectedFolderClear:
             selectedFolder = nil
             
         case .selectNote(let note):
             selectedNote = note
+            
+        case .addNote:
+            guard let selectedFolder = selectedFolder else { return }
+            let note = Note()
+            selectedFolder.noteList.append(note)
+            dbManager.addItem(selectedFolder)
+            self.selectedFolder = selectedFolder
         }
     }
     

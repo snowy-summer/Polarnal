@@ -15,7 +15,6 @@ final class NoteListViewModel: ViewModelProtocol {
     
     @Published var noteList: [Note] = []
     private let dbManager: DBManager = DBManager()
-    var folder: PassthroughSubject<Folder, Never> = PassthroughSubject<Folder, Never>()
     var cancellables: Set<AnyCancellable> = []
     
     init(stateViewModel: DiaryStateViewModel) {
@@ -28,10 +27,15 @@ final class NoteListViewModel: ViewModelProtocol {
     }
     
     func apply(_ intent: Intent) {
-        
+        switch intent {
+        case .deleteNote(let note):
+            return
+        }
     }
     
     func binding() {
         
     }
+    
 }
+
