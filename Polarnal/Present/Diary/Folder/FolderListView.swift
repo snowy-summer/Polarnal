@@ -10,9 +10,17 @@ import SwiftUI
 struct FolderListView: View {
     
     @Environment(\.modelContext) private var modelContext
-    @ObservedObject var stateViewModel: DiaryStateViewModel
-    @ObservedObject var uiViewModel: DiaryUIViewModel
-    @ObservedObject var folderListViewModel: FolderListViewModel
+    @ObservedObject private var stateViewModel: DiaryStateViewModel
+    @ObservedObject private var uiViewModel: DiaryUIViewModel
+    @ObservedObject private var folderListViewModel: FolderListViewModel
+    
+    init(stateViewModel: DiaryStateViewModel,
+         uiViewModel: DiaryUIViewModel,
+         folderListViewModel: FolderListViewModel) {
+        self.stateViewModel = stateViewModel
+        self.uiViewModel = uiViewModel
+        self.folderListViewModel = folderListViewModel
+    }
     
     var body: some View {
         List {

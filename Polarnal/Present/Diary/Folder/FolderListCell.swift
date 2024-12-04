@@ -9,7 +9,11 @@ import SwiftUI
 
 struct FolderListCell: View {
     
-    let folder: Folder
+    private let folder: Folder
+    
+    init(folder: Folder) {
+        self.folder = folder
+    }
     
     var body: some View {
         HStack {

@@ -14,13 +14,13 @@ final class DiaryStateViewModel: ViewModelProtocol {
     enum Intent {
         case selectFolder(Folder)
         case selectedFolderClear
+        case selectNote(Note)
     }
     
     @Published var selectedFolder: Folder? = nil
     @Published var selectedNote: Note? = nil
     
     private let dbManager = DBManager()
-    
     var cancellables = Set<AnyCancellable>()
     
     init() {
@@ -34,12 +34,15 @@ final class DiaryStateViewModel: ViewModelProtocol {
             
         case .selectedFolderClear:
             selectedFolder = nil
+            
+        case .selectNote(let note):
+            selectedNote = note
         }
     }
     
     func binding() {
         $selectedFolder.sink { folder in
-            print(folder?.title)
+            LogManager.log("DiaryStateViewModel에서 폴더 선택함: \(folder?.title ?? "미선택")")
         }
         .store(in: &cancellables)
     }

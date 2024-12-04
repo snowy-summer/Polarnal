@@ -11,12 +11,14 @@ import SwiftData
 @main
 struct PolarnalApp: App {
     private let modelContainer = DBManager.makeModelContainer()
+    private let diaryStateViewModel: DiaryStateViewModel = DiaryStateViewModel()
 
     var body: some Scene {
         WindowGroup {
-            DiaryView(stateViewModel: DiaryStateViewModel(),
+            DiaryView(stateViewModel: diaryStateViewModel,
                       uiViewModel: DiaryUIViewModel(),
-                      folderViewModel: FolderListViewModel())
+                      folderViewModel: FolderListViewModel(),
+                      noteViewModel: NoteListViewModel(stateViewModel: diaryStateViewModel))
         }
         .modelContainer(modelContainer)
     }

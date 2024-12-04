@@ -13,6 +13,7 @@ struct DiaryView: View {
     @StateObject var stateViewModel: DiaryStateViewModel
     @StateObject var uiViewModel: DiaryUIViewModel
     @StateObject var folderViewModel: FolderListViewModel
+    @StateObject var noteViewModel: NoteListViewModel
     
     var body: some View {
         NavigationSplitView {
