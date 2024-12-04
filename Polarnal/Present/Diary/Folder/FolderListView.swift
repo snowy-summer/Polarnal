@@ -12,10 +12,10 @@ struct FolderListView: View {
     @Environment(\.modelContext) private var modelContext
     @ObservedObject var stateViewModel: DiaryStateViewModel
     @ObservedObject var uiViewModel: DiaryUIViewModel
-    @StateObject var folderListViewModel: FolderListViewModel
+    @ObservedObject var folderListViewModel: FolderListViewModel
     
     var body: some View {
-        List(selection: $stateViewModel.selectedFolder) {
+        List {
             ForEach(folderListViewModel.folderList) { folder in
                 
                 FolderListCell(folder: folder)
@@ -30,6 +30,9 @@ struct FolderListView: View {
                         }) {
                             Label("편집", systemImage: "pencil")
                         }
+                    }
+                    .onTapGesture {
+                        stateViewModel.apply(.selectFolder(folder))
                     }
             }
         }

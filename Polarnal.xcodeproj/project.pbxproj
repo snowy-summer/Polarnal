@@ -208,8 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				6B790FCB2CFFE8120000AC03 /* FolderListView.swift */,
-				6B790FD32CFFEDDE0000AC03 /* ViewModel */,
 				6B37A7552D0026B300239987 /* FolderListCell.swift */,
+				6B790FD32CFFEDDE0000AC03 /* ViewModel */,
 			);
 			path = Folder;
 			sourceTree = "<group>";

@@ -12,6 +12,7 @@ import SwiftData
 final class DiaryStateViewModel: ViewModelProtocol {
     
     enum Intent {
+        case selectFolder(Folder)
         case selectedFolderClear
     }
     
@@ -23,14 +24,24 @@ final class DiaryStateViewModel: ViewModelProtocol {
     var cancellables = Set<AnyCancellable>()
     
     init() {
-        
+        binding()
     }
     
     func apply(_ intent: Intent) {
         switch intent {
+        case .selectFolder(let folder):
+            selectedFolder = folder
+            
         case .selectedFolderClear:
             selectedFolder = nil
         }
+    }
+    
+    func binding() {
+        $selectedFolder.sink { folder in
+            print(folder?.title)
+        }
+        .store(in: &cancellables)
     }
    
 }
