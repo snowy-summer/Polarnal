@@ -22,7 +22,7 @@ struct NoteContentView: View {
                 .frame(height: 80)
                 .padding()
             ForEach(noteContentViewModel.noteContents, id: \.id) { content in
-                NoteContentCell(type: .text)
+                NoteContentCell(type: content.type)
             }.listRowSeparator(.hidden)
             
             NoteContentToolView(noteContentViewModel: noteContentViewModel)
@@ -51,7 +51,6 @@ struct NoteContentCell: View {
         case .image:
             Image(.ex)
                 .resizable()
-                .frame(maxWidth: .infinity)
         }
     }
     
