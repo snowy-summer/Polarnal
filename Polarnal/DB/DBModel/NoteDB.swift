@@ -35,14 +35,17 @@ enum NoteContentType: String {
 @Model
 final class NoteContentData: Identifiable {
     @Attribute(.unique) var id: UUID
-    @Attribute(.externalStorage) var value: Data
+    @Attribute(.externalStorage) var textValue: String
+    @Attribute(.externalStorage) var imageValue: [Data]
     var type: String
 
     init(type: NoteContentType,
-         value: Data) {
+         imageValue: [Data],
+         textValue: String) {
         self.id = UUID()
         self.type = type.rawValue
-        self.value = value
+        self.imageValue = imageValue
+        self.textValue = textValue
     }
 }
 

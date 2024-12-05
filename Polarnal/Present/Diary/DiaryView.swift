@@ -14,6 +14,7 @@ struct DiaryView: View {
     @StateObject var uiViewModel: DiaryUIViewModel
     @StateObject var folderViewModel: FolderListViewModel
     @StateObject var noteViewModel: NoteListViewModel
+    @StateObject var noteContentViewModel: NoteContentViewModel
     
     var body: some View {
         NavigationSplitView {
@@ -39,7 +40,7 @@ struct DiaryView: View {
             
             Group {
                 if let note = stateViewModel.selectedNote {
-                    NoteContentView(title: "")
+                    NoteContentView(noteContentViewModel: noteContentViewModel)
                 } else {
                     Text("노트를 선택 해주세요")
                 }
