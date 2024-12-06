@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NoteContentView: View {
-
+    
     @ObservedObject private var noteContentViewModel: NoteContentViewModel
     
     init(noteContentViewModel: NoteContentViewModel) {
@@ -21,8 +21,18 @@ struct NoteContentView: View {
                 .font(.title)
                 .frame(height: 80)
                 .padding()
-            ForEach(noteContentViewModel.noteContents, id: \.id) { content in
-                NoteContentCell(type: content.type)
+            ForEach(noteContentViewModel.noteContents.indices,
+                    id: \.self) { index in
+                let content = noteContentViewModel.noteContents[index]
+                
+                NoteContentCell(
+                    type: content.type,
+                    noteText: Binding(
+                        get: { noteContentViewModel.noteContents[index].textContent },
+                        set: { newValue in noteContentViewModel.apply(.editText(of: index,
+                                                                                what: newValue)) }
+                    )
+                )
             }.listRowSeparator(.hidden)
             
             NoteContentToolView(noteContentViewModel: noteContentViewModel)
@@ -37,10 +47,12 @@ struct NoteContentView: View {
 struct NoteContentCell: View {
     
     private let type: NoteContentType
-    @State private var noteText: String = ""
+    @Binding private var noteText: String
     
-    init(type: NoteContentType) {
+    init(type: NoteContentType,
+         noteText: Binding<String>) {
         self.type = type
+        self._noteText = noteText
     }
     
     var body: some View {
@@ -55,7 +67,7 @@ struct NoteContentCell: View {
     }
     
     
-
+    
     
 }
 

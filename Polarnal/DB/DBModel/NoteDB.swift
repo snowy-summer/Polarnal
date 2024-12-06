@@ -39,10 +39,11 @@ final class NoteContentData: Identifiable {
     @Attribute(.externalStorage) var imageValue: [Data]
     var type: String
 
-    init(type: NoteContentType,
+    init(id: UUID = UUID(),
+         type: NoteContentType,
          imageValue: [Data],
          textValue: String) {
-        self.id = UUID()
+        self.id = id
         self.type = type.rawValue
         self.imageValue = imageValue
         self.textValue = textValue
