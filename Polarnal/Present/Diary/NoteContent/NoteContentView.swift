@@ -28,7 +28,7 @@ struct NoteContentView: View {
                 NoteContentCell(
                     type: content.type,
                     noteText: Binding(
-                        get: { noteContentViewModel.noteContents[index].textContent },
+                        get: { content.textContent },
                         set: { newValue in noteContentViewModel.contentApply(.editText(of: index,
                                                                                 what: newValue)) }
                     )

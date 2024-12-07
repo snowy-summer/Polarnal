@@ -50,10 +50,14 @@ final class NoteListViewModel: ViewModelProtocol {
         case .selectNote(let note):
             if let index = noteList.firstIndex(of: note) {
                 selectedIndex = index
+                contentTitle = note.title
+                noteContents = note.contents.compactMap {  content in
+                    self.convertToCellData(data: content)
+                }
             }
             
         case .deleteNote(let note):
-            return
+            dbManager.deleteItem(note)
         }
     }
     
@@ -69,8 +73,12 @@ final class NoteListViewModel: ViewModelProtocol {
         case .editText(let index, let text):
             noteContents[index].textContent = text
             
-        case .saveContent(let content):
-            break
+        case .saveContent(let dataList):
+            guard let selectedIndex else { return }
+            let contents = getDBNoteContentList(dataList: dataList)
+            noteList[selectedIndex].contents = contents
+            dbManager.addItem(noteList[selectedIndex])
+            
             
         case .saveTitle(let title):
             guard let selectedIndex else { return }
@@ -97,7 +105,7 @@ final class NoteListViewModel: ViewModelProtocol {
             .sink { [weak self] text in
                 guard let self,
                       let selectedIndex else { return }
-
+                
                 noteList[selectedIndex].title = text
                 LogManager.log("노트 제목 저장 시도")
                 contentApply(.saveTitle(text))
@@ -111,9 +119,10 @@ final class NoteListViewModel: ViewModelProtocol {
                 guard let self,
                       let selectedIndex else { return }
                 
-                noteList[selectedIndex].contents = getDBNoteContentList(dataList: data)
+//                noteList[selectedIndex].contents = getDBNoteContentList(dataList: data)
                 LogManager.log("노트 내용 저장 시도")
                 contentApply(.saveContent(data))
+                
             }
             .store(in: &cancellables)
         
@@ -121,6 +130,7 @@ final class NoteListViewModel: ViewModelProtocol {
     
 }
 
+//MARK: - Cell Data와 Content간의 변환
 extension NoteListViewModel {
     
     private func getDBNoteContentList(dataList: [NoteContentCellData]) -> [NoteContentData] {
@@ -181,6 +191,7 @@ extension NoteListViewModel {
     }
 }
 
+// MARK: - NoteContentCellData
 struct NoteContentCellData: Identifiable {
     let id: UUID
     let type: NoteContentType
