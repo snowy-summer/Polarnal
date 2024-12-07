@@ -27,6 +27,7 @@ struct NoteListView: View {
                     .background(
                         Button(action: {
                             stateViewModel.apply(.selectNote(note))
+                            noteListViewModel.apply(.selectNote(note))
                         }) {
                             Color.clear
                         }

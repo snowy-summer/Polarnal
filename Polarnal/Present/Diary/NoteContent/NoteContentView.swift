@@ -9,15 +9,15 @@ import SwiftUI
 
 struct NoteContentView: View {
     
-    @ObservedObject private var noteContentViewModel: NoteContentViewModel
+    @ObservedObject private var noteContentViewModel: NoteListViewModel
     
-    init(noteContentViewModel: NoteContentViewModel) {
+    init(noteContentViewModel: NoteListViewModel) {
         self.noteContentViewModel = noteContentViewModel
     }
     
     var body: some View {
         List {
-            TextField("제목", text: $noteContentViewModel.title)
+            TextField("제목", text: $noteContentViewModel.contentTitle)
                 .font(.title)
                 .frame(height: 80)
                 .padding()
@@ -29,7 +29,7 @@ struct NoteContentView: View {
                     type: content.type,
                     noteText: Binding(
                         get: { noteContentViewModel.noteContents[index].textContent },
-                        set: { newValue in noteContentViewModel.apply(.editText(of: index,
+                        set: { newValue in noteContentViewModel.contentApply(.editText(of: index,
                                                                                 what: newValue)) }
                     )
                 )
@@ -112,9 +112,9 @@ extension NoteTextField {
 struct NoteContentToolView: View {
     @State private var selectedCircleIndex: Int? = nil
     @State private var select = false
-    @ObservedObject private var noteContentViewModel: NoteContentViewModel
+    @ObservedObject private var noteContentViewModel: NoteListViewModel
     
-    init(noteContentViewModel: NoteContentViewModel) {
+    init(noteContentViewModel: NoteListViewModel) {
         self.noteContentViewModel = noteContentViewModel
     }
     
@@ -147,9 +147,9 @@ struct NoteContentToolView: View {
                         
                         switch type {
                         case .text:
-                            noteContentViewModel.apply(.addTextField)
+                            noteContentViewModel.contentApply(.addTextField)
                         case .image:
-                            noteContentViewModel.apply(.addImage)
+                            noteContentViewModel.contentApply(.addImage)
                         }
                         
                     }

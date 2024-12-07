@@ -18,8 +18,7 @@ struct PolarnalApp: App {
             DiaryView(stateViewModel: diaryStateViewModel,
                       uiViewModel: DiaryUIViewModel(),
                       folderViewModel: FolderListViewModel(),
-                      noteViewModel: NoteListViewModel(stateViewModel: diaryStateViewModel),
-                      noteContentViewModel: NoteContentViewModel(stateViewModel: diaryStateViewModel))
+                      noteViewModel: NoteListViewModel(stateViewModel: diaryStateViewModel))
         }
         .modelContainer(modelContainer)
     }

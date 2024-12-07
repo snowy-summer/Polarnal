@@ -33,7 +33,7 @@ struct NoteListCell: View {
                     }
                 }
             VStack(alignment: .leading) {
-                Text("임시 제목")
+                Text(viewModel.note.title)
                     .bold()
                 Text("임시 내용")
             }
