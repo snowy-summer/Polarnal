@@ -52,25 +52,3 @@ struct CalendarListView: View {
         
     }
 }
-
-
-struct CalendarView: View {
-    var currentDate: Date = Date()
-
-    private let dateFormatter = DateFormatter()
-    
-    var body: some View {
-        Text("\(getYearAndMonthString(currentDate: currentDate))")
-    }
-    
-    /// 현재 연도, 월 String으로 변경하는 formatter로 배열 구하는 함수
-    func getYearAndMonthString(currentDate: Date) -> [String] {
-        
-        dateFormatter.dateFormat = "YYYY MMMM"
-        dateFormatter.locale = Locale(identifier: "ko_kr")
-            
-        let date = dateFormatter.string(from: currentDate)
-        return date.components(separatedBy: " ")
-    }
-    
-}

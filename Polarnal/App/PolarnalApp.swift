@@ -15,10 +15,12 @@ struct PolarnalApp: App {
 
     var body: some Scene {
         WindowGroup {
-            DiaryView(stateViewModel: diaryStateViewModel,
-                      uiViewModel: DiaryUIViewModel(),
-                      folderViewModel: FolderListViewModel(),
-                      noteViewModel: NoteListViewModel(stateViewModel: diaryStateViewModel))
+//            DiaryView(stateViewModel: diaryStateViewModel,
+//                      uiViewModel: DiaryUIViewModel(),
+//                      folderViewModel: FolderListViewModel(),
+//                      noteViewModel: NoteListViewModel(stateViewModel: diaryStateViewModel))
+            
+            CalendarView(viewModel: CalendarViewModel())
         }
         .modelContainer(modelContainer)
     }
