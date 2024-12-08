@@ -130,14 +130,7 @@ final class CalendarViewModel: ViewModelProtocol {
             getYearAndMonthString(currentDate: date)
         }
         .store(in: &cancellables)
-        
-        $calendarMonth.sink { [weak self] month in
-            guard let self else { return }
-            calendarDateList = extractDate(currentMonth: month)
-        }
-        .store(in: &cancellables)
     }
-    
 }
 
 extension CalendarViewModel {
@@ -153,6 +146,7 @@ extension CalendarViewModel {
         
         calendarYear = Int(yearAndMonth[0]) ?? 0
         calendarMonth = Int(yearAndMonth[1]) ?? 0
+        calendarDateList = extractDate(currentDate: currentDate)
     }
     
     private func nextMonth() {
@@ -167,16 +161,15 @@ extension CalendarViewModel {
         if let newDate = Calendar.current.date(byAdding: .month,
                                                value: months,
                                                to: currentDate) {
+            LogManager.log("날짜 변경됨 \(newDate)")
             currentDate = newDate
-            print(" 날짜 변경됨 \(currentDate)")
         }
     }
     
-    func extractDate(currentMonth: Int) -> [DateValue] {
+    func extractDate(currentDate: Date) -> [DateValue] {
         let calendar = Calendar.current
         
         // currentMonth가 리턴한 month의 모든 날짜 구하기
-        print("현재 날짜 \(currentDate)")
         var days = currentDate.getAllDates().compactMap { date -> DateValue in
             // 여기서 date = 2023-12-31 15:00:00 +0000
             let day = calendar.component(.day, from: date)
@@ -189,9 +182,6 @@ extension CalendarViewModel {
         // Int값으로 나옴. 일요일 1 ~ 토요일 7
         let firstWeekday = calendar.component(.weekday,
                                               from: days.first?.date ?? Date())
-        print(days.first?.date)
-        print(days.last?.date)
-        print(firstWeekday)
         
         // month의 가장 첫날이 시작되는 요일 이전을 채워주는 과정
         // 만약 1월 1일이 수요일에 시작된다면 일~화요일까지 공백이니까 이 자리를 채워주어야 수요일부터 시작되는 캘린더 모양이 생성됨
