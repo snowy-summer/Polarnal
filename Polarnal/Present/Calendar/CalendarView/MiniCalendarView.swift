@@ -1,5 +1,5 @@
 //
-//  CalendarView.swift
+//  MiniCalendarView.swift
 //  Polarnal
 //
 //  Created by 최승범 on 12/8/24.
@@ -14,7 +14,49 @@ struct DateValue: Identifiable {
     var date: Date
 }
 
-struct CalendarView: View {
+enum WeekDay: CaseIterable {
+    case sunday
+    case monday
+    case tuesday
+    case wednesday
+    case thursday
+    case friday
+    case saturday
+
+    var text: String {
+        switch self {
+        case .sunday:
+            return "일"
+        case .monday:
+            return "월"
+        case .tuesday:
+            return "화"
+        case .wednesday:
+            return "수"
+        case .thursday:
+            return "목"
+        case .friday:
+            return "금"
+        case .saturday:
+            return "토"
+        }
+    }
+    
+    var color: Color {
+        switch self {
+        case .sunday:
+            return Color.red
+            
+        case .saturday:
+            return Color.blue
+            
+        default:
+            return Color.black
+        }
+    }
+}
+
+struct MiniCalendarView: View {
     
     @StateObject var viewModel: CalendarViewModel = CalendarViewModel()
     
@@ -42,27 +84,26 @@ struct CalendarView: View {
                 .padding()
             }
             
-            CalendarContentView(calendarViewModel: viewModel)
+            MiniCalendarContentView(calendarViewModel: viewModel)
         }
     }
     
 }
 
-struct CalendarContentView: View {
+struct MiniCalendarContentView: View {
     
     @ObservedObject var calendarViewModel: CalendarViewModel
     
-    private let weekday: [String] = ["일", "월", "화", "수", "목", "금", "토"]
     private let columns = Array(repeating: GridItem(.flexible()), count: 7)
     
     var body: some View {
         HStack {
-            ForEach(weekday, id: \.self) { day in
-                Text(day)
+            ForEach(WeekDay.allCases, id: \.self) { day in
+                Text(day.text)
                     .font(.title3)
                     .bold()
                     .frame(maxWidth: .infinity)
-                    .foregroundStyle(day == "일" ? Color.red : Color.black)
+                    .foregroundStyle(day.color)
             }
         }
         
@@ -72,7 +113,8 @@ struct CalendarContentView: View {
                     let columnIndex = index % columns.count
                     
                     CalendarDateMiniCell(dateValue: value,
-                                         isHoliday: columnIndex == 0)
+                                         isSunday: columnIndex == 0,
+                                         isSaturday: columnIndex == 6)
                     
                 } else {
                     Text("\(value.day)")
@@ -92,15 +134,26 @@ struct CalendarContentView: View {
             let currentYearMonthDay = DateManager.shared.getYearAndMonthString(currentDate: Date())
             return inputYearMonthDay == currentYearMonthDay
         }
-        let isHoliday: Bool
+        let isSunday: Bool
+        let isSaturday: Bool
+        var color: Color {
+            if isSunday {
+                return Color.red
+            } else if isSaturday {
+                return Color.blue
+            } else {
+                return Color.black
+            }
+        }
         
         var body: some View {
             ZStack {
                 Circle()
                     .fill(isToday ? Color.blue : Color.clear)
+                    .frame(width: 24, height: 24)
                 
                 Text("\(dateValue.day)")
-                    .foregroundStyle(isHoliday ? Color.red : Color.black)
+                    .foregroundStyle(color)
                     .font(.callout)
                     .bold()
             }

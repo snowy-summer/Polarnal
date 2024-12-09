@@ -15,10 +15,12 @@
 		6B37A7632D0046F200239987 /* NoteContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7622D0046F200239987 /* NoteContentView.swift */; };
 		6B37A7672D055B3800239987 /* SideTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7662D055B3800239987 /* SideTabBarView.swift */; };
 		6B37A76B2D055E6D00239987 /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A76A2D055E6D00239987 /* PlannerView.swift */; };
-		6B37A76F2D05669600239987 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A76E2D05669600239987 /* CalendarView.swift */; };
+		6B37A76F2D05669600239987 /* MiniCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A76E2D05669600239987 /* MiniCalendarView.swift */; };
 		6B37A7722D0683C600239987 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7712D0683C600239987 /* CalendarViewModel.swift */; };
 		6B37A7752D06840400239987 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7742D06840400239987 /* Date+Extension.swift */; };
 		6B37A7782D06842700239987 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7772D06842700239987 /* DateManager.swift */; };
+		6B37A77A2D068C1500239987 /* MainCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7792D068C1500239987 /* MainCalendarView.swift */; };
+		6B37A77C2D068DA100239987 /* MainCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A77B2D068DA100239987 /* MainCalendarViewModel.swift */; };
 		6B790F9F2CFEA3080000AC03 /* PolarnalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */; };
 		6B790FA52CFEA3090000AC03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA42CFEA3090000AC03 /* Assets.xcassets */; };
 		6B790FA82CFEA3090000AC03 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA72CFEA3090000AC03 /* Preview Assets.xcassets */; };
@@ -54,10 +56,12 @@
 		6B37A7622D0046F200239987 /* NoteContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteContentView.swift; sourceTree = "<group>"; };
 		6B37A7662D055B3800239987 /* SideTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTabBarView.swift; sourceTree = "<group>"; };
 		6B37A76A2D055E6D00239987 /* PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerView.swift; sourceTree = "<group>"; };
-		6B37A76E2D05669600239987 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		6B37A76E2D05669600239987 /* MiniCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniCalendarView.swift; sourceTree = "<group>"; };
 		6B37A7712D0683C600239987 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		6B37A7742D06840400239987 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		6B37A7772D06842700239987 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
+		6B37A7792D068C1500239987 /* MainCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCalendarView.swift; sourceTree = "<group>"; };
+		6B37A77B2D068DA100239987 /* MainCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCalendarViewModel.swift; sourceTree = "<group>"; };
 		6B790F9B2CFEA3080000AC03 /* Polarnal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Polarnal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarnalApp.swift; sourceTree = "<group>"; };
 		6B790FA42CFEA3090000AC03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -143,8 +147,9 @@
 		6B37A76C2D05667800239987 /* CalendarView */ = {
 			isa = PBXGroup;
 			children = (
-				6B37A76E2D05669600239987 /* CalendarView.swift */,
+				6B37A76E2D05669600239987 /* MiniCalendarView.swift */,
 				6B37A7702D0683B200239987 /* ViewModel */,
+				6B37A7792D068C1500239987 /* MainCalendarView.swift */,
 			);
 			path = CalendarView;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				6B37A7712D0683C600239987 /* CalendarViewModel.swift */,
+				6B37A77B2D068DA100239987 /* MainCalendarViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -443,6 +449,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B790FDD2CFFEEDE0000AC03 /* TagPartView.swift in Sources */,
+				6B37A77A2D068C1500239987 /* MainCalendarView.swift in Sources */,
 				6B790FB92CFEA4830000AC03 /* DBManager.swift in Sources */,
 				6B37A7592D002BB800239987 /* NoteListView.swift in Sources */,
 				6B790FE32CFFEF530000AC03 /* IconSelectPartView.swift in Sources */,
@@ -455,6 +462,7 @@
 				6B790FBC2CFEA4F40000AC03 /* FolderDB.swift in Sources */,
 				6B790FDF2CFFEEF20000AC03 /* TagCollectionView.swift in Sources */,
 				6B790FDA2CFFEE810000AC03 /* AddFolderViewModel.swift in Sources */,
+				6B37A77C2D068DA100239987 /* MainCalendarViewModel.swift in Sources */,
 				6B37A7672D055B3800239987 /* SideTabBarView.swift in Sources */,
 				6B790FB72CFEA4430000AC03 /* LogManager.swift in Sources */,
 				6B790FD82CFFEE6E0000AC03 /* AddFolderView.swift in Sources */,
@@ -463,7 +471,7 @@
 				6B37A7632D0046F200239987 /* NoteContentView.swift in Sources */,
 				6B790FCE2CFFEC6A0000AC03 /* DiaryUIViewModel.swift in Sources */,
 				6B790FC92CFFE6AA0000AC03 /* DiaryStateViewModel.swift in Sources */,
-				6B37A76F2D05669600239987 /* CalendarView.swift in Sources */,
+				6B37A76F2D05669600239987 /* MiniCalendarView.swift in Sources */,
 				6B37A7752D06840400239987 /* Date+Extension.swift in Sources */,
 				6B790FC42CFF25960000AC03 /* PhotoPicker.swift in Sources */,
 				6B790FE52CFFEF7E0000AC03 /* ColorPalette.swift in Sources */,

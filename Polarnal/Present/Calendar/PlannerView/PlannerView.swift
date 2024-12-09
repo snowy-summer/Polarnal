@@ -19,13 +19,14 @@ struct PlannerView: View {
                     CalendarListView()
                 }
                 
-                CalendarView()
+                MiniCalendarView()
                     .background(Color(uiColor: .systemGray5))
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                     .offset(CGSize(width: 0, height: 20.0))
             }
         } detail: {
-            Text("달력")
+            MainCalendarView()
+                .padding(.horizontal)
         }
         
     }

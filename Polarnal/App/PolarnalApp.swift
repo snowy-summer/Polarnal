@@ -20,7 +20,7 @@ struct PolarnalApp: App {
 //                      folderViewModel: FolderListViewModel(),
 //                      noteViewModel: NoteListViewModel(stateViewModel: diaryStateViewModel))
             
-            CalendarView(viewModel: CalendarViewModel())
+            PlannerView()
         }
         .modelContainer(modelContainer)
     }
