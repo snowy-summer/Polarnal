@@ -130,8 +130,8 @@
 		6B37A7682D055E4500239987 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				6B37A76C2D05667800239987 /* CalendarView */,
 				6B37A7692D055E5500239987 /* PlannerView */,
+				6B37A76C2D05667800239987 /* CalendarView */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -148,8 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				6B37A76E2D05669600239987 /* MiniCalendarView.swift */,
-				6B37A7702D0683B200239987 /* ViewModel */,
 				6B37A7792D068C1500239987 /* MainCalendarView.swift */,
+				6B37A7702D0683B200239987 /* ViewModel */,
 			);
 			path = CalendarView;
 			sourceTree = "<group>";

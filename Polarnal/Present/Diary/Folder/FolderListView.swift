@@ -36,12 +36,27 @@ struct FolderListView: View {
                            .frame(maxWidth: .infinity,
                                   maxHeight: .infinity)
                        )
-                    .contextMenu {
-                        Button(action: {
+                    .swipeActions(edge: .trailing,
+                                  allowsFullSwipe: false) {
+                        Button(role: .destructive, action: {
                             folderListViewModel.apply(.deleteFolder(folder))
-                        }) {
+                        }, label: {
                             Label("삭제", systemImage: "trash")
-                        }
+                        })
+                        
+                        Button(action: {
+                            // TODO: - 편집 추가
+                        }, label: {
+                            Label("편집", systemImage: "pencil")
+                        })
+                    }
+                    .contextMenu {
+                        Button(role: .destructive, action: {
+                            folderListViewModel.apply(.deleteFolder(folder))
+                        }, label: {
+                            Label("삭제", systemImage: "trash")
+                        })
+                    
                         Button(action: {
                             uiViewModel.apply(.showEditFolderView(folder))
                         }) {

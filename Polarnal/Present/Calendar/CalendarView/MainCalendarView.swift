@@ -81,7 +81,7 @@ struct MainCalendarContentView: View {
                                                  isSaturday: false,
                                                  isEmptyView: true)
                             .foregroundStyle(.clear)
-                            .background(Color(uiColor: .clear))
+                            .background(Color(uiColor: .systemGray4))
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                             .frame(height: geometry.size.height / 7)
                         }
