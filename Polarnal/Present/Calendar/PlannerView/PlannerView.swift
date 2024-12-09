@@ -8,20 +8,26 @@
 import SwiftUI
 
 struct PlannerView: View {
-//    @Environment(\.modelContext) private var modelContext
-   
+    
     var body: some View {
         NavigationSplitView {
-            HStack {
-                SideTabBarView()
-                    .frame(width: 80)
+            VStack {
+                HStack {
+                    SideTabBarView()
+                        .frame(width: 70)
+                    
+                    CalendarListView()
+                }
                 
-                CalendarListView()
+                CalendarView()
+                    .background(Color(uiColor: .systemGray5))
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .offset(CGSize(width: 0, height: 20.0))
             }
         } detail: {
             Text("달력")
         }
-
+        
     }
     
 }
@@ -32,18 +38,7 @@ struct PlannerView: View {
 
 struct CalendarListView: View {
     var body: some View {
-        VStack {
-            List {
-                
-            }
-            
-            ZStack {
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(uiColor: .systemGray5))
-                    .frame(width: .infinity)
-                    .frame(height: 240)
-                CalendarView()
-            }
+        List {
             
         }
     }

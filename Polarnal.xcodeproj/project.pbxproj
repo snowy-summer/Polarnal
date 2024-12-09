@@ -143,8 +143,8 @@
 		6B37A76C2D05667800239987 /* CalendarView */ = {
 			isa = PBXGroup;
 			children = (
-				6B37A7702D0683B200239987 /* ViewModel */,
 				6B37A76E2D05669600239987 /* CalendarView.swift */,
+				6B37A7702D0683B200239987 /* ViewModel */,
 			);
 			path = CalendarView;
 			sourceTree = "<group>";

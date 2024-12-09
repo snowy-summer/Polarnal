@@ -59,7 +59,7 @@ struct CalendarContentView: View {
         HStack {
             ForEach(weekday, id: \.self) { day in
                 Text(day)
-                    .font(.title2)
+                    .font(.title3)
                     .bold()
                     .frame(maxWidth: .infinity)
                     .foregroundStyle(day == "일" ? Color.red : Color.black)
@@ -75,7 +75,10 @@ struct CalendarContentView: View {
                                          isHoliday: columnIndex == 0)
                     
                 } else {
-                    Text("\(value.day)").hidden()
+                    Text("\(value.day)")
+                        .font(.callout)
+                        .bold()
+                        .foregroundStyle(.clear)
                 }
             }
         }
@@ -95,11 +98,10 @@ struct CalendarContentView: View {
             ZStack {
                 Circle()
                     .fill(isToday ? Color.blue : Color.clear)
-                    .frame(width: 44, height: 44)
                 
                 Text("\(dateValue.day)")
                     .foregroundStyle(isHoliday ? Color.red : Color.black)
-                    .font(.title2)
+                    .font(.callout)
                     .bold()
             }
         }
@@ -108,5 +110,5 @@ struct CalendarContentView: View {
 }
 
 #Preview {
-    CalendarView()
+    PlannerView()
 }

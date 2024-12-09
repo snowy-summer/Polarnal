@@ -99,6 +99,10 @@ extension CalendarViewModel {
             days.insert(DateValue(day: -1, date: Date()), at: 0)
         }
         
+        while days.count < 42 {
+               days.append(DateValue(day: -1, date: Date()))
+        }
+        
         return days
     }
     

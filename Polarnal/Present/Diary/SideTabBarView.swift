@@ -13,20 +13,20 @@ struct SideTabBarView: View {
         VStack(alignment: .center) {
             RoundedRectangle(cornerRadius: 12)
                 .fill(Color(uiColor: .systemGray5))
-                .frame(width: 60,
-                       height: 60)
+                .frame(width: 50,
+                       height: 50)
                 
             
-            RoundedRectangle(cornerRadius: 30)
+            RoundedRectangle(cornerRadius: 25)
                 .fill(Color(uiColor: .systemGray5))
-                .frame(width: 60,
-                       height: 60)
+                .frame(width: 50,
+                       height: 50)
                 
             
-            RoundedRectangle(cornerRadius: 30)
+            RoundedRectangle(cornerRadius: 25)
                 .fill(Color(uiColor: .systemGray5))
-                .frame(width: 60,
-                       height: 60)
+                .frame(width: 50,
+                       height: 50)
                 
             Spacer()
         }
