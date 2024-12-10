@@ -13,7 +13,7 @@ struct PlannerView: View {
         NavigationSplitView {
             VStack {
                 HStack {
-                    SideTabBarView()
+                    SideTabBarView(viewModel: SideTabBarViewModel())
                         .frame(width: 70)
                     
                     VStack {
@@ -30,7 +30,6 @@ struct PlannerView: View {
                 MiniCalendarView()
                     .background(Color(uiColor: .systemGray5))
                     .clipShape(RoundedRectangle(cornerRadius: 12))
-//                    .offset(CGSize(width: 0, height: 20.0))
             }
         } detail: {
             MainCalendarView()

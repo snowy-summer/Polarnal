@@ -21,6 +21,7 @@
 		6B37A7782D06842700239987 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7772D06842700239987 /* DateManager.swift */; };
 		6B37A77A2D068C1500239987 /* MainCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7792D068C1500239987 /* MainCalendarView.swift */; };
 		6B37A77C2D068DA100239987 /* MainCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A77B2D068DA100239987 /* MainCalendarViewModel.swift */; };
+		6B37A77E2D07D7CC00239987 /* SideTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A77D2D07D7CC00239987 /* SideTabBarViewModel.swift */; };
 		6B790F9F2CFEA3080000AC03 /* PolarnalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */; };
 		6B790FA52CFEA3090000AC03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA42CFEA3090000AC03 /* Assets.xcassets */; };
 		6B790FA82CFEA3090000AC03 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA72CFEA3090000AC03 /* Preview Assets.xcassets */; };
@@ -62,6 +63,7 @@
 		6B37A7772D06842700239987 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		6B37A7792D068C1500239987 /* MainCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCalendarView.swift; sourceTree = "<group>"; };
 		6B37A77B2D068DA100239987 /* MainCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCalendarViewModel.swift; sourceTree = "<group>"; };
+		6B37A77D2D07D7CC00239987 /* SideTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTabBarViewModel.swift; sourceTree = "<group>"; };
 		6B790F9B2CFEA3080000AC03 /* Polarnal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Polarnal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarnalApp.swift; sourceTree = "<group>"; };
 		6B790FA42CFEA3090000AC03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -221,6 +223,8 @@
 		6B790FB02CFEA3530000AC03 /* Present */ = {
 			isa = PBXGroup;
 			children = (
+				6B37A7662D055B3800239987 /* SideTabBarView.swift */,
+				6B37A77D2D07D7CC00239987 /* SideTabBarViewModel.swift */,
 				6B37A7682D055E4500239987 /* Calendar */,
 				6B790FC52CFFE65E0000AC03 /* Diary */,
 				6B790FBF2CFF25560000AC03 /* BaseProtocol */,
@@ -307,7 +311,6 @@
 				6B37A7572D002BA600239987 /* Note */,
 				6B37A7612D0046E300239987 /* NoteContent */,
 				6B790FCF2CFFEC8D0000AC03 /* Sheet */,
-				6B37A7662D055B3800239987 /* SideTabBarView.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				6B37A75B2D002BE300239987 /* NoteListCell.swift in Sources */,
 				6B790FBC2CFEA4F40000AC03 /* FolderDB.swift in Sources */,
 				6B790FDF2CFFEEF20000AC03 /* TagCollectionView.swift in Sources */,
+				6B37A77E2D07D7CC00239987 /* SideTabBarViewModel.swift in Sources */,
 				6B790FDA2CFFEE810000AC03 /* AddFolderViewModel.swift in Sources */,
 				6B37A77C2D068DA100239987 /* MainCalendarViewModel.swift in Sources */,
 				6B37A7672D055B3800239987 /* SideTabBarView.swift in Sources */,
@@ -622,8 +626,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -651,8 +655,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

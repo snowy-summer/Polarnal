@@ -18,7 +18,7 @@ struct DiaryView: View {
     var body: some View {
         NavigationSplitView {
             HStack {
-                SideTabBarView()
+                SideTabBarView(viewModel: SideTabBarViewModel())
                     .frame(width: 80)
                 FolderListView(stateViewModel: stateViewModel,
                                uiViewModel: uiViewModel,
