@@ -16,7 +16,13 @@ struct PlannerView: View {
                     SideTabBarView()
                         .frame(width: 70)
                     
-                    CalendarListView()
+                    VStack {
+                        CalendarEventListView()
+                        
+                        Divider()
+                        
+                        CalendarListView()
+                    }
                 }
                 
                 Divider()
@@ -46,6 +52,73 @@ struct PlannerView: View {
 
 #Preview {
     PlannerView()
+}
+
+struct CalendarEventListView: View {
+    
+    enum EventType: CaseIterable {
+        case reminder
+        case dDay
+        case deadline
+        case dplus
+
+        var text: String {
+            switch self {
+            case .reminder:
+                return "미리알림"
+                
+            case .dDay:
+                return "D - Day"
+                
+            case .deadline:
+                return "마감기한"
+                
+            case .dplus:
+                return "D+"
+            }
+        }
+    }
+    
+    var body: some View {
+        List {
+            ForEach(EventType.allCases, id: \.self) { type in
+                CalendarEventListCell(type: type)
+            }
+        }
+    }
+    
+    struct CalendarEventListCell: View {
+        let type: EventType
+        
+        var body: some View {
+            HStack {
+                RoundedRectangle(cornerRadius: 8)
+                    .frame(width: 32, height: 32)
+                    .foregroundStyle(Color.blue)
+                
+                
+                Text(type.text)
+                    .bold()
+                    .padding(.leading, 8)
+                
+                Spacer()
+                
+                Text("3")
+            }
+            .contextMenu {
+                Button(role: .destructive, action: {
+                    // 삭제
+                }, label: {
+                    Label("삭제", systemImage: "trash")
+                })
+                Button(action: {
+                    //편집
+                }) {
+                    Label("편집", systemImage: "pencil")
+                }
+            }
+        }
+    }
 }
 
 struct CalendarListView: View {
