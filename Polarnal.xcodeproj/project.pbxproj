@@ -22,6 +22,8 @@
 		6B37A77A2D068C1500239987 /* MainCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7792D068C1500239987 /* MainCalendarView.swift */; };
 		6B37A77C2D068DA100239987 /* MainCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A77B2D068DA100239987 /* MainCalendarViewModel.swift */; };
 		6B37A77E2D07D7CC00239987 /* SideTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A77D2D07D7CC00239987 /* SideTabBarViewModel.swift */; };
+		6B37A7822D084A2E00239987 /* PlannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7812D084A2E00239987 /* PlannerViewModel.swift */; };
+		6B37A7872D08514400239987 /* PlanDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7862D08514400239987 /* PlanDB.swift */; };
 		6B790F9F2CFEA3080000AC03 /* PolarnalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */; };
 		6B790FA52CFEA3090000AC03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA42CFEA3090000AC03 /* Assets.xcassets */; };
 		6B790FA82CFEA3090000AC03 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA72CFEA3090000AC03 /* Preview Assets.xcassets */; };
@@ -64,6 +66,8 @@
 		6B37A7792D068C1500239987 /* MainCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCalendarView.swift; sourceTree = "<group>"; };
 		6B37A77B2D068DA100239987 /* MainCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCalendarViewModel.swift; sourceTree = "<group>"; };
 		6B37A77D2D07D7CC00239987 /* SideTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTabBarViewModel.swift; sourceTree = "<group>"; };
+		6B37A7812D084A2E00239987 /* PlannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerViewModel.swift; sourceTree = "<group>"; };
+		6B37A7862D08514400239987 /* PlanDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDB.swift; sourceTree = "<group>"; };
 		6B790F9B2CFEA3080000AC03 /* Polarnal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Polarnal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarnalApp.swift; sourceTree = "<group>"; };
 		6B790FA42CFEA3090000AC03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				6B37A76A2D055E6D00239987 /* PlannerView.swift */,
+				6B37A7832D084D6200239987 /* ViewModel */,
 			);
 			path = PlannerView;
 			sourceTree = "<group>";
@@ -179,6 +184,31 @@
 				6B37A7772D06842700239987 /* DateManager.swift */,
 			);
 			path = DateManager;
+			sourceTree = "<group>";
+		};
+		6B37A7832D084D6200239987 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A7812D084A2E00239987 /* PlannerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6B37A7842D0850EA00239987 /* Diary */ = {
+			isa = PBXGroup;
+			children = (
+				6B790FBB2CFEA4F40000AC03 /* FolderDB.swift */,
+				6B790FBD2CFEA50A0000AC03 /* NoteDB.swift */,
+			);
+			path = Diary;
+			sourceTree = "<group>";
+		};
+		6B37A7852D0850F600239987 /* CalendarPlanner */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A7862D08514400239987 /* PlanDB.swift */,
+			);
+			path = CalendarPlanner;
 			sourceTree = "<group>";
 		};
 		6B790F922CFEA3080000AC03 = {
@@ -280,8 +310,8 @@
 		6B790FBA2CFEA4D40000AC03 /* DBModel */ = {
 			isa = PBXGroup;
 			children = (
-				6B790FBB2CFEA4F40000AC03 /* FolderDB.swift */,
-				6B790FBD2CFEA50A0000AC03 /* NoteDB.swift */,
+				6B37A7852D0850F600239987 /* CalendarPlanner */,
+				6B37A7842D0850EA00239987 /* Diary */,
 			);
 			path = DBModel;
 			sourceTree = "<group>";
@@ -460,10 +490,12 @@
 				6B790FD52CFFEDF10000AC03 /* FolderListViewModel.swift in Sources */,
 				6B37A75D2D002D7700239987 /* NoteListViewModel.swift in Sources */,
 				6B37A7782D06842700239987 /* DateManager.swift in Sources */,
+				6B37A7822D084A2E00239987 /* PlannerViewModel.swift in Sources */,
 				6B37A76B2D055E6D00239987 /* PlannerView.swift in Sources */,
 				6B37A75B2D002BE300239987 /* NoteListCell.swift in Sources */,
 				6B790FBC2CFEA4F40000AC03 /* FolderDB.swift in Sources */,
 				6B790FDF2CFFEEF20000AC03 /* TagCollectionView.swift in Sources */,
+				6B37A7872D08514400239987 /* PlanDB.swift in Sources */,
 				6B37A77E2D07D7CC00239987 /* SideTabBarViewModel.swift in Sources */,
 				6B790FDA2CFFEE810000AC03 /* AddFolderViewModel.swift in Sources */,
 				6B37A77C2D068DA100239987 /* MainCalendarViewModel.swift in Sources */,

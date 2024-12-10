@@ -13,13 +13,13 @@ final class Folder: Identifiable {
     @Attribute(.unique) let id = UUID()
     var title: String
     var createAt: Date
-    @Relationship(deleteRule: .cascade) var color: FolderColor
+    @Relationship(deleteRule: .cascade) var color: CustomColor
     var icon: String
     var tag: [Tag]
     @Relationship(deleteRule: .cascade) var noteList: [Note]
     
     init(title: String,
-         color: FolderColor = FolderColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0),
+         color: CustomColor = CustomColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0),
          icon: String = "",
          createAt: Date = Date(),
          tag: [Tag] = [],
@@ -34,7 +34,7 @@ final class Folder: Identifiable {
 }
 
 @Model
-final class FolderColor {
+final class CustomColor {
     let red: Double
     let green: Double
     let blue: Double

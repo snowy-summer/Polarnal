@@ -9,6 +9,8 @@ import SwiftUI
 
 struct PlannerView: View {
     @ObservedObject var sideTabBarViewModel: SideTabBarViewModel
+    @StateObject private var plannerViewModel: PlannerViewModel = PlannerViewModel()
+    
     var body: some View {
         NavigationSplitView {
             VStack {
@@ -38,11 +40,29 @@ struct PlannerView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {
                             // 일정 추가
+                            plannerViewModel.apply(.showAddEventCategoryView)
                         }) {
                             Image(systemName: "plus")
                         }
                     }
                 }
+        }
+        .sheet(item: $plannerViewModel.sheetType, onDismiss: {
+
+            // 뒤로 간 경우
+        }) { type in
+            NavigationStack {
+                switch type {
+                case .add:
+                    Text("추가")
+                    
+                case .edit:
+                    Text("편집")
+                    
+                default:
+                    EmptyView()
+                }
+            }
         }
         
     }

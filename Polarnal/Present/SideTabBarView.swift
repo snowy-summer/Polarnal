@@ -35,9 +35,9 @@ struct SideTabBarView: View {
         var body: some View {
             
             HStack {
-                RoundedRectangle(cornerRadius: 4)
+                RoundedRectangle(cornerRadius: 3)
                     .fill(isSelected ? Color.black : Color.clear)
-                    .frame(width: 8, height: 40)
+                    .frame(width: 6, height: 40)
                 
                 ZStack {
                     RoundedRectangle(cornerRadius: isSelected ? 12 : 25)

@@ -58,4 +58,3 @@ struct AddFolderView: View {
     }
     
 }
-

@@ -99,7 +99,7 @@ extension AddFolderViewModel {
         }
     }
     
-    private func getColorRGBA() -> FolderColor {
+    private func getColorRGBA() -> CustomColor {
         
         let uiColor = UIColor(folderColor)
         
@@ -110,7 +110,7 @@ extension AddFolderViewModel {
         
         uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         
-        return FolderColor(red: red, green: green, blue: blue, alpha: alpha)
+        return CustomColor(red: red, green: green, blue: blue, alpha: alpha)
     }
     
 }
