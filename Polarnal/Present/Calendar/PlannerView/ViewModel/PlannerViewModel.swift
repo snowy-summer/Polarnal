@@ -12,6 +12,7 @@ final class PlannerViewModel: ViewModelProtocol {
     enum Intent {
         case showAddEventCategoryView
         case showEditEventCategoryView
+        case showDDayView
     }
     
     enum EventCategoryType: Identifiable {
@@ -29,6 +30,12 @@ final class PlannerViewModel: ViewModelProtocol {
         }
     }
     
+    enum PlannerViewType {
+        case calendar
+        case dday
+    }
+    
+    @Published var showedViewType: PlannerViewType = .calendar
     @Published var sheetType: EventCategoryType?
     var cancellables: Set<AnyCancellable> = []
     
@@ -39,6 +46,9 @@ final class PlannerViewModel: ViewModelProtocol {
             
         case .showEditEventCategoryView:
             sheetType = .edit
+            
+        case .showDDayView:
+            showedViewType = .dday
             
         }
     }

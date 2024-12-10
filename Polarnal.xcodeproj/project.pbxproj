@@ -24,6 +24,7 @@
 		6B37A77E2D07D7CC00239987 /* SideTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A77D2D07D7CC00239987 /* SideTabBarViewModel.swift */; };
 		6B37A7822D084A2E00239987 /* PlannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7812D084A2E00239987 /* PlannerViewModel.swift */; };
 		6B37A7872D08514400239987 /* PlanDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7862D08514400239987 /* PlanDB.swift */; };
+		6B37A7892D08617D00239987 /* DDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7882D08617D00239987 /* DDayView.swift */; };
 		6B790F9F2CFEA3080000AC03 /* PolarnalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */; };
 		6B790FA52CFEA3090000AC03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA42CFEA3090000AC03 /* Assets.xcassets */; };
 		6B790FA82CFEA3090000AC03 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA72CFEA3090000AC03 /* Preview Assets.xcassets */; };
@@ -68,6 +69,7 @@
 		6B37A77D2D07D7CC00239987 /* SideTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTabBarViewModel.swift; sourceTree = "<group>"; };
 		6B37A7812D084A2E00239987 /* PlannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerViewModel.swift; sourceTree = "<group>"; };
 		6B37A7862D08514400239987 /* PlanDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDB.swift; sourceTree = "<group>"; };
+		6B37A7882D08617D00239987 /* DDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayView.swift; sourceTree = "<group>"; };
 		6B790F9B2CFEA3080000AC03 /* Polarnal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Polarnal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarnalApp.swift; sourceTree = "<group>"; };
 		6B790FA42CFEA3090000AC03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			children = (
 				6B37A7692D055E5500239987 /* PlannerView */,
 				6B37A76C2D05667800239987 /* CalendarView */,
+				6B37A7882D08617D00239987 /* DDayView.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				6B37A7632D0046F200239987 /* NoteContentView.swift in Sources */,
 				6B790FCE2CFFEC6A0000AC03 /* DiaryUIViewModel.swift in Sources */,
 				6B790FC92CFFE6AA0000AC03 /* DiaryStateViewModel.swift in Sources */,
+				6B37A7892D08617D00239987 /* DDayView.swift in Sources */,
 				6B37A76F2D05669600239987 /* MiniCalendarView.swift in Sources */,
 				6B37A7752D06840400239987 /* Date+Extension.swift in Sources */,
 				6B790FC42CFF25960000AC03 /* PhotoPicker.swift in Sources */,

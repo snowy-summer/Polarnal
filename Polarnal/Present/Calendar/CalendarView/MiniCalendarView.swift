@@ -150,7 +150,7 @@ struct MiniCalendarContentView: View {
             ZStack {
                 Circle()
                     .fill(isToday ? Color.blue : Color.clear)
-                    .frame(width: 24, height: 24)
+                    .frame(width: 28, height: 28)
                 
                 Text("\(dateValue.day)")
                     .foregroundStyle(color)

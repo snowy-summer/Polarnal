@@ -19,11 +19,11 @@ struct PlannerView: View {
                         .frame(width: 80)
                     
                     VStack {
-                        CalendarEventListView()
+                        CalendarEventListView(viewModel: plannerViewModel)
                         
                         Divider()
                         
-                        CalendarListView()
+                        CalendarPlanListView()
                     }
                 }
                 
@@ -34,21 +34,29 @@ struct PlannerView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             }
         } detail: {
-            MainCalendarView()
-                .padding(.horizontal)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            // 일정 추가
-                            plannerViewModel.apply(.showAddEventCategoryView)
-                        }) {
-                            Image(systemName: "plus")
+            
+            switch plannerViewModel.showedViewType {
+            case .calendar:
+                MainCalendarView()
+                    .padding(.horizontal)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button(action: {
+                                // 일정 추가
+                                plannerViewModel.apply(.showAddEventCategoryView)
+                            }) {
+                                Image(systemName: "plus")
+                            }
                         }
                     }
-                }
+                
+            case .dday:
+                DDayView()
+            }
+            
         }
         .sheet(item: $plannerViewModel.sheetType, onDismiss: {
-
+            
             // 뒤로 간 경우
         }) { type in
             NavigationStack {
@@ -75,12 +83,14 @@ struct PlannerView: View {
 
 struct CalendarEventListView: View {
     
+    @ObservedObject var viewModel: PlannerViewModel
+    
     enum EventType: CaseIterable {
         case reminder
         case dDay
         case deadline
         case dplus
-
+        
         var text: String {
             switch self {
             case .reminder:
@@ -101,13 +111,15 @@ struct CalendarEventListView: View {
     var body: some View {
         List {
             ForEach(EventType.allCases, id: \.self) { type in
-                CalendarEventListCell(type: type)
+                CalendarEventListCell(type: type,
+                                      viewModel: viewModel)
             }
         }
     }
     
     struct CalendarEventListCell: View {
         let type: EventType
+        let viewModel: PlannerViewModel
         
         var body: some View {
             HStack {
@@ -124,26 +136,17 @@ struct CalendarEventListView: View {
                 
                 Text("3")
             }
-            .contextMenu {
-                Button(role: .destructive, action: {
-                    // 삭제
-                }, label: {
-                    Label("삭제", systemImage: "trash")
-                })
-                Button(action: {
-                    //편집
-                }) {
-                    Label("편집", systemImage: "pencil")
-                }
+            .onTapGesture {
+                viewModel.apply(.showDDayView)
             }
         }
     }
 }
 
-struct CalendarListView: View {
+struct CalendarPlanListView: View {
     var body: some View {
         List {
-            CalendarListCell()
+            CalendarPlanCell()
                 .swipeActions(edge: .trailing,
                               allowsFullSwipe: false) {
                     Button(role: .destructive, action: {
@@ -158,12 +161,12 @@ struct CalendarListView: View {
                         Label("편집", systemImage: "pencil")
                     })
                 }
-            CalendarListCell()
+            CalendarPlanCell()
         }
     }
     
     
-    struct CalendarListCell: View {
+    struct CalendarPlanCell: View {
         var body: some View {
             HStack {
                 RoundedRectangle(cornerRadius: 8)
