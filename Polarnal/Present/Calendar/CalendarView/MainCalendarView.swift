@@ -147,5 +147,5 @@ struct MainCalendarContentView: View {
 }
 
 #Preview {
-    PlannerView()
+    PlannerView(sideTabBarViewModel: SideTabBarViewModel())
 }

@@ -11,16 +11,25 @@ import SwiftData
 @main
 struct PolarnalApp: App {
     private let modelContainer = DBManager.makeModelContainer()
+    @StateObject private var sideTabBarViewModel: SideTabBarViewModel = SideTabBarViewModel()
     private let diaryStateViewModel: DiaryStateViewModel = DiaryStateViewModel()
-
+    
     var body: some Scene {
         WindowGroup {
-            DiaryView(stateViewModel: diaryStateViewModel,
-                      uiViewModel: DiaryUIViewModel(),
-                      folderViewModel: FolderListViewModel(),
-                      noteViewModel: NoteListViewModel(stateViewModel: diaryStateViewModel))
+            switch sideTabBarViewModel.selectedTab {
+            case .calendar:
+                PlannerView(sideTabBarViewModel: sideTabBarViewModel)
+                
+            case .diary:
+                DiaryView(stateViewModel: diaryStateViewModel,
+                          uiViewModel: DiaryUIViewModel(),
+                          folderViewModel: FolderListViewModel(),
+                          noteViewModel: NoteListViewModel(stateViewModel: diaryStateViewModel),
+                          sideTabBarViewModel: sideTabBarViewModel)
+            case .travelPlanner:
+                Text("선택")
+            }
             
-//            PlannerView()
         }
         .modelContainer(modelContainer)
     }

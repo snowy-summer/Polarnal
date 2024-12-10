@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct PlannerView: View {
-    
+    @ObservedObject var sideTabBarViewModel: SideTabBarViewModel
     var body: some View {
         NavigationSplitView {
             VStack {
                 HStack {
-                    SideTabBarView(viewModel: SideTabBarViewModel())
-                        .frame(width: 70)
+                    SideTabBarView(viewModel: sideTabBarViewModel)
+                        .frame(width: 80)
                     
                     VStack {
                         CalendarEventListView()
@@ -50,7 +50,7 @@ struct PlannerView: View {
 }
 
 #Preview {
-    PlannerView()
+    PlannerView(sideTabBarViewModel: SideTabBarViewModel())
 }
 
 struct CalendarEventListView: View {

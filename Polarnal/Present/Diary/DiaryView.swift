@@ -14,11 +14,12 @@ struct DiaryView: View {
     @StateObject var uiViewModel: DiaryUIViewModel
     @StateObject var folderViewModel: FolderListViewModel
     @StateObject var noteViewModel: NoteListViewModel
+    @ObservedObject var sideTabBarViewModel: SideTabBarViewModel
     
     var body: some View {
         NavigationSplitView {
             HStack {
-                SideTabBarView(viewModel: SideTabBarViewModel())
+                SideTabBarView(viewModel: sideTabBarViewModel)
                     .frame(width: 80)
                 FolderListView(stateViewModel: stateViewModel,
                                uiViewModel: uiViewModel,
