@@ -27,6 +27,8 @@
 		6B37A7892D08617D00239987 /* DDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7882D08617D00239987 /* DDayView.swift */; };
 		6B37A78C2D0923FB00239987 /* AddEventCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A78B2D0923FB00239987 /* AddEventCategoryView.swift */; };
 		6B37A78E2D0924DD00239987 /* AddEventCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A78D2D0924DD00239987 /* AddEventCategoryViewModel.swift */; };
+		6B37A7902D095E1700239987 /* CalendarEventCategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A78F2D095E1700239987 /* CalendarEventCategoryListView.swift */; };
+		6B37A7932D095E7400239987 /* CalendarEventCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7922D095E7400239987 /* CalendarEventCategoryViewModel.swift */; };
 		6B790F9F2CFEA3080000AC03 /* PolarnalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */; };
 		6B790FA52CFEA3090000AC03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA42CFEA3090000AC03 /* Assets.xcassets */; };
 		6B790FA82CFEA3090000AC03 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA72CFEA3090000AC03 /* Preview Assets.xcassets */; };
@@ -74,6 +76,8 @@
 		6B37A7882D08617D00239987 /* DDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayView.swift; sourceTree = "<group>"; };
 		6B37A78B2D0923FB00239987 /* AddEventCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventCategoryView.swift; sourceTree = "<group>"; };
 		6B37A78D2D0924DD00239987 /* AddEventCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventCategoryViewModel.swift; sourceTree = "<group>"; };
+		6B37A78F2D095E1700239987 /* CalendarEventCategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventCategoryListView.swift; sourceTree = "<group>"; };
+		6B37A7922D095E7400239987 /* CalendarEventCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventCategoryViewModel.swift; sourceTree = "<group>"; };
 		6B790F9B2CFEA3080000AC03 /* Polarnal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Polarnal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarnalApp.swift; sourceTree = "<group>"; };
 		6B790FA42CFEA3090000AC03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -152,9 +156,10 @@
 		6B37A7692D055E5500239987 /* PlannerView */ = {
 			isa = PBXGroup;
 			children = (
-				6B37A78A2D0923CE00239987 /* EventCategory */,
 				6B37A76A2D055E6D00239987 /* PlannerView.swift */,
 				6B37A7832D084D6200239987 /* ViewModel */,
+				6B37A78A2D0923CE00239987 /* EventCategory */,
+				6B37A7912D095E4800239987 /* Sheet */,
 			);
 			path = PlannerView;
 			sourceTree = "<group>";
@@ -222,10 +227,19 @@
 		6B37A78A2D0923CE00239987 /* EventCategory */ = {
 			isa = PBXGroup;
 			children = (
+				6B37A78F2D095E1700239987 /* CalendarEventCategoryListView.swift */,
+				6B37A7922D095E7400239987 /* CalendarEventCategoryViewModel.swift */,
+			);
+			path = EventCategory;
+			sourceTree = "<group>";
+		};
+		6B37A7912D095E4800239987 /* Sheet */ = {
+			isa = PBXGroup;
+			children = (
 				6B37A78B2D0923FB00239987 /* AddEventCategoryView.swift */,
 				6B37A78D2D0924DD00239987 /* AddEventCategoryViewModel.swift */,
 			);
-			path = EventCategory;
+			path = Sheet;
 			sourceTree = "<group>";
 		};
 		6B790F922CFEA3080000AC03 = {
@@ -503,6 +517,7 @@
 				6B790FB92CFEA4830000AC03 /* DBManager.swift in Sources */,
 				6B37A7592D002BB800239987 /* NoteListView.swift in Sources */,
 				6B790FE32CFFEF530000AC03 /* IconSelectPartView.swift in Sources */,
+				6B37A7902D095E1700239987 /* CalendarEventCategoryListView.swift in Sources */,
 				6B790FD12CFFEC980000AC03 /* DiaryViewSheetType.swift in Sources */,
 				6B790FD52CFFEDF10000AC03 /* FolderListViewModel.swift in Sources */,
 				6B37A75D2D002D7700239987 /* NoteListViewModel.swift in Sources */,
@@ -538,6 +553,7 @@
 				6B790F9F2CFEA3080000AC03 /* PolarnalApp.swift in Sources */,
 				6B37A7722D0683C600239987 /* CalendarViewModel.swift in Sources */,
 				6B790FCC2CFFE8120000AC03 /* FolderListView.swift in Sources */,
+				6B37A7932D095E7400239987 /* CalendarEventCategoryViewModel.swift in Sources */,
 				6B790FE12CFFEF220000AC03 /* ColorPalettePartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
