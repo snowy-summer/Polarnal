@@ -12,11 +12,11 @@ struct AddEventCategoryView: View {
     @ObservedObject var viewModel: AddEventCategoryViewModel
     
     var body: some View {
-        ScrollView {
+        VStack {
             HStack {
                 RoundedRectangle(cornerRadius: 8)
                     .frame(width: 100, height: 100)
-                    .foregroundStyle(.blue)
+                    .foregroundStyle(viewModel.categoryColor)
                 
                 TextField("카테고리 이름", text: $viewModel.categoryTitle)
                     .padding()
@@ -27,19 +27,33 @@ struct AddEventCategoryView: View {
             .padding(.horizontal, 40)
             .padding(.top, 40)
             .padding(.bottom, 20)
+            
+            
+            ColorPalettePartView(selctedColor: $viewModel.categoryColor)
+                .background(Color(UIColor.systemGray5))
+                .clipShape(RoundedRectangle(cornerRadius: 24))
+                .padding(.horizontal,40)
+            
         }
+        .padding(.bottom, 40)
         .navigationTitle("카테고리 생성")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button("취소") {
+            
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
                     dismiss()
+                }) {
+                    Text("취소")
                 }
             }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button("저장") {
-                    viewModel.apply(.addFolder)
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: {
+                    viewModel.apply(.saveCategory)
                     dismiss()
+                }) {
+                    Text("저장")
                 }
             }
         }

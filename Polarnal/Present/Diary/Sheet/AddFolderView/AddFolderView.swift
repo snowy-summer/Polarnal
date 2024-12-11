@@ -25,7 +25,7 @@ struct AddFolderView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 24))
                     .padding(40)
                 
-                ColorPalettePartView(viewModel: viewModel)
+                ColorPalettePartView(selctedColor: $viewModel.folderColor)
                     .background(Color(UIColor.systemGray5))
                     .clipShape(RoundedRectangle(cornerRadius: 24))
                     .padding(.horizontal,40)

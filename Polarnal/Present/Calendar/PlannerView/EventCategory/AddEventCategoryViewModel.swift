@@ -32,7 +32,7 @@ final class AddEventCategoryViewModel: ViewModelProtocol {
     enum Intent {
         
         case selectColor(Color)
-        case addCategory
+        case saveCategory
         case insertModelContext(ModelContext)
         
     }
@@ -45,7 +45,7 @@ final class AddEventCategoryViewModel: ViewModelProtocol {
         case .selectColor(let color):
             categoryColor = color
             
-        case .addCategory:
+        case .saveCategory:
             eventCategory == nil ? addFolder() : editFolder()
             
         case .insertModelContext(let modelContext):

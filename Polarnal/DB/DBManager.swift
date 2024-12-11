@@ -20,6 +20,8 @@ final class DBManager {
         let schema = Schema([
             Folder.self,
             Note.self,
+            EventCategoryDB.self,
+            EventDB.self
         ])
         
         let modelConfiguration = ModelConfiguration(schema: schema,

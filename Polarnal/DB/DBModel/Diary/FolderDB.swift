@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 import SwiftData
 
 @Model
@@ -48,5 +49,12 @@ final class CustomColor {
         self.green = green
         self.blue = blue
         self.alpha = alpha
+    }
+    
+    func convertToColor() -> Color {
+        return Color(red: red,
+                     green: green,
+                     blue: blue,
+                     opacity: alpha)
     }
 }

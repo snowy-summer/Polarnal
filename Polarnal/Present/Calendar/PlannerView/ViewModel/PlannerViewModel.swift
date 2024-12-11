@@ -58,10 +58,10 @@ final class PlannerViewModel: ViewModelProtocol {
     }
     
     @Published var showedViewType: PlannerViewType = .calendar
-    
     @Published var eventCategoryType: EventCategoryType?
     @Published var eventSheetType: EventCategoryType?
     @Published var dDaySheetType: DDaySheetType?
+    
     var cancellables: Set<AnyCancellable> = []
     
     func apply(_ intent: Intent) {

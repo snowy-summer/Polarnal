@@ -1,5 +1,5 @@
 //
-//  Plan.swift
+//  EventDB.swift
 //  Polarnal
 //
 //  Created by 최승범 on 12/10/24.

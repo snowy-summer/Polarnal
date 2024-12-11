@@ -9,12 +9,8 @@ import SwiftUI
 
 struct ColorPalettePartView: View {
     
-    @ObservedObject var viewModel: AddFolderViewModel
-    
-    init(viewModel: AddFolderViewModel) {
-        _viewModel = ObservedObject(wrappedValue: viewModel)
-    }
-    
+    @Binding var selctedColor: Color
+
     let columns = [
         GridItem(.adaptive(minimum: 50))
     ]
@@ -28,14 +24,14 @@ struct ColorPalettePartView: View {
                         .frame(width: 50, height: 50)
                         .overlay(
                             Circle()
-                                .stroke(Color(uiColor: .gray), lineWidth: viewModel.folderColor == value.color ? 4 : 0)
+                                .stroke(Color(uiColor: .gray), lineWidth: selctedColor == value.color ? 4 : 0)
                         )
                         .onTapGesture {
-                            viewModel.apply(.selectColor(value.color))
+                            selctedColor = value.color
                         }
                 }
                 
-                ColorPicker("", selection: $viewModel.folderColor)
+                ColorPicker("", selection: $selctedColor)
                     .labelsHidden()
                     .frame(width: 50, height: 50)
             }
@@ -45,5 +41,5 @@ struct ColorPalettePartView: View {
 }
 
 #Preview {
-    ColorPalettePartView(viewModel: AddFolderViewModel(folder: nil))
+    ColorPalettePartView(selctedColor: .constant(.blue))
 }

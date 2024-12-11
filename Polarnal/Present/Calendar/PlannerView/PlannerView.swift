@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct PlannerView: View {
+    @Environment(\.modelContext) var modelContext
     @ObservedObject var sideTabBarViewModel: SideTabBarViewModel
     @StateObject private var plannerViewModel: PlannerViewModel = PlannerViewModel()
     
@@ -20,15 +22,23 @@ struct PlannerView: View {
                     
                     VStack {
                         CalendarEventListView(viewModel: plannerViewModel)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .padding(.horizontal, 8)
                         
                         Divider()
                         
-                        CalendarPlanListView()
+                        CalendarEventCategoryListView()
                             .clipShape(RoundedRectangle(cornerRadius: 12))
                             .padding(.horizontal, 8)
                             .sheet(item: $plannerViewModel.eventCategoryType) { type in
-                                
-                                AddEventCategoryView(viewModel: AddEventCategoryViewModel(eventCategory: nil))
+                                let viewModel = AddEventCategoryViewModel(eventCategory: nil)
+                                NavigationStack {
+                                    AddEventCategoryView(viewModel: viewModel)
+                                        .onAppear {
+                                            viewModel.apply(.insertModelContext(modelContext))
+                                        }
+                                }
+                                    
                             }
                         
                         Button(action: {
@@ -198,44 +208,51 @@ struct CalendarEventListView: View {
     }
 }
 
-struct CalendarPlanListView: View {
+struct CalendarEventCategoryListView: View {
+    
+    @Query var eventCategoryList: [EventCategoryDB]
+    
     var body: some View {
         List {
-            CalendarPlanCell()
-                .swipeActions(edge: .trailing,
-                              allowsFullSwipe: false) {
-                    Button(role: .destructive, action: {
-                        // 삭제
-                    }, label: {
-                        Label("삭제", systemImage: "trash")
-                    })
-                    
-                    Button(action: {
-                        // 편집
-                    }, label: {
-                        Label("편집", systemImage: "pencil")
-                    })
-                }
-            CalendarPlanCell()
+            ForEach(eventCategoryList, id: \.id) { category in
+                CalendarEventCategoryCell(category: category)
+                    .swipeActions(edge: .trailing,
+                                  allowsFullSwipe: false) {
+                        Button(role: .destructive, action: {
+                            // 삭제
+                        }, label: {
+                            Label("삭제", systemImage: "trash")
+                        })
+                        
+                        Button(action: {
+                            // 편집
+                        }, label: {
+                            Label("편집", systemImage: "pencil")
+                        })
+                    }
+            }
         }
     }
     
     
-    struct CalendarPlanCell: View {
+    struct CalendarEventCategoryCell: View {
+        
+        let category: EventCategoryDB
+        
         var body: some View {
             HStack {
                 RoundedRectangle(cornerRadius: 8)
-                    .frame(width: 24, height: 24)
-                    .foregroundStyle(Color.blue)
+                    .frame(width: 32, height: 32)
+                    .foregroundStyle(category.color.convertToColor())
                 
                 
-                Text("개인 일정")
+                Text(category.title)
                     .bold()
                     .padding(.leading, 8)
                 
                 Spacer()
                 
-                Text("6")
+                Text("\(category.planList.count)")
             }
             .contextMenu {
                 Button(role: .destructive, action: {
