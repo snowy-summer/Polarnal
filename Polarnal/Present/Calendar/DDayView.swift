@@ -9,22 +9,34 @@ import SwiftUI
 
 struct DDayView: View {
     
-    private let columns = Array(repeating: GridItem(.flexible()),
-                                count: 2)
+    private let gridItems = GridItem(.flexible(), spacing: 16)
+    
+   
     
     var body: some View {
-        LazyVGrid(columns: columns, spacing: 8) {
-            DDayCell()
-                .background(Color(uiColor: .systemGray5))
-                .frame(height: 160)
-                .clipShape(RoundedRectangle(cornerRadius: 24))
-                .shadow(radius: 5)
-            DDayCell()
-                .background(Color(uiColor: .systemGray5))
-                .frame(height: 160)
-                .clipShape(RoundedRectangle(cornerRadius: 24))
-                .shadow(radius: 5)
+        ScrollView {
+            let columns = Array(repeating: gridItems,
+                                count: 3)
+            LazyVGrid(columns: columns, spacing: 16) {
+                DDayCell()
+                    .background(Color(uiColor: .systemGray5))
+                    .frame(height: 160)
+                    .clipShape(RoundedRectangle(cornerRadius: 24))
+                    .shadow(radius: 5, x: 2, y:2)
+                DDayCell()
+                    .background(Color(uiColor: .systemGray5))
+                    .frame(height: 160)
+                    .clipShape(RoundedRectangle(cornerRadius: 24))
+                    .shadow(radius: 5, x: 2, y:2)
+                
+                DDayCell()
+                    .background(Color(uiColor: .systemGray5))
+                    .frame(height: 160)
+                    .clipShape(RoundedRectangle(cornerRadius: 24))
+                    .shadow(radius: 5, x: 2, y:2)
+            }
         }
+        .padding()
     }
 }
 
@@ -47,11 +59,6 @@ struct DDayCell: View {
                 Spacer()
                 
                 HStack {
-//                    Image(systemName: "pencil")
-//                        .resizable()
-//                        .frame(width: 32,
-//                               height: 32)
-//                        .padding()
                     Text("D - 100")
                         .font(.title)
                         .bold()

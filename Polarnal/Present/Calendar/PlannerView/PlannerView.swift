@@ -24,6 +24,33 @@ struct PlannerView: View {
                         Divider()
                         
                         CalendarPlanListView()
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .padding(.horizontal, 8)
+                            .sheet(item: $plannerViewModel.eventCategoryType) { type in
+                                
+                                AddEventCategoryView(viewModel: AddEventCategoryViewModel(eventCategory: nil))
+                            }
+                        
+                        Button(action: {
+                            plannerViewModel.apply(.showAddEventCategoryView)
+                        }) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(Color(uiColor: .systemGray5))
+                                    .frame(height: 44)
+                                HStack {
+                                    Image(systemName: "plus.app.fill")
+                                        .resizable()
+                                        .frame(width: 28, height: 28)
+                                        .foregroundStyle(.black)
+                                    Text("카테고리 추가")
+                                        .font(.headline)
+                                        .bold()
+                                        .foregroundStyle(.black)
+                                }
+                            }
+                            .padding(.horizontal, 8)
+                        }
                     }
                 }
                 
@@ -42,36 +69,64 @@ struct PlannerView: View {
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button(action: {
-                                // 일정 추가
-                                plannerViewModel.apply(.showAddEventCategoryView)
+                                plannerViewModel.apply(.showAddEventView)
                             }) {
                                 Image(systemName: "plus")
+                            }
+                        }
+                    }
+                    .sheet(item: $plannerViewModel.eventSheetType,
+                           onDismiss: {
+                        
+                        // 뒤로 간 경우
+                    }) { type in
+                        NavigationStack {
+                            switch type {
+                            case .add:
+                                Text("추가")
+                                
+                            case .edit:
+                                Text("편집")
+                                
+                            default:
+                                EmptyView()
                             }
                         }
                     }
                 
             case .dday:
                 DDayView()
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button(action: {
+                                plannerViewModel.apply(.showAddDDay)
+                            }) {
+                                Image(systemName: "plus")
+                            }
+                        }
+                    }
+                    .sheet(item: $plannerViewModel.dDaySheetType,
+                           onDismiss: {
+                        
+                        // 뒤로 간 경우
+                    }) { type in
+                        NavigationStack {
+                            switch type {
+                            case .add:
+                                Text("D-Day 추가")
+                                
+                            case .edit:
+                                Text("편집")
+                                
+                            default:
+                                EmptyView()
+                            }
+                        }
+                    }
             }
             
         }
-        .sheet(item: $plannerViewModel.sheetType, onDismiss: {
-            
-            // 뒤로 간 경우
-        }) { type in
-            NavigationStack {
-                switch type {
-                case .add:
-                    Text("추가")
-                    
-                case .edit:
-                    Text("편집")
-                    
-                default:
-                    EmptyView()
-                }
-            }
-        }
+        
         
     }
     

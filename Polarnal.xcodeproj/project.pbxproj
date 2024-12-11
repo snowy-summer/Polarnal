@@ -25,6 +25,8 @@
 		6B37A7822D084A2E00239987 /* PlannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7812D084A2E00239987 /* PlannerViewModel.swift */; };
 		6B37A7872D08514400239987 /* PlanDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7862D08514400239987 /* PlanDB.swift */; };
 		6B37A7892D08617D00239987 /* DDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7882D08617D00239987 /* DDayView.swift */; };
+		6B37A78C2D0923FB00239987 /* AddEventCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A78B2D0923FB00239987 /* AddEventCategoryView.swift */; };
+		6B37A78E2D0924DD00239987 /* AddEventCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A78D2D0924DD00239987 /* AddEventCategoryViewModel.swift */; };
 		6B790F9F2CFEA3080000AC03 /* PolarnalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */; };
 		6B790FA52CFEA3090000AC03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA42CFEA3090000AC03 /* Assets.xcassets */; };
 		6B790FA82CFEA3090000AC03 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA72CFEA3090000AC03 /* Preview Assets.xcassets */; };
@@ -70,6 +72,8 @@
 		6B37A7812D084A2E00239987 /* PlannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerViewModel.swift; sourceTree = "<group>"; };
 		6B37A7862D08514400239987 /* PlanDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDB.swift; sourceTree = "<group>"; };
 		6B37A7882D08617D00239987 /* DDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayView.swift; sourceTree = "<group>"; };
+		6B37A78B2D0923FB00239987 /* AddEventCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventCategoryView.swift; sourceTree = "<group>"; };
+		6B37A78D2D0924DD00239987 /* AddEventCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventCategoryViewModel.swift; sourceTree = "<group>"; };
 		6B790F9B2CFEA3080000AC03 /* Polarnal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Polarnal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarnalApp.swift; sourceTree = "<group>"; };
 		6B790FA42CFEA3090000AC03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 		6B37A7692D055E5500239987 /* PlannerView */ = {
 			isa = PBXGroup;
 			children = (
+				6B37A78A2D0923CE00239987 /* EventCategory */,
 				6B37A76A2D055E6D00239987 /* PlannerView.swift */,
 				6B37A7832D084D6200239987 /* ViewModel */,
 			);
@@ -212,6 +217,15 @@
 				6B37A7862D08514400239987 /* PlanDB.swift */,
 			);
 			path = CalendarPlanner;
+			sourceTree = "<group>";
+		};
+		6B37A78A2D0923CE00239987 /* EventCategory */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A78B2D0923FB00239987 /* AddEventCategoryView.swift */,
+				6B37A78D2D0924DD00239987 /* AddEventCategoryViewModel.swift */,
+			);
+			path = EventCategory;
 			sourceTree = "<group>";
 		};
 		6B790F922CFEA3080000AC03 = {
@@ -501,6 +515,7 @@
 				6B37A7872D08514400239987 /* PlanDB.swift in Sources */,
 				6B37A77E2D07D7CC00239987 /* SideTabBarViewModel.swift in Sources */,
 				6B790FDA2CFFEE810000AC03 /* AddFolderViewModel.swift in Sources */,
+				6B37A78C2D0923FB00239987 /* AddEventCategoryView.swift in Sources */,
 				6B37A77C2D068DA100239987 /* MainCalendarViewModel.swift in Sources */,
 				6B37A7672D055B3800239987 /* SideTabBarView.swift in Sources */,
 				6B790FB72CFEA4430000AC03 /* LogManager.swift in Sources */,
@@ -518,6 +533,7 @@
 				6B790FC72CFFE66A0000AC03 /* DiaryView.swift in Sources */,
 				6B790FC12CFF25710000AC03 /* ViewModelProtocol.swift in Sources */,
 				6B37A75F2D00372A00239987 /* NoteListCellViewModel.swift in Sources */,
+				6B37A78E2D0924DD00239987 /* AddEventCategoryViewModel.swift in Sources */,
 				6B790FBE2CFEA50A0000AC03 /* NoteDB.swift in Sources */,
 				6B790F9F2CFEA3080000AC03 /* PolarnalApp.swift in Sources */,
 				6B37A7722D0683C600239987 /* CalendarViewModel.swift in Sources */,
