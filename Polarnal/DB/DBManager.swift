@@ -21,7 +21,8 @@ final class DBManager {
             Folder.self,
             Note.self,
             EventCategoryDB.self,
-            EventDB.self
+            EventDB.self,
+            DDayDB.self
         ])
         
         let modelConfiguration = ModelConfiguration(schema: schema,

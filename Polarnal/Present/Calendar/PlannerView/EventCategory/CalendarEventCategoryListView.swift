@@ -46,7 +46,6 @@ struct CalendarEventCategoryListView: View {
         }
     }
     
-    
     struct CalendarEventCategoryCell: View {
         
         let category: EventCategoryDB

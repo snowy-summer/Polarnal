@@ -29,6 +29,11 @@
 		6B37A78E2D0924DD00239987 /* AddEventCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A78D2D0924DD00239987 /* AddEventCategoryViewModel.swift */; };
 		6B37A7902D095E1700239987 /* CalendarEventCategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A78F2D095E1700239987 /* CalendarEventCategoryListView.swift */; };
 		6B37A7932D095E7400239987 /* CalendarEventCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7922D095E7400239987 /* CalendarEventCategoryViewModel.swift */; };
+		6B37A7962D0972FD00239987 /* CalendarEventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7952D0972FD00239987 /* CalendarEventListView.swift */; };
+		6B37A7992D0978D900239987 /* AddDDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7982D0978D900239987 /* AddDDayView.swift */; };
+		6B37A79B2D097A1400239987 /* AddDDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A79A2D097A1400239987 /* AddDDayViewModel.swift */; };
+		6B37A7A02D09AAC700239987 /* AddDDayCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A79F2D09AAC700239987 /* AddDDayCategoryCell.swift */; };
+		6B37A7A22D09AADB00239987 /* AddDDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7A12D09AADB00239987 /* AddDDayCell.swift */; };
 		6B790F9F2CFEA3080000AC03 /* PolarnalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */; };
 		6B790FA52CFEA3090000AC03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA42CFEA3090000AC03 /* Assets.xcassets */; };
 		6B790FA82CFEA3090000AC03 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA72CFEA3090000AC03 /* Preview Assets.xcassets */; };
@@ -78,6 +83,11 @@
 		6B37A78D2D0924DD00239987 /* AddEventCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventCategoryViewModel.swift; sourceTree = "<group>"; };
 		6B37A78F2D095E1700239987 /* CalendarEventCategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventCategoryListView.swift; sourceTree = "<group>"; };
 		6B37A7922D095E7400239987 /* CalendarEventCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventCategoryViewModel.swift; sourceTree = "<group>"; };
+		6B37A7952D0972FD00239987 /* CalendarEventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventListView.swift; sourceTree = "<group>"; };
+		6B37A7982D0978D900239987 /* AddDDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDDayView.swift; sourceTree = "<group>"; };
+		6B37A79A2D097A1400239987 /* AddDDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDDayViewModel.swift; sourceTree = "<group>"; };
+		6B37A79F2D09AAC700239987 /* AddDDayCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDDayCategoryCell.swift; sourceTree = "<group>"; };
+		6B37A7A12D09AADB00239987 /* AddDDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDDayCell.swift; sourceTree = "<group>"; };
 		6B790F9B2CFEA3080000AC03 /* Polarnal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Polarnal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarnalApp.swift; sourceTree = "<group>"; };
 		6B790FA42CFEA3090000AC03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -148,7 +158,6 @@
 			children = (
 				6B37A7692D055E5500239987 /* PlannerView */,
 				6B37A76C2D05667800239987 /* CalendarView */,
-				6B37A7882D08617D00239987 /* DDayView.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -158,6 +167,7 @@
 			children = (
 				6B37A76A2D055E6D00239987 /* PlannerView.swift */,
 				6B37A7832D084D6200239987 /* ViewModel */,
+				6B37A7942D0972E800239987 /* EventList */,
 				6B37A78A2D0923CE00239987 /* EventCategory */,
 				6B37A7912D095E4800239987 /* Sheet */,
 			);
@@ -236,10 +246,55 @@
 		6B37A7912D095E4800239987 /* Sheet */ = {
 			isa = PBXGroup;
 			children = (
+				6B37A79D2D09AA4B00239987 /* AddDDay */,
+				6B37A79C2D09AA3D00239987 /* AddEventCategory */,
+			);
+			path = Sheet;
+			sourceTree = "<group>";
+		};
+		6B37A7942D0972E800239987 /* EventList */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A7972D09786B00239987 /* DDayView */,
+				6B37A7952D0972FD00239987 /* CalendarEventListView.swift */,
+			);
+			path = EventList;
+			sourceTree = "<group>";
+		};
+		6B37A7972D09786B00239987 /* DDayView */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A7882D08617D00239987 /* DDayView.swift */,
+			);
+			path = DDayView;
+			sourceTree = "<group>";
+		};
+		6B37A79C2D09AA3D00239987 /* AddEventCategory */ = {
+			isa = PBXGroup;
+			children = (
 				6B37A78B2D0923FB00239987 /* AddEventCategoryView.swift */,
 				6B37A78D2D0924DD00239987 /* AddEventCategoryViewModel.swift */,
 			);
-			path = Sheet;
+			path = AddEventCategory;
+			sourceTree = "<group>";
+		};
+		6B37A79D2D09AA4B00239987 /* AddDDay */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A79E2D09AA9700239987 /* Component */,
+				6B37A7982D0978D900239987 /* AddDDayView.swift */,
+				6B37A79A2D097A1400239987 /* AddDDayViewModel.swift */,
+			);
+			path = AddDDay;
+			sourceTree = "<group>";
+		};
+		6B37A79E2D09AA9700239987 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A79F2D09AAC700239987 /* AddDDayCategoryCell.swift */,
+				6B37A7A12D09AADB00239987 /* AddDDayCell.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 		6B790F922CFEA3080000AC03 = {
@@ -529,11 +584,13 @@
 				6B790FDF2CFFEEF20000AC03 /* TagCollectionView.swift in Sources */,
 				6B37A7872D08514400239987 /* EvnentDB.swift in Sources */,
 				6B37A77E2D07D7CC00239987 /* SideTabBarViewModel.swift in Sources */,
+				6B37A7962D0972FD00239987 /* CalendarEventListView.swift in Sources */,
 				6B790FDA2CFFEE810000AC03 /* AddFolderViewModel.swift in Sources */,
 				6B37A78C2D0923FB00239987 /* AddEventCategoryView.swift in Sources */,
 				6B37A77C2D068DA100239987 /* MainCalendarViewModel.swift in Sources */,
 				6B37A7672D055B3800239987 /* SideTabBarView.swift in Sources */,
 				6B790FB72CFEA4430000AC03 /* LogManager.swift in Sources */,
+				6B37A7A22D09AADB00239987 /* AddDDayCell.swift in Sources */,
 				6B790FD82CFFEE6E0000AC03 /* AddFolderView.swift in Sources */,
 				6B37A7562D0026B300239987 /* FolderListCell.swift in Sources */,
 				6B790FE72CFFEFA80000AC03 /* DesignOfFolderIcon.swift in Sources */,
@@ -542,11 +599,14 @@
 				6B790FC92CFFE6AA0000AC03 /* DiaryStateViewModel.swift in Sources */,
 				6B37A7892D08617D00239987 /* DDayView.swift in Sources */,
 				6B37A76F2D05669600239987 /* MiniCalendarView.swift in Sources */,
+				6B37A7A02D09AAC700239987 /* AddDDayCategoryCell.swift in Sources */,
 				6B37A7752D06840400239987 /* Date+Extension.swift in Sources */,
 				6B790FC42CFF25960000AC03 /* PhotoPicker.swift in Sources */,
 				6B790FE52CFFEF7E0000AC03 /* ColorPalette.swift in Sources */,
+				6B37A79B2D097A1400239987 /* AddDDayViewModel.swift in Sources */,
 				6B790FC72CFFE66A0000AC03 /* DiaryView.swift in Sources */,
 				6B790FC12CFF25710000AC03 /* ViewModelProtocol.swift in Sources */,
+				6B37A7992D0978D900239987 /* AddDDayView.swift in Sources */,
 				6B37A75F2D00372A00239987 /* NoteListCellViewModel.swift in Sources */,
 				6B37A78E2D0924DD00239987 /* AddEventCategoryViewModel.swift in Sources */,
 				6B790FBE2CFEA50A0000AC03 /* NoteDB.swift in Sources */,

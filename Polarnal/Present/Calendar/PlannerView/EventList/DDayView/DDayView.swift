@@ -11,8 +11,6 @@ struct DDayView: View {
     
     private let gridItems = GridItem(.flexible(), spacing: 16)
     
-   
-    
     var body: some View {
         ScrollView {
             let columns = Array(repeating: gridItems,

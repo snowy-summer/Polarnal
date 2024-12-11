@@ -123,7 +123,7 @@ struct PlannerView: View {
                         NavigationStack {
                             switch type {
                             case .add:
-                                Text("D-Day 추가")
+                                AddDDayView()
                                 
                             case .edit:
                                 Text("편집")
@@ -144,66 +144,4 @@ struct PlannerView: View {
 
 #Preview {
     PlannerView(sideTabBarViewModel: SideTabBarViewModel())
-}
-
-struct CalendarEventListView: View {
-    
-    @ObservedObject var viewModel: PlannerViewModel
-    
-    enum EventType: CaseIterable {
-        case reminder
-        case dDay
-        case deadline
-        case dplus
-        
-        var text: String {
-            switch self {
-            case .reminder:
-                return "미리알림"
-                
-            case .dDay:
-                return "D - Day"
-                
-            case .deadline:
-                return "마감기한"
-                
-            case .dplus:
-                return "D+"
-            }
-        }
-    }
-    
-    var body: some View {
-        List {
-            ForEach(EventType.allCases, id: \.self) { type in
-                CalendarEventListCell(type: type,
-                                      viewModel: viewModel)
-            }
-        }
-    }
-    
-    struct CalendarEventListCell: View {
-        let type: EventType
-        let viewModel: PlannerViewModel
-        
-        var body: some View {
-            HStack {
-                RoundedRectangle(cornerRadius: 8)
-                    .frame(width: 32, height: 32)
-                    .foregroundStyle(Color.blue)
-                
-                
-                Text(type.text)
-                    .bold()
-                    .padding(.leading, 8)
-                
-                Spacer()
-                
-                Text("3")
-            }
-            .onTapGesture {
-                viewModel.apply(.showDDayView)
-            }
-        }
-    }
 }
