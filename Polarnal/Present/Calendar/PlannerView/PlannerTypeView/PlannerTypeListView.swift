@@ -1,5 +1,5 @@
 //
-//  CalendarEventListView.swift
+//  PlannerTypeListView.swift
 //  Polarnal
 //
 //  Created by 최승범 on 12/11/24.
@@ -8,13 +8,13 @@
 import SwiftUI
 import SwiftData
 
-struct CalendarEventListView: View {
+struct PlannerTypeListView: View {
     
     @ObservedObject var viewModel: PlannerViewModel
     
     enum EventType: String, CaseIterable {
         case calendar
-        case reminder
+        case todo
         case dDay
         
         var text: String {
@@ -22,7 +22,7 @@ struct CalendarEventListView: View {
             case .calendar:
                 return "달력"
                 
-            case .reminder:
+            case .todo:
                 return "ToDo 할일"
                 
             case .dDay:
@@ -35,7 +35,7 @@ struct CalendarEventListView: View {
             case .calendar:
                 return "calendar"
                 
-            case .reminder:
+            case .todo:
                 return "checklist"
                 
             case .dDay:
@@ -73,15 +73,25 @@ struct CalendarEventListView: View {
                 case .calendar:
                     EmptyView()
                     
-                case .reminder:
-                    Text("0")
+                case .todo:
+                    EmptyView()
                     
                 case .dDay:
                     Text("\(ddayList.count)")
                 }
             }
             .onTapGesture {
-                viewModel.apply(.showDDayView)
+                switch type {
+                case .calendar:
+                    return
+                    
+                case .dDay:
+                    viewModel.apply(.showDDayView)
+                    
+                case.todo:
+                    viewModel.apply(.showTodoView)
+                }
+                
             }
         }
     }

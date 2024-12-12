@@ -21,7 +21,7 @@ struct PlannerView: View {
                         .frame(width: 80)
                     
                     VStack {
-                        CalendarEventListView(viewModel: plannerViewModel)
+                        PlannerTypeListView(viewModel: plannerViewModel)
                             .clipShape(RoundedRectangle(cornerRadius: 12))
                             .padding(.horizontal, 8)
                         
@@ -104,6 +104,9 @@ struct PlannerView: View {
                         }
                     }
                 
+            case .todo:
+                TodoView()
+                
             case .dday:
                 DDayView()
                     .toolbar {
@@ -129,6 +132,8 @@ struct PlannerView: View {
                             }
                         }
                     }
+                
+            
             }
             
         }

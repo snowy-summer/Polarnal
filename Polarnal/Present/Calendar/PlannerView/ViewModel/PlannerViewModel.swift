@@ -19,6 +19,7 @@ final class PlannerViewModel: ViewModelProtocol {
         
         case showAddDDay
         
+        case showTodoView
         case showDDayView
     }
     
@@ -55,6 +56,7 @@ final class PlannerViewModel: ViewModelProtocol {
     enum PlannerViewType {
         case calendar
         case dday
+        case todo
     }
     
     @Published var showedViewType: PlannerViewType = .calendar
@@ -80,6 +82,9 @@ final class PlannerViewModel: ViewModelProtocol {
             
         case .showDDayView:
             showedViewType = .dday
+            
+        case .showTodoView:
+            showedViewType = .todo
             
         }
     }
