@@ -57,7 +57,6 @@ struct CalendarEventCategoryListView: View {
                     .frame(width: 32, height: 32)
                     .foregroundStyle(category.color.convertToColor())
                 
-                
                 Text(category.title)
                     .bold()
                     .padding(.leading, 8)

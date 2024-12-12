@@ -23,7 +23,7 @@ struct PlannerTypeListView: View {
                 return "달력"
                 
             case .todo:
-                return "ToDo 할일"
+                return "Todo 할일"
                 
             case .dDay:
                 return "D - Day"

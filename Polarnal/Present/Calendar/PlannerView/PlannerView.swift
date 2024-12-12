@@ -106,6 +106,30 @@ struct PlannerView: View {
                 
             case .todo:
                 TodoView()
+                    .toolbar {
+                        ToolbarItem(placement: .topBarTrailing) {
+                            Button(action: {
+                                plannerViewModel.apply(.showAddTodoFolder)
+                            }) {
+                                Image(systemName: "plus")
+                            }
+                        }
+                    }
+                    .sheet(item: $plannerViewModel.todoSheetType,
+                           onDismiss: {
+                        
+                        // 뒤로 간 경우
+                    }) { type in
+                        NavigationStack {
+                            switch type {
+                            case .add:
+                                AddTodoFolderView(viewModel: AddTodoFolderViewModel(todoFolder: nil))
+                            
+                            default:
+                                EmptyView()
+                            }
+                        }
+                    }
                 
             case .dday:
                 DDayView()

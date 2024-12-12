@@ -17,6 +17,7 @@ final class PlannerViewModel: ViewModelProtocol {
         //일정 추가 ex) 00월 00일 생일
         case showAddEventView
         
+        case showAddTodoFolder
         case showAddDDay
         
         case showTodoView
@@ -53,6 +54,21 @@ final class PlannerViewModel: ViewModelProtocol {
         }
     }
     
+    enum TodoSheetType: Identifiable {
+        case add
+        case edit
+        
+        var id: String {
+            switch self {
+            case .add:
+                return "add"
+                
+            case .edit:
+                return "edit"
+            }
+        }
+    }
+    
     enum PlannerViewType {
         case calendar
         case dday
@@ -62,6 +78,7 @@ final class PlannerViewModel: ViewModelProtocol {
     @Published var showedViewType: PlannerViewType = .calendar
     @Published var eventCategoryType: EventCategoryType?
     @Published var eventSheetType: EventCategoryType?
+    @Published var todoSheetType: TodoSheetType?
     @Published var dDaySheetType: DDaySheetType?
     
     var cancellables: Set<AnyCancellable> = []
@@ -76,6 +93,9 @@ final class PlannerViewModel: ViewModelProtocol {
             
         case .showAddEventView:
             eventSheetType = .add
+            
+        case .showAddTodoFolder:
+            todoSheetType = .add
             
         case .showAddDDay:
             dDaySheetType = .add
