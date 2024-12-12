@@ -31,12 +31,15 @@ final class TodoDB {
     @Attribute(.unique) var id: UUID
     var content: String
     var isDone: Bool
+    @Relationship(deleteRule: .nullify) var folder: TodoFolderDB
     
     init(id: UUID = UUID(),
          content: String,
-         isDone: Bool = false) {
+         isDone: Bool = false,
+         folder: TodoFolderDB) {
         self.id = id
         self.content = content
         self.isDone = isDone
+        self.folder = folder
     }
 }

@@ -19,6 +19,7 @@ final class TodoViewModel: ViewModelProtocol {
     
     private let dbManager = DBManager()
     var cancellables: Set<AnyCancellable> = []
+    @Published var selectedFolder: TodoFolderDB?
     
     func apply(_ intent: Intent) {
         switch intent {
