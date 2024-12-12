@@ -37,22 +37,3 @@ final class EventDB {
         self.date = date
     }
 }
-
-@Model
-final class DDayDB {
-    @Attribute(.unique) let id = UUID()
-    var title: String
-    var startDate: Date
-    var goalDate: Date
-    var type: String
-    
-    init(title: String,
-         startDate: Date,
-         goalDate: Date,
-         type: String) {
-        self.title = title
-        self.startDate = startDate
-        self.goalDate = goalDate
-        self.type = type
-    }
-}
