@@ -32,6 +32,7 @@ final class TodoFolderCellViewModel: ViewModelProtocol {
             dbManager.modelContext = modelContext
             
         case .addTodo:
+            dbManager.addItem(TodoDB(content: "", folder: todofolder))
             return
             
         case .deleteTodo(let todo):

@@ -20,7 +20,8 @@ struct TodoView: View {
         
         ZStack {
             if let folder = viewModel.selectedFolder {
-                ExpandedFolderView(folder: folder, animation: animation) {
+                ExpandedFolderView(viewModel: TodoFolderCellViewModel(folder: folder),
+                                   animation: animation) {
                     withAnimation {
                         viewModel.selectedFolder = nil
                     }
@@ -35,30 +36,30 @@ struct TodoView: View {
                                 id: \.id) { todoFolder in
                             TodoFolderCell(viewModel: TodoFolderCellViewModel(folder: todoFolder),
                                            animation: animation)
-                                .background(Color(uiColor: .systemGray5))
-                                .frame(height: 300)
-                                .clipShape(RoundedRectangle(cornerRadius: 24))
-                                .shadow(radius: 5, x: 2, y:2)
-                                .contextMenu {
-                                    Button(role: .destructive, action: {
-                                        viewModel.apply(.deleteTodoFolder(todoFolder))
-                                    }) {
-                                        Label("Todo 폴더 삭제", systemImage: "trash")
-                                    }
-                                    
-                                    Button(action: {
-                                        //                                viewModel.apply(.deleteDDay(dday))
-                                    }) {
-                                        Label("Todo 항목 초기화", systemImage: "trash")
-                                    }
+                            .background(Color(uiColor: .systemGray5))
+                            .frame(height: 300)
+                            .clipShape(RoundedRectangle(cornerRadius: 24))
+                            .shadow(radius: 5, x: 2, y:2)
+                            .contextMenu {
+                                Button(role: .destructive, action: {
+                                    viewModel.apply(.deleteTodoFolder(todoFolder))
+                                }) {
+                                    Label("Todo 폴더 삭제", systemImage: "trash")
                                 }
-                                .onTapGesture {
-                                    //                            viewModel.apply(.showEditView(dday))
-                                    withAnimation(.spring()) {
-                                        viewModel.selectedFolder = todoFolder
-                                    }
+                                
+                                Button(action: {
+                                    //                                viewModel.apply(.deleteDDay(dday))
+                                }) {
+                                    Label("Todo 항목 초기화", systemImage: "trash")
                                 }
-                                .padding()
+                            }
+                            .onTapGesture {
+                                //                            viewModel.apply(.showEditView(dday))
+                                withAnimation(.spring()) {
+                                    viewModel.selectedFolder = todoFolder
+                                }
+                            }
+                            .padding()
                         }
                         
                     }
@@ -101,41 +102,5 @@ struct TodoCell: View {
             }
             .padding()
         })
-    }
-}
-
-struct ExpandedFolderView: View {
-    let folder: TodoFolderDB
-    let animation: Namespace.ID
-    let onClose: () -> Void
-    
-    var body: some View {
-        VStack {
-            HStack {
-                Spacer()
-                Button(action: onClose) {
-                    Image(systemName: "xmark.circle.fill")
-                        .font(.title)
-                        .foregroundColor(.gray)
-                }
-                .padding()
-            }
-            
-            Spacer()
-            
-            VStack {
-                Text(folder.title)
-                    .font(.largeTitle)
-                    .bold()
-            }
-            .matchedGeometryEffect(id: folder.id, in: animation)
-            .frame(maxWidth: .infinity, maxHeight: 300)
-            .background(Color(uiColor: .systemGray5))
-            .clipShape(RoundedRectangle(cornerRadius: 24))
-            .shadow(radius: 10)
-            
-            Spacer()
-        }
-        .background(Color.white.ignoresSafeArea())
     }
 }

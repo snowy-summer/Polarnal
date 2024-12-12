@@ -43,6 +43,8 @@
 		6B37A7B22D0AAA3000239987 /* AddTodoFolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7B12D0AAA3000239987 /* AddTodoFolderViewModel.swift */; };
 		6B37A7B42D0AF24F00239987 /* TodoFolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7B32D0AF24F00239987 /* TodoFolderCell.swift */; };
 		6B37A7B62D0AF29100239987 /* TodoFolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7B52D0AF29100239987 /* TodoFolderViewModel.swift */; };
+		6B37A7BA2D0B088700239987 /* ExpendedTodoFolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7B92D0B088700239987 /* ExpendedTodoFolderCell.swift */; };
+		6B37A7BC2D0B08EB00239987 /* ExpendedTodoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7BB2D0B08EB00239987 /* ExpendedTodoCellViewModel.swift */; };
 		6B790F9F2CFEA3080000AC03 /* PolarnalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */; };
 		6B790FA52CFEA3090000AC03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA42CFEA3090000AC03 /* Assets.xcassets */; };
 		6B790FA82CFEA3090000AC03 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA72CFEA3090000AC03 /* Preview Assets.xcassets */; };
@@ -106,6 +108,8 @@
 		6B37A7B12D0AAA3000239987 /* AddTodoFolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoFolderViewModel.swift; sourceTree = "<group>"; };
 		6B37A7B32D0AF24F00239987 /* TodoFolderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoFolderCell.swift; sourceTree = "<group>"; };
 		6B37A7B52D0AF29100239987 /* TodoFolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoFolderViewModel.swift; sourceTree = "<group>"; };
+		6B37A7B92D0B088700239987 /* ExpendedTodoFolderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpendedTodoFolderCell.swift; sourceTree = "<group>"; };
+		6B37A7BB2D0B08EB00239987 /* ExpendedTodoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpendedTodoCellViewModel.swift; sourceTree = "<group>"; };
 		6B790F9B2CFEA3080000AC03 /* Polarnal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Polarnal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarnalApp.swift; sourceTree = "<group>"; };
 		6B790FA42CFEA3090000AC03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -323,10 +327,9 @@
 		6B37A7A52D0A9CBC00239987 /* TodoView */ = {
 			isa = PBXGroup;
 			children = (
+				6B37A7B72D0B086B00239987 /* TodoFolder */,
 				6B37A7A62D0A9CEE00239987 /* TodoView.swift */,
 				6B37A7AC2D0AA5AA00239987 /* TodoViewModel.swift */,
-				6B37A7B32D0AF24F00239987 /* TodoFolderCell.swift */,
-				6B37A7B52D0AF29100239987 /* TodoFolderViewModel.swift */,
 			);
 			path = TodoView;
 			sourceTree = "<group>";
@@ -338,6 +341,25 @@
 				6B37A7B12D0AAA3000239987 /* AddTodoFolderViewModel.swift */,
 			);
 			path = AddTodo;
+			sourceTree = "<group>";
+		};
+		6B37A7B72D0B086B00239987 /* TodoFolder */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A7B82D0B087700239987 /* Expended */,
+				6B37A7B32D0AF24F00239987 /* TodoFolderCell.swift */,
+				6B37A7B52D0AF29100239987 /* TodoFolderViewModel.swift */,
+			);
+			path = TodoFolder;
+			sourceTree = "<group>";
+		};
+		6B37A7B82D0B087700239987 /* Expended */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A7B92D0B088700239987 /* ExpendedTodoFolderCell.swift */,
+				6B37A7BB2D0B08EB00239987 /* ExpendedTodoCellViewModel.swift */,
+			);
+			path = Expended;
 			sourceTree = "<group>";
 		};
 		6B790F922CFEA3080000AC03 = {
@@ -621,6 +643,7 @@
 				6B37A75D2D002D7700239987 /* NoteListViewModel.swift in Sources */,
 				6B37A7782D06842700239987 /* DateManager.swift in Sources */,
 				6B37A7B62D0AF29100239987 /* TodoFolderViewModel.swift in Sources */,
+				6B37A7BC2D0B08EB00239987 /* ExpendedTodoCellViewModel.swift in Sources */,
 				6B37A7822D084A2E00239987 /* PlannerViewModel.swift in Sources */,
 				6B37A76B2D055E6D00239987 /* PlannerView.swift in Sources */,
 				6B37A7A72D0A9CEE00239987 /* TodoView.swift in Sources */,
@@ -652,6 +675,7 @@
 				6B37A7A02D09AAC700239987 /* AddDDayCategoryCell.swift in Sources */,
 				6B37A7752D06840400239987 /* Date+Extension.swift in Sources */,
 				6B790FC42CFF25960000AC03 /* PhotoPicker.swift in Sources */,
+				6B37A7BA2D0B088700239987 /* ExpendedTodoFolderCell.swift in Sources */,
 				6B790FE52CFFEF7E0000AC03 /* ColorPalette.swift in Sources */,
 				6B37A79B2D097A1400239987 /* AddDDayViewModel.swift in Sources */,
 				6B37A7A92D0AA49900239987 /* DDayDB.swift in Sources */,
