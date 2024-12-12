@@ -107,7 +107,7 @@ struct PlannerView: View {
             case .dday:
                 DDayView()
                     .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
+                        ToolbarItem(placement: .topBarTrailing) {
                             Button(action: {
                                 plannerViewModel.apply(.showAddDDay)
                             }) {
@@ -123,11 +123,7 @@ struct PlannerView: View {
                         NavigationStack {
                             switch type {
                             case .add:
-                                AddDDayView()
-                                
-                            case .edit:
-                                Text("편집")
-                                
+                                AddDDayView(viewModel: AddDDayViewModel(dday: nil))
                             default:
                                 EmptyView()
                             }

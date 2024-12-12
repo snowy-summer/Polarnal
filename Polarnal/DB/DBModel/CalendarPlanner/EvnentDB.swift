@@ -44,12 +44,15 @@ final class DDayDB {
     var title: String
     var startDate: Date
     var goalDate: Date
+    var type: String
     
     init(title: String,
          startDate: Date,
-         goalDate: Date) {
+         goalDate: Date,
+         type: String) {
         self.title = title
         self.startDate = startDate
         self.goalDate = goalDate
+        self.type = type
     }
 }

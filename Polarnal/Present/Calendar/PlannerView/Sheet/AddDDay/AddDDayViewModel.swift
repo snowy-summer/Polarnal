@@ -23,10 +23,20 @@ final class AddDDayViewModel: ViewModelProtocol {
     
     private var dday: DDayDB?
     
-    init(eventCategory: DDayDB?) {
+    init(dday: DDayDB?) {
         if let dday {
             self.dday = dday
             ddayTitle = dday.title
+            startDate = dday.startDate
+            goalDate = dday.goalDate
+            if DDayType(rawValue: dday.type) == .DDay {
+                isDDay = true
+                isDPlus = false
+            }
+            else {
+                isDPlus = true
+                isDDay = false
+            }
         } else {
             ddayTitle = ""
         }
@@ -36,6 +46,7 @@ final class AddDDayViewModel: ViewModelProtocol {
         case saveDday
         case insertModelContext(ModelContext)
         
+        case selectCategory(EventCategoryDB)
         case selectDDay
         case selectDPlus
     }
@@ -46,11 +57,13 @@ final class AddDDayViewModel: ViewModelProtocol {
     func apply(_ intent: Intent) {
         switch intent {
         case .saveDday:
-//            eventCategory == nil ? addFolder() : editFolder()
-            return
+            dday == nil ? saveDday() : editSaveDday()
             
         case .insertModelContext(let modelContext):
             dbManager.modelContext = modelContext
+            
+        case .selectCategory(let category):
+            selectedCategory = category
             
         case .selectDDay:
             if !isDDay { isDDay = true }
@@ -64,38 +77,39 @@ final class AddDDayViewModel: ViewModelProtocol {
 }
 
 extension AddDDayViewModel {
-    
-    private func addFolder() {
+ 
+    private func saveDday() {
+        if isDDay {
+            dbManager.addItem(DDayDB(title: ddayTitle,
+                                     startDate: startDate,
+                                     goalDate: goalDate,
+                                     type: DDayType.DDay.rawValue))
+        } else {
+            dbManager.addItem(DDayDB(title: ddayTitle,
+                                     startDate: startDate,
+                                     goalDate: goalDate,
+                                     type: DDayType.DPlus.rawValue))
+        }
         
-//        let newCategory = EventCategoryDB(title: categoryTitle,
-//                                          color: getColorRGBA())
-//        dbManager.addItem(newCategory)
     }
     
-    private func editFolder() {
-//        if eventCategory != nil {
-//            eventCategory?.title = categoryTitle
-//            eventCategory?.color = getColorRGBA()
-//           
-//            dbManager.addItem(eventCategory!)
-//        }
+    private func editSaveDday() {
+        dday?.title = ddayTitle
+        dday?.startDate = startDate
+        dday?.goalDate = goalDate
+        dday?.type = isDDay ? DDayType.DDay.rawValue : DDayType.DPlus.rawValue
+        
+        if let dday {
+            dbManager.addItem(dday)
+        } else {
+            LogManager.log("DDay 저장 실패")
+        }
     }
-    
-//    private func getColorRGBA() -> CustomColor {
-//        
-//        let uiColor = UIColor(categoryColor)
-//        
-//        var red: CGFloat = 0
-//        var green: CGFloat = 0
-//        var blue: CGFloat = 0
-//        var alpha: CGFloat = 0
-//        
-//        uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-//        
-//        return CustomColor(red: red, green: green, blue: blue, alpha: alpha)
-//    }
     
 }
 
-
+enum DDayType: String {
+    case DDay
+    case DPlus
+}
 
