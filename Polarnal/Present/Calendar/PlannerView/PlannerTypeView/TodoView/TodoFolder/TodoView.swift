@@ -22,8 +22,8 @@ struct TodoView: View {
             if let folder = viewModel.selectedFolder {
                 ExpandedFolderView(todoFolder: folder,
                                    animation: animation) {
-                    withAnimation {
-                        viewModel.selectedFolder = nil
+                    withAnimation(.easeInOut(duration: 0.5)) {
+                        viewModel.apply(.clearSelectedFolder)
                     }
                 }
             } else {
@@ -48,8 +48,9 @@ struct TodoView: View {
                                 }
                             }
                             .onTapGesture {
-                                withAnimation(.spring()) {
-                                    viewModel.selectedFolder = todoFolder
+                                viewModel.apply(.clearSelectedFolder)
+                                withAnimation(.easeInOut(duration: 0.5)) {
+                                    viewModel.apply(.selectFolder(todoFolder))
                                 }
                             }
                             .padding()

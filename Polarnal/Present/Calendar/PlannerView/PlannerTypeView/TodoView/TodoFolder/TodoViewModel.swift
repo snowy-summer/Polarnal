@@ -14,6 +14,8 @@ final class TodoViewModel: ViewModelProtocol {
     enum Intent {
         case deleteTodoFolder(TodoFolderDB)
         case insertModelContext(ModelContext)
+        case selectFolder(TodoFolderDB)
+        case clearSelectedFolder
     }
     
     private let dbManager = DBManager()
@@ -27,6 +29,15 @@ final class TodoViewModel: ViewModelProtocol {
             
         case .insertModelContext(let modelContext):
             dbManager.modelContext = modelContext
+        
+        case .selectFolder(let folder):
+            print("선택되어있는거", selectedFolder?.title)
+            print("선택한거", folder.title)
+            selectedFolder = folder
+            
+        case.clearSelectedFolder:
+            print("초기화")
+            selectedFolder = nil
         }
     }
     
