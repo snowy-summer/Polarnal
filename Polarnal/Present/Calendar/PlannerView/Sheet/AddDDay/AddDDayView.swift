@@ -124,7 +124,7 @@ struct AddDDayView: View {
                         List {
                             ForEach(eventCategoryList,
                                     id: \.id) { category in
-                                DDayCategoryCell(category: category)
+                                EventCategoryListCell(category: category)
                                     .onTapGesture {
                                         viewModel.apply(.selectCategory(category))
                                     }

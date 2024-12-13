@@ -20,6 +20,7 @@ final class PlannerViewModel: ViewModelProtocol {
         case showAddTodoFolder
         case showAddDDay
         
+        case showCalendarView
         case showTodoView
         case showDDayView
     }
@@ -99,6 +100,9 @@ final class PlannerViewModel: ViewModelProtocol {
             
         case .showAddDDay:
             dDaySheetType = .add
+            
+        case .showCalendarView:
+            showedViewType = .calendar
             
         case .showDDayView:
             showedViewType = .dday

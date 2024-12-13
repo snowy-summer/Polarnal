@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DDayCategoryCell: View {
+struct EventCategoryListCell: View {
     
     let category: EventCategoryDB
     

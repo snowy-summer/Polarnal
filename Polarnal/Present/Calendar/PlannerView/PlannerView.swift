@@ -93,11 +93,7 @@ struct PlannerView: View {
                         NavigationStack {
                             switch type {
                             case .add:
-                                Text("추가")
-                                
-                            case .edit:
-                                Text("편집")
-                                
+                                AddEventView(viewModel: AddEventViewModel(eventData: nil))
                             default:
                                 EmptyView()
                             }

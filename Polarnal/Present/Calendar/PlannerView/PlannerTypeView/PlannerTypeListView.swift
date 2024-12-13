@@ -47,13 +47,13 @@ struct PlannerTypeListView: View {
     var body: some View {
         List {
             ForEach(EventType.allCases, id: \.self) { type in
-                CalendarEventListCell(type: type,
+                PlannerTypeListCell(type: type,
                                       viewModel: viewModel)
             }
         }
     }
     
-    struct CalendarEventListCell: View {
+    struct PlannerTypeListCell: View {
         
         @Query var ddayList: [DDayDB]
         let type: EventType
@@ -83,7 +83,7 @@ struct PlannerTypeListView: View {
             .onTapGesture {
                 switch type {
                 case .calendar:
-                    return
+                    viewModel.apply(.showCalendarView)
                     
                 case .dDay:
                     viewModel.apply(.showDDayView)

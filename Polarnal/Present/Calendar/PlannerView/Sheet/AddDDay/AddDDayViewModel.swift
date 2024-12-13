@@ -19,7 +19,6 @@ final class AddDDayViewModel: ViewModelProtocol {
     @Published var goalDate: Date = Date()
     
     @Published var showCategory: Bool = false
-    var categoryList = [EventCategoryDB]()
     
     private var dday: DDayDB?
     
