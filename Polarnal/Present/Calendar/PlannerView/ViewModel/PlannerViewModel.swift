@@ -23,6 +23,8 @@ final class PlannerViewModel: ViewModelProtocol {
         case showCalendarView
         case showTodoView
         case showDDayView
+        
+        case refreshView
     }
     
     enum EventCategoryType: Identifiable {
@@ -81,6 +83,7 @@ final class PlannerViewModel: ViewModelProtocol {
     @Published var eventSheetType: EventCategoryType?
     @Published var todoSheetType: TodoSheetType?
     @Published var dDaySheetType: DDaySheetType?
+    @Published var refreshTrigger: Bool = false
     
     var cancellables: Set<AnyCancellable> = []
     
@@ -110,6 +113,8 @@ final class PlannerViewModel: ViewModelProtocol {
         case .showTodoView:
             showedViewType = .todo
             
+        case .refreshView:
+            refreshTrigger.toggle()
         }
     }
     

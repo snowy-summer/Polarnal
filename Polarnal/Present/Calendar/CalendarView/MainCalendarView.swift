@@ -10,7 +10,7 @@ import SwiftData
 
 struct MainCalendarView: View {
     
-    @StateObject private var viewModel: MainCalendarViewModel = MainCalendarViewModel()
+    @ObservedObject var viewModel: MainCalendarViewModel
     
     var body: some View {
         

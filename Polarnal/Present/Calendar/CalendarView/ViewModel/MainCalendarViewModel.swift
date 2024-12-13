@@ -13,6 +13,7 @@ final class MainCalendarViewModel: ViewModelProtocol {
     enum Intent {
         case nextMonth
         case previousMonth
+        case viewUpdate
     }
     
     var cancellables: Set<AnyCancellable> = []
@@ -21,6 +22,7 @@ final class MainCalendarViewModel: ViewModelProtocol {
     @Published private(set) var calendarMonth: Int = 0
     @Published private var currentDate: Date = Date()
     var calendarDateList = [DateValue]()
+    @Published var trigger = false
     
     init() {
         binding()
@@ -33,6 +35,9 @@ final class MainCalendarViewModel: ViewModelProtocol {
             
         case .previousMonth:
             previousMonth()
+            
+        case .viewUpdate:
+            trigger.toggle()
         }
         
     }

@@ -74,7 +74,8 @@ struct PlannerView: View {
             
             switch plannerViewModel.showedViewType {
             case .calendar:
-                MainCalendarView()
+                let viewModel = MainCalendarViewModel()
+                MainCalendarView(viewModel: viewModel)
                     .padding(.horizontal)
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
@@ -87,7 +88,7 @@ struct PlannerView: View {
                     }
                     .sheet(item: $plannerViewModel.eventSheetType,
                            onDismiss: {
-                        
+                        viewModel.apply(.viewUpdate)
                     }) { type in
                         NavigationStack {
                             switch type {
