@@ -88,7 +88,6 @@ struct PlannerView: View {
                     .sheet(item: $plannerViewModel.eventSheetType,
                            onDismiss: {
                         
-                        // 뒤로 간 경우
                     }) { type in
                         NavigationStack {
                             switch type {

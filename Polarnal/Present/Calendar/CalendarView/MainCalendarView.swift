@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MainCalendarView: View {
     
@@ -92,33 +93,24 @@ struct MainCalendarContentView: View {
     }
     
     struct MainCalendarDateCell: View {
-        
-        let dateValue: DateValue
-        var isToday: Bool {
-            if isEmptyView { return false }
-            let inputYearMonthDay = DateManager.shared.getYearAndMonthString(currentDate: dateValue.date)
-            let currentYearMonthDay = DateManager.shared.getYearAndMonthString(currentDate: Date())
-            return inputYearMonthDay == currentYearMonthDay
-        }
-        let isSunday: Bool
-        let isSaturday: Bool
-        let isEmptyView: Bool
-        
-        var color: Color {
-            if isSunday {
-                return Color.red
-            } else if isSaturday {
-                return Color.blue
-            } else {
-                return Color.black
-            }
+        @Environment(\.modelContext) var modelContext
+        @StateObject var viewModel: MainCalendarCellViewModel
+    
+        init(dateValue: DateValue,
+             isSunday: Bool,
+             isSaturday: Bool,
+             isEmptyView: Bool = false) {
+            self._viewModel = StateObject(wrappedValue: MainCalendarCellViewModel(dateValue: dateValue,
+                                                                                  isSunday: isSunday,
+                                                                                  isSaturday: isSaturday,
+                                                                                  isEmptyView: isEmptyView))
         }
         
         var body: some View {
             VStack {
                 HStack {
-                    Text("\(dateValue.day)")
-                        .foregroundStyle(isEmptyView ? .clear : color)
+                    Text("\(viewModel.dateValue.day)")
+                        .foregroundStyle(viewModel.isEmptyView ? .clear : viewModel.color)
                         .font(.headline)
                         .bold()
                         .padding(.leading, 8)
@@ -126,21 +118,27 @@ struct MainCalendarContentView: View {
                     
                     Spacer()
                 }
-                if isToday {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 4)
-                            .fill(Color(uiColor: .systemBlue))
-                            .frame(height: 20)
-                        
-                        Text("책 구매")
-                            .lineLimit(1)
-                            .truncationMode(.tail)
-                            .font(.callout)
+                ScrollView {
+                    LazyVStack(spacing: 4) {
+                        ForEach(viewModel.eventList, id: \.id) { event in
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 4)
+                                    .fill(event.category.color.convertToColor())
+                                    .frame(height: 20)
+
+                                Text(event.content)
+                                    .lineLimit(1)
+                                    .truncationMode(.tail)
+                                    .font(.callout)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding(.horizontal, 4)
+                        }
                     }
-                    .padding(.horizontal, 4)
                 }
-                
-                Spacer()
+            }
+            .onAppear {
+                viewModel.apply(.insertModelContext(modelContext))
             }
         }
     }
@@ -149,3 +147,4 @@ struct MainCalendarContentView: View {
 #Preview {
     PlannerView(sideTabBarViewModel: SideTabBarViewModel())
 }
+
