@@ -61,11 +61,14 @@ extension AddEventViewModel {
     
     private func saveEvent() {
         if let selectedCategory {
-            dbManager.addItem(EventDB(content: eventContent,
-                                      isPeriod: isPeriod,
-                                      date: startDate,
-                                      endDate: isPeriod ? goalDate : Date(),
-                                      category: selectedCategory))
+            let event = EventDB(content: eventContent,
+                                isPeriod: isPeriod,
+                                date: startDate,
+                                endDate: isPeriod ? goalDate : Date(),
+                                category: selectedCategory)
+            dbManager.addItem(event)
+            selectedCategory.planList.append(event)
+            dbManager.addItem(selectedCategory)
         }
     }
     
@@ -73,15 +76,16 @@ extension AddEventViewModel {
         eventData?.content = eventContent
         eventData?.date = startDate
         eventData?.endDate = goalDate
-        if let selectedCategory {
-            eventData?.category = selectedCategory
-        }
-        
-        if let eventData {
+        if let selectedCategory,
+           let eventData {
+            eventData.category = selectedCategory
             dbManager.addItem(eventData)
+            selectedCategory.planList.append(eventData)
+            dbManager.addItem(selectedCategory)
         } else {
             LogManager.log("Event 수정 실패")
         }
+
     }
     
 }
