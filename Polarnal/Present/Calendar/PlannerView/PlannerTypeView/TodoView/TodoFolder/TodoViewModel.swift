@@ -12,7 +12,6 @@ import SwiftData
 final class TodoViewModel: ViewModelProtocol {
     
     enum Intent {
-        case showAddTodoFolderView
         case deleteTodoFolder(TodoFolderDB)
         case insertModelContext(ModelContext)
     }
@@ -23,11 +22,8 @@ final class TodoViewModel: ViewModelProtocol {
     
     func apply(_ intent: Intent) {
         switch intent {
-        case .showAddTodoFolderView:
-            return
-            
         case .deleteTodoFolder(let todoFolderDB):
-            return
+            dbManager.deleteItem(todoFolderDB)
             
         case .insertModelContext(let modelContext):
             dbManager.modelContext = modelContext

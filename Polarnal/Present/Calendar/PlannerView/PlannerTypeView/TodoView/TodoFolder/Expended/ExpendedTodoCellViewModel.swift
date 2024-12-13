@@ -13,16 +13,18 @@ final class ExpandedTodoCellViewModel: ViewModelProtocol {
     
     enum Intent {
         case insertModelContext(ModelContext)
+        case todoDoneToggle
     }
     
-    var todo: TodoDB
-    @Published var todoContent: String = ""
+    @Published var todo: TodoDB
+    @Published var todoContent: String
     
     private let dbManager = DBManager()
     var cancellables: Set<AnyCancellable> = []
     
     init(todo: TodoDB) {
         self.todo = todo
+        self.todoContent = todo.content
         binding()
     }
     
@@ -30,6 +32,10 @@ final class ExpandedTodoCellViewModel: ViewModelProtocol {
         switch intent {
         case .insertModelContext(let modelContext):
             dbManager.modelContext = modelContext
+            
+        case .todoDoneToggle:
+            todo.isDone.toggle()
+            dbManager.addItem(todo)
         }
     }
     
@@ -39,8 +45,10 @@ final class ExpandedTodoCellViewModel: ViewModelProtocol {
                               scheduler: DispatchQueue.main)
             .sink { [weak self] text in
                 guard let self else { return }
-                todo.content = text
-                dbManager.addItem(todo)
+                if text != todo.content {
+                    todo.content = text
+                    dbManager.addItem(todo)
+                }
             }
             .store(in: &cancellables)
     }

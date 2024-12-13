@@ -11,18 +11,14 @@ import SwiftData
 struct ExpandedFolderView: View {
     
     @Environment(\.modelContext) var modelContext
-    @ObservedObject var viewModel: TodoFolderCellViewModel
-    @Query var todoList: [TodoDB]
+    @StateObject var viewModel: TodoFolderCellViewModel
     let animation: Namespace.ID
     let onClose: () -> Void
     
-    init(viewModel: TodoFolderCellViewModel,
+    init(todoFolder: TodoFolderDB,
          animation: Namespace.ID,
          onClose: @escaping () -> Void) {
-        self.viewModel = viewModel
-        let folderID = viewModel.todofolder.id
-        _todoList = Query(filter: #Predicate<TodoDB> { $0.folder.id == folderID })
-        
+        self._viewModel = StateObject(wrappedValue: TodoFolderCellViewModel(folder: todoFolder))
         self.animation = animation
         self.onClose = onClose
     }
@@ -55,11 +51,12 @@ struct ExpandedFolderView: View {
                 .padding()
                 
             }
+            .padding()
             
             Divider()
             
             List {
-                ForEach(todoList, id: \.id) { todo in
+                ForEach(viewModel.todoList, id: \.id) { todo in
                     ExpandedTodoCell(todo: todo)
                         .listRowSeparator(.hidden)
                         .swipeActions(edge: .trailing,
@@ -75,10 +72,11 @@ struct ExpandedFolderView: View {
                 }
                 .listStyle(.plain)
             }
+            .onAppear {
+                viewModel.apply(.insertModelContext(modelContext))
+                viewModel.apply(.viewSetting)
+            }
             
-        }
-        .onAppear {
-            viewModel.apply(.insertModelContext(modelContext))
         }
         .matchedGeometryEffect(id: viewModel.todofolder.id,
                                in: animation)
@@ -87,11 +85,8 @@ struct ExpandedFolderView: View {
         .clipShape(RoundedRectangle(cornerRadius: 24))
         .shadow(radius: 10)
         .padding()
-        
-        //            Spacer()
-        
-        //        .background(Color.white.ignoresSafeArea())
     }
+    
 }
 
 struct ExpandedTodoCell: View {
@@ -102,27 +97,31 @@ struct ExpandedTodoCell: View {
     }
     
     var body: some View {
-        Button(action: {
-            
-        }, label: {
-            HStack {
+        HStack {
+            Group {
                 if viewModel.todo.isDone {
                     Image(systemName: "checkmark.circle.fill")
                         .resizable()
+                        .foregroundStyle(.red)
                         .frame(width: 30, height: 30)
                 } else {
                     Image(systemName: "circle.fill")
                         .resizable()
+                        .foregroundStyle(.blue)
                         .frame(width: 30, height: 30)
                 }
-                
-                TextField("할일",text: $viewModel.todoContent)
-                    .font(.title3)
-                    .bold()
-                    .padding(.horizontal)
             }
-            .padding()
-        })
+            .onTapGesture {
+                viewModel.apply(.todoDoneToggle)
+            }
+            
+            TextField("할일",text: $viewModel.todoContent)
+                .font(.title3)
+                .bold()
+                .padding(.horizontal)
+            
+        }
+        .padding()
     }
 }
 

@@ -328,8 +328,6 @@
 			isa = PBXGroup;
 			children = (
 				6B37A7B72D0B086B00239987 /* TodoFolder */,
-				6B37A7A62D0A9CEE00239987 /* TodoView.swift */,
-				6B37A7AC2D0AA5AA00239987 /* TodoViewModel.swift */,
 			);
 			path = TodoView;
 			sourceTree = "<group>";
@@ -346,9 +344,10 @@
 		6B37A7B72D0B086B00239987 /* TodoFolder */ = {
 			isa = PBXGroup;
 			children = (
+				6B37A7A62D0A9CEE00239987 /* TodoView.swift */,
+				6B37A7AC2D0AA5AA00239987 /* TodoViewModel.swift */,
+				6B37A7BD2D0BC67500239987 /* Normal */,
 				6B37A7B82D0B087700239987 /* Expended */,
-				6B37A7B32D0AF24F00239987 /* TodoFolderCell.swift */,
-				6B37A7B52D0AF29100239987 /* TodoFolderViewModel.swift */,
 			);
 			path = TodoFolder;
 			sourceTree = "<group>";
@@ -360,6 +359,15 @@
 				6B37A7BB2D0B08EB00239987 /* ExpendedTodoCellViewModel.swift */,
 			);
 			path = Expended;
+			sourceTree = "<group>";
+		};
+		6B37A7BD2D0BC67500239987 /* Normal */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A7B32D0AF24F00239987 /* TodoFolderCell.swift */,
+				6B37A7B52D0AF29100239987 /* TodoFolderViewModel.swift */,
+			);
+			path = Normal;
 			sourceTree = "<group>";
 		};
 		6B790F922CFEA3080000AC03 = {

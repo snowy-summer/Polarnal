@@ -11,14 +11,11 @@ import SwiftData
 struct TodoFolderCell: View {
     
     @Environment(\.modelContext) var modelContext
-    @Query var todoList: [TodoDB]
-    @ObservedObject var viewModel: TodoFolderCellViewModel
+    @StateObject var viewModel: TodoFolderCellViewModel
     let animation: Namespace.ID
     
-    init(viewModel: TodoFolderCellViewModel, animation: Namespace.ID) {
-        self.viewModel = viewModel
-        let folderID = viewModel.todofolder.id
-        _todoList = Query(filter: #Predicate<TodoDB> { $0.folder.id == folderID })
+    init(todoFolder: TodoFolderDB, animation: Namespace.ID) {
+        self._viewModel = StateObject(wrappedValue: TodoFolderCellViewModel(folder: todoFolder)) 
         self.animation = animation
     }
     
@@ -35,36 +32,17 @@ struct TodoFolderCell: View {
                     .font(.title)
                     .bold()
                     .padding()
-                
+            
                 Spacer()
-                
-                Button {
-                    // Todo 목록 만들기
-                    viewModel.apply(.addTodo)
-                } label: {
-                    Image(systemName: "plus")
-                        .foregroundStyle(.black)
-                        .bold()
-                }
-                .padding()
                 
             }
             
             Divider()
             
             List {
-                ForEach(todoList, id: \.id) { todo in
+                ForEach(viewModel.todoList, id: \.id) { todo in
                     TodoCell(todo: todo)
                         .listRowSeparator(.hidden)
-                        .swipeActions(edge: .trailing,
-                                      allowsFullSwipe: false) {
-                            Button(role: .destructive, action: {
-                                viewModel.apply(.deleteTodo(todo))
-                            }, label: {
-                                Label("삭제", systemImage: "trash")
-                            })
-                            
-                        }
                 }
             }
             .listStyle(.plain)
@@ -73,6 +51,34 @@ struct TodoFolderCell: View {
         .matchedGeometryEffect(id: viewModel.todofolder.id, in: animation)
         .onAppear {
             viewModel.apply(.insertModelContext(modelContext))
+            viewModel.apply(.viewSetting)
         }
+    }
+}
+
+struct TodoCell: View {
+    
+    let todo: TodoDB
+    
+    var body: some View {
+        HStack {
+            if todo.isDone {
+                Image(systemName: "checkmark.circle.fill")
+                    .resizable()
+                    .foregroundStyle(.red)
+                    .frame(width: 30, height: 30)
+            } else {
+                Image(systemName: "circle.fill")
+                    .resizable()
+                    .foregroundStyle(.blue)
+                    .frame(width: 30, height: 30)
+            }
+            
+            Text(todo.content)
+                .font(.title3)
+                .bold()
+                .padding(.horizontal)
+        }
+        .padding()
     }
 }
