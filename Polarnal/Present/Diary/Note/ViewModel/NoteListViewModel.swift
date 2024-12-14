@@ -187,7 +187,8 @@ extension NoteListViewModel {
         return NoteContentData(id: data.id,
                                type: data.type,
                                imageValue: imageDataList,
-                               textValue: data.textContent)
+                               textValue: data.textContent, index: 0)
+        // index 임시
     }
 }
 
