@@ -13,7 +13,7 @@ final class SideTabBarViewModel: ViewModelProtocol {
         case selectTab(TabType)
     }
     
-    @Published var selectedTab: TabType = .calendar
+    @Published var selectedTab: TabType = .planner
     var cancellables: Set<AnyCancellable> = []
     
     func apply(_ intent: Intent) {

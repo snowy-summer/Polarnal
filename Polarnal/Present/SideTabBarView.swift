@@ -59,13 +59,13 @@ struct SideTabBarView: View {
 }
 
 enum TabType: CaseIterable {
-    case calendar
+    case planner
     case diary
     case travelPlanner
     
     var iconText: String {
         switch self {
-        case .calendar:
+        case .planner:
             return "calendar"
             
         case .diary:

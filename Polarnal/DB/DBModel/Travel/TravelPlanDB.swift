@@ -54,8 +54,7 @@ final class TravelTodoDB {
     
     init(id: UUID = UUID(),
          content: String,
-         isDone: Bool = false,
-         folder: TodoFolderDB) {
+         isDone: Bool = false) {
         self.id = id
         self.content = content
         self.isDone = isDone

@@ -17,7 +17,7 @@ struct PolarnalApp: App {
     var body: some Scene {
         WindowGroup {
             switch sideTabBarViewModel.selectedTab {
-            case .calendar:
+            case .planner:
                 PlannerView(sideTabBarViewModel: sideTabBarViewModel)
                 
             case .diary:
@@ -27,7 +27,7 @@ struct PolarnalApp: App {
                           noteViewModel: NoteListViewModel(stateViewModel: diaryStateViewModel),
                           sideTabBarViewModel: sideTabBarViewModel)
             case .travelPlanner:
-                Text("선택")
+                TravelDashboard(sideTabBarViewModel: sideTabBarViewModel)
             }
             
         }

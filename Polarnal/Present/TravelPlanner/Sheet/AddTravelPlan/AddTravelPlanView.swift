@@ -152,10 +152,6 @@ extension AddTravelPlanView {
     }
 }
 
-#Preview {
-    AddEventView(viewModel: AddEventViewModel(eventData: nil))
-}
-
 enum AddTravelSectionType: CaseIterable {
     case period
     case destination

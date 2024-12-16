@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct TravelDashboard: View {
     
+    @Environment(\.modelContext) var modelContext
     @ObservedObject var sideTabBarViewModel: SideTabBarViewModel
+    @Query var travelList: [TravelPlanDB]
+    @StateObject var viewModel: TravelDashboardViewModel = TravelDashboardViewModel()
     
     var body: some View {
         NavigationSplitView {
@@ -19,7 +23,12 @@ struct TravelDashboard: View {
                         .frame(width: 80)
                     
                     List {
-                        Text("일본 - 도쿄")
+                        ForEach(travelList, id: \.id) { travel in
+                            TravelListCell(travel: travel)
+                                .onTapGesture {
+                                    viewModel.apply(.selectTravel(travel))
+                                }
+                        }
                     }
                 }
                 
@@ -27,16 +36,29 @@ struct TravelDashboard: View {
             .toolbar(content: {
                 ToolbarItem {
                     Button(action: {
-                        
+                        viewModel.apply(.showAddTravelView)
                     }) {
                        Image(systemName: "plus")
                     }
                 }
             })
+            .sheet(item: $viewModel.sheetType) { type in
+                NavigationStack {
+                    switch type {
+                    case .addTravelPlan:
+                        AddTravelPlanView(viewModel: AddTravelPlanViewModel(travelPlanData: nil))
+                        
+                    case .editTravelPlan:
+                        AddTravelPlanView(viewModel: AddTravelPlanViewModel(travelPlanData: viewModel.selectedTravel))
+                    }
+                }
+                
+                
+            }
         } detail: {
             VStack {
                 HStack {
-                    TravelTodoMiniView()
+                    TravelTodoMiniView(viewModel: viewModel)
                         .background(Color(uiColor: .systemGray5))
                         .clipShape(RoundedRectangle(cornerRadius: 24))
                         .padding(.trailing)
@@ -78,8 +100,22 @@ struct TravelDashboard: View {
             }
             
         }
+        .onAppear {
+            viewModel.apply(.insertModelContext(modelContext))
+            if !travelList.isEmpty && viewModel.selectedTravel == nil {
+                viewModel.apply(.selectTravel(travelList[0]))
+            }
+        }
         
         
+    }
+    
+    struct TravelListCell: View {
+        let travel: TravelPlanDB
+        
+        var body: some View {
+            Text(travel.title)
+        }
     }
 }
 
@@ -89,6 +125,8 @@ struct TravelDashboard: View {
 
 struct TravelTodoMiniView: View {
 
+    @ObservedObject var viewModel: TravelDashboardViewModel
+    
     var body: some View {
         VStack {
             HStack {
@@ -98,7 +136,7 @@ struct TravelTodoMiniView: View {
                 Spacer()
                 
                 Button(action: {
-                    
+                    viewModel.apply(.addTodo)
                 }, label: {
                     Image(systemName: "plus")
                         .tint(.black)
@@ -111,17 +149,41 @@ struct TravelTodoMiniView: View {
             Divider()
             
             List {
-                TodoCell(todo: TodoDB(content: "여권 챙기기", folder: TodoFolderDB(title: "여행")))
-                    .frame(height: 32)
-                
-                TodoCell(todo: TodoDB(content: "여권 챙기기", folder: TodoFolderDB(title: "여행")))
-                    .frame(height: 32)
-                
-                TodoCell(todo: TodoDB(content: "여권 챙기기", folder: TodoFolderDB(title: "여행")))
-                    .frame(height: 32)
+                ForEach(viewModel.selectedTravel?.todoList ?? [], id: \.id) { todo in
+                    TravelTodoCell(todo: todo)
+                        .frame(height: 32)
+                    // done, 삭제 추가 해야됨
+                }
             }
             .listStyle(.plain)
             
+        }
+    }
+    
+    struct TravelTodoCell: View {
+        
+        let todo: TravelTodoDB
+        
+        var body: some View {
+            HStack {
+                if todo.isDone {
+                    Image(systemName: "checkmark.circle.fill")
+                        .resizable()
+                        .foregroundStyle(.red)
+                        .frame(width: 24, height: 24)
+                } else {
+                    Image(systemName: "circle.fill")
+                        .resizable()
+                        .foregroundStyle(.blue)
+                        .frame(width: 24, height: 24)
+                }
+                
+                Text(todo.content)
+                    .font(.title3)
+                    .bold()
+                    .padding(.horizontal)
+            }
+            .padding()
         }
     }
 }
