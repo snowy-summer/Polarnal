@@ -66,12 +66,12 @@ struct TodoCell: View {
                 Image(systemName: "checkmark.circle.fill")
                     .resizable()
                     .foregroundStyle(.red)
-                    .frame(width: 30, height: 30)
+                    .frame(width: 24, height: 24)
             } else {
                 Image(systemName: "circle.fill")
                     .resizable()
                     .foregroundStyle(.blue)
-                    .frame(width: 30, height: 30)
+                    .frame(width: 24, height: 24)
             }
             
             Text(todo.content)

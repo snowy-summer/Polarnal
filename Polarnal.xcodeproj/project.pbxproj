@@ -49,6 +49,8 @@
 		6B37A7C22D0BCF4B00239987 /* AddEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7C12D0BCF4B00239987 /* AddEventCell.swift */; };
 		6B37A7C42D0BFEED00239987 /* AddEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7C32D0BFEED00239987 /* AddEventViewModel.swift */; };
 		6B37A7C72D0C0A9000239987 /* MainCalendarCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7C62D0C0A9000239987 /* MainCalendarCellViewModel.swift */; };
+		6B37A7CB2D0FBC1B00239987 /* TravelDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7CA2D0FBC1B00239987 /* TravelDashboard.swift */; };
+		6B37A7D22D0FEDCB00239987 /* TravelPlanDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7D12D0FEDCB00239987 /* TravelPlanDB.swift */; };
 		6B790F9F2CFEA3080000AC03 /* PolarnalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */; };
 		6B790FA52CFEA3090000AC03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA42CFEA3090000AC03 /* Assets.xcassets */; };
 		6B790FA82CFEA3090000AC03 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA72CFEA3090000AC03 /* Preview Assets.xcassets */; };
@@ -118,6 +120,8 @@
 		6B37A7C12D0BCF4B00239987 /* AddEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventCell.swift; sourceTree = "<group>"; };
 		6B37A7C32D0BFEED00239987 /* AddEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewModel.swift; sourceTree = "<group>"; };
 		6B37A7C62D0C0A9000239987 /* MainCalendarCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCalendarCellViewModel.swift; sourceTree = "<group>"; };
+		6B37A7CA2D0FBC1B00239987 /* TravelDashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDashboard.swift; sourceTree = "<group>"; };
+		6B37A7D12D0FEDCB00239987 /* TravelPlanDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlanDB.swift; sourceTree = "<group>"; };
 		6B790F9B2CFEA3080000AC03 /* Polarnal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Polarnal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarnalApp.swift; sourceTree = "<group>"; };
 		6B790FA42CFEA3090000AC03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -398,6 +402,46 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		6B37A7C82D0FBAB700239987 /* TravelPlanner */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A7CC2D0FED0500239987 /* Sheet */,
+				6B37A7C92D0FBB5000239987 /* TravelDashboard */,
+			);
+			path = TravelPlanner;
+			sourceTree = "<group>";
+		};
+		6B37A7C92D0FBB5000239987 /* TravelDashboard */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A7CA2D0FBC1B00239987 /* TravelDashboard.swift */,
+			);
+			path = TravelDashboard;
+			sourceTree = "<group>";
+		};
+		6B37A7CC2D0FED0500239987 /* Sheet */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A7CD2D0FED0A00239987 /* AddTravelPlan */,
+			);
+			path = Sheet;
+			sourceTree = "<group>";
+		};
+		6B37A7CD2D0FED0A00239987 /* AddTravelPlan */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AddTravelPlan;
+			sourceTree = "<group>";
+		};
+		6B37A7D02D0FEDB700239987 /* Travel */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A7D12D0FEDCB00239987 /* TravelPlanDB.swift */,
+			);
+			path = Travel;
+			sourceTree = "<group>";
+		};
 		6B790F922CFEA3080000AC03 = {
 			isa = PBXGroup;
 			children = (
@@ -444,6 +488,7 @@
 				6B37A77D2D07D7CC00239987 /* SideTabBarViewModel.swift */,
 				6B37A7682D055E4500239987 /* Calendar */,
 				6B790FC52CFFE65E0000AC03 /* Diary */,
+				6B37A7C82D0FBAB700239987 /* TravelPlanner */,
 				6B790FBF2CFF25560000AC03 /* BaseProtocol */,
 				6B790FC22CFF25870000AC03 /* CommonView */,
 			);
@@ -497,6 +542,7 @@
 		6B790FBA2CFEA4D40000AC03 /* DBModel */ = {
 			isa = PBXGroup;
 			children = (
+				6B37A7D02D0FEDB700239987 /* Travel */,
 				6B37A7852D0850F600239987 /* CalendarPlanner */,
 				6B37A7842D0850EA00239987 /* Diary */,
 			);
@@ -706,6 +752,7 @@
 				6B37A7562D0026B300239987 /* FolderListCell.swift in Sources */,
 				6B790FE72CFFEFA80000AC03 /* DesignOfFolderIcon.swift in Sources */,
 				6B37A7632D0046F200239987 /* NoteContentView.swift in Sources */,
+				6B37A7CB2D0FBC1B00239987 /* TravelDashboard.swift in Sources */,
 				6B790FCE2CFFEC6A0000AC03 /* DiaryUIViewModel.swift in Sources */,
 				6B37A7AB2D0AA4B500239987 /* TodoDB.swift in Sources */,
 				6B790FC92CFFE6AA0000AC03 /* DiaryStateViewModel.swift in Sources */,
@@ -726,6 +773,7 @@
 				6B37A7B42D0AF24F00239987 /* TodoFolderCell.swift in Sources */,
 				6B790FBE2CFEA50A0000AC03 /* NoteDB.swift in Sources */,
 				6B790F9F2CFEA3080000AC03 /* PolarnalApp.swift in Sources */,
+				6B37A7D22D0FEDCB00239987 /* TravelPlanDB.swift in Sources */,
 				6B37A7C02D0BCDEC00239987 /* AddEventView.swift in Sources */,
 				6B37A7722D0683C600239987 /* CalendarViewModel.swift in Sources */,
 				6B790FCC2CFFE8120000AC03 /* FolderListView.swift in Sources */,
