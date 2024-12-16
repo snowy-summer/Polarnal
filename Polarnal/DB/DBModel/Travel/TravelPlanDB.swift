@@ -7,10 +7,19 @@
 
 import Foundation
 import SwiftData
+// 여행 이름
+// 여행 국가
+// 여행 기간
+// 세부 여행 todo
+// 세부 사용한 돈
+// 세부 저장한 장소들 ////////////////////////////////////////////////장소 아직 안했음
+// 세부 잡다한 티켓 파일
+// 리뷰와 기록들
 
 @Model
 final class TravelPlanDB: Identifiable {
     @Attribute(.unique) var id: UUID
+    var title: String
     var country: String
     var startDate: Date
     var endDate: Date
@@ -19,6 +28,7 @@ final class TravelPlanDB: Identifiable {
     @Relationship(deleteRule: .cascade) var ticketList: [TravelDocument]
     
     init(id: UUID = UUID(),
+         title: String,
          country: String,
          startDate: Date,
          endDate: Date,
@@ -26,6 +36,7 @@ final class TravelPlanDB: Identifiable {
          costList: [TravelCost] = [],
          ticketList: [TravelDocument] = []) {
         self.id = id
+        self.title = title
         self.country = country
         self.startDate = startDate
         self.endDate = endDate

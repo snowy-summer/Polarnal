@@ -11,31 +11,28 @@ import SwiftData
 
 final class AddTravelPlanViewModel: ViewModelProtocol {
     
-    @Published var planTitle: String
+    @Published var travelTitle: String
     @Published var destinationCountry: String
     @Published var startDate: Date = Date()
-    @Published var goalDate: Date = Date()
-    var categoryList = [EventCategoryDB]()
+    @Published var endDate: Date = Date()
     
-    private var eventData: EventDB?
+    private var travelPlan: TravelPlanDB?
     
-    init(eventData: EventDB?) {
-        if let eventData {
-            eventContent = eventData.content
-            selectedCategory = eventData.category
-            isPeriod = eventData.isPeriod
-            startDate = eventData.date
-            goalDate = eventData.endDate ?? Date()
+    init(travelPlanData: TravelPlanDB?) {
+        if let travelPlanData {
+            travelTitle = travelPlanData.title
+            destinationCountry = travelPlanData.country
+            startDate = travelPlanData.startDate
+            endDate = travelPlanData.endDate
         } else {
-            eventContent = ""
+            travelTitle = ""
+            destinationCountry = ""
         }
     }
     
     enum Intent {
-        case saveEvent
+        case saveTravel
         case insertModelContext(ModelContext)
-        
-        case selectCategory(EventCategoryDB)
     }
     
     private let dbManager = DBManager()
@@ -43,48 +40,36 @@ final class AddTravelPlanViewModel: ViewModelProtocol {
     
     func apply(_ intent: Intent) {
         switch intent {
-        case .saveEvent:
-            eventData == nil ? saveEvent() : editSaveEvent()
+        case .saveTravel:
+            travelPlan == nil ? saveTravel() : editSaveTravel()
             
         case .insertModelContext(let modelContext):
             dbManager.modelContext = modelContext
-            selectedCategory = dbManager.fetchItems(ofType: EventCategoryDB.self)[0]
             
-        case .selectCategory(let category):
-            selectedCategory = category
         }
     }
 }
 
-extension AddEventViewModel {
+extension AddTravelPlanViewModel {
     
-    private func saveEvent() {
-        if let selectedCategory {
-            let event = EventDB(content: eventContent,
-                                isPeriod: isPeriod,
-                                date: startDate,
-                                endDate: isPeriod ? goalDate : Date(),
-                                category: selectedCategory)
-            dbManager.addItem(event)
-            selectedCategory.planList.append(event)
-            dbManager.addItem(selectedCategory)
-        }
+    private func saveTravel() {
+        let travel = TravelPlanDB(title: travelTitle,
+                                  country: destinationCountry,
+                                  startDate: startDate,
+                                  endDate: endDate)
+        dbManager.addItem(travel)
     }
     
-    private func editSaveEvent() {
-        eventData?.content = eventContent
-        eventData?.date = startDate
-        eventData?.endDate = goalDate
-        if let selectedCategory,
-           let eventData {
-            eventData.category = selectedCategory
-            dbManager.addItem(eventData)
-            selectedCategory.planList.append(eventData)
-            dbManager.addItem(selectedCategory)
+    private func editSaveTravel() {
+        travelPlan?.title = travelTitle
+        travelPlan?.country = destinationCountry
+        travelPlan?.startDate = startDate
+        travelPlan?.endDate = endDate
+        if let travelPlan {
+            dbManager.addItem(travelPlan)
         } else {
-            LogManager.log("Event 수정 실패")
+            LogManager.log("Travel plan 수정 실패")
         }
-
     }
     
 }

@@ -24,7 +24,8 @@ final class DBManager {
             EventDB.self,
             DDayDB.self,
             TodoFolderDB.self,
-            TodoDB.self
+            TodoDB.self,
+            TravelPlanDB.self
         ])
         
         let modelConfiguration = ModelConfiguration(schema: schema,
@@ -43,7 +44,10 @@ final class DBManager {
 extension DBManager {
     
     func addItem<T: PersistentModel>(_ model: T) {
-        guard let modelContext else { return }
+        guard let modelContext else {
+            LogManager.log("ModelContext가 없습니다")
+            return
+        }
         
         modelContext.insert(model)
         
@@ -55,7 +59,10 @@ extension DBManager {
     }
     
     func fetchItems<T: PersistentModel>(ofType type: T.Type) -> [T]  {
-        guard let modelContext else { return [] }
+        guard let modelContext else {
+            LogManager.log("ModelContext가 없습니다")
+            return []
+        }
         
         let request = FetchDescriptor<T>()
         
@@ -69,7 +76,10 @@ extension DBManager {
     }
     
     func deleteItem<T: PersistentModel>(_ model: T) {
-        guard let modelContext else { return }
+        guard let modelContext else {
+            LogManager.log("ModelContext가 없습니다")
+            return
+        }
         
         modelContext.delete(model)
         

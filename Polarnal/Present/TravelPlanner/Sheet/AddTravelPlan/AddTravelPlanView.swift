@@ -5,22 +5,32 @@
 //  Created by 최승범 on 12/16/24.
 //
 
-import Foundation
+import SwiftUI
 
 struct AddTravelPlanView: View {
+    
+    @Environment(\.dismiss) var dismiss
+    @Environment(\.modelContext) var modelContext
+    @ObservedObject private var viewModel: AddTravelPlanViewModel
+    
+    init(viewModel: AddTravelPlanViewModel) {
+        self.viewModel = viewModel
+    }
+    
     var body: some View {
         ScrollView {
             VStack {
-                TextField("여행 제목", text: $viewModel.eventContent)
+                TextField("여행 제목은 무엇일까요?", text: $viewModel.travelTitle)
                     .font(.title)
                     .frame(height: 44)
                     .padding()
                     .background(Color(UIColor.systemGray6))
-                    .cornerRadius(12)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
                     .padding(.horizontal, 40)
                 
-                categorySection()
-                periodToggleSection()
+                destinationSection()
+                
+                periodSection()
             }
         }
         .onAppear {
@@ -31,7 +41,6 @@ struct AddTravelPlanView: View {
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button(action: {
-                    print(eventCategoryList.count)
                     dismiss()
                 }) {
                     Text("취소")
@@ -41,7 +50,7 @@ struct AddTravelPlanView: View {
             
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {
-                    viewModel.apply(.saveEvent)
+                    viewModel.apply(.saveTravel)
                     dismiss()
                 }) {
                     Text("저장")
@@ -50,44 +59,36 @@ struct AddTravelPlanView: View {
         }
         
     }
-    }
 }
 
-extension AddEventView {
+extension AddTravelPlanView {
     
-    private func categorySection() -> some View {
+    private func destinationSection() -> some View {
         VStack {
             HStack {
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(viewModel.selectedCategory?.color.convertToColor() ?? .gray)
-                    .frame(width: 40,
-                           height: 40)
-            
-                Text(AddEventCellType.category.text)
-                .font(.title2)
-                .bold()
+                ZStack {
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color(uiColor: .systemGray5))
+                        .frame(width: 50, height: 50)
+                    
+                    Image(systemName: AddTravelSectionType.destination.icon)
+                        .resizable()
+                        .frame(width: 28, height: 28)
+                }
                 
-                Text("\(viewModel.selectedCategory?.title ?? "")")
+                Text(AddTravelSectionType.destination.text + ": ")
+                    .font(.title2)
+                    .bold()
+                
+                TextField("목적지를 입력해보세요", text: $viewModel.destinationCountry)
                     .font(.title3)
-                    .foregroundStyle(.gray)
-                    .padding(.horizontal)
-                
-                Spacer()
+                    .frame(height: 32)
+                    .padding()
+                    .background(Color(UIColor.systemGray5))
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
             }
             .padding()
             
-            Divider()
-                .padding(.horizontal)
-            
-            List {
-                ForEach(eventCategoryList, id: \.id) { category in
-                    EventCategoryListCell(category: category)
-                        .onTapGesture {
-                            viewModel.apply(.selectCategory(category))
-                        }
-                }
-            }
-            .frame(height: 200)
         }
         .background(Color(uiColor: .systemGray6))
         .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -96,24 +97,24 @@ extension AddEventView {
     }
     
     @ViewBuilder
-    private func periodToggleSection() -> some View {
+    private func periodSection() -> some View {
         VStack {
-            Toggle(isOn: $viewModel.isPeriod) {
-                HStack {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 12)
-                            .fill(Color(uiColor: .systemGray5))
-                            .frame(width: 50, height: 50)
-                        
-                        Image(systemName: AddEventCellType.period.icon)
-                            .resizable()
-                            .frame(width: 28, height: 28)
-                    }
+            
+            HStack {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color(uiColor: .systemGray5))
+                        .frame(width: 50, height: 50)
                     
-                    Text(AddEventCellType.period.text)
-                        .font(.title2)
-                        .bold()
+                    Image(systemName: AddTravelSectionType.period.icon)
+                        .resizable()
+                        .frame(width: 28, height: 28)
                 }
+                
+                Text(AddTravelSectionType.period.text)
+                    .font(.title2)
+                    .bold()
+                Spacer()
             }
             .padding()
             
@@ -122,9 +123,8 @@ extension AddEventView {
             
             datePickerSection(title: "시작 날짜:", date: $viewModel.startDate)
             
-            if viewModel.isPeriod {
-                datePickerSection(title: "목표 날짜:", date: $viewModel.goalDate)
-            }
+            datePickerSection(title: "마지막 날짜:", date: $viewModel.endDate)
+            
         }
         .background(Color(uiColor: .systemGray6))
         .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -156,41 +156,29 @@ extension AddEventView {
     AddEventView(viewModel: AddEventViewModel(eventData: nil))
 }
 
-enum AddEventCellType: CaseIterable {
-    case category
+enum AddTravelSectionType: CaseIterable {
     case period
-    case eventRepeat
-    case settingDDay
+    case destination
     
     var text: String {
         switch self {
-        case .category:
-            return "카테고리"
             
         case .period:
             return "기간"
             
-        case .eventRepeat:
-            return "반복"
-            
-        case .settingDDay:
-            return "D-Day 설정"
+        case .destination:
+            return "목적지"
         }
     }
     
     var icon: String {
         switch self {
-        case .category:
-            return "star.fill"
             
         case .period:
             return "star.fill"
             
-        case .eventRepeat:
-            return "star.fill"
-            
-        case .settingDDay:
-            return "star.fill"
+        case .destination:
+            return "map"
         }
     }
 }
@@ -199,5 +187,5 @@ enum AddEventCellType: CaseIterable {
 
 
 #Preview {
-    AddTravelPlanView()
+    AddTravelPlanView(viewModel: AddTravelPlanViewModel(travelPlanData: nil))
 }

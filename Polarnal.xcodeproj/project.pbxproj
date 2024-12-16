@@ -447,8 +447,8 @@
 		6B37A7D02D0FEDB700239987 /* Travel */ = {
 			isa = PBXGroup;
 			children = (
-				6B37A7D72D100E6B00239987 /* Type */,
 				6B37A7D12D0FEDCB00239987 /* TravelPlanDB.swift */,
+				6B37A7D72D100E6B00239987 /* Type */,
 			);
 			path = Travel;
 			sourceTree = "<group>";

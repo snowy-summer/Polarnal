@@ -41,7 +41,6 @@ struct AddEventView: View {
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button(action: {
-                    print(eventCategoryList.count)
                     dismiss()
                 }) {
                     Text("취소")

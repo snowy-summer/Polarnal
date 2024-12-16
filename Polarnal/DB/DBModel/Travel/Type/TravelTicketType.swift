@@ -44,12 +44,3 @@ enum TravelTicketType: String, CaseIterable {
         }
     }
 }
-
-// 여행 이름
-// 여행 국가
-// 여행 기간
-// 세부 여행 todo
-// 세부 사용한 돈
-// 세부 저장한 장소들
-// 세부 잡다한 티켓 파일
-// 리뷰와 기록들
