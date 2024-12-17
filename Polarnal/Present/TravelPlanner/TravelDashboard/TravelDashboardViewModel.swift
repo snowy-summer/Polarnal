@@ -75,7 +75,7 @@ extension TravelDashboardViewModel {
     private func updateTodoList() {
         todoList = dbManager.fetchItems(ofType: TravelTodoDB.self).filter {
             if let selectedTravel {
-                return $0.travelPlan.id == selectedTravel.id
+                return $0.travelPlanID == selectedTravel.id
             } else {
                 return false
             }
@@ -90,7 +90,7 @@ extension TravelDashboardViewModel {
         
         if let selectedTravel {
             let todo = TravelTodoDB(content: "",
-                                    travelPlan: selectedTravel)
+                                    travelPlanID: selectedTravel.id)
             selectedTravel.todoList.append(todo)
             dbManager.addItem(selectedTravel)
         } else {

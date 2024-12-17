@@ -38,7 +38,7 @@ struct TravelDashboard: View {
                     Button(action: {
                         viewModel.apply(.showAddTravelView)
                     }) {
-                       Image(systemName: "plus")
+                        Image(systemName: "plus")
                     }
                 }
             })
@@ -56,47 +56,52 @@ struct TravelDashboard: View {
                 
             }
         } detail: {
-            VStack {
-                HStack {
-                    TravelTodoMiniView(viewModel: viewModel)
-                        .background(Color(uiColor: .systemGray5))
-                        .clipShape(RoundedRectangle(cornerRadius: 24))
-                        .padding(.trailing)
+            if let selectedTravel = viewModel.selectedTravel {
+                VStack {
+                    HStack {
+                        TravelTodoMiniView(travel: selectedTravel)
+                            .background(Color(uiColor: .systemGray5))
+                            .clipShape(RoundedRectangle(cornerRadius: 24))
+                            .padding(.trailing)
                         
-                    VStack {
-                        HStack {
-                            TravelTicketMiniView()
-                                .background(Color(uiColor: .systemGray5))
-                                .clipShape(RoundedRectangle(cornerRadius: 24))
-                            
-                            RoundedRectangle(cornerRadius: 24)
-                                .overlay {
-                                    Circle()
-                                        .fill(.blue)
-                                        .padding()
-                                        .overlay {
-                                            Circle()
-                                                .fill()
-                                                .padding(60)
-                                        }
-                                }
-                        }
-                        
-                        HStack {
-                            TravelMapMiniView()
-                                .clipShape(RoundedRectangle(cornerRadius: 24))
-                            TravelDiaryMiniView()
-                                .background(Color(uiColor: .systemGray5))
-                                .clipShape(RoundedRectangle(cornerRadius: 24))
+                        VStack {
+                            HStack {
+                                TravelTicketMiniView()
+                                    .background(Color(uiColor: .systemGray5))
+                                    .clipShape(RoundedRectangle(cornerRadius: 24))
                                 
+                                RoundedRectangle(cornerRadius: 24)
+                                    .overlay {
+                                        Circle()
+                                            .fill(.blue)
+                                            .padding()
+                                            .overlay {
+                                                Circle()
+                                                    .fill()
+                                                    .padding(60)
+                                            }
+                                    }
+                            }
+                            
+                            HStack {
+                                TravelMapMiniView()
+                                    .clipShape(RoundedRectangle(cornerRadius: 24))
+                                TravelDiaryMiniView()
+                                    .background(Color(uiColor: .systemGray5))
+                                    .clipShape(RoundedRectangle(cornerRadius: 24))
+                                
+                            }
                         }
                     }
-                }
-                .padding(.bottom)
-                .padding(.horizontal)
-                
-                RoundedRectangle(cornerRadius: 24)
+                    .padding(.bottom)
                     .padding(.horizontal)
+                    
+                    RoundedRectangle(cornerRadius: 24)
+                        .padding(.horizontal)
+                }
+            
+            } else {
+                Text("여행을 선택하세요")
             }
             
         }
@@ -121,80 +126,6 @@ struct TravelDashboard: View {
 
 #Preview {
     TravelDashboard(sideTabBarViewModel: SideTabBarViewModel())
-}
-
-struct TravelTodoMiniView: View {
-
-    @ObservedObject var viewModel: TravelDashboardViewModel
-  
-    var body: some View {
-        VStack {
-            HStack {
-                Text("Todo")
-                    .font(.title2)
-                    .bold()
-                Spacer()
-                
-                Button(action: {
-                    viewModel.apply(.addTodo)
-                }, label: {
-                    Image(systemName: "plus")
-                        .tint(.black)
-                        .bold()
-                })
-            }
-            .padding(.top)
-            .padding(.horizontal)
-            
-            Divider()
-            
-            List {
-                ForEach(viewModel.todoList, id: \.id) { todo in
-                    TravelTodoCell(todo: todo)
-                        .frame(height: 32)
-                        .swipeActions(edge: .trailing,
-                                      allowsFullSwipe: false) {
-                            Button(role: .destructive, action: {
-                                viewModel.apply(.deleteTodo(todo))
-                            }, label: {
-                                Label("삭제", systemImage: "trash")
-                            })
-                            
-                        }
-                    // done, 삭제 추가 해야됨
-                }
-            }
-            .listStyle(.plain)
-            
-        }
-    }
-    
-    struct TravelTodoCell: View {
-        
-        let todo: TravelTodoDB
-        
-        var body: some View {
-            HStack {
-                if todo.isDone {
-                    Image(systemName: "checkmark.circle.fill")
-                        .resizable()
-                        .foregroundStyle(.red)
-                        .frame(width: 24, height: 24)
-                } else {
-                    Image(systemName: "circle.fill")
-                        .resizable()
-                        .foregroundStyle(.blue)
-                        .frame(width: 24, height: 24)
-                }
-                
-                Text(todo.content)
-                    .font(.title3)
-                    .bold()
-                    .padding(.horizontal)
-            }
-            .padding()
-        }
-    }
 }
 
 struct TravelTicketMiniView: View {
@@ -253,21 +184,21 @@ struct TravelMapMiniView: View {
 
 struct TravelDiaryMiniView: View {
     var body: some View {
-            VStack {
-                HStack {
-                    Text("여행 기록")
-                        .font(.title2)
-                        .bold()
-                    
-                    Spacer()
-                }
-                .padding(.top)
-                .padding(.horizontal)
-                
-                Divider()
+        VStack {
+            HStack {
+                Text("여행 기록")
+                    .font(.title2)
+                    .bold()
                 
                 Spacer()
-                
             }
+            .padding(.top)
+            .padding(.horizontal)
+            
+            Divider()
+            
+            Spacer()
+            
+        }
     }
 }
