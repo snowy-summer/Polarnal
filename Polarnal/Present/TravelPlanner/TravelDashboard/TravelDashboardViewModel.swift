@@ -16,7 +16,7 @@ final class TravelDashboardViewModel: ViewModelProtocol {
         
         case selectTravel(TravelPlanDB)
         case showAddTravelView
-
+        
         // Todo
         case addTodo
         case deleteTodo(TravelTodoDB)
@@ -30,7 +30,12 @@ final class TravelDashboardViewModel: ViewModelProtocol {
     var cancellables: Set<AnyCancellable> = []
     
     @Published var selectedTravel: TravelPlanDB?
+    @Published var todoList: [TravelTodoDB] = []
     @Published var sheetType: TravelPlanSheetType?
+    
+    init() {
+        binding()
+    }
     
     func apply(_ intent: Intent) {
         switch intent {
@@ -45,25 +50,48 @@ final class TravelDashboardViewModel: ViewModelProtocol {
             
         case .addTodo:
             addTodo()
+            updateTodoList()
             
         case .deleteTodo(let todo):
             deleteTodo(todo: todo)
+            updateTodoList()
         }
+    }
+    
+    func binding() {
+        $selectedTravel
+            .compactMap{ $0 }
+            .sink { [weak self] travel in
+                guard let self = self else { return }
+                todoList = travel.todoList
+            }
+            .store(in: &cancellables)
     }
     
 }
 
 extension TravelDashboardViewModel {
     
+    private func updateTodoList() {
+        todoList = dbManager.fetchItems(ofType: TravelTodoDB.self).filter {
+            if let selectedTravel {
+                return $0.travelPlan.id == selectedTravel.id
+            } else {
+                return false
+            }
+        }
+    }
+    
     private func addTodo() {
-        if dbManager.modelContext == nil { 
+        if dbManager.modelContext == nil {
             LogManager.log("ModelContext가 없습니다")
             return
         }
-        let todo = TravelTodoDB(content: "")
-        selectedTravel?.todoList.append(todo)
         
         if let selectedTravel {
+            let todo = TravelTodoDB(content: "",
+                                    travelPlan: selectedTravel)
+            selectedTravel.todoList.append(todo)
             dbManager.addItem(selectedTravel)
         } else {
             LogManager.log("선택된 Travel이 없습니다")

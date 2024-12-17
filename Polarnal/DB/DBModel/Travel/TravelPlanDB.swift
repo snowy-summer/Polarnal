@@ -51,13 +51,16 @@ final class TravelTodoDB {
     @Attribute(.unique) var id: UUID
     var content: String
     var isDone: Bool
+    @Relationship(deleteRule: .nullify) var travelPlan: TravelPlanDB
     
     init(id: UUID = UUID(),
          content: String,
-         isDone: Bool = false) {
+         isDone: Bool = false,
+         travelPlan: TravelPlanDB) {
         self.id = id
         self.content = content
         self.isDone = isDone
+        self.travelPlan = travelPlan
     }
 }
 

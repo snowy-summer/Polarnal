@@ -126,7 +126,7 @@ struct TravelDashboard: View {
 struct TravelTodoMiniView: View {
 
     @ObservedObject var viewModel: TravelDashboardViewModel
-    
+  
     var body: some View {
         VStack {
             HStack {
@@ -149,9 +149,18 @@ struct TravelTodoMiniView: View {
             Divider()
             
             List {
-                ForEach(viewModel.selectedTravel?.todoList ?? [], id: \.id) { todo in
+                ForEach(viewModel.todoList, id: \.id) { todo in
                     TravelTodoCell(todo: todo)
                         .frame(height: 32)
+                        .swipeActions(edge: .trailing,
+                                      allowsFullSwipe: false) {
+                            Button(role: .destructive, action: {
+                                viewModel.apply(.deleteTodo(todo))
+                            }, label: {
+                                Label("삭제", systemImage: "trash")
+                            })
+                            
+                        }
                     // done, 삭제 추가 해야됨
                 }
             }
