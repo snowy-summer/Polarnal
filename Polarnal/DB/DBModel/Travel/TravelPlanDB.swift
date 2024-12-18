@@ -67,17 +67,32 @@ final class TravelTodoDB {
 @Model
 final class TravelCostDB {
     @Attribute(.unique) var id: UUID
+    
+    var spentCost: Double
+    var spentCostType: String
+    
+    var convertedCost: Double
+    var convertedCostType: String
+    
     var content: String
     var costType: String
     var date: Date
     @Attribute(.externalStorage) var imageDataList: [Data]
     
     init(id: UUID = UUID(),
+         spentCost: Double,
+         spentCostType: String,
+         convertedCost: Double,
+         convertedCostType: String,
          content: String,
          costType: String,
          date: Date,
          imageDataList: [Data] = []) {
         self.id = id
+        self.spentCost = spentCost
+        self.spentCostType = spentCostType
+        self.convertedCost = convertedCost
+        self.convertedCostType = convertedCostType
         self.content = content
         self.costType = costType
         self.date = date

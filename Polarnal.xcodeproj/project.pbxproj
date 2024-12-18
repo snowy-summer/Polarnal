@@ -62,6 +62,8 @@
 		6B37A7E62D116A0400239987 /* TravelTodoMiniViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7E52D116A0300239987 /* TravelTodoMiniViewModel.swift */; };
 		6B37A7EA2D116E1500239987 /* TravelCostMiniView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7E92D116E1500239987 /* TravelCostMiniView.swift */; };
 		6B37A7EC2D116E4E00239987 /* TravelCostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7EB2D116E4E00239987 /* TravelCostView.swift */; };
+		6B37A7EE2D1295DC00239987 /* AddTravelCostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7ED2D1295DC00239987 /* AddTravelCostViewModel.swift */; };
+		6B37A7F02D129D1300239987 /* AddTravelCostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7EF2D129D1300239987 /* AddTravelCostView.swift */; };
 		6B790F9F2CFEA3080000AC03 /* PolarnalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */; };
 		6B790FA52CFEA3090000AC03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA42CFEA3090000AC03 /* Assets.xcassets */; };
 		6B790FA82CFEA3090000AC03 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA72CFEA3090000AC03 /* Preview Assets.xcassets */; };
@@ -144,6 +146,8 @@
 		6B37A7E52D116A0300239987 /* TravelTodoMiniViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTodoMiniViewModel.swift; sourceTree = "<group>"; };
 		6B37A7E92D116E1500239987 /* TravelCostMiniView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelCostMiniView.swift; sourceTree = "<group>"; };
 		6B37A7EB2D116E4E00239987 /* TravelCostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelCostView.swift; sourceTree = "<group>"; };
+		6B37A7ED2D1295DC00239987 /* AddTravelCostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelCostViewModel.swift; sourceTree = "<group>"; };
+		6B37A7EF2D129D1300239987 /* AddTravelCostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelCostView.swift; sourceTree = "<group>"; };
 		6B790F9B2CFEA3080000AC03 /* Polarnal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Polarnal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarnalApp.swift; sourceTree = "<group>"; };
 		6B790FA42CFEA3090000AC03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -503,6 +507,8 @@
 			children = (
 				6B37A7E92D116E1500239987 /* TravelCostMiniView.swift */,
 				6B37A7EB2D116E4E00239987 /* TravelCostView.swift */,
+				6B37A7EF2D129D1300239987 /* AddTravelCostView.swift */,
+				6B37A7ED2D1295DC00239987 /* AddTravelCostViewModel.swift */,
 			);
 			path = TravelCost;
 			sourceTree = "<group>";
@@ -827,6 +833,7 @@
 				6B37A7D62D1009F200239987 /* AddTravelPlanViewModel.swift in Sources */,
 				6B37A7AB2D0AA4B500239987 /* TodoDB.swift in Sources */,
 				6B790FC92CFFE6AA0000AC03 /* DiaryStateViewModel.swift in Sources */,
+				6B37A7EE2D1295DC00239987 /* AddTravelCostViewModel.swift in Sources */,
 				6B37A7DB2D100E9C00239987 /* TravelCostType.swift in Sources */,
 				6B37A7892D08617D00239987 /* DDayView.swift in Sources */,
 				6B37A7E62D116A0400239987 /* TravelTodoMiniViewModel.swift in Sources */,
@@ -837,6 +844,7 @@
 				6B37A7BA2D0B088700239987 /* ExpendedTodoFolderCell.swift in Sources */,
 				6B790FE52CFFEF7E0000AC03 /* ColorPalette.swift in Sources */,
 				6B37A79B2D097A1400239987 /* AddDDayViewModel.swift in Sources */,
+				6B37A7F02D129D1300239987 /* AddTravelCostView.swift in Sources */,
 				6B37A7A92D0AA49900239987 /* DDayDB.swift in Sources */,
 				6B37A7D92D100E7800239987 /* TravelTicketType.swift in Sources */,
 				6B790FC72CFFE66A0000AC03 /* DiaryView.swift in Sources */,
