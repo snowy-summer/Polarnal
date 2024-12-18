@@ -36,7 +36,7 @@ enum TravelCostType: String, CaseIterable {
         case .culturalActivities:
             return "문화생활"
         case .gift:
-            return "팁"
+            return "선물"
         case .extrafee:
             return "추가 비용"
         case .other:

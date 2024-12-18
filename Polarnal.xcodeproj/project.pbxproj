@@ -64,6 +64,7 @@
 		6B37A7EC2D116E4E00239987 /* TravelCostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7EB2D116E4E00239987 /* TravelCostView.swift */; };
 		6B37A7EE2D1295DC00239987 /* AddTravelCostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7ED2D1295DC00239987 /* AddTravelCostViewModel.swift */; };
 		6B37A7F02D129D1300239987 /* AddTravelCostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7EF2D129D1300239987 /* AddTravelCostView.swift */; };
+		6B37A7F32D12E27800239987 /* DottedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7F22D12E27800239987 /* DottedLine.swift */; };
 		6B790F9F2CFEA3080000AC03 /* PolarnalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */; };
 		6B790FA52CFEA3090000AC03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA42CFEA3090000AC03 /* Assets.xcassets */; };
 		6B790FA82CFEA3090000AC03 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA72CFEA3090000AC03 /* Preview Assets.xcassets */; };
@@ -148,6 +149,7 @@
 		6B37A7EB2D116E4E00239987 /* TravelCostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelCostView.swift; sourceTree = "<group>"; };
 		6B37A7ED2D1295DC00239987 /* AddTravelCostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelCostViewModel.swift; sourceTree = "<group>"; };
 		6B37A7EF2D129D1300239987 /* AddTravelCostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelCostView.swift; sourceTree = "<group>"; };
+		6B37A7F22D12E27800239987 /* DottedLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DottedLine.swift; sourceTree = "<group>"; };
 		6B790F9B2CFEA3080000AC03 /* Polarnal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Polarnal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarnalApp.swift; sourceTree = "<group>"; };
 		6B790FA42CFEA3090000AC03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -513,6 +515,14 @@
 			path = TravelCost;
 			sourceTree = "<group>";
 		};
+		6B37A7F12D12E26800239987 /* CommonDesign */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A7F22D12E27800239987 /* DottedLine.swift */,
+			);
+			path = CommonDesign;
+			sourceTree = "<group>";
+		};
 		6B790F922CFEA3080000AC03 = {
 			isa = PBXGroup;
 			children = (
@@ -577,6 +587,7 @@
 		6B790FB22CFEA3700000AC03 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				6B37A7F12D12E26800239987 /* CommonDesign */,
 				6B790FA42CFEA3090000AC03 /* Assets.xcassets */,
 				6B790FE42CFFEF7E0000AC03 /* ColorPalette.swift */,
 				6B790FE62CFFEFA80000AC03 /* DesignOfFolderIcon.swift */,
@@ -791,6 +802,7 @@
 				6B37A7E12D1167B000239987 /* TravelTodoCell.swift in Sources */,
 				6B37A7592D002BB800239987 /* NoteListView.swift in Sources */,
 				6B790FE32CFFEF530000AC03 /* IconSelectPartView.swift in Sources */,
+				6B37A7F32D12E27800239987 /* DottedLine.swift in Sources */,
 				6B37A7902D095E1700239987 /* CalendarEventCategoryListView.swift in Sources */,
 				6B37A7DF2D1163F600239987 /* TravelTodoCellViewModel.swift in Sources */,
 				6B790FD12CFFEC980000AC03 /* DiaryViewSheetType.swift in Sources */,
