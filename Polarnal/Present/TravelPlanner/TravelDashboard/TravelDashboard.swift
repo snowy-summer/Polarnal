@@ -99,7 +99,7 @@ struct TravelDashboard: View {
                     RoundedRectangle(cornerRadius: 24)
                         .padding(.horizontal)
                 }
-            
+                
             } else {
                 Text("여행을 선택하세요")
             }

@@ -24,8 +24,8 @@ final class TravelPlanDB: Identifiable {
     var startDate: Date
     var endDate: Date
     @Relationship(deleteRule: .cascade) var todoList: [TravelTodoDB]
-    @Relationship(deleteRule: .cascade) var costList: [TravelCost]
-    @Relationship(deleteRule: .cascade) var ticketList: [TravelDocument]
+    @Relationship(deleteRule: .cascade) var costList: [TravelCostDB]
+    @Relationship(deleteRule: .cascade) var ticketList: [TravelDocumentDB]
     
     init(id: UUID = UUID(),
          title: String,
@@ -33,8 +33,8 @@ final class TravelPlanDB: Identifiable {
          startDate: Date,
          endDate: Date,
          todoList: [TravelTodoDB] = [],
-         costList: [TravelCost] = [],
-         ticketList: [TravelDocument] = []) {
+         costList: [TravelCostDB] = [],
+         ticketList: [TravelDocumentDB] = []) {
         self.id = id
         self.title = title
         self.country = country
@@ -65,25 +65,28 @@ final class TravelTodoDB {
 }
 
 @Model
-final class TravelCost {
+final class TravelCostDB {
     @Attribute(.unique) var id: UUID
     var content: String
     var costType: String
     var date: Date
+    @Attribute(.externalStorage) var imageDataList: [Data]
     
     init(id: UUID = UUID(),
          content: String,
          costType: String,
-         date: Date) {
+         date: Date,
+         imageDataList: [Data] = []) {
         self.id = id
         self.content = content
         self.costType = costType
         self.date = date
+        self.imageDataList = imageDataList
     }
 }
 
 @Model
-final class TravelDocument {
+final class TravelDocumentDB {
     @Attribute(.unique) var id: UUID
     var title: String
     var type: String

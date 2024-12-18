@@ -13,11 +13,12 @@ enum TravelCostType: String, CaseIterable {
     case shopping
     case flight
     case transportation
+    case activity
     case culturalActivities
-    case tips
+    case gift
     case extrafee
     case other
-
+    
     var title: String {
         switch self {
         case .hotel:
@@ -30,9 +31,11 @@ enum TravelCostType: String, CaseIterable {
             return "비행기"
         case .transportation:
             return "교통비"
+        case .activity:
+            return "액티비티"
         case .culturalActivities:
             return "문화생활"
-        case .tips:
+        case .gift:
             return "팁"
         case .extrafee:
             return "추가 비용"
@@ -40,4 +43,30 @@ enum TravelCostType: String, CaseIterable {
             return "기타"
         }
     }
+    
+    var icon: String {
+        switch self {
+        case .hotel:
+            return "house.fill"
+        case .meals: 
+            return "fork.knife"
+        case .shopping: 
+            return "cart.fill"
+        case .flight: 
+            return "airplane"
+        case .transportation: 
+            return "car.fill"
+        case .activity:
+            return "figure.skiing.downhill"
+        case .culturalActivities:
+            return "theatermasks.fill"
+        case .gift:
+            return "gift.fill"
+        case .extrafee: 
+            return "plus.circle.fill"
+        case .other:
+            return "questionmark.circle.fill"
+        }
+    }
 }
+

@@ -51,10 +51,11 @@ struct TravelTodoMiniView: View {
                             })
                             
                         }
+                                      
                     
                 }
-                .listStyle(.plain)
             }
+            .listStyle(.plain)
             
         }
         .onAppear {
