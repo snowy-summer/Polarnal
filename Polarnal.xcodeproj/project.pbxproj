@@ -455,6 +455,7 @@
 		6B37A7CC2D0FED0500239987 /* Sheet */ = {
 			isa = PBXGroup;
 			children = (
+				6BDAE4FE2D140FA600A066E9 /* AddTravelCost */,
 				6B37A7CD2D0FED0A00239987 /* AddTravelPlan */,
 			);
 			path = Sheet;
@@ -512,8 +513,6 @@
 			children = (
 				6B37A7E92D116E1500239987 /* TravelCostMiniView.swift */,
 				6B37A7EB2D116E4E00239987 /* TravelCostView.swift */,
-				6B37A7EF2D129D1300239987 /* AddTravelCostView.swift */,
-				6B37A7ED2D1295DC00239987 /* AddTravelCostViewModel.swift */,
 			);
 			path = TravelCost;
 			sourceTree = "<group>";
@@ -726,6 +725,15 @@
 				6B790FD92CFFEE810000AC03 /* AddFolderViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6BDAE4FE2D140FA600A066E9 /* AddTravelCost */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A7EF2D129D1300239987 /* AddTravelCostView.swift */,
+				6B37A7ED2D1295DC00239987 /* AddTravelCostViewModel.swift */,
+			);
+			path = AddTravelCost;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
