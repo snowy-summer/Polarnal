@@ -5,7 +5,7 @@
 //  Created by 최승범 on 12/18/24.
 //
 
-import Foundation
+import SwiftUI
 import Combine
 import SwiftData
 
@@ -22,14 +22,15 @@ final class AddTravelCostViewModel: ViewModelProtocol {
     var cancellables: Set<AnyCancellable> = []
     
     @Published var spentCost: String = ""
-    @Published var spentCostType: String = "₩"
+    @Published var spentCostType: CurrencyType = .KRW
     
     @Published var convertedCost: String = ""
-    @Published var convertedCostType: String = "₩"
+    @Published var convertedCostType: CurrencyType = .KRW
     
     @Published var selectedCostType: TravelCostType = .hotel
     @Published var costDescription: String = ""
     @Published var spentDate: Date = Date()
+    @Published var imageList: [UIImage] = []
     var dateString: String {
         DateManager.shared.getDateString(date: spentDate)
     }
@@ -59,9 +60,9 @@ extension AddTravelCostViewModel {
     private func convertProperty(receipt: TravelCostDB?) {
         if let receipt {
             spentCost = String(receipt.spentCost)
-            spentCostType = receipt.spentCostType
+            spentCostType = CurrencyType(rawValue: receipt.spentCostType) ?? .KRW
             convertedCost = String(receipt.spentCost)
-            convertedCostType = receipt.convertedCostType
+            convertedCostType = CurrencyType(rawValue: receipt.convertedCostType) ?? .KRW
             selectedCostType = TravelCostType(rawValue: receipt.costType) ?? .hotel
             costDescription = receipt.content
             spentDate = receipt.date

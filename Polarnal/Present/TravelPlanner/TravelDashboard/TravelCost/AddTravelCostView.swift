@@ -114,9 +114,7 @@ struct AddTravelCostView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 24))
                     .padding()
                 
-                RoundedRectangle(cornerRadius: 12)
-                    .frame(height: 600)
-                    .padding()
+                photoSection()
             }
         }
     }
@@ -202,26 +200,35 @@ struct AddTravelCostView: View {
         
     }
     
-    private func costCard(cost: Binding<String>, type: String) -> some View {
-        HStack {
-            Button(action: {
-                
-            }, label: {
+    private func costCard(cost: Binding<String>, type: CurrencyType) -> some View {
+            VStack {
                 HStack {
-                    Text(type)
+                    Button(action: {
+                        
+                    }, label: {
+                        HStack {
+                            Text(type.symbol)
+                                .font(.title)
+                                .bold()
+                            Image(systemName: "chevron.down")
+                        }
+                    })
+                    .padding()
+                    .background(Color(uiColor: .systemGray5))
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    
+                    TextField("돈",text: cost)
                         .font(.title)
                         .bold()
-                    Image(systemName: "chevron.down")
                 }
-            })
-            .padding()
-            .background(Color(uiColor: .systemGray5))
-            .clipShape(RoundedRectangle(cornerRadius: 12))
-            
-            TextField("돈",text: cost)
-                .font(.title)
-                .bold()
-        }
+                HStack {
+                    Text("\(type.rawValue) (\(type.text))")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                    Spacer()
+                }
+                .padding(.horizontal)
+            }
         
     }
     
@@ -282,7 +289,43 @@ struct AddTravelCostView: View {
                 viewModel.apply(.selectCostType(type))
             }
         }
+        
     }
+    
+    private func photoSection() -> some View {
+        VStack {
+            HStack {
+                sectionHeader(section: .photo)
+                Spacer()
+                Button(action: {
+                    
+                }, label: {
+                    Image(systemName: "plus")
+                        .resizable()
+                        .tint(.black)
+                        .frame(width: 28, height: 28)
+                        .bold()
+                    
+                    
+                })
+                .padding(.trailing, 40)
+            }
+            ScrollView(.horizontal) {
+                LazyHStack {
+                    Image(.ex) // 영수증 예시이미지
+                }
+            }
+            .padding(.horizontal)
+            .padding(.bottom)
+            
+                
+        }
+        .background(Color(uiColor: .systemGray6))
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .padding()
+        
+    }
+    
 }
 
 enum AddTravelCostSectionType {
