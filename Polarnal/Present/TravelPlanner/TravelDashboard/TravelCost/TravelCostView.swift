@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct TravelCostView: View {
+    @Environment(\.modelContext) var modelContext
+    @StateObject private var viewModel: TravelCostViewModel = TravelCostViewModel()
+    
     var body: some View {
         
         VStack {
