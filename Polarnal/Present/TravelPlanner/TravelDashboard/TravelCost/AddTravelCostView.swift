@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 
+//TODO: - CostInputView가 위치가 약간 애매하다 수정 필요함
 struct AddTravelCostView: View {
     
     @Environment(\.dismiss) var dismiss
@@ -22,61 +23,13 @@ struct AddTravelCostView: View {
         GeometryReader { geometry in
             ScrollView {
                 VStack {
-                    
                     HStack {
                         totalReceiptCard()
                             .frame(width: geometry.size.width / 3)
                             .background(Color(uiColor: .systemGray5))
                             .clipShape(RoundedRectangle(cornerRadius: 12))
                         Spacer()
-                        VStack {
-                            ZStack {
-                                VStack(spacing: 20) {
-                                    costCard(cost: $viewModel.spentCost,
-                                             type: viewModel.spentCostType)
-                                    .padding()
-                                    .frame(height: 140)
-                                    .background(Color(uiColor: .systemGray6))
-                                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                                    .padding(.horizontal)
-                                    
-                                    costCard(cost: $viewModel.convertedCost,
-                                             type: viewModel.convertedCostType)
-                                    .padding()
-                                    .frame(height: 140)
-                                    .background(Color(uiColor: .systemGray6))
-                                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                                    .padding(.horizontal)
-                                }
-                                Button(action: {
-                                    
-                                }, label: {
-                                    ZStack {
-                                        RoundedRectangle(cornerRadius: 12)
-                                            .fill(Color(uiColor: .systemGray3))
-                                            .frame(width: 70, height: 70)
-                                        Image(systemName: "repeat")
-                                            .resizable()
-                                            .frame(width: 44, height: 44)
-                                    }
-                                    
-                                    
-                                })
-                            }
-                            Button(action: {
-                                
-                            }, label: {
-                                Text("발행")
-                                    .padding()
-                                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                    .background(Color(uiColor: .systemGray6))
-                                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                                    .padding(.top)
-                                    .padding(.horizontal)
-                                
-                            })
-                            
-                        }
+                        costInputView()
                     }
                     .frame(height: 400)
                     .padding()
@@ -200,36 +153,119 @@ struct AddTravelCostView: View {
         
     }
     
-    private func costCard(cost: Binding<String>, type: CurrencyType) -> some View {
+    private func costCard(cost: Binding<String>,
+                          type: CurrencyType) -> some View {
+        VStack {
+            HStack {
+                Rectangle()
+                    .frame(width: 150, height: 50)
+                    .hidden()
+                    .padding()
+                
+                TextField("ex) 1,300,499",text: cost)
+                    .font(.title)
+                    .bold()
+            }
+            
+            HStack {
+                Text("\(type.rawValue) (\(type.text))")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+                Spacer()
+            }
+            .padding(.horizontal)
+        }
+        
+    }
+    
+    private func costInputView() -> some View {
+        ZStack {
             VStack {
-                HStack {
+                ZStack {
+                    VStack {
+                        costCard(cost: $viewModel.spentCost,
+                                 type: viewModel.spentCostType)
+                        .padding()
+                        .frame(height: 140)
+                        .background(Color(uiColor: .systemGray6))
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .padding(.horizontal)
+                        
+                        costCard(cost: $viewModel.convertedCost,
+                                 type: viewModel.convertedCostType)
+                        .padding()
+                        .frame(height: 140)
+                        .background(Color(uiColor: .systemGray6))
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .padding(.horizontal)
+                    }
+                    
                     Button(action: {
                         
                     }, label: {
-                        HStack {
-                            Text(type.symbol)
-                                .font(.title)
-                                .bold()
-                            Image(systemName: "chevron.down")
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color(uiColor: .systemGray3))
+                                .frame(width: 70, height: 70)
+                            Image(systemName: "repeat")
+                                .resizable()
+                                .frame(width: 44, height: 44)
                         }
                     })
-                    .padding()
-                    .background(Color(uiColor: .systemGray5))
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                }
+                
+                Button(action: {
                     
-                    TextField("돈",text: cost)
-                        .font(.title)
-                        .bold()
-                }
-                HStack {
-                    Text("\(type.rawValue) (\(type.text))")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                    Spacer()
-                }
-                .padding(.horizontal)
+                }, label: {
+                    Text("발행")
+                        .padding()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(Color(uiColor: .systemGray6))
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .padding(.top)
+                        .padding(.horizontal)
+                    
+                })
             }
-        
+
+            VStack {
+                VStack {
+                    HStack {
+                        DropDownMenu(selectedOptionIndex: $viewModel.selectedSpentIndex,
+                                     showDropdown: $viewModel.isShowSpentDropdown)
+                        .padding(.bottom)
+                        
+                        Spacer()
+                    }
+                    .padding(40)
+                    
+                    HStack {
+                        DropDownMenu(selectedOptionIndex: $viewModel.selectedConvertedIndex,
+                                     showDropdown: $viewModel.isShowConvertedDropdown)
+                        .padding(.bottom)
+                        
+                        Spacer()
+                    }
+                    .padding(40)
+                }
+                
+                Button(action: {
+                    
+                }, label: {
+                    Text("발행")
+                        .padding()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(Color(uiColor: .systemGray6))
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .padding(.top)
+                        .padding(.horizontal)
+                        .hidden()
+                    
+                })
+            }
+            .padding(.bottom)
+            
+        }
     }
     
     private func costSection() -> some View {
@@ -318,7 +354,7 @@ struct AddTravelCostView: View {
             .padding(.horizontal)
             .padding(.bottom)
             
-                
+            
         }
         .background(Color(uiColor: .systemGray6))
         .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -358,4 +394,104 @@ enum AddTravelCostSectionType {
 
 #Preview {
     AddTravelCostView(cost: nil)
+}
+
+//
+//struct  DropDownMenuDemo: View {
+//
+//
+//
+//    var body: some  View {
+//        VStack {
+//
+//        }
+//        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+//        .background(Color.yellow)
+//        .onTapGesture {
+//            withAnimation {
+//                showDropdown =  false
+//            }
+//        }
+//    }
+//}
+
+struct  DropDownMenu: View {
+    
+    let options: [CurrencyType] = CurrencyType.allCases
+    
+    var menuWdith: CGFloat  =  150
+    var buttonHeight: CGFloat  =  50
+    var maxItemDisplayed: Int  =  2
+    
+    @Binding var selectedOptionIndex: Int
+    @Binding var showDropdown: Bool
+    
+    @State private var scrollPosition: Int?
+    
+    var body: some  View {
+        VStack {
+            VStack(spacing: 0) {
+                Button(action: {
+                    withAnimation {
+                        showDropdown.toggle()
+                    }
+                }, label: {
+                    HStack(spacing: nil) {
+                        Text(options[selectedOptionIndex].symbol)
+                        Spacer()
+                        Image(systemName: "chevron.down")
+                            .rotationEffect(.degrees((showDropdown ?  -180 : 0)))
+                    }
+                })
+                .padding(.horizontal, 20)
+                .frame(width: menuWdith, height: buttonHeight, alignment: .leading)
+                
+                
+                // selection menu
+                if (showDropdown) {
+                    let scrollViewHeight: CGFloat  = options.count > maxItemDisplayed ? (buttonHeight*CGFloat(maxItemDisplayed)) : (buttonHeight*CGFloat(options.count))
+                    ScrollView {
+                        LazyVStack(spacing: 0) {
+                            ForEach(0..<options.count, id: \.self) { index in
+                                Button(action: {
+                                    withAnimation {
+                                        selectedOptionIndex = index
+                                        showDropdown.toggle()
+                                    }
+                                    
+                                }, label: {
+                                    HStack {
+                                        Text(options[index].symbol)
+                                        Spacer()
+                                        if (index == selectedOptionIndex) {
+                                            Image(systemName: "checkmark.circle.fill")
+                                            
+                                        }
+                                    }
+                                    
+                                })
+                                .padding(.horizontal, 20)
+                                .frame(width: menuWdith, height: buttonHeight, alignment: .leading)
+                                
+                            }
+                        }
+                        .scrollTargetLayout()
+                    }
+                    .scrollPosition(id: $scrollPosition)
+                    .scrollDisabled(options.count <=  3)
+                    .frame(height: scrollViewHeight)
+                    .onAppear {
+                        scrollPosition = selectedOptionIndex
+                    }
+                    
+                }
+                
+            }
+            .foregroundStyle(Color.white)
+            .background(RoundedRectangle(cornerRadius: 16).fill(Color.black))
+            
+        }
+        .frame(width: menuWdith, height: buttonHeight, alignment: .top)
+        
+    }
 }

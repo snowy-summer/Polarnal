@@ -18,14 +18,19 @@ final class AddTravelCostViewModel: ViewModelProtocol {
     }
     
     private let dbManager = DBManager()
+    let currencyList = CurrencyType.allCases
     var receipt: TravelCostDB?
     var cancellables: Set<AnyCancellable> = []
     
     @Published var spentCost: String = ""
     @Published var spentCostType: CurrencyType = .KRW
+    @Published var selectedSpentIndex =  0
+    @Published var isShowSpentDropdown =  false
     
     @Published var convertedCost: String = ""
     @Published var convertedCostType: CurrencyType = .KRW
+    @Published var selectedConvertedIndex =  0
+    @Published var isShowConvertedDropdown =  false
     
     @Published var selectedCostType: TravelCostType = .hotel
     @Published var costDescription: String = ""
