@@ -90,6 +90,7 @@
 		6B790FE72CFFEFA80000AC03 /* DesignOfFolderIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FE62CFFEFA80000AC03 /* DesignOfFolderIcon.swift */; };
 		6BDAE5002D141DDE00A066E9 /* TravelCostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE4FF2D141DDE00A066E9 /* TravelCostViewModel.swift */; };
 		6BDAE5022D1563CE00A066E9 /* SelectedTravelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5012D1563CE00A066E9 /* SelectedTravelViewModel.swift */; };
+		6BDAE5052D1579E700A066E9 /* CostFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5042D1579E700A066E9 /* CostFormatter.swift */; };
 		6BE6A6A22D13ABDC00931E7B /* CurrencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE6A6A12D13ABDC00931E7B /* CurrencyType.swift */; };
 /* End PBXBuildFile section */
 
@@ -178,6 +179,7 @@
 		6B790FE62CFFEFA80000AC03 /* DesignOfFolderIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignOfFolderIcon.swift; sourceTree = "<group>"; };
 		6BDAE4FF2D141DDE00A066E9 /* TravelCostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelCostViewModel.swift; sourceTree = "<group>"; };
 		6BDAE5012D1563CE00A066E9 /* SelectedTravelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTravelViewModel.swift; sourceTree = "<group>"; };
+		6BDAE5042D1579E700A066E9 /* CostFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostFormatter.swift; sourceTree = "<group>"; };
 		6BE6A6A12D13ABDC00931E7B /* CurrencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -612,6 +614,7 @@
 		6B790FB42CFEA4270000AC03 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				6BDAE5032D1579CC00A066E9 /* CostFormatter */,
 				6B37A7762D06841700239987 /* DateManager */,
 				6B790FB52CFEA4320000AC03 /* LogManager */,
 			);
@@ -737,6 +740,14 @@
 				6B37A7ED2D1295DC00239987 /* AddTravelCostViewModel.swift */,
 			);
 			path = AddTravelCost;
+			sourceTree = "<group>";
+		};
+		6BDAE5032D1579CC00A066E9 /* CostFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				6BDAE5042D1579E700A066E9 /* CostFormatter.swift */,
+			);
+			path = CostFormatter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -879,6 +890,7 @@
 				6B790FC12CFF25710000AC03 /* ViewModelProtocol.swift in Sources */,
 				6B37A7992D0978D900239987 /* AddDDayView.swift in Sources */,
 				6B37A75F2D00372A00239987 /* NoteListCellViewModel.swift in Sources */,
+				6BDAE5052D1579E700A066E9 /* CostFormatter.swift in Sources */,
 				6B37A78E2D0924DD00239987 /* AddEventCategoryViewModel.swift in Sources */,
 				6B37A7B42D0AF24F00239987 /* TodoFolderCell.swift in Sources */,
 				6B37A7DD2D103D4100239987 /* TravelDashboardViewModel.swift in Sources */,

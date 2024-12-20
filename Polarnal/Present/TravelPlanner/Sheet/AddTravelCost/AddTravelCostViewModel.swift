@@ -25,12 +25,12 @@ final class AddTravelCostViewModel: ViewModelProtocol {
     var receipt: TravelCostDB?
     var cancellables: Set<AnyCancellable> = []
     
-    @Published var spentCost: String = ""
+    @Published var spentCost: String = "0"
     @Published var spentCostType: CurrencyType = .KRW
     @Published var selectedSpentIndex =  0
     @Published var isShowSpentDropdown =  false
     
-    @Published var convertedCost: String = ""
+    @Published var convertedCost: String = "0"
     @Published var convertedCostType: CurrencyType = .KRW
     @Published var selectedConvertedIndex =  0
     @Published var isShowConvertedDropdown =  false
@@ -102,25 +102,6 @@ extension AddTravelCostViewModel {
         }
     }
     
-    private func binding() {
-        $spentCost
-            .map { newAmount in
-                // 숫자와 '.'만 허용하고, '.'은 한번만 허용
-                let filtered = newAmount.filter { "0123456789.".contains($0) }
-                let dotCount = filtered.filter { $0 == "." }.count
-                return dotCount > 1 ? String(filtered.dropLast()) : filtered
-            }
-            .sink { [weak self] filteredAmount in
-                // 숫자가 있으면 포맷팅하고, 없으면 그대로
-                if let number = Double(filteredAmount) {
-                    let formattedString = self?.numberFormatter.string(from: NSNumber(value: number)) ?? ""
-                    self?.spentCost = formattedString
-                } else {
-                    self?.spentCost = filteredAmount
-                }
-            }
-            .store(in: &cancellables)
-    }
     
     private func doubleToStringWithCommas(_ value: Double) -> String {
         return numberFormatter.string(from: NSNumber(value: value)) ?? "\(value)"
