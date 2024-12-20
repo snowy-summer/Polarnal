@@ -56,52 +56,48 @@ struct TravelDashboard: View {
                 
             }
         } detail: {
-            if let selectedTravel = viewModel.selectedTravel {
-                VStack {
-                    HStack {
-                        TravelTodoMiniView(travel: selectedTravel)
-                            .background(Color(uiColor: .systemGray5))
-                            .clipShape(RoundedRectangle(cornerRadius: 24))
-                            .padding(.trailing)
-                        
-                        VStack {
-                            HStack {
-                                TravelTicketMiniView()
-                                    .background(Color(uiColor: .systemGray5))
-                                    .clipShape(RoundedRectangle(cornerRadius: 24))
-                                
-                                RoundedRectangle(cornerRadius: 24)
-                                    .overlay {
-                                        Circle()
-                                            .fill(.blue)
-                                            .padding()
-                                            .overlay {
-                                                Circle()
-                                                    .fill()
-                                                    .padding(60)
-                                            }
-                                    }
-                            }
+            NavigationStack {
+                if let selectedTravel = viewModel.selectedTravel {
+                    VStack {
+                        HStack {
+                            TravelTodoMiniView(travel: selectedTravel)
+                                .background(Color(uiColor: .systemGray5))
+                                .clipShape(RoundedRectangle(cornerRadius: 24))
+                                .padding(.trailing)
                             
-                            HStack {
-                                TravelMapMiniView()
-                                    .clipShape(RoundedRectangle(cornerRadius: 24))
-                                TravelDiaryMiniView()
-                                    .background(Color(uiColor: .systemGray5))
-                                    .clipShape(RoundedRectangle(cornerRadius: 24))
+                            VStack {
+                                HStack {
+                                    TravelTicketMiniView()
+                                        .background(Color(uiColor: .systemGray5))
+                                        .clipShape(RoundedRectangle(cornerRadius: 24))
+                                    
+                                    NavigationLink(destination: TravelCostView()) {
+                                        TravelCostMiniView()
+                                            .background(Color(uiColor: .systemGray5))
+                                            .clipShape(RoundedRectangle(cornerRadius: 24))
+                                    }
+                                }
                                 
+                                HStack {
+                                    TravelMapMiniView()
+                                        .clipShape(RoundedRectangle(cornerRadius: 24))
+                                    TravelDiaryMiniView()
+                                        .background(Color(uiColor: .systemGray5))
+                                        .clipShape(RoundedRectangle(cornerRadius: 24))
+                                    
+                                }
                             }
                         }
-                    }
-                    .padding(.bottom)
-                    .padding(.horizontal)
-                    
-                    RoundedRectangle(cornerRadius: 24)
+                        .padding(.bottom)
                         .padding(.horizontal)
+                        
+                        RoundedRectangle(cornerRadius: 24)
+                            .padding(.horizontal)
+                    }
+                    
+                } else {
+                    Text("여행을 선택하세요")
                 }
-                
-            } else {
-                Text("여행을 선택하세요")
             }
             
         }
@@ -179,6 +175,19 @@ struct TravelMapMiniView: View {
             }
         }
         
+    }
+}
+
+struct TravelCostMiniView: View {
+    var body: some View {
+        Circle()
+            .fill(.blue)
+            .padding()
+            .overlay {
+                Circle()
+                    .fill()
+                    .padding(60)
+            }
     }
 }
 

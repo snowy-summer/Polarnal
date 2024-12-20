@@ -14,11 +14,17 @@ final class TravelCostViewModel: ViewModelProtocol {
         case insertModelContext(ModelContext)
         case showAddTravelCostView
         case showEditTravelCostView
+        case deleteTravelCost(TravelCostDB)
     }
+    
     private let dbManager = DBManager()
     var cancellables: Set<AnyCancellable> = []
-    @Published var totalCost: Double = 0
     @Published var sheetType: AddTravelCostViewSheetType?
+    
+    
+    @Published var totalCost: Double = 0
+    @Published var costList: [TravelCostDB] = []
+    
     
     
     func apply(_ intent: Intent) {
@@ -31,11 +37,25 @@ final class TravelCostViewModel: ViewModelProtocol {
             
         case .showEditTravelCostView:
             sheetType = .edit
+            
+        case .deleteTravelCost(let travelCost):
+            return
         }
     }
 }
 
-enum AddTravelCostViewSheetType {
+enum AddTravelCostViewSheetType: Identifiable {
+    
     case add
     case edit
+    
+    var id: String {
+        switch self {
+        case .add:
+            return "add"
+            
+        case .edit:
+            return "edit"
+        }
+    }
 }
