@@ -14,6 +14,7 @@ struct TravelDashboard: View {
     @ObservedObject var sideTabBarViewModel: SideTabBarViewModel
     @Query var travelList: [TravelPlanDB]
     @StateObject var viewModel: TravelDashboardViewModel = TravelDashboardViewModel()
+    @StateObject var travelIdViewModel: SelectedTravelViewModel = SelectedTravelViewModel()
     
     var body: some View {
         NavigationSplitView {
@@ -27,6 +28,7 @@ struct TravelDashboard: View {
                             TravelListCell(travel: travel)
                                 .onTapGesture {
                                     viewModel.apply(.selectTravel(travel))
+                                    travelIdViewModel.apply(.selectTravel(travel))
                                 }
                         }
                     }
@@ -101,10 +103,12 @@ struct TravelDashboard: View {
             }
             
         }
+        .environmentObject(travelIdViewModel)
         .onAppear {
             viewModel.apply(.insertModelContext(modelContext))
             if !travelList.isEmpty && viewModel.selectedTravel == nil {
                 viewModel.apply(.selectTravel(travelList[0]))
+                travelIdViewModel.apply(.selectTravel(travelList[0]))
             }
         }
         

@@ -77,6 +77,7 @@ final class TravelCostDB {
     var content: String
     var costType: String
     var date: Date
+    var travelPlanID: UUID
     @Attribute(.externalStorage) var imageDataList: [Data]
     
     init(id: UUID = UUID(),
@@ -87,6 +88,7 @@ final class TravelCostDB {
          content: String,
          costType: String,
          date: Date,
+         travelPlanID: UUID,
          imageDataList: [Data] = []) {
         self.id = id
         self.spentCost = spentCost
@@ -96,6 +98,7 @@ final class TravelCostDB {
         self.content = content
         self.costType = costType
         self.date = date
+        self.travelPlanID = travelPlanID
         self.imageDataList = imageDataList
     }
 }

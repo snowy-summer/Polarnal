@@ -89,6 +89,7 @@
 		6B790FE52CFFEF7E0000AC03 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FE42CFFEF7E0000AC03 /* ColorPalette.swift */; };
 		6B790FE72CFFEFA80000AC03 /* DesignOfFolderIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FE62CFFEFA80000AC03 /* DesignOfFolderIcon.swift */; };
 		6BDAE5002D141DDE00A066E9 /* TravelCostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE4FF2D141DDE00A066E9 /* TravelCostViewModel.swift */; };
+		6BDAE5022D1563CE00A066E9 /* SelectedTravelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5012D1563CE00A066E9 /* SelectedTravelViewModel.swift */; };
 		6BE6A6A22D13ABDC00931E7B /* CurrencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE6A6A12D13ABDC00931E7B /* CurrencyType.swift */; };
 /* End PBXBuildFile section */
 
@@ -176,6 +177,7 @@
 		6B790FE42CFFEF7E0000AC03 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		6B790FE62CFFEFA80000AC03 /* DesignOfFolderIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignOfFolderIcon.swift; sourceTree = "<group>"; };
 		6BDAE4FF2D141DDE00A066E9 /* TravelCostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelCostViewModel.swift; sourceTree = "<group>"; };
+		6BDAE5012D1563CE00A066E9 /* SelectedTravelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTravelViewModel.swift; sourceTree = "<group>"; };
 		6BE6A6A12D13ABDC00931E7B /* CurrencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -446,6 +448,7 @@
 			children = (
 				6B37A7CA2D0FBC1B00239987 /* TravelDashboard.swift */,
 				6B37A7DC2D103D4100239987 /* TravelDashboardViewModel.swift */,
+				6BDAE5012D1563CE00A066E9 /* SelectedTravelViewModel.swift */,
 				6B37A7E22D11681600239987 /* TravelTodo */,
 				6B37A7E82D116DFF00239987 /* TravelCost */,
 			);
@@ -864,6 +867,7 @@
 				6B37A76F2D05669600239987 /* MiniCalendarView.swift in Sources */,
 				6B37A7A02D09AAC700239987 /* AddDDayCategoryCell.swift in Sources */,
 				6B37A7752D06840400239987 /* Date+Extension.swift in Sources */,
+				6BDAE5022D1563CE00A066E9 /* SelectedTravelViewModel.swift in Sources */,
 				6B790FC42CFF25960000AC03 /* PhotoPicker.swift in Sources */,
 				6B37A7BA2D0B088700239987 /* ExpendedTodoFolderCell.swift in Sources */,
 				6B790FE52CFFEF7E0000AC03 /* ColorPalette.swift in Sources */,

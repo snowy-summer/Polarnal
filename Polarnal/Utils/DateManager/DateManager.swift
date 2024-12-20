@@ -26,7 +26,7 @@ final class DateManager {
     }
     
     func getDateString(date: Date) -> String {
-        dateFormatter.dateFormat = "YYYY-MM-dd"
+        dateFormatter.dateFormat = "YYYY.MM.dd"
         let dateString = dateFormatter.string(from: date)
         return dateString
     }

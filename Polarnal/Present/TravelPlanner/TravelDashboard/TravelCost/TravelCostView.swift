@@ -10,6 +10,7 @@ import SwiftData
 
 struct TravelCostView: View {
     @Environment(\.modelContext) var modelContext
+    @EnvironmentObject var selectedTravelViewModel: SelectedTravelViewModel
     @StateObject private var viewModel: TravelCostViewModel = TravelCostViewModel()
     
     var body: some View {
@@ -29,6 +30,10 @@ struct TravelCostView: View {
             }
             
         }
+        .onAppear {
+            viewModel.apply(.insertModelContext(modelContext,
+                                                selectedTravelViewModel.selectedTravelId))
+        }
         .toolbar {
             ToolbarItem {
                 Button {
@@ -39,7 +44,9 @@ struct TravelCostView: View {
 
             }
         }
-        .sheet(item: $viewModel.sheetType) { type in
+        .sheet(item: $viewModel.sheetType, onDismiss: {
+            viewModel.apply(.fetchList)
+        }) { type in
             NavigationStack {
                 AddTravelCostView(cost: nil)
             }
@@ -100,6 +107,7 @@ struct TravelCostOverView: View {
 struct TravelCostListView: View {
     
     @ObservedObject var viewModel: TravelCostViewModel
+    private let dateManager = DateManager.shared
     
     var body: some View {
         List {
@@ -124,7 +132,7 @@ struct TravelCostListView: View {
                 Text("542,900 ₩")
                     .font(.title3)
                     .bold()
-                Text("24.02.12")
+                Text(dateManager.getDateString(date: cost.date))
                     .font(.caption)
                     .foregroundStyle(.gray)
                     .padding(.top, 4)

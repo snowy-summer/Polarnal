@@ -12,6 +12,7 @@ struct AddTravelCostView: View {
     
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
+    @EnvironmentObject var selectedTravelViewModel: SelectedTravelViewModel
     @StateObject private var viewModel: AddTravelCostViewModel
     
     init(cost: TravelCostDB?) {
@@ -68,6 +69,9 @@ struct AddTravelCostView: View {
                 
                 photoSection()
             }
+            .onTapGesture {
+                viewModel.apply(.offDropDown)
+            }
         }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
@@ -88,6 +92,9 @@ struct AddTravelCostView: View {
                 }
             }
         }
+        .onAppear {
+            viewModel.apply(.insertModelContext(modelContext, selectedTravelViewModel.selectedTravelId))
+        }
     }
     
     private func totalReceiptCard() -> some View {
@@ -104,10 +111,10 @@ struct AddTravelCostView: View {
                 .padding(.horizontal)
             
             HStack {
-                Text("₩")
+                Text(viewModel.spentCostType.symbol)
                     .font(.largeTitle)
                     .bold()
-                Text("1,842,214")
+                Text(viewModel.spentCost)
                     .font(.largeTitle)
                     .bold()
             }
