@@ -69,24 +69,38 @@ struct TravelDashboard: View {
                             
                             VStack {
                                 HStack {
-                                    TravelTicketMiniView()
-                                        .background(Color(uiColor: .systemGray5))
-                                        .clipShape(RoundedRectangle(cornerRadius: 24))
+                                    GeometryReader { geometry in
+                                        NavigationLink(destination: TravelCostView()) {
+                                            TravelTicketMiniView()
+                                                .frame(width: geometry.size.width, height: geometry.size.height)
+                                                .background(Color(uiColor: .systemGray5))
+                                                .clipShape(RoundedRectangle(cornerRadius: 24))
+                                        }
+                                    }
                                     
-                                    NavigationLink(destination: TravelCostView()) {
-                                        TravelCostMiniView()
-                                            .background(Color(uiColor: .systemGray5))
-                                            .clipShape(RoundedRectangle(cornerRadius: 24))
+                                    GeometryReader { geometry in
+                                        NavigationLink(destination: TravelCostView()) {
+                                            TravelCostMiniView()
+                                                .frame(width: geometry.size.width, height: geometry.size.height)
+                                                .background(Color(uiColor: .systemGray5))
+                                                .clipShape(RoundedRectangle(cornerRadius: 24))
+                                        }
                                     }
                                 }
                                 
                                 HStack {
-                                    TravelMapMiniView()
-                                        .clipShape(RoundedRectangle(cornerRadius: 24))
-                                    TravelDiaryMiniView()
-                                        .background(Color(uiColor: .systemGray5))
-                                        .clipShape(RoundedRectangle(cornerRadius: 24))
+                                    GeometryReader { geometry in
+                                        TravelMapMiniView()
+                                            .frame(width: geometry.size.width, height: geometry.size.height)
+                                            .clipShape(RoundedRectangle(cornerRadius: 24))
+                                    }
                                     
+                                    GeometryReader { geometry in
+                                        TravelDiaryMiniView()
+                                            .frame(width: geometry.size.width, height: geometry.size.height)
+                                            .background(Color(uiColor: .systemGray5))
+                                            .clipShape(RoundedRectangle(cornerRadius: 24))
+                                    }
                                 }
                             }
                         }
