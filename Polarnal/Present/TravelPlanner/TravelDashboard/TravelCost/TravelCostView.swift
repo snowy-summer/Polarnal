@@ -63,8 +63,7 @@ struct TravelCostOverView: View {
     var body: some View {
         VStack {
             
-            Chart(viewModel.chartDataList,
-                  id: \.category) { element in
+            Chart(viewModel.chartDataList, id: \.category) { element in
                 SectorMark(
                     angle: .value("금액", element.totalCost),
                     innerRadius: .ratio(0.618),
@@ -73,11 +72,11 @@ struct TravelCostOverView: View {
                 .cornerRadius(12.0)
                 .foregroundStyle(element.category.color)
             }
-                  .chartBackground { _ in
-                      Text("\(String(format: "%.2f", viewModel.totalCost)) ₩")
-                          .font(.title)
-                          .bold()
-                  }
+            .chartBackground { _ in
+                Text("\(String(format: "%.2f", viewModel.totalCost)) ₩")
+                    .font(.title)
+                    .bold()
+            }
             
             List {
                 ForEach(TravelCostType.allCases, id: \.self) { type in

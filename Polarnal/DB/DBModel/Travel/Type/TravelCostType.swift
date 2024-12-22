@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum TravelCostType: String, CaseIterable {
+enum TravelCostType: String,Equatable, CaseIterable {
     case hotel
     case meals
     case shopping

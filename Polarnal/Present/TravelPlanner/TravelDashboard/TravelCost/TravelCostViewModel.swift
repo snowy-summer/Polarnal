@@ -105,7 +105,7 @@ enum AddTravelCostViewSheetType: Identifiable {
     }
 }
 
-struct CategorySum {
+struct CategorySum: Equatable {
     var category: TravelCostType
     var totalCost: Double
 }
