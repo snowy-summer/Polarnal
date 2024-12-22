@@ -12,7 +12,7 @@ import Charts
 struct TravelCostView: View {
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var selectedTravelViewModel: SelectedTravelViewModel
-    @StateObject private var viewModel: TravelCostViewModel = TravelCostViewModel()
+    @ObservedObject var viewModel: TravelCostViewModel
     
     var body: some View {
         
@@ -66,7 +66,7 @@ struct TravelCostOverView: View {
             Chart(viewModel.chartDataList,
                   id: \.category) { element in
                 SectorMark(
-                    angle: .value("Usage", element.totalCost),
+                    angle: .value("금액", element.totalCost),
                     innerRadius: .ratio(0.618),
                     angularInset: 1.5
                 )
@@ -162,7 +162,7 @@ struct TravelCostListView: View {
 }
 
 #Preview {
-    TravelCostView()
+    TravelCostView(viewModel: TravelCostViewModel())
 }
 
 // 날짜

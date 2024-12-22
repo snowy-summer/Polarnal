@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import Charts
 
 struct TravelDashboard: View {
     
@@ -15,6 +16,7 @@ struct TravelDashboard: View {
     @Query var travelList: [TravelPlanDB]
     @StateObject var viewModel: TravelDashboardViewModel = TravelDashboardViewModel()
     @StateObject var travelIdViewModel: SelectedTravelViewModel = SelectedTravelViewModel()
+    @StateObject var travelCostViewModel: TravelCostViewModel = TravelCostViewModel()
     
     var body: some View {
         NavigationSplitView {
@@ -70,7 +72,7 @@ struct TravelDashboard: View {
                             VStack {
                                 HStack {
                                     GeometryReader { geometry in
-                                        NavigationLink(destination: TravelCostView()) {
+                                        NavigationLink(destination: TravelCostView(viewModel: travelCostViewModel)) {
                                             TravelTicketMiniView()
                                                 .frame(width: geometry.size.width, height: geometry.size.height)
                                                 .background(Color(uiColor: .systemGray5))
@@ -79,8 +81,8 @@ struct TravelDashboard: View {
                                     }
                                     
                                     GeometryReader { geometry in
-                                        NavigationLink(destination: TravelCostView()) {
-                                            TravelCostMiniView()
+                                        NavigationLink(destination: TravelCostView(viewModel: travelCostViewModel)) {
+                                            TravelCostMiniView(viewModel: travelCostViewModel)
                                                 .frame(width: geometry.size.width, height: geometry.size.height)
                                                 .background(Color(uiColor: .systemGray5))
                                                 .clipShape(RoundedRectangle(cornerRadius: 24))
@@ -124,6 +126,9 @@ struct TravelDashboard: View {
                 viewModel.apply(.selectTravel(travelList[0]))
                 travelIdViewModel.apply(.selectTravel(travelList[0]))
             }
+            
+            travelCostViewModel.apply(.insertModelContext(modelContext,
+                                                          travelIdViewModel.selectedTravelId))
         }
         
         
@@ -197,15 +202,27 @@ struct TravelMapMiniView: View {
 }
 
 struct TravelCostMiniView: View {
+    
+    @ObservedObject var viewModel: TravelCostViewModel
+    
     var body: some View {
-        Circle()
-            .fill(.blue)
-            .padding()
-            .overlay {
-                Circle()
-                    .fill()
-                    .padding(60)
-            }
+        Chart(viewModel.chartDataList,
+              id: \.category) { element in
+            SectorMark(
+                angle: .value("Usage", element.totalCost),
+                innerRadius: .ratio(0.618),
+                angularInset: 1.5
+            )
+            .cornerRadius(12.0)
+            .foregroundStyle(element.category.color)
+        }
+              .chartBackground { _ in
+                  Text("\(String(format: "%.f", viewModel.totalCost)) ₩")
+                      .foregroundStyle(.black)
+                      .font(.callout)
+                      .bold()
+              }
+              .padding()
     }
 }
 
