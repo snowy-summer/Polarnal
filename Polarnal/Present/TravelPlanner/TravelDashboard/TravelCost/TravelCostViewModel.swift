@@ -23,9 +23,13 @@ final class TravelCostViewModel: ViewModelProtocol {
     var cancellables: Set<AnyCancellable> = []
     @Published var sheetType: AddTravelCostViewSheetType?
     
-    
     @Published var totalCost: Double = 0
     @Published var costList: [TravelCostDB] = []
+    @Published var chartDataList: [CategorySum] = []
+    
+    init() {
+        binding()
+    }
     
     func apply(_ intent: Intent) {
         switch intent {
@@ -33,7 +37,7 @@ final class TravelCostViewModel: ViewModelProtocol {
                                  let travelId):
             dbManager.modelContext = modelContext
             travelPlanID = travelId
-            fetchCostLit()
+            fetchCostList()
             
         case .showAddTravelCostView:
             sheetType = .add
@@ -42,17 +46,36 @@ final class TravelCostViewModel: ViewModelProtocol {
             sheetType = .edit
             
         case .deleteTravelCost(let travelCost):
-            return
+            dbManager.deleteItem(travelCost)
+            fetchCostList()
             
         case .fetchList:
-            fetchCostLit()
+            fetchCostList()
         }
     }
 }
 
 extension TravelCostViewModel {
     
-    private func fetchCostLit() {
+    private func binding() {
+        $costList
+            .sink {[weak self] costList in
+                guard let self else { return }
+                totalCost = costList.reduce(0) { $0 + $1.spentCost }
+                
+                let categorySums = costList
+                    .reduce(into: [String: Double]()) { result, item in
+                        result[item.costType, default: 0] += item.spentCost
+                    }
+                
+                let categorySumList = categorySums.map { CategorySum(category: TravelCostType(rawValue: $0.key) ?? .other ,
+                                                                     totalCost: $0.value) }
+                chartDataList = categorySumList
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func fetchCostList() {
         if dbManager.modelContext == nil, travelPlanID == nil {
             LogManager.log("modelContext가 없습니다")
             return
@@ -80,4 +103,9 @@ enum AddTravelCostViewSheetType: Identifiable {
             return "edit"
         }
     }
+}
+
+struct CategorySum {
+    var category: TravelCostType
+    var totalCost: Double
 }

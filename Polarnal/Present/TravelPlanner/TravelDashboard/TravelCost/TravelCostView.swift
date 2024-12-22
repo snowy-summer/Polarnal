@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import Charts
 
 struct TravelCostView: View {
     @Environment(\.modelContext) var modelContext
@@ -41,7 +42,7 @@ struct TravelCostView: View {
                 } label: {
                     Image(systemName: "plus")
                 }
-
+                
             }
         }
         .sheet(item: $viewModel.sheetType, onDismiss: {
@@ -61,18 +62,22 @@ struct TravelCostOverView: View {
     
     var body: some View {
         VStack {
-            ZStack {
-                Circle()
-                    .frame(width: 400, height: 400)
-                Circle()
-                    .fill(Color(uiColor: .systemGray5))
-                    .frame(width: 200, height: 200)
-                Text("\(String(format: "%.2f", viewModel.totalCost)) ₩")
-                    .font(.title)
-                    .bold()
-                    
-                    
+            
+            Chart(viewModel.chartDataList,
+                  id: \.category) { element in
+                SectorMark(
+                    angle: .value("Usage", element.totalCost),
+                    innerRadius: .ratio(0.618),
+                    angularInset: 1.5
+                )
+                .cornerRadius(12.0)
+                .foregroundStyle(element.category.color)
             }
+                  .chartBackground { _ in
+                      Text("\(String(format: "%.2f", viewModel.totalCost)) ₩")
+                          .font(.title)
+                          .bold()
+                  }
             
             List {
                 ForEach(TravelCostType.allCases, id: \.self) { type in
@@ -113,6 +118,20 @@ struct TravelCostListView: View {
         List {
             ForEach(viewModel.costList, id: \.id) { cost in
                 costCell(cost: cost)
+                    .swipeActions(edge: .trailing,
+                                  allowsFullSwipe: false) {
+                        Button(role: .destructive, action: {
+                            viewModel.apply(.deleteTravelCost(cost))
+                        }, label: {
+                            Label("삭제", systemImage: "trash")
+                        })
+                        
+                        Button(action: {
+                            //                        viewModel.apply(.editEventCategory(category))
+                        }, label: {
+                            Label("편집", systemImage: "pencil")
+                        })
+                    }
             }
         }
     }
@@ -129,7 +148,7 @@ struct TravelCostListView: View {
             Spacer()
             
             VStack(alignment: .trailing) {
-                Text("542,900 ₩")
+                Text("\(String(format: "%.2f", cost.spentCost)) \(cost.spentCostType)")
                     .font(.title3)
                     .bold()
                 Text(dateManager.getDateString(date: cost.date))
