@@ -15,22 +15,22 @@ final class AddTravelTicketViewModel: ViewModelProtocol {
         case insertModelContext(ModelContext, UUID?)
         case enrollDocument
         case selectDocumentType(TravelDocumentType)
-        case showAddPhotopicker
+        case showAddPhotoPicker
     }
     
     private let dbManager = DBManager()
-    var travelPlanID: UUID?
-    var document: TravelDocumentDB?
+    private var travelPlanID: UUID?
+    private var document: TravelDocumentDB?
     var cancellables: Set<AnyCancellable> = []
     
     @Published var title: String = ""
     @Published var selecteddocumentType: TravelDocumentType = .flight
-    
     @Published var imageList: [UIImage] = []
+    @Published var isShowPhotopicker = false
     
     init(document: TravelDocumentDB? = nil) {
         self.document = document
-//        convertProperty(receipt: receipt)
+        convertProperty(document: document)
     }
     
     func apply(_ intent: Intent) {
@@ -42,24 +42,22 @@ final class AddTravelTicketViewModel: ViewModelProtocol {
             
         case .enrollDocument:
             if let travelPlanID = travelPlanID {
-//                let receipt = TravelCostDB(spentCost: doubleSpentCost,
-//                                           spentCostType: spentCostType.rawValue,
-//                                           convertedCost: doubleConvertedCost,
-//                                           convertedCostType: convertedCostType.rawValue,
-//                                           content: costDescription,
-//                                           costType: selectedCostType.rawValue,
-//                                           date: spentDate,
-//                                           travelPlanID: travelPlanID)
+                let dataList = imageList.compactMap { $0.pngData() }
+                let document = TravelDocumentDB(title: title,
+                                                content: "",
+                                                type: "other",
+                                                travelPlanID: travelPlanID,
+                                                contentImageData: dataList)
                 
-//                dbManager.addItem(receipt)
+                dbManager.addItem(document)
             }
             return
             
         case .selectDocumentType(let type):
             selecteddocumentType = type
             
-        case .showAddPhotopicker:
-            return
+        case .showAddPhotoPicker:
+            isShowPhotopicker = true
         }
     }
     
@@ -67,15 +65,10 @@ final class AddTravelTicketViewModel: ViewModelProtocol {
 
 extension AddTravelTicketViewModel {
     
-    private func convertProperty(receipt: TravelCostDB?) {
-        if let receipt {
-//            spentCost = String(receipt.spentCost)
-//            spentCostType = CurrencyType(rawValue: receipt.spentCostType) ?? .KRW
-//            convertedCost = String(receipt.spentCost)
-//            convertedCostType = CurrencyType(rawValue: receipt.convertedCostType) ?? .KRW
-//            selectedCostType = TravelCostType(rawValue: receipt.costType) ?? .hotel
-//            costDescription = receipt.content
-//            spentDate = receipt.date
+    private func convertProperty(document: TravelDocumentDB?) {
+        if let document {
+            title = document.title
+            imageList = document.contentImageData.compactMap { UIImage(data: $0) }
         }
     }
     

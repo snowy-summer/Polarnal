@@ -28,23 +28,22 @@ struct AddTravelTicketView: View {
                     .padding()
                     .background(Color(UIColor.systemGray6))
                     .clipShape(RoundedRectangle(cornerRadius: 12))
-                    .padding(.horizontal, 40)
+                    .padding(.horizontal)
             }
             
             photoSection()
-                .padding(.horizontal, 40)
-        }
-        
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    dismiss()
-                }) {
-                    Text("취소")
-                }
-                
-            }
             
+            LazyVStack {
+                ForEach(viewModel.imageList, id: \.self) { image in
+                    Image(uiImage: image)
+                        .resizable()
+                        .frame(maxWidth: .infinity)
+                        .scaledToFit()
+                        .padding()
+                }
+            }
+        }
+        .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {
                     viewModel.apply(.enrollDocument)
@@ -54,8 +53,12 @@ struct AddTravelTicketView: View {
                 }
             }
         }
+        .sheet(isPresented: $viewModel.isShowPhotopicker) {
+            PhotoPicker(selectedImages: $viewModel.imageList)
+        }
         .onAppear {
-            viewModel.apply(.insertModelContext(modelContext, selectedTravelViewModel.selectedTravelId))
+            viewModel.apply(.insertModelContext(modelContext,
+                                                selectedTravelViewModel.selectedTravelId))
         }
     }
     
@@ -87,7 +90,7 @@ struct AddTravelTicketView: View {
                 sectionHeader(section: .photo)
                 Spacer()
                 Button(action: {
-                    
+                    viewModel.apply(.showAddPhotoPicker)
                 }, label: {
                     Image(systemName: "plus")
                         .resizable()
@@ -99,15 +102,6 @@ struct AddTravelTicketView: View {
                 })
                 .padding(.trailing, 40)
             }
-            ScrollView(.horizontal) {
-                LazyHStack {
-                    Image(.ex)
-                }
-            }
-            .padding(.horizontal)
-            .padding(.bottom)
-            
-            
         }
         .background(Color(uiColor: .systemGray6))
         .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -141,5 +135,5 @@ enum AddTravelTicketSectionType {
 }
 
 #Preview {
-    AddTravelCostView(cost: nil)
+    AddTravelTicketView(document: nil)
 }

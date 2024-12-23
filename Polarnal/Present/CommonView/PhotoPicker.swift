@@ -10,7 +10,7 @@ import PhotosUI
 
 struct PhotoPicker: UIViewControllerRepresentable {
     
-    @Binding var selectedImage: UIImage?
+    @Binding var selectedImages: [UIImage]
     
     func makeUIViewController(context: Context) -> PHPickerViewController {
         var config = PHPickerConfiguration()
@@ -45,7 +45,7 @@ struct PhotoPicker: UIViewControllerRepresentable {
                     result.itemProvider.loadObject(ofClass: UIImage.self) { image, error in
                         if let uiImage = image as? UIImage {
                             DispatchQueue.main.async { [weak self] in
-                                self?.parent.selectedImage = uiImage
+                                self?.parent.selectedImages.append(uiImage)
                             }
                         } else if let error = error {
                             LogManager.log("이미지 불러오기 실패")

@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct TravelTicketView: View {
+    @Environment(\.modelContext) var modelContext
     @ObservedObject var viewModel: TravelTicketViewModel
+    @EnvironmentObject var selectedTravelViewModel: SelectedTravelViewModel
     private let gridItems = GridItem(.flexible(), spacing: 16)
     
     var body: some View {
@@ -18,39 +20,36 @@ struct TravelTicketView: View {
             LazyVGrid(columns: columns, spacing: 20) {
                 
                 ForEach(viewModel.documentList, id: \.id) { ticket in
-                    TravelTicketCell()
-                        .background(.blue)
+                    TravelTicketCell(document: ticket)
+                        .background(Color(uiColor: .systemGray5))
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
                 
             }
             .padding(.horizontal)
         }
+        .onAppear {
+            viewModel.apply(.insertModelContext(modelContext,
+                                                selectedTravelViewModel.selectedTravelId))
+        }
         .toolbar {
             ToolbarItem {
-                Button {
-                    viewModel.apply(.showAddTravelTicketView)
-                } label: {
+                NavigationLink(destination: AddTravelTicketView(document: nil)) {
                     Image(systemName: "plus")
                 }
-                
-            }
-        }
-        .sheet(item: $viewModel.sheetType, onDismiss: {
-            viewModel.apply(.fetchList)
-        }) { type in
-            NavigationStack {
-                AddTravelTicketView(document: nil)
             }
         }
     }
 }
 
 struct TravelTicketCell: View {
+    
+    let document: TravelDocumentDB
+    
     var body: some View {
         VStack {
             HStack {
-                Text("인천 -> 도쿄")
+                Text(document.title)
                     .font(.title)
                     .bold()
                     .padding([.horizontal, .top])
