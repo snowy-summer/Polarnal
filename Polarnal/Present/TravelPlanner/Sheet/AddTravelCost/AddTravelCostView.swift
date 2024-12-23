@@ -301,7 +301,7 @@ struct AddTravelCostView: View {
                 .padding()
             }
             .frame(width: 250, height: 150)
-            .background(Color(uiColor: .systemGray5))
+            .background(type.color)
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .padding(.horizontal, 8)
             .onTapGesture {

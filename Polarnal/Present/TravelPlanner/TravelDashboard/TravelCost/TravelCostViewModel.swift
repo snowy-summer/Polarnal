@@ -68,8 +68,9 @@ extension TravelCostViewModel {
                         result[item.costType, default: 0] += item.spentCost
                     }
                 
-                let categorySumList = categorySums.map { CategorySum(category: TravelCostType(rawValue: $0.key) ?? .other ,
+                var categorySumList = categorySums.map { CategorySum(category: TravelCostType(rawValue: $0.key) ?? .other ,
                                                                      totalCost: $0.value) }
+                categorySumList.sort { $0.totalCost > $1.totalCost }
                 chartDataList = categorySumList
             }
             .store(in: &cancellables)

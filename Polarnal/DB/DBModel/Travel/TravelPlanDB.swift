@@ -107,16 +107,22 @@ final class TravelCostDB {
 final class TravelDocumentDB {
     @Attribute(.unique) var id: UUID
     var title: String
+    var content: String
     var type: String
+    var travelPlanID: UUID
     @Attribute(.externalStorage) var contentImageData: [Data]
     
     init(id: UUID = UUID(),
          title: String,
+         content: String,
          type: String,
+         travelPlanID: UUID,
          contentImageData: [Data] = []) {
         self.id = id
         self.title = title
+        self.content = content
         self.type = type
+        self.travelPlanID = travelPlanID
         self.contentImageData = contentImageData
     }
 }

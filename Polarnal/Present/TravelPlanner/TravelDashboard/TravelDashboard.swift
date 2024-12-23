@@ -72,7 +72,7 @@ struct TravelDashboard: View {
                             VStack {
                                 HStack {
                                     GeometryReader { geometry in
-                                        NavigationLink(destination: TravelCostView(viewModel: travelCostViewModel)) {
+                                        NavigationLink(destination: TravelTicketView()) {
                                             TravelTicketMiniView()
                                                 .frame(width: geometry.size.width, height: geometry.size.height)
                                                 .background(Color(uiColor: .systemGray5))
