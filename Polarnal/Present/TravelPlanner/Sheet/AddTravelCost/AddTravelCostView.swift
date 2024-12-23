@@ -379,25 +379,6 @@ enum AddTravelCostSectionType {
     AddTravelCostView(cost: nil)
 }
 
-//
-//struct  DropDownMenuDemo: View {
-//
-//
-//
-//    var body: some  View {
-//        VStack {
-//
-//        }
-//        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-//        .background(Color.yellow)
-//        .onTapGesture {
-//            withAnimation {
-//                showDropdown =  false
-//            }
-//        }
-//    }
-//}
-
 struct DropDownMenu: View {
     
     let options: [CurrencyType] = CurrencyType.allCases

@@ -17,6 +17,7 @@ struct TravelDashboard: View {
     @StateObject var viewModel: TravelDashboardViewModel = TravelDashboardViewModel()
     @StateObject var travelIdViewModel: SelectedTravelViewModel = SelectedTravelViewModel()
     @StateObject var travelCostViewModel: TravelCostViewModel = TravelCostViewModel()
+    @StateObject var travelTicketViewModel: TravelTicketViewModel = TravelTicketViewModel()
     
     var body: some View {
         NavigationSplitView {
@@ -72,7 +73,7 @@ struct TravelDashboard: View {
                             VStack {
                                 HStack {
                                     GeometryReader { geometry in
-                                        NavigationLink(destination: TravelTicketView()) {
+                                        NavigationLink(destination: TravelTicketView(viewModel: TravelTicketViewModel())) {
                                             TravelTicketMiniView()
                                                 .frame(width: geometry.size.width, height: geometry.size.height)
                                                 .background(Color(uiColor: .systemGray5))

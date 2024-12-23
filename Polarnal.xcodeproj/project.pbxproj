@@ -92,7 +92,9 @@
 		6BDAE5052D1579E700A066E9 /* CostFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5042D1579E700A066E9 /* CostFormatter.swift */; };
 		6BDAE5082D18EAC300A066E9 /* TravelTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5072D18EAC300A066E9 /* TravelTicketView.swift */; };
 		6BDAE50A2D18F33500A066E9 /* TravelTicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5092D18F33500A066E9 /* TravelTicketViewModel.swift */; };
-		6BDAE50C2D18F38E00A066E9 /* TravelTicketType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE50B2D18F38E00A066E9 /* TravelTicketType.swift */; };
+		6BDAE50C2D18F38E00A066E9 /* TravelDocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE50B2D18F38E00A066E9 /* TravelDocumentType.swift */; };
+		6BDAE50F2D193C9400A066E9 /* AddTravelTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE50E2D193C9400A066E9 /* AddTravelTicketView.swift */; };
+		6BDAE5112D193E5700A066E9 /* AddTravelTicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5102D193E5700A066E9 /* AddTravelTicketViewModel.swift */; };
 		6BE6A6A22D13ABDC00931E7B /* CurrencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE6A6A12D13ABDC00931E7B /* CurrencyType.swift */; };
 /* End PBXBuildFile section */
 
@@ -183,7 +185,9 @@
 		6BDAE5042D1579E700A066E9 /* CostFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostFormatter.swift; sourceTree = "<group>"; };
 		6BDAE5072D18EAC300A066E9 /* TravelTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTicketView.swift; sourceTree = "<group>"; };
 		6BDAE5092D18F33500A066E9 /* TravelTicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTicketViewModel.swift; sourceTree = "<group>"; };
-		6BDAE50B2D18F38E00A066E9 /* TravelTicketType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTicketType.swift; sourceTree = "<group>"; };
+		6BDAE50B2D18F38E00A066E9 /* TravelDocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDocumentType.swift; sourceTree = "<group>"; };
+		6BDAE50E2D193C9400A066E9 /* AddTravelTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelTicketView.swift; sourceTree = "<group>"; };
+		6BDAE5102D193E5700A066E9 /* AddTravelTicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelTicketViewModel.swift; sourceTree = "<group>"; };
 		6BE6A6A12D13ABDC00931E7B /* CurrencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -465,6 +469,7 @@
 		6B37A7CC2D0FED0500239987 /* Sheet */ = {
 			isa = PBXGroup;
 			children = (
+				6BDAE50D2D193C7D00A066E9 /* AddTravelTicket */,
 				6BDAE4FE2D140FA600A066E9 /* AddTravelCost */,
 				6B37A7CD2D0FED0A00239987 /* AddTravelPlan */,
 			);
@@ -494,7 +499,7 @@
 			children = (
 				6B37A7DA2D100E9C00239987 /* TravelCostType.swift */,
 				6BE6A6A12D13ABDC00931E7B /* CurrencyType.swift */,
-				6BDAE50B2D18F38E00A066E9 /* TravelTicketType.swift */,
+				6BDAE50B2D18F38E00A066E9 /* TravelDocumentType.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -764,6 +769,15 @@
 			path = TravelTicket;
 			sourceTree = "<group>";
 		};
+		6BDAE50D2D193C7D00A066E9 /* AddTravelTicket */ = {
+			isa = PBXGroup;
+			children = (
+				6BDAE50E2D193C9400A066E9 /* AddTravelTicketView.swift */,
+				6BDAE5102D193E5700A066E9 /* AddTravelTicketViewModel.swift */,
+			);
+			path = AddTravelTicket;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -848,7 +862,7 @@
 				6BE6A6A22D13ABDC00931E7B /* CurrencyType.swift in Sources */,
 				6B790FD52CFFEDF10000AC03 /* FolderListViewModel.swift in Sources */,
 				6B37A7C72D0C0A9000239987 /* MainCalendarCellViewModel.swift in Sources */,
-				6BDAE50C2D18F38E00A066E9 /* TravelTicketType.swift in Sources */,
+				6BDAE50C2D18F38E00A066E9 /* TravelDocumentType.swift in Sources */,
 				6B37A75D2D002D7700239987 /* NoteListViewModel.swift in Sources */,
 				6B37A7782D06842700239987 /* DateManager.swift in Sources */,
 				6B37A7B62D0AF29100239987 /* TodoFolderViewModel.swift in Sources */,
@@ -867,6 +881,7 @@
 				6B37A7872D08514400239987 /* EvnentDB.swift in Sources */,
 				6B37A77E2D07D7CC00239987 /* SideTabBarViewModel.swift in Sources */,
 				6B37A7962D0972FD00239987 /* PlannerTypeListView.swift in Sources */,
+				6BDAE50F2D193C9400A066E9 /* AddTravelTicketView.swift in Sources */,
 				6B790FDA2CFFEE810000AC03 /* AddFolderViewModel.swift in Sources */,
 				6B37A7D42D1009BD00239987 /* AddTravelPlanView.swift in Sources */,
 				6B37A7AD2D0AA5AA00239987 /* TodoViewModel.swift in Sources */,
@@ -910,6 +925,7 @@
 				6B37A78E2D0924DD00239987 /* AddEventCategoryViewModel.swift in Sources */,
 				6B37A7B42D0AF24F00239987 /* TodoFolderCell.swift in Sources */,
 				6B37A7DD2D103D4100239987 /* TravelDashboardViewModel.swift in Sources */,
+				6BDAE5112D193E5700A066E9 /* AddTravelTicketViewModel.swift in Sources */,
 				6B790FBE2CFEA50A0000AC03 /* NoteDB.swift in Sources */,
 				6B790F9F2CFEA3080000AC03 /* PolarnalApp.swift in Sources */,
 				6B37A7EC2D116E4E00239987 /* TravelCostView.swift in Sources */,

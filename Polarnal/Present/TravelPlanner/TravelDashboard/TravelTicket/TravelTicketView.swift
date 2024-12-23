@@ -8,33 +8,39 @@
 import SwiftUI
 
 struct TravelTicketView: View {
+    @ObservedObject var viewModel: TravelTicketViewModel
     private let gridItems = GridItem(.flexible(), spacing: 16)
     
     var body: some View {
         ScrollView {
-            let columns = Array(repeating: gridItems, count: 2)
+            let columns = Array(repeating: gridItems,
+                                count: viewModel.documentList.count)
             LazyVGrid(columns: columns, spacing: 20) {
                 
-                
-                TravelTicketCell()
-                    .background(.blue)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                
-                TravelTicketCell()
-                    .background(.blue)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                ForEach(viewModel.documentList, id: \.id) { ticket in
+                    TravelTicketCell()
+                        .background(.blue)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                }
                 
             }
-            .padding(.horizontal, 16)
+            .padding(.horizontal)
         }
         .toolbar {
             ToolbarItem {
                 Button {
-//                    viewModel.apply(.showAddTravelCostView)
+                    viewModel.apply(.showAddTravelTicketView)
                 } label: {
                     Image(systemName: "plus")
                 }
                 
+            }
+        }
+        .sheet(item: $viewModel.sheetType, onDismiss: {
+            viewModel.apply(.fetchList)
+        }) { type in
+            NavigationStack {
+                AddTravelTicketView(document: nil)
             }
         }
     }
@@ -75,5 +81,5 @@ struct TravelTicketCell: View {
 }
 
 #Preview {
-    TravelTicketView()
+    TravelTicketView(viewModel: TravelTicketViewModel())
 }
