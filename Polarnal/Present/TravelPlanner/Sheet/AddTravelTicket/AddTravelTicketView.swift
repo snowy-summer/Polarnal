@@ -30,7 +30,7 @@ struct AddTravelTicketView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                     .padding(.horizontal)
             }
-            
+            categorySection()
             photoSection()
             
             LazyVStack {
@@ -82,6 +82,53 @@ struct AddTravelTicketView: View {
         }
         .padding()
         
+    }
+    
+    private func categorySection() -> some View {
+        VStack {
+            HStack {
+                sectionHeader(section: .category)
+                Spacer()
+            }
+            ScrollView(.horizontal) {
+                LazyHStack(content: {
+                    ForEach(TravelDocumentType.allCases, id: \.rawValue) { type in
+                        let isSelected = viewModel.selecteddocumentType == type
+                        categoryCell(category: type)
+                            .background(isSelected ? Color.blue : Color(uiColor: .systemGray3) )
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .onTapGesture {
+                                viewModel.apply(.selectDocumentType(type))
+                            }
+                    }
+                })
+                .padding()
+            }
+        }
+        .background(Color(uiColor: .systemGray6))
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .padding()
+    }
+    
+    private func categoryCell(category: TravelDocumentType) -> some View {
+        HStack {
+            Text(category.text)
+                .font(.title)
+                .bold()
+                .padding()
+            Spacer()
+            ZStack {
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(.gray)
+                    .frame(width: 44, height: 44)
+                
+                Image(systemName: category.icon)
+                    .resizable()
+                    .frame(width: 32, height: 32)
+                    
+            }
+            .padding()
+        }
     }
     
     private func photoSection() -> some View {

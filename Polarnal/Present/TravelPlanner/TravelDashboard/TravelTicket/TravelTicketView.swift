@@ -23,6 +23,13 @@ struct TravelTicketView: View {
                     TravelTicketCell(document: ticket)
                         .background(Color(uiColor: .systemGray5))
                         .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .contextMenu {
+                            Button(role: .destructive, action: {
+                                viewModel.apply(.deleteTravelTicket(ticket))
+                            }) {
+                                Label("문서 삭제", systemImage: "trash")
+                            }
+                        }
                 }
                 
             }
@@ -59,7 +66,7 @@ struct TravelTicketCell: View {
                         .fill(.gray)
                         .frame(width: 44, height: 44)
                     
-                    Image(systemName: "airplane")
+                    Image(systemName: TravelDocumentType(rawValue: document.type)?.icon ?? TravelDocumentType.flight.icon)
                         .resizable()
                         .frame(width: 32, height: 32)
                         
@@ -67,12 +74,24 @@ struct TravelTicketCell: View {
                 .padding([.horizontal, .top])
             }
             
-            Image(.ex)
-                .resizable()
-                .frame(maxHeight: 200)
-                .scaledToFill()
-                .padding()
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+            if !document.contentImageData.isEmpty,
+               let image = UIImage(data: document.contentImageData.first!) {
+                
+                Image(uiImage: image)
+                    .resizable()
+                    .frame(maxHeight: 200)
+                    .scaledToFill()
+                    .padding()
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+            } else {
+                Image(.ex)
+                    .resizable()
+                    .frame(maxHeight: 200)
+                    .scaledToFill()
+                    .padding()
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .hidden()
+            }
             
         }
        

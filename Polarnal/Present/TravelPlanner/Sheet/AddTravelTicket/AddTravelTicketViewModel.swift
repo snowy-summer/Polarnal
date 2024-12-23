@@ -45,7 +45,7 @@ final class AddTravelTicketViewModel: ViewModelProtocol {
                 let dataList = imageList.compactMap { $0.pngData() }
                 let document = TravelDocumentDB(title: title,
                                                 content: "",
-                                                type: "other",
+                                                type: selecteddocumentType.rawValue,
                                                 travelPlanID: travelPlanID,
                                                 contentImageData: dataList)
                 
