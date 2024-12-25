@@ -10,6 +10,14 @@ import SwiftData
 
 struct TravelMapView: View {
     var body: some View {
-        Text("이")
+        List {
+            TravelMapListCell()
+        }
+    }
+}
+
+struct TravelMapListCell: View {
+    var body: some View {
+        Text("도쿄 타워")
     }
 }
