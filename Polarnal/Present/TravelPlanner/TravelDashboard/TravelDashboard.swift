@@ -110,8 +110,10 @@ struct TravelDashboard: View {
                         .padding(.bottom)
                         .padding(.horizontal)
                         
-                        RoundedRectangle(cornerRadius: 24)
-                            .padding(.horizontal)
+                        NavigationLink(destination: TravelPlanView()) {
+                            RoundedRectangle(cornerRadius: 24)
+                                .padding(.horizontal)
+                        }
                     }
                     
                 } else {

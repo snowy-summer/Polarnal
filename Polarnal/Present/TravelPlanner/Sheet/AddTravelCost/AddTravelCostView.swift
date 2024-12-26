@@ -104,7 +104,7 @@ struct AddTravelCostView: View {
                 .font(.largeTitle)
                 .bold()
                 .padding()
-            DottedLine()
+            DottedLine(isVertical: true)
                 .stroke(style: StrokeStyle(lineWidth: 4,
                                            dash: [16, 8])) // 길이의 점선과 공백을 번갈아 적용
                 .frame(height: 2)

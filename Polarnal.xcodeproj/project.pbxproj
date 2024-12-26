@@ -96,6 +96,7 @@
 		6BDAE50F2D193C9400A066E9 /* AddTravelTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE50E2D193C9400A066E9 /* AddTravelTicketView.swift */; };
 		6BDAE5112D193E5700A066E9 /* AddTravelTicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5102D193E5700A066E9 /* AddTravelTicketViewModel.swift */; };
 		6BDAE5142D1AD61E00A066E9 /* TravelMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5132D1AD61E00A066E9 /* TravelMapView.swift */; };
+		6BDAE5172D1CDE9A00A066E9 /* TravelPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5162D1CDE9A00A066E9 /* TravelPlanView.swift */; };
 		6BE6A6A22D13ABDC00931E7B /* CurrencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE6A6A12D13ABDC00931E7B /* CurrencyType.swift */; };
 /* End PBXBuildFile section */
 
@@ -190,6 +191,7 @@
 		6BDAE50E2D193C9400A066E9 /* AddTravelTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelTicketView.swift; sourceTree = "<group>"; };
 		6BDAE5102D193E5700A066E9 /* AddTravelTicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelTicketViewModel.swift; sourceTree = "<group>"; };
 		6BDAE5132D1AD61E00A066E9 /* TravelMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMapView.swift; sourceTree = "<group>"; };
+		6BDAE5162D1CDE9A00A066E9 /* TravelPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlanView.swift; sourceTree = "<group>"; };
 		6BE6A6A12D13ABDC00931E7B /* CurrencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -449,7 +451,6 @@
 		6B37A7C82D0FBAB700239987 /* TravelPlanner */ = {
 			isa = PBXGroup;
 			children = (
-				6BDAE5122D1AD60800A066E9 /* TravelMap */,
 				6B37A7C92D0FBB5000239987 /* TravelDashboard */,
 				6B37A7CC2D0FED0500239987 /* Sheet */,
 			);
@@ -465,6 +466,8 @@
 				6BDAE5062D18EAAC00A066E9 /* TravelTicket */,
 				6B37A7E22D11681600239987 /* TravelTodo */,
 				6B37A7E82D116DFF00239987 /* TravelCost */,
+				6BDAE5152D1CDE7400A066E9 /* TravelPlan */,
+				6BDAE5122D1AD60800A066E9 /* TravelMap */,
 			);
 			path = TravelDashboard;
 			sourceTree = "<group>";
@@ -789,6 +792,14 @@
 			path = TravelMap;
 			sourceTree = "<group>";
 		};
+		6BDAE5152D1CDE7400A066E9 /* TravelPlan */ = {
+			isa = PBXGroup;
+			children = (
+				6BDAE5162D1CDE9A00A066E9 /* TravelPlanView.swift */,
+			);
+			path = TravelPlan;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -943,6 +954,7 @@
 				6B37A7EC2D116E4E00239987 /* TravelCostView.swift in Sources */,
 				6B37A7D22D0FEDCB00239987 /* TravelPlanDB.swift in Sources */,
 				6B37A7C02D0BCDEC00239987 /* AddEventView.swift in Sources */,
+				6BDAE5172D1CDE9A00A066E9 /* TravelPlanView.swift in Sources */,
 				6B37A7722D0683C600239987 /* CalendarViewModel.swift in Sources */,
 				6B790FCC2CFFE8120000AC03 /* FolderListView.swift in Sources */,
 				6B37A7932D095E7400239987 /* CalendarEventCategoryViewModel.swift in Sources */,
