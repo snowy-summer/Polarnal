@@ -14,38 +14,72 @@ struct TravelPlanView: View {
     @EnvironmentObject var selectedTravelViewModel: SelectedTravelViewModel
     @ObservedObject var viewModel: TravelPlanDetailViewModel
     
-
     var body: some View {
         GeometryReader { geometryReader in
-            ScrollView {
-                LazyVStack {
-                    ForEach(viewModel.planList,
-                            id: \.id) { plan in
-                        TravelPlanCell(planDetail: plan)
-                            .frame(height: 156)
-                            .background {
-                                if viewModel.lastCheck(plan: plan) {
-                                    DottedLine(isVertical: true)
-                                        .stroke(style: StrokeStyle(lineWidth: 4, dash: [10]))
-                                        .frame(height: 160)
-                                        .offset(x: 12, y: 80)
-                                }
+            HStack {
+                VStack {
+                    HStack {
+                        Button {
+                            viewModel.apply(.selectPreviousDate)
+                        } label: {
+                            Image(systemName: "chevron.backward")
+                                .foregroundStyle(.black)
+                        }
+                        .padding()
+                        
+                        Text("2024.04.12")
+                            .font(.title2)
+                            .bold()
+                        
+                        Button {
+                            viewModel.apply(.selectNextDate)
+                        } label: {
+                            Image(systemName: "chevron.forward")
+                                .foregroundStyle(.black)
+                        }
+                        .padding()
+                    }
+                    ScrollView {
+                        LazyVStack {
+                            ForEach(viewModel.planList,
+                                    id: \.id) { plan in
+                                TravelPlanCell(planDetail: plan)
+                                    .frame(height: 156)
+                                    .background {
+                                        if !viewModel.lastCheck(plan: plan) {
+                                            DottedLine(isVertical: true)
+                                                .stroke(style: StrokeStyle(lineWidth: 4, dash: [10]))
+                                                .frame(height: 160)
+                                                .offset(x: 12, y: 80)
+                                        }
+                                    }
                             }
+                        }
                     }
                 }
+                .frame(width: geometryReader.size.width / 2)
+                .onAppear {
+                    viewModel.apply(.insertModelContext(modelContext,
+                                                        selectedTravelViewModel.selectedTravel))
+                }
+                
+                List {
+                    Text("aa")
+                }
+                .frame(width: geometryReader.size.width / 2)
             }
-            .frame(width: geometryReader.size.width / 2)
-            .onAppear {
-                viewModel.apply(.insertModelContext(modelContext,
-                                                    selectedTravelViewModel.selectedTravel))
-            }
-            
-            List {
-                Text("aa")
-            }
-            .frame(width: geometryReader.size.width / 2)
         }
         .padding()
+        .toolbar {
+            ToolbarItem {
+                Button {
+                    viewModel.apply(.addPlanDetail)
+                } label: {
+                    Image(systemName: "plus")
+                }
+                
+            }
+        }
         
     }
 }
@@ -98,6 +132,94 @@ struct TravelPlanCell: View {
         }
     }
 }
+
+//struct planDetialEditView: View {
+//    
+//    var body: some View {
+//        ScrollView {
+//            VStack {
+//                TextField("문서 제목", text: $viewModel.title)
+//                    .font(.title)
+//                    .frame(height: 44)
+//                    .padding()
+//                    .background(Color(UIColor.systemGray6))
+//                    .clipShape(RoundedRectangle(cornerRadius: 12))
+//                    .padding(.horizontal)
+//            }
+//            categorySection()
+//
+//        }
+//    }
+//    
+//    private func sectionHeader(section: AddTravelTicketSectionType) -> some View {
+//        HStack {
+//            ZStack {
+//                RoundedRectangle(cornerRadius: 12)
+//                    .fill(Color(uiColor: .systemGray5))
+//                    .frame(width: 50,
+//                           height: 50)
+//                
+//                Image(systemName: section.icon)
+//                    .resizable()
+//                    .frame(width: 28,
+//                           height: 28)
+//            }
+//            
+//            Text(section.text)
+//                .font(.title2)
+//                .bold()
+//        }
+//        .padding()
+//        
+//    }
+//    
+//    private func categorySection() -> some View {
+//        VStack {
+//            HStack {
+//                sectionHeader(section: .category)
+//                Spacer()
+//            }
+//            ScrollView(.horizontal) {
+//                LazyHStack(content: {
+//                    ForEach(TravelDocumentType.allCases, id: \.rawValue) { type in
+//                        let isSelected = viewModel.selecteddocumentType == type
+//                        categoryCell(category: type)
+//                            .background(isSelected ? Color.blue : Color(uiColor: .systemGray3) )
+//                            .clipShape(RoundedRectangle(cornerRadius: 12))
+//                            .onTapGesture {
+//                                viewModel.apply(.selectDocumentType(type))
+//                            }
+//                    }
+//                })
+//                .padding()
+//            }
+//        }
+//        .background(Color(uiColor: .systemGray6))
+//        .clipShape(RoundedRectangle(cornerRadius: 12))
+//        .padding()
+//    }
+//    
+//    private func categoryCell(category: TravelDocumentType) -> some View {
+//        HStack {
+//            Text(category.text)
+//                .font(.title)
+//                .bold()
+//                .padding()
+//            Spacer()
+//            ZStack {
+//                RoundedRectangle(cornerRadius: 12)
+//                    .fill(.gray)
+//                    .frame(width: 44, height: 44)
+//                
+//                Image(systemName: category.icon)
+//                    .resizable()
+//                    .frame(width: 32, height: 32)
+//                    
+//            }
+//            .padding()
+//        }
+//    }
+//}
 
 #Preview {
     TravelPlanView(viewModel: TravelPlanDetailViewModel())

@@ -16,7 +16,7 @@ final class TravelPlanDetailViewModel: ViewModelProtocol {
         case deleteTravelPlanDetail(TravelPlanDetailDB)
         case selectNextDate
         case selectPreviousDate
-        case showAddPlanDetail
+        case addPlanDetail
         case fetchList
     }
     
@@ -34,10 +34,12 @@ final class TravelPlanDetailViewModel: ViewModelProtocol {
                                  let travelplan):
             dbManager.modelContext = modelContext
             travelPlan = travelplan
+            selectedDate = travelplan?.startDate
             fetchPlanList()
             
-        case .showAddPlanDetail:
-            sheetType = .add
+        case .addPlanDetail:
+            addPlanDetail()
+            fetchPlanList()
             
         case .deleteTravelPlanDetail(let planDetail):
             dbManager.deleteItem(planDetail)
@@ -74,6 +76,19 @@ extension TravelPlanDetailViewModel {
         }
         
         return false
+    }
+    
+    private func addPlanDetail() {
+        if let selectedDate,
+           let travelPlan {
+            let planDetail = TravelPlanDetailDB(title: "",
+                                                type: TravelCostType.other.rawValue,
+                                                date: selectedDate,
+                                                travelPlanID: travelPlan.id)
+            dbManager.addItem(planDetail)
+        } else {
+            LogManager.log("PlanDetail 추가 실패")
+        }
     }
     
 }
