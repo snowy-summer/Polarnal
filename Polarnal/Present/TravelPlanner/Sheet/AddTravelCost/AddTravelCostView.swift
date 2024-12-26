@@ -93,7 +93,8 @@ struct AddTravelCostView: View {
             }
         }
         .onAppear {
-            viewModel.apply(.insertModelContext(modelContext, selectedTravelViewModel.selectedTravelId))
+            viewModel.apply(.insertModelContext(modelContext,
+                                                selectedTravelViewModel.selectedTravel?.id))
         }
     }
     

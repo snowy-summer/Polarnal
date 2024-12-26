@@ -13,18 +13,14 @@ final class SelectedTravelViewModel: ViewModelProtocol {
     enum Intent {
         case selectTravel(TravelPlanDB)
     }
-    @Published var selectedTravelId: UUID?
+    @Published var selectedTravel: TravelPlanDB?
     
     var cancellables: Set<AnyCancellable> = []
-    
-    init(selectedTravelId: UUID? = nil) {
-        self.selectedTravelId = selectedTravelId
-    }
     
     func apply(_ intent: Intent) {
         switch intent {
         case .selectTravel(let travelPlanDB):
-            selectedTravelId = travelPlanDB.id
+            selectedTravel = travelPlanDB
         }
     }
 }

@@ -18,6 +18,7 @@ struct TravelDashboard: View {
     @StateObject var travelIdViewModel: SelectedTravelViewModel = SelectedTravelViewModel()
     @StateObject var travelCostViewModel: TravelCostViewModel = TravelCostViewModel()
     @StateObject var travelTicketViewModel: TravelTicketViewModel = TravelTicketViewModel()
+    @StateObject var travelPlanDetailViewModel: TravelPlanDetailViewModel = TravelPlanDetailViewModel()
     
     var body: some View {
         NavigationSplitView {
@@ -110,7 +111,7 @@ struct TravelDashboard: View {
                         .padding(.bottom)
                         .padding(.horizontal)
                         
-                        NavigationLink(destination: TravelPlanView()) {
+                        NavigationLink(destination: TravelPlanView(viewModel: travelPlanDetailViewModel)) {
                             RoundedRectangle(cornerRadius: 24)
                                 .padding(.horizontal)
                         }
@@ -131,7 +132,7 @@ struct TravelDashboard: View {
             }
             
             travelCostViewModel.apply(.insertModelContext(modelContext,
-                                                          travelIdViewModel.selectedTravelId))
+                                                          travelIdViewModel.selectedTravel?.id))
         }
         
         

@@ -37,7 +37,7 @@ struct TravelTicketView: View {
         }
         .onAppear {
             viewModel.apply(.insertModelContext(modelContext,
-                                                selectedTravelViewModel.selectedTravelId))
+                                                selectedTravelViewModel.selectedTravel?.id))
         }
         .toolbar {
             ToolbarItem {
