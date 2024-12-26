@@ -16,8 +16,12 @@ final class TravelPlanDetailViewModel: ViewModelProtocol {
         case deleteTravelPlanDetail(TravelPlanDetailDB)
         case selectNextDate
         case selectPreviousDate
-        case addPlanDetail
         case fetchList
+        
+        case addPlanDetail
+        case selectPlanDetail(TravelPlanDetailDB)
+        case selectPlanDetailType(TravelCostType)
+        
     }
     
     private let dbManager = DBManager()
@@ -25,8 +29,17 @@ final class TravelPlanDetailViewModel: ViewModelProtocol {
     var cancellables: Set<AnyCancellable> = []
     
     @Published var sheetType: AddTravelPlanDetailSheetType?
-    @Published var selectedDate: Date?
+    @Published var selectedDay: Date?
     @Published var planList: [TravelPlanDetailDB] = []
+    @Published var selectedPlan: TravelPlanDetailDB?
+    
+    @Published var planTitle: String = ""
+    @Published var selectedPlanType: TravelCostType = .other
+    @Published var planDate: Date = Date()
+    
+    init() {
+        binding()
+    }
     
     func apply(_ intent: Intent) {
         switch intent {
@@ -34,7 +47,7 @@ final class TravelPlanDetailViewModel: ViewModelProtocol {
                                  let travelplan):
             dbManager.modelContext = modelContext
             travelPlan = travelplan
-            selectedDate = travelplan?.startDate
+            selectedDay = travelplan?.startDate
             fetchPlanList()
             
         case .addPlanDetail:
@@ -54,11 +67,42 @@ final class TravelPlanDetailViewModel: ViewModelProtocol {
         case .fetchList:
             fetchPlanList()
             
+        case .selectPlanDetail(let planDetail):
+            selectedPlan = planDetail
+            planTitle = planDetail.title
+            selectedPlanType = TravelCostType(rawValue: planDetail.type) ?? .other
+            planDate = planDetail.date
+            
+        case .selectPlanDetailType(let type):
+            selectedPlanType = type
+            savePlan()
+            
         }
     }
 }
 
 extension TravelPlanDetailViewModel {
+    
+    private func binding() {
+        $planTitle
+            .debounce(for: .seconds(1),
+                      scheduler: DispatchQueue.main)
+            .sink { [weak self] title in
+                guard let self else { return }
+                savePlan()
+            }
+            .store(in: &cancellables)
+        
+        $planDate
+            .debounce(for: .seconds(1),
+                      scheduler: DispatchQueue.main)
+            .sink { [weak self] title in
+                guard let self else { return }
+                savePlan()
+            }
+            .store(in: &cancellables)
+        
+    }
     
     private func fetchPlanList() {
         if let travelPlan {
@@ -79,15 +123,25 @@ extension TravelPlanDetailViewModel {
     }
     
     private func addPlanDetail() {
-        if let selectedDate,
+        if let selectedDay,
            let travelPlan {
             let planDetail = TravelPlanDetailDB(title: "",
                                                 type: TravelCostType.other.rawValue,
-                                                date: selectedDate,
+                                                date: selectedDay,
                                                 travelPlanID: travelPlan.id)
             dbManager.addItem(planDetail)
         } else {
             LogManager.log("PlanDetail 추가 실패")
+        }
+    }
+    
+    private func savePlan() {
+        if selectedPlan != nil {
+            selectedPlan?.date = planDate
+            selectedPlan?.title = planTitle
+            selectedPlan?.type = selectedPlanType.rawValue
+            
+            dbManager.addItem(selectedPlan!)
         }
     }
     

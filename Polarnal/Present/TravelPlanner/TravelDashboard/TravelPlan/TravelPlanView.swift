@@ -53,6 +53,9 @@ struct TravelPlanView: View {
                                                 .offset(x: 12, y: 80)
                                         }
                                     }
+                                    .onTapGesture {
+                                        viewModel.apply(.selectPlanDetail(plan))
+                                    }
                             }
                         }
                     }
@@ -63,10 +66,10 @@ struct TravelPlanView: View {
                                                         selectedTravelViewModel.selectedTravel))
                 }
                 
-                List {
-                    Text("aa")
-                }
+                planDetialEditView(viewModel: viewModel)
                 .frame(width: geometryReader.size.width / 2)
+                .background(Color(uiColor: .systemGray3))
+                .clipShape(RoundedRectangle(cornerRadius: 12))
             }
         }
         .padding()
@@ -94,7 +97,6 @@ struct TravelPlanCell: View {
                 .fill()
                 .frame(width: 24, height: 24)
                 .background(.white.shadow(.drop(color: .black.opacity(0.1), radius: 3)), in: .circle)
-            
             
             ZStack {
                 RoundedRectangle(cornerRadius: 16)
@@ -133,93 +135,143 @@ struct TravelPlanCell: View {
     }
 }
 
-//struct planDetialEditView: View {
-//    
-//    var body: some View {
-//        ScrollView {
-//            VStack {
-//                TextField("문서 제목", text: $viewModel.title)
-//                    .font(.title)
-//                    .frame(height: 44)
-//                    .padding()
-//                    .background(Color(UIColor.systemGray6))
-//                    .clipShape(RoundedRectangle(cornerRadius: 12))
-//                    .padding(.horizontal)
-//            }
-//            categorySection()
-//
-//        }
-//    }
-//    
-//    private func sectionHeader(section: AddTravelTicketSectionType) -> some View {
-//        HStack {
-//            ZStack {
-//                RoundedRectangle(cornerRadius: 12)
-//                    .fill(Color(uiColor: .systemGray5))
-//                    .frame(width: 50,
-//                           height: 50)
-//                
-//                Image(systemName: section.icon)
-//                    .resizable()
-//                    .frame(width: 28,
-//                           height: 28)
-//            }
-//            
-//            Text(section.text)
-//                .font(.title2)
-//                .bold()
-//        }
-//        .padding()
-//        
-//    }
-//    
-//    private func categorySection() -> some View {
-//        VStack {
-//            HStack {
-//                sectionHeader(section: .category)
-//                Spacer()
-//            }
-//            ScrollView(.horizontal) {
-//                LazyHStack(content: {
-//                    ForEach(TravelDocumentType.allCases, id: \.rawValue) { type in
-//                        let isSelected = viewModel.selecteddocumentType == type
-//                        categoryCell(category: type)
-//                            .background(isSelected ? Color.blue : Color(uiColor: .systemGray3) )
-//                            .clipShape(RoundedRectangle(cornerRadius: 12))
-//                            .onTapGesture {
-//                                viewModel.apply(.selectDocumentType(type))
-//                            }
-//                    }
-//                })
-//                .padding()
-//            }
-//        }
-//        .background(Color(uiColor: .systemGray6))
-//        .clipShape(RoundedRectangle(cornerRadius: 12))
-//        .padding()
-//    }
-//    
-//    private func categoryCell(category: TravelDocumentType) -> some View {
-//        HStack {
-//            Text(category.text)
-//                .font(.title)
-//                .bold()
-//                .padding()
-//            Spacer()
-//            ZStack {
-//                RoundedRectangle(cornerRadius: 12)
-//                    .fill(.gray)
-//                    .frame(width: 44, height: 44)
-//                
-//                Image(systemName: category.icon)
-//                    .resizable()
-//                    .frame(width: 32, height: 32)
-//                    
-//            }
-//            .padding()
-//        }
-//    }
-//}
+struct planDetialEditView: View {
+    
+    @ObservedObject var viewModel: TravelPlanDetailViewModel
+    
+    var body: some View {
+        ScrollView {
+            VStack {
+                TextField("계획 이름", text: $viewModel.planTitle)
+                    .font(.title)
+                    .frame(height: 44)
+                    .padding()
+                    .background(Color(UIColor.systemGray6))
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .padding(.horizontal)
+            }
+            dateSection()
+            categorySection()
+
+        }
+        .padding()
+    }
+    
+    private func sectionHeader(section: TravelPlanDetailSectionType) -> some View {
+        HStack {
+            ZStack {
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(Color(uiColor: .systemGray5))
+                    .frame(width: 50,
+                           height: 50)
+                
+                Image(systemName: section.icon)
+                    .resizable()
+                    .frame(width: 28,
+                           height: 28)
+            }
+            
+            Text(section.text)
+                .font(.title2)
+                .bold()
+        }
+        .padding()
+        
+    }
+    
+    private func categorySection() -> some View {
+        VStack {
+            HStack {
+                sectionHeader(section: .category)
+                Spacer()
+            }
+            ScrollView(.horizontal) {
+                LazyHStack(content: {
+                    ForEach(TravelCostType.allCases, id: \.rawValue) { type in
+                        let isSelected = viewModel.selectedPlanType == type
+                        categoryCell(category: type)
+                            .background(isSelected ? Color.blue : Color(uiColor: .systemGray3) )
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .onTapGesture {
+                                viewModel.apply(.selectPlanDetailType(type))
+                            }
+                    }
+                })
+                .padding()
+            }
+        }
+        .background(Color(uiColor: .systemGray6))
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .padding()
+    }
+    
+    private func dateSection() -> some View {
+        HStack {
+            sectionHeader(section: .date)
+            DatePicker("", selection: $viewModel.planDate,
+                       displayedComponents: .hourAndMinute)
+            .labelsHidden()
+            .environment(\.locale, Locale(identifier: "ko_KR"))
+            Spacer()
+        }
+        .background(Color(uiColor: .systemGray6))
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .padding()
+    }
+    
+    private func categoryCell(category: TravelCostType) -> some View {
+        HStack {
+            Text(category.title)
+                .font(.title3)
+                .bold()
+                .padding()
+            Spacer()
+            ZStack {
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(.gray)
+                    .frame(width: 44, height: 44)
+                
+                Image(systemName: category.icon)
+                    .resizable()
+                    .frame(width: 32, height: 32)
+                    
+            }
+            .padding()
+        }
+    }
+    
+    enum TravelPlanDetailSectionType {
+        case date
+        case category
+        case map
+        
+        var icon: String {
+            switch self {
+            case .date:
+                return "clock"
+                
+            case .category:
+                return "note.text"
+                
+            case .map:
+                return "map"
+            }
+        }
+        
+        var text: String {
+            switch self {
+            case .date:
+                return "시간"
+                
+            case .category:
+                return "종류"
+                
+            case .map:
+                return "지도"
+            }
+        }
+    }
+}
 
 #Preview {
     TravelPlanView(viewModel: TravelPlanDetailViewModel())
