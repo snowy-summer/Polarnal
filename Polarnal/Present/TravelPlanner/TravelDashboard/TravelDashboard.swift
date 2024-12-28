@@ -112,8 +112,57 @@ struct TravelDashboard: View {
                         .padding(.horizontal)
                         
                         NavigationLink(destination: TravelPlanView(viewModel: travelPlanDetailViewModel)) {
-                            RoundedRectangle(cornerRadius: 24)
-                                .padding(.horizontal)
+                            VStack {
+                                HStack {
+                                    Button {
+                                        travelPlanDetailViewModel.apply(.selectPreviousDate)
+                                    } label: {
+                                        Image(systemName: "chevron.backward")
+                                            .foregroundStyle(.black)
+                                    }
+                                    .padding()
+                                    
+                                    Text("2024.04.12")
+                                        .font(.title2)
+                                        .bold()
+                                    
+                                    Button {
+                                        travelPlanDetailViewModel.apply(.selectNextDate)
+                                    } label: {
+                                        Image(systemName: "chevron.forward")
+                                            .foregroundStyle(.black)
+                                    }
+                                    .padding()
+                                }
+                                ScrollView {
+                                    LazyVStack {
+                                        ForEach(travelPlanDetailViewModel.planList,
+                                                id: \.id) { plan in
+                                            TravelPlanCell(planDetail: plan)
+                                                .frame(height: 156)
+                                                .background {
+                                                    if !travelPlanDetailViewModel.lastCheck(plan: plan) {
+                                                        DottedLine(isVertical: true)
+                                                            .stroke(style: StrokeStyle(lineWidth: 4, dash: [10]))
+                                                            .frame(height: 160)
+                                                            .offset(x: 12, y: 80)
+                                                    }
+                                                }
+                                                .onTapGesture {
+                                                    travelPlanDetailViewModel.apply(.selectPlanDetail(plan))
+                                                }
+                                        }
+                                    }
+                                }
+                            }
+                            .padding()
+                            .background(Color(uiColor: .systemGray5))
+                            .clipShape(RoundedRectangle(cornerRadius: 24))
+                            .padding()
+                            .onAppear {
+                                travelPlanDetailViewModel.apply(.insertModelContext(modelContext,
+                                                                                    travelIdViewModel.selectedTravel))
+                            }
                         }
                     }
                     
