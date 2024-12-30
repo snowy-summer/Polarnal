@@ -139,20 +139,18 @@ struct TravelDashboard: View {
                                         ForEach(travelPlanDetailViewModel.planList,
                                                 id: \.id) { plan in
                                             TravelPlanCell(planDetail: plan)
-                                                .frame(height: 156)
+                                                .frame(height: 76)
                                                 .background {
                                                     if !travelPlanDetailViewModel.lastCheck(plan: plan) {
                                                         DottedLine(isVertical: true)
                                                             .stroke(style: StrokeStyle(lineWidth: 4, dash: [10]))
-                                                            .frame(height: 160)
-                                                            .offset(x: 12, y: 80)
+                                                            .frame(height: 80)
+                                                            .offset(x: 12, y: 40)
                                                     }
-                                                }
-                                                .onTapGesture {
-                                                    travelPlanDetailViewModel.apply(.selectPlanDetail(plan))
                                                 }
                                         }
                                     }
+                                    .padding()
                                 }
                             }
                             .padding()
