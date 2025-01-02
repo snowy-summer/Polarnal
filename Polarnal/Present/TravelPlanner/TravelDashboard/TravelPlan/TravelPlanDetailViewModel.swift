@@ -25,6 +25,7 @@ final class TravelPlanDetailViewModel: ViewModelProtocol {
     }
     
     private let dbManager = DBManager()
+    private let dateManager = DateManager.shared
     private var travelPlan: TravelPlanDB?
     var cancellables: Set<AnyCancellable> = []
     
@@ -59,10 +60,21 @@ final class TravelPlanDetailViewModel: ViewModelProtocol {
             fetchPlanList()
             
         case .selectNextDate:
-            print("다음 날")
+            if let currentDay = selectedDay {
+                selectedDay = Calendar.current.date(byAdding: .day,
+                                                    value: 1,
+                                                    to: currentDay)
+            }
+            fetchPlanList()
             
         case .selectPreviousDate:
-            print("이전 날")
+            
+            if let currentDay = selectedDay {
+                selectedDay = Calendar.current.date(byAdding: .day,
+                                                    value: -1,
+                                                    to: currentDay)
+            }
+            fetchPlanList()
             
         case .fetchList:
             fetchPlanList()
@@ -108,8 +120,14 @@ extension TravelPlanDetailViewModel {
         if let travelPlan {
             planList = dbManager.fetchItems(ofType: TravelPlanDetailDB.self)
                 .filter {
-                    $0.travelPlanID == travelPlan.id
                     // 선택된 날짜의 것만 뽑아 오는거 추가 해야함, 정렬도
+                    if let selectedDay {
+                        return $0.travelPlanID == travelPlan.id
+                        && dateManager.getDateString(date: $0.date) == dateManager.getDateString(date: selectedDay)
+                    } else {
+                        return false
+                    }
+                    
                 }
         }
     }

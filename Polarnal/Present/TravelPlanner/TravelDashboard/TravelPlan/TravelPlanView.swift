@@ -27,7 +27,7 @@ struct TravelPlanView: View {
                         }
                         .padding()
                         
-                        Text("2024.04.12")
+                        Text(DateManager.shared.getDateString(date: viewModel.selectedDay ?? Date()))
                             .font(.title2)
                             .bold()
                         
