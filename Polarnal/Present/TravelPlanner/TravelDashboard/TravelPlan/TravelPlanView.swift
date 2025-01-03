@@ -67,9 +67,9 @@ struct TravelPlanView: View {
                 }
                 
                 planDetialEditView(viewModel: viewModel)
-                .frame(width: geometryReader.size.width / 2)
-                .background(Color(uiColor: .systemGray3))
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .frame(width: geometryReader.size.width / 2)
+                    .background(Color(uiColor: .systemGray3))
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
             }
         }
         .padding()
@@ -141,18 +141,26 @@ struct planDetialEditView: View {
     
     var body: some View {
         ScrollView {
-            VStack {
-                TextField("계획 이름", text: $viewModel.planTitle)
-                    .font(.title)
-                    .frame(height: 44)
-                    .padding()
-                    .background(Color(UIColor.systemGray6))
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                    .padding(.horizontal)
-            }
+            TextField("계획 이름", text: $viewModel.planTitle)
+                .font(.title)
+                .frame(height: 44)
+                .padding()
+                .background(Color(UIColor.systemGray6))
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .padding([.horizontal, .top])
             dateSection()
             categorySection()
-
+            Button(action: {
+                viewModel.apply(.deleteTravelPlanDetail)
+            }, label: {
+                Text("삭제")
+                    .frame(maxWidth: .infinity)
+                    .padding()
+            })
+            .background(.red)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .padding()
+            
         }
         .padding()
     }
@@ -234,7 +242,7 @@ struct planDetialEditView: View {
                 Image(systemName: category.icon)
                     .resizable()
                     .frame(width: 32, height: 32)
-                    
+                
             }
             .padding()
         }

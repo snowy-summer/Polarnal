@@ -13,7 +13,7 @@ final class TravelPlanDetailViewModel: ViewModelProtocol {
     
     enum Intent {
         case insertModelContext(ModelContext, TravelPlanDB?)
-        case deleteTravelPlanDetail(TravelPlanDetailDB)
+        case deleteTravelPlanDetail
         case selectNextDate
         case selectPreviousDate
         case fetchList
@@ -50,14 +50,22 @@ final class TravelPlanDetailViewModel: ViewModelProtocol {
             travelPlan = travelplan
             selectedDay = travelplan?.startDate
             fetchPlanList()
+            if let plan = planList.first {
+                apply(.selectPlanDetail(plan))
+            }
             
         case .addPlanDetail:
             addPlanDetail()
             fetchPlanList()
             
-        case .deleteTravelPlanDetail(let planDetail):
-            dbManager.deleteItem(planDetail)
-            fetchPlanList()
+        case .deleteTravelPlanDetail:
+            if let selectedPlan  {
+                dbManager.deleteItem(selectedPlan)
+                fetchPlanList()
+                if let plan = planList.first {
+                    apply(.selectPlanDetail(plan))
+                }
+            }
             
         case .selectNextDate:
             if let currentDay = selectedDay {
