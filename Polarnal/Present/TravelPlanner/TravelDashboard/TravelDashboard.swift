@@ -27,14 +27,20 @@ struct TravelDashboard: View {
                     SideTabBarView(viewModel: sideTabBarViewModel)
                         .frame(width: 80)
                     
-                    List {
-                        ForEach(travelList, id: \.id) { travel in
-                            TravelListCell(travel: travel)
-                                .onTapGesture {
-                                    viewModel.apply(.selectTravel(travel))
-                                    travelIdViewModel.apply(.selectTravel(travel))
-                                }
+                    VStack {
+                        List {
+                            ForEach(travelList, id: \.id) { travel in
+                                TravelListCell(travel: travel)
+                                    .onTapGesture {
+                                        viewModel.apply(.selectTravel(travel))
+                                        travelIdViewModel.apply(.selectTravel(travel))
+                                    }
+                            }
                         }
+                        Divider()
+                        TravelDestinationListView()
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .padding(.horizontal, 8)
                     }
                 }
                 
