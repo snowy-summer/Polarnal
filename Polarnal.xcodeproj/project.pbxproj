@@ -98,6 +98,8 @@
 		6BDAE5142D1AD61E00A066E9 /* TravelMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5132D1AD61E00A066E9 /* TravelMapView.swift */; };
 		6BDAE5172D1CDE9A00A066E9 /* TravelPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5162D1CDE9A00A066E9 /* TravelPlanView.swift */; };
 		6BDAE5192D1D365B00A066E9 /* TravelPlanDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5182D1D365B00A066E9 /* TravelPlanDetailViewModel.swift */; };
+		6BDAE51C2D290B2D00A066E9 /* AppSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE51B2D290B2D00A066E9 /* AppSettingView.swift */; };
+		6BDAE51E2D290FA500A066E9 /* TravelDestinationFolderDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE51D2D290FA500A066E9 /* TravelDestinationFolderDB.swift */; };
 		6BE6A6A22D13ABDC00931E7B /* CurrencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE6A6A12D13ABDC00931E7B /* CurrencyType.swift */; };
 /* End PBXBuildFile section */
 
@@ -194,6 +196,8 @@
 		6BDAE5132D1AD61E00A066E9 /* TravelMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMapView.swift; sourceTree = "<group>"; };
 		6BDAE5162D1CDE9A00A066E9 /* TravelPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlanView.swift; sourceTree = "<group>"; };
 		6BDAE5182D1D365B00A066E9 /* TravelPlanDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlanDetailViewModel.swift; sourceTree = "<group>"; };
+		6BDAE51B2D290B2D00A066E9 /* AppSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingView.swift; sourceTree = "<group>"; };
+		6BDAE51D2D290FA500A066E9 /* TravelDestinationFolderDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDestinationFolderDB.swift; sourceTree = "<group>"; };
 		6BE6A6A12D13ABDC00931E7B /* CurrencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -497,6 +501,7 @@
 			isa = PBXGroup;
 			children = (
 				6B37A7D12D0FEDCB00239987 /* TravelPlanDB.swift */,
+				6BDAE51D2D290FA500A066E9 /* TravelDestinationFolderDB.swift */,
 				6B37A7D72D100E6B00239987 /* Type */,
 			);
 			path = Travel;
@@ -595,6 +600,7 @@
 				6B37A7682D055E4500239987 /* Calendar */,
 				6B790FC52CFFE65E0000AC03 /* Diary */,
 				6B37A7C82D0FBAB700239987 /* TravelPlanner */,
+				6BDAE51A2D290AFE00A066E9 /* AppSettingView */,
 				6B790FBF2CFF25560000AC03 /* BaseProtocol */,
 				6B790FC22CFF25870000AC03 /* CommonView */,
 			);
@@ -803,6 +809,14 @@
 			path = TravelPlan;
 			sourceTree = "<group>";
 		};
+		6BDAE51A2D290AFE00A066E9 /* AppSettingView */ = {
+			isa = PBXGroup;
+			children = (
+				6BDAE51B2D290B2D00A066E9 /* AppSettingView.swift */,
+			);
+			path = AppSettingView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -915,6 +929,7 @@
 				6B37A78C2D0923FB00239987 /* AddEventCategoryView.swift in Sources */,
 				6B37A77C2D068DA100239987 /* MainCalendarViewModel.swift in Sources */,
 				6B37A7672D055B3800239987 /* SideTabBarView.swift in Sources */,
+				6BDAE51C2D290B2D00A066E9 /* AppSettingView.swift in Sources */,
 				6B790FB72CFEA4430000AC03 /* LogManager.swift in Sources */,
 				6B37A7B22D0AAA3000239987 /* AddTodoFolderViewModel.swift in Sources */,
 				6B37A7A22D09AADB00239987 /* AddDDayCell.swift in Sources */,
@@ -927,6 +942,7 @@
 				6B37A7E42D11699400239987 /* TravelTodoMiniView.swift in Sources */,
 				6B790FCE2CFFEC6A0000AC03 /* DiaryUIViewModel.swift in Sources */,
 				6B37A7D62D1009F200239987 /* AddTravelPlanViewModel.swift in Sources */,
+				6BDAE51E2D290FA500A066E9 /* TravelDestinationFolderDB.swift in Sources */,
 				6B37A7AB2D0AA4B500239987 /* TodoDB.swift in Sources */,
 				6B790FC92CFFE6AA0000AC03 /* DiaryStateViewModel.swift in Sources */,
 				6B37A7EE2D1295DC00239987 /* AddTravelCostViewModel.swift in Sources */,

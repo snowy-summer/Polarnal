@@ -10,6 +10,11 @@ import SwiftData
 
 struct TravelMapView: View {
     var body: some View {
+        
+        RoundedRectangle(cornerRadius: 12)
+            .frame(maxWidth: .infinity)
+            .frame(height: 120)
+        
         List {
             TravelMapListCell()
         }

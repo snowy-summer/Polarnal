@@ -17,14 +17,22 @@ struct SideTabBarView: View {
     var body: some View {
         VStack(alignment: .center) {
             ForEach(TabType.allCases, id: \.self) { type in
-                TabIconCell(type: type,
-                            isSelected: viewModel.selectedTab == type)
-                .onTapGesture {
-                    viewModel.apply(.selectTab(type))
+                if type != TabType.setting {
+                    TabIconCell(type: type,
+                                isSelected: viewModel.selectedTab == type)
+                    .onTapGesture {
+                        viewModel.apply(.selectTab(type))
+                    }
                 }
             }
             
             Spacer()
+            
+            TabIconCell(type: .setting,
+                        isSelected: viewModel.selectedTab == TabType.setting)
+            .onTapGesture {
+                viewModel.apply(.selectTab(TabType.setting))
+            }
         }
     }
     
@@ -41,7 +49,7 @@ struct SideTabBarView: View {
                 
                 ZStack {
                     RoundedRectangle(cornerRadius: isSelected ? 12 : 25)
-                        .fill(Color(uiColor: .systemGray5))
+                        .fill(Color(uiColor: UIColor.systemGray5))
                         .animation(.linear(duration: 0.3),
                                    value: isSelected)
                         .frame(width: 50,
@@ -62,6 +70,7 @@ enum TabType: CaseIterable {
     case planner
     case diary
     case travelPlanner
+    case setting
     
     var iconText: String {
         switch self {
@@ -73,6 +82,10 @@ enum TabType: CaseIterable {
             
         case .travelPlanner:
             return "airplane.departure"
+            
+        case .setting:
+            return "gearshape.fill"
         }
+        
     }
 }

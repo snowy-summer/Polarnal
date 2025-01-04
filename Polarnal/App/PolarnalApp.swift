@@ -28,6 +28,9 @@ struct PolarnalApp: App {
                           sideTabBarViewModel: sideTabBarViewModel)
             case .travelPlanner:
                 TravelDashboard(sideTabBarViewModel: sideTabBarViewModel)
+                
+            case .setting:
+                AppSettingView(sideTabBarViewModel: sideTabBarViewModel)
             }
             
         }

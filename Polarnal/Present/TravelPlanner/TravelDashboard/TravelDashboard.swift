@@ -94,9 +94,11 @@ struct TravelDashboard: View {
                                 
                                 HStack {
                                     GeometryReader { geometry in
-                                        TravelMapMiniView()
-                                            .frame(width: geometry.size.width, height: geometry.size.height)
-                                            .clipShape(RoundedRectangle(cornerRadius: 24))
+                                        NavigationLink(destination: TravelMapView()) {
+                                            TravelMapMiniView()
+                                                .frame(width: geometry.size.width, height: geometry.size.height)
+                                                .clipShape(RoundedRectangle(cornerRadius: 24))
+                                        }
                                     }
                                     
                                     GeometryReader { geometry in
