@@ -13,16 +13,16 @@ final class AddTravelDestinationFolderViewModel: ViewModelProtocol {
     
     @Published var folderTitle: String
     @Published var folderColor: Color
-    private var eventCategory: EventCategoryDB?
+    private var folder: TravelDestinationFolderDB?
     
-    init(eventCategory: EventCategoryDB?) {
-        if let eventCategory {
-            self.eventCategory = eventCategory
-            folderTitle = eventCategory.title
-            folderColor = Color(red: eventCategory.color.red,
-                                  green: eventCategory.color.green,
-                                  blue: eventCategory.color.blue,
-                                  opacity: eventCategory.color.alpha)
+    init(folder: TravelDestinationFolderDB?) {
+        if let folder {
+            self.folder = folder
+            folderTitle = folder.title
+            folderColor = Color(red: folder.color.red,
+                                  green: folder.color.green,
+                                  blue: folder.color.blue,
+                                  opacity: folder.color.alpha)
         } else {
             folderTitle = ""
             folderColor = .blue
@@ -46,7 +46,7 @@ final class AddTravelDestinationFolderViewModel: ViewModelProtocol {
             folderColor = color
             
         case .saveCategory:
-            eventCategory == nil ? addFolder() : editFolder()
+            folder == nil ? addFolder() : editFolder()
             
         case .insertModelContext(let modelContext):
             dbManager.modelContext = modelContext
@@ -64,11 +64,11 @@ extension AddTravelDestinationFolderViewModel {
     }
     
     private func editFolder() {
-        if eventCategory != nil {
-            eventCategory?.title = folderTitle
-            eventCategory?.color = getColorRGBA()
+        if folder != nil {
+            folder?.title = folderTitle
+            folder?.color = getColorRGBA()
            
-            dbManager.addItem(eventCategory!)
+            dbManager.addItem(folder!)
         }
     }
     
