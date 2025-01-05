@@ -37,10 +37,14 @@ struct TravelDashboard: View {
                                     }
                             }
                         }
-                        Divider()
-                        TravelDestinationListView()
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
-                            .padding(.horizontal, 8)
+                        
+                        if viewModel.isMapViewSelect {
+                            Divider()
+                            
+                            TravelDestinationListView()
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                                .padding(.horizontal, 8)
+                        }
                     }
                 }
                 
@@ -77,8 +81,8 @@ struct TravelDashboard: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 24))
                                 .padding(.trailing)
                             
-                            VStack {
-                                HStack {
+                            VStack(spacing: 16) {
+                                HStack(spacing: 16) {
                                     GeometryReader { geometry in
                                         NavigationLink(destination: TravelTicketView(viewModel: TravelTicketViewModel())) {
                                             TravelTicketMiniView()
@@ -98,13 +102,15 @@ struct TravelDashboard: View {
                                     }
                                 }
                                 
-                                HStack {
+                                HStack(spacing: 16) {
                                     GeometryReader { geometry in
-                                        NavigationLink(destination: TravelMapView()) {
-                                            TravelMapMiniView()
-                                                .frame(width: geometry.size.width, height: geometry.size.height)
-                                                .clipShape(RoundedRectangle(cornerRadius: 24))
-                                        }
+                                        TravelMapMiniView()
+                                            .frame(width: geometry.size.width, height: geometry.size.height)
+                                            .clipShape(RoundedRectangle(cornerRadius: 24))
+                                            .onTapGesture {
+                                                viewModel.apply(.selectMapView)
+                                            }
+                                        
                                     }
                                     
                                     GeometryReader { geometry in
@@ -113,6 +119,9 @@ struct TravelDashboard: View {
                                             .background(Color(uiColor: .systemGray5))
                                             .clipShape(RoundedRectangle(cornerRadius: 24))
                                     }
+                                }
+                                .navigationDestination(isPresented: $viewModel.isMapViewSelect) {
+                                    TravelMapView()
                                 }
                             }
                         }
