@@ -104,6 +104,7 @@
 		6BDAE5222D29119000A066E9 /* TravelDestinationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5212D29119000A066E9 /* TravelDestinationViewModel.swift */; };
 		6BDAE5252D29186B00A066E9 /* AddTravelDestinationFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5242D29186B00A066E9 /* AddTravelDestinationFolderView.swift */; };
 		6BDAE5272D29194C00A066E9 /* AddTravelDestinationFolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5262D29194C00A066E9 /* AddTravelDestinationFolderViewModel.swift */; };
+		6BDAE52B2D2BB73400A066E9 /* TravelMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE52A2D2BB73400A066E9 /* TravelMapViewModel.swift */; };
 		6BE6A6A22D13ABDC00931E7B /* CurrencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE6A6A12D13ABDC00931E7B /* CurrencyType.swift */; };
 /* End PBXBuildFile section */
 
@@ -206,6 +207,7 @@
 		6BDAE5212D29119000A066E9 /* TravelDestinationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDestinationViewModel.swift; sourceTree = "<group>"; };
 		6BDAE5242D29186B00A066E9 /* AddTravelDestinationFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelDestinationFolderView.swift; sourceTree = "<group>"; };
 		6BDAE5262D29194C00A066E9 /* AddTravelDestinationFolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelDestinationFolderViewModel.swift; sourceTree = "<group>"; };
+		6BDAE52A2D2BB73400A066E9 /* TravelMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMapViewModel.swift; sourceTree = "<group>"; };
 		6BE6A6A12D13ABDC00931E7B /* CurrencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -805,6 +807,7 @@
 			isa = PBXGroup;
 			children = (
 				6BDAE5132D1AD61E00A066E9 /* TravelMapView.swift */,
+				6BDAE52A2D2BB73400A066E9 /* TravelMapViewModel.swift */,
 				6BDAE51F2D2910DB00A066E9 /* TravelDestinationListView.swift */,
 				6BDAE5212D29119000A066E9 /* TravelDestinationViewModel.swift */,
 			);
@@ -983,6 +986,7 @@
 				6B37A79B2D097A1400239987 /* AddDDayViewModel.swift in Sources */,
 				6B37A7F02D129D1300239987 /* AddTravelCostView.swift in Sources */,
 				6B37A7A92D0AA49900239987 /* DDayDB.swift in Sources */,
+				6BDAE52B2D2BB73400A066E9 /* TravelMapViewModel.swift in Sources */,
 				6B790FC72CFFE66A0000AC03 /* DiaryView.swift in Sources */,
 				6B790FC12CFF25710000AC03 /* ViewModelProtocol.swift in Sources */,
 				6B37A7992D0978D900239987 /* AddDDayView.swift in Sources */,

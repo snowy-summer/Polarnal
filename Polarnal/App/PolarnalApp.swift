@@ -16,21 +16,27 @@ struct PolarnalApp: App {
     
     var body: some Scene {
         WindowGroup {
-            switch sideTabBarViewModel.selectedTab {
-            case .planner:
-                PlannerView(sideTabBarViewModel: sideTabBarViewModel)
-                
-            case .diary:
-                DiaryView(stateViewModel: diaryStateViewModel,
-                          uiViewModel: DiaryUIViewModel(),
-                          folderViewModel: FolderListViewModel(),
-                          noteViewModel: NoteListViewModel(stateViewModel: diaryStateViewModel),
-                          sideTabBarViewModel: sideTabBarViewModel)
-            case .travelPlanner:
-                TravelDashboard(sideTabBarViewModel: sideTabBarViewModel)
-                
-            case .setting:
-                AppSettingView(sideTabBarViewModel: sideTabBarViewModel)
+            if sideTabBarViewModel.isShowMapView {
+                NavigationStack {
+                    TravelMapView(sideTabbarViewModel: sideTabBarViewModel)
+                }
+            } else {
+                switch sideTabBarViewModel.selectedTab {
+                case .planner:
+                    PlannerView(sideTabBarViewModel: sideTabBarViewModel)
+                    
+                case .diary:
+                    DiaryView(stateViewModel: diaryStateViewModel,
+                              uiViewModel: DiaryUIViewModel(),
+                              folderViewModel: FolderListViewModel(),
+                              noteViewModel: NoteListViewModel(stateViewModel: diaryStateViewModel),
+                              sideTabBarViewModel: sideTabBarViewModel)
+                case .travelPlanner:
+                    TravelDashboard(sideTabBarViewModel: sideTabBarViewModel)
+                    
+                case .setting:
+                    AppSettingView(sideTabBarViewModel: sideTabBarViewModel)
+                }
             }
             
         }

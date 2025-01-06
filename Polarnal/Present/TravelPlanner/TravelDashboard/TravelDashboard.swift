@@ -37,14 +37,6 @@ struct TravelDashboard: View {
                                     }
                             }
                         }
-                        
-                        if viewModel.isMapViewSelect {
-                            Divider()
-                            
-                            TravelDestinationListView()
-                                .clipShape(RoundedRectangle(cornerRadius: 12))
-                                .padding(.horizontal, 8)
-                        }
                     }
                 }
                 
@@ -108,7 +100,7 @@ struct TravelDashboard: View {
                                             .frame(width: geometry.size.width, height: geometry.size.height)
                                             .clipShape(RoundedRectangle(cornerRadius: 24))
                                             .onTapGesture {
-                                                viewModel.apply(.selectMapView)
+                                                sideTabBarViewModel.apply(.showMapView)
                                             }
                                         
                                     }
@@ -119,9 +111,6 @@ struct TravelDashboard: View {
                                             .background(Color(uiColor: .systemGray5))
                                             .clipShape(RoundedRectangle(cornerRadius: 24))
                                     }
-                                }
-                                .navigationDestination(isPresented: $viewModel.isMapViewSelect) {
-                                    TravelMapView()
                                 }
                             }
                         }

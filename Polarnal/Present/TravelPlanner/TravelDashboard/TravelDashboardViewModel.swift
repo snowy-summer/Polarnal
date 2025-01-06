@@ -21,8 +21,6 @@ final class TravelDashboardViewModel: ViewModelProtocol {
         case addTodo
         case deleteTodo(TravelTodoDB)
         
-        case selectMapView
-        case deselectMapView
     }
     
     private let dbManager = DBManager()
@@ -31,7 +29,6 @@ final class TravelDashboardViewModel: ViewModelProtocol {
     @Published var selectedTravel: TravelPlanDB?
     @Published var todoList: [TravelTodoDB] = []
     @Published var sheetType: TravelPlanSheetType?
-    @Published var isMapViewSelect: Bool = false
     
     init() {
         binding()
@@ -55,13 +52,6 @@ final class TravelDashboardViewModel: ViewModelProtocol {
         case .deleteTodo(let todo):
             deleteTodo(todo: todo)
             updateTodoList()
-            
-        case .selectMapView:
-            isMapViewSelect = true
-            
-        case .deselectMapView:
-            isMapViewSelect = false
-            
         }
     }
     
