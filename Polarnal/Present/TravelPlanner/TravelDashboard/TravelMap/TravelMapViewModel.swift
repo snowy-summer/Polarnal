@@ -20,6 +20,8 @@ final class TravelMapViewModel: ViewModelProtocol {
     var cancellables: Set<AnyCancellable> = []
     
     @Published var sheetType: TravelMapSheetType?
+    @Published var searchText: String = ""
+    @Published var destinationFolderList: [TravelDestinationFolderDB] = []
     
     func apply(_ intent: Intent) {
         switch intent {

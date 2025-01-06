@@ -17,9 +17,7 @@ struct PolarnalApp: App {
     var body: some Scene {
         WindowGroup {
             if sideTabBarViewModel.isShowMapView {
-                NavigationStack {
-                    TravelMapView(sideTabbarViewModel: sideTabBarViewModel)
-                }
+                TravelMapView(sideTabbarViewModel: sideTabBarViewModel)
             } else {
                 switch sideTabBarViewModel.selectedTab {
                 case .planner:
