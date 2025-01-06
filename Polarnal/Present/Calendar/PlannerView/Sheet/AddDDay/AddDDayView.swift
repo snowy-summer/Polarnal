@@ -114,7 +114,6 @@ struct AddDDayView: View {
                                 .padding(.horizontal)
                         }
                     }
-                    
                     .padding()
                     
                     if viewModel.showCategory {
