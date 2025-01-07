@@ -23,24 +23,36 @@ struct TravelMapView: View {
                 .cornerRadius(12)
                 .padding()
             
-            HStack {
-                Text("가이드 목록")
-                    .padding(.horizontal)
-                Spacer()
-                Button(action: {
-                    viewModel.apply(.addFolder)
-                }, label: {
-                    Image(systemName: "plus")
-                })
-                .padding(.horizontal)
-            }
-            List {
-                ForEach(viewModel.destinationFolderList, id: \.id) { folder in
-                    DestinationFolderCell(folder: folder)
+            if !viewModel.searchText.isEmpty {
+                ScrollView {
+                    LazyVStack() {
+                        ForEach(viewModel.placeList, id: \.self) { result in
+                            SearchedResultCell(searchResult: result)
+                                .padding(.vertical)
+                        }
+                    }
                 }
+            } else {
+                
+                HStack {
+                    Text("가이드 목록")
+                        .padding(.horizontal)
+                    Spacer()
+                    Button(action: {
+                        viewModel.apply(.addFolder)
+                    }, label: {
+                        Image(systemName: "plus")
+                    })
+                    .padding(.horizontal)
+                }
+                List {
+                    ForEach(viewModel.destinationFolderList, id: \.id) { folder in
+                        DestinationFolderCell(folder: folder)
+                    }
+                }
+              
             }
             Spacer()
-            
         } detail: {
             Map()
                 .toolbar(content: {
@@ -65,6 +77,9 @@ struct TravelMapView: View {
                 }
             }
             
+        }
+        .onDisappear {
+            viewModel.apply(.cleanManager)
         }
        
 
@@ -101,6 +116,19 @@ struct TravelMapView: View {
 //                    Label("편집", systemImage: "pencil")
 //                }
 //            }
+        }
+    }
+    
+    struct SearchedResultCell: View {
+        
+        let searchResult: MKLocalSearchCompletion
+        
+        var body: some View {
+            VStack(alignment: .leading) {
+                Text(searchResult.title)
+                Text(searchResult.subtitle)
+                    .font(.caption2)
+            }
         }
     }
     
