@@ -14,26 +14,33 @@ struct PolarnalApp: App {
     @StateObject private var sideTabBarViewModel: SideTabBarViewModel = SideTabBarViewModel()
     private let diaryStateViewModel: DiaryStateViewModel = DiaryStateViewModel()
     
+    @AppStorage("isDarkMode") private var isDarkMode: Bool = false
+    
     var body: some Scene {
         WindowGroup {
             if sideTabBarViewModel.isShowMapView {
                 TravelMapView(sideTabbarViewModel: sideTabBarViewModel)
+                    .preferredColorScheme(isDarkMode ? .dark : .light)
             } else {
                 switch sideTabBarViewModel.selectedTab {
                 case .planner:
                     PlannerView(sideTabBarViewModel: sideTabBarViewModel)
-                    
+                        .preferredColorScheme(isDarkMode ? .dark : .light)
                 case .diary:
                     DiaryView(stateViewModel: diaryStateViewModel,
                               uiViewModel: DiaryUIViewModel(),
                               folderViewModel: FolderListViewModel(),
                               noteViewModel: NoteListViewModel(stateViewModel: diaryStateViewModel),
                               sideTabBarViewModel: sideTabBarViewModel)
+                    .preferredColorScheme(isDarkMode ? .dark : .light)
+                    
                 case .travelPlanner:
                     TravelDashboard(sideTabBarViewModel: sideTabBarViewModel)
+                        .preferredColorScheme(isDarkMode ? .dark : .light)
                     
                 case .setting:
                     AppSettingView(sideTabBarViewModel: sideTabBarViewModel)
+                        .preferredColorScheme(isDarkMode ? .dark : .light)
                 }
             }
             
