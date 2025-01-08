@@ -17,17 +17,15 @@ struct TravelMapView: View {
     var body: some View {
         
         NavigationSplitView {
-            TextField("장소 검색",text: $viewModel.searchText)
-                .padding()
-                .background(Color(UIColor.systemGray6))
-                .cornerRadius(12)
-                .padding()
+            
+            searchTextView()
             
             if !viewModel.searchText.isEmpty {
                 ScrollView {
                     LazyVStack() {
                         ForEach(viewModel.placeList, id: \.self) { result in
                             SearchedResultCell(searchResult: result)
+                                .frame(maxWidth: .infinity)
                                 .padding(.vertical)
                         }
                     }
@@ -50,7 +48,7 @@ struct TravelMapView: View {
                         DestinationFolderCell(folder: folder)
                     }
                 }
-              
+                
             }
             Spacer()
         } detail: {
@@ -81,14 +79,35 @@ struct TravelMapView: View {
         .onDisappear {
             viewModel.apply(.cleanManager)
         }
-       
-
+        
+        
+    }
+    
+    func searchTextView() -> some View {
+        HStack {
+            TextField("장소 검색", text: $viewModel.searchText)
+                .padding()
+                .background(Color(UIColor.systemGray6))
+                .cornerRadius(12)
+                .padding(.leading, 8)
+    
+            if !viewModel.searchText.isEmpty {
+                Button(action: {
+                    viewModel.apply(.clearSearchText)
+                }) {
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundColor(.gray)
+                        .padding(.trailing, 8)
+                }
+            }
+        }
+        .padding()
     }
     
     struct DestinationFolderCell: View {
         
         let folder: TravelDestinationFolderDB
-//        let viewModel: CalendarEventCategoryViewModel
+        //        let viewModel: CalendarEventCategoryViewModel
         
         var body: some View {
             HStack {
@@ -104,18 +123,18 @@ struct TravelMapView: View {
                 
                 Text("\(folder.destinationList.count)")
             }
-//            .contextMenu {
-//                Button(role: .destructive, action: {
-//                    viewModel.apply(.deleteEventCategory(category))
-//                }, label: {
-//                    Label("삭제", systemImage: "trash")
-//                })
-//                Button(action: {
-//                    viewModel.apply(.editEventCategory(category))
-//                }) {
-//                    Label("편집", systemImage: "pencil")
-//                }
-//            }
+            //            .contextMenu {
+            //                Button(role: .destructive, action: {
+            //                    viewModel.apply(.deleteEventCategory(category))
+            //                }, label: {
+            //                    Label("삭제", systemImage: "trash")
+            //                })
+            //                Button(action: {
+            //                    viewModel.apply(.editEventCategory(category))
+            //                }) {
+            //                    Label("편집", systemImage: "pencil")
+            //                }
+            //            }
         }
     }
     
@@ -125,10 +144,23 @@ struct TravelMapView: View {
         
         var body: some View {
             VStack(alignment: .leading) {
-                Text(searchResult.title)
-                Text(searchResult.subtitle)
-                    .font(.caption2)
+                HStack {
+                    Text(searchResult.title)
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal)
+                .padding(.vertical, 8)
+                
+                HStack {
+                    Text(searchResult.subtitle)
+                        .font(.caption2)
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal)
             }
+            
         }
     }
     

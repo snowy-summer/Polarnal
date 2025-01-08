@@ -16,6 +16,7 @@ final class TravelMapViewModel: ViewModelProtocol {
         case addFolder
         case editFolder
         case cleanManager
+        case clearSearchText
     }
     
     private let dbManager = DBManager()
@@ -41,6 +42,9 @@ final class TravelMapViewModel: ViewModelProtocol {
             
         case .cleanManager:
             searchManager.clean()
+            
+        case .clearSearchText:
+            searchText = ""
             
         }
     }
