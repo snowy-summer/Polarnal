@@ -19,8 +19,11 @@ struct PolarnalApp: App {
     var body: some Scene {
         WindowGroup {
             if sideTabBarViewModel.isShowMapView {
-                TravelMapView(sideTabbarViewModel: sideTabBarViewModel)
+                if let id = sideTabBarViewModel.travelID {
+                    TravelMapView(sideTabbarViewModel: sideTabBarViewModel,
+                                  viewModel: TravelMapViewModel(travelID: id))
                     .preferredColorScheme(isDarkMode ? .dark : .light)
+                }
             } else {
                 switch sideTabBarViewModel.selectedTab {
                 case .planner:

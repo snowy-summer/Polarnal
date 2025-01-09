@@ -28,8 +28,12 @@ final class TravelMapViewModel: ViewModelProtocol {
     @Published var destinationFolderList: [TravelDestinationFolderDB] = []
     @Published var placeList: [MKLocalSearchCompletion] = []
     
-    init() {
+    private let travelID: UUID
+    
+    init(travelID: UUID) {
+        self.travelID = travelID
         binding()
+        updateDestinationFolderList()
     }
     
     func apply(_ intent: Intent) {
@@ -56,7 +60,7 @@ extension TravelMapViewModel {
     
     private func binding() {
         $searchText
-//            .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
+        //            .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
             .sink { [weak self] text in
                 guard let self else { return }
                 if text.isEmpty {
@@ -65,12 +69,19 @@ extension TravelMapViewModel {
                 
                 searchManager.updateCompleter(query: text)
                 
-//                searchManager.search(for: text)
-//                placeList = searchManager.placeList()
+                //                searchManager.search(for: text)
+                //                placeList = searchManager.placeList()
                 placeList = searchManager.completerResults ?? []
                 print(placeList)
             }
             .store(in: &cancellables)
+    }
+    
+    private func updateDestinationFolderList() {
+        destinationFolderList = dbManager.fetchItems(ofType: TravelDestinationFolderDB.self)
+            .filter { folder in
+                folder.travelPlanID == travelID
+            }
     }
 }
 

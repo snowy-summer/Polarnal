@@ -100,7 +100,9 @@ struct TravelDashboard: View {
                                             .frame(width: geometry.size.width, height: geometry.size.height)
                                             .clipShape(RoundedRectangle(cornerRadius: 24))
                                             .onTapGesture {
-                                                sideTabBarViewModel.apply(.showMapView)
+                                                if let id = travelIdViewModel.selectedTravel?.id {
+                                                    sideTabBarViewModel.apply(.showMapView(id))
+                                                }
                                             }
                                         
                                     }

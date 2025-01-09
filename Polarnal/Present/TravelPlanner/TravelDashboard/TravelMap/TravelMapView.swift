@@ -12,7 +12,7 @@ import SwiftData
 struct TravelMapView: View {
     
     @ObservedObject var sideTabbarViewModel: SideTabBarViewModel
-    @StateObject private var viewModel: TravelMapViewModel = TravelMapViewModel()
+    @StateObject var viewModel: TravelMapViewModel
     
     var body: some View {
         
@@ -31,6 +31,8 @@ struct TravelMapView: View {
                     }
                 }
             } else {
+            
+                Divider()
                 
                 HStack {
                     Text("가이드 목록")
@@ -43,6 +45,7 @@ struct TravelMapView: View {
                     })
                     .padding(.horizontal)
                 }
+                
                 List {
                     ForEach(viewModel.destinationFolderList, id: \.id) { folder in
                         DestinationFolderCell(folder: folder)
