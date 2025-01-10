@@ -13,10 +13,12 @@ import MapKit
 final class TravelMapViewModel: ViewModelProtocol {
     
     enum Intent {
-        case addFolder
-        case editFolder
+        case insertModelContext(ModelContext)
+        case showAddFolder
+        case showEditFolder
         case cleanManager
         case clearSearchText
+        case reloadFolderList
     }
     
     private let dbManager = DBManager()
@@ -28,7 +30,7 @@ final class TravelMapViewModel: ViewModelProtocol {
     @Published var destinationFolderList: [TravelDestinationFolderDB] = []
     @Published var placeList: [MKLocalSearchCompletion] = []
     
-    private let travelID: UUID
+    let travelID: UUID
     
     init(travelID: UUID) {
         self.travelID = travelID
@@ -38,10 +40,13 @@ final class TravelMapViewModel: ViewModelProtocol {
     
     func apply(_ intent: Intent) {
         switch intent {
-        case .addFolder:
+        case .insertModelContext(let model):
+            dbManager.modelContext = model
+            
+        case .showAddFolder:
             sheetType = .addFolder
             
-        case .editFolder:
+        case .showEditFolder:
             sheetType = .editFolder
             
         case .cleanManager:
@@ -49,6 +54,9 @@ final class TravelMapViewModel: ViewModelProtocol {
             
         case .clearSearchText:
             searchText = ""
+            
+        case .reloadFolderList:
+            updateDestinationFolderList()
             
         }
     }
@@ -72,7 +80,6 @@ extension TravelMapViewModel {
                 //                searchManager.search(for: text)
                 //                placeList = searchManager.placeList()
                 placeList = searchManager.completerResults ?? []
-                print(placeList)
             }
             .store(in: &cancellables)
     }

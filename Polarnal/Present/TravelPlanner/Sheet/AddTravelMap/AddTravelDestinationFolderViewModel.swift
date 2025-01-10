@@ -11,11 +11,21 @@ import SwiftData
 
 final class AddTravelDestinationFolderViewModel: ViewModelProtocol {
     
+    enum Intent {
+        case insertModelContext(ModelContext)
+        case selectColor(Color)
+        case saveFolder
+        
+    }
+    
     @Published var folderTitle: String
     @Published var folderColor: Color
     private var folder: TravelDestinationFolderDB?
+    private var travelPlanID: UUID?
     
-    init(folder: TravelDestinationFolderDB?) {
+    init(folder: TravelDestinationFolderDB?,
+         travelID: UUID? = nil) {
+        travelPlanID = travelID
         if let folder {
             self.folder = folder
             folderTitle = folder.title
@@ -29,27 +39,20 @@ final class AddTravelDestinationFolderViewModel: ViewModelProtocol {
         }
     }
     
-    enum Intent {
-        
-        case selectColor(Color)
-        case saveCategory
-        case insertModelContext(ModelContext)
-        
-    }
-    
     private let dbManager = DBManager()
     var cancellables = Set<AnyCancellable>()
     
     func apply(_ intent: Intent) {
         switch intent {
+        case .insertModelContext(let model):
+            dbManager.modelContext = model
+            
         case .selectColor(let color):
             folderColor = color
             
-        case .saveCategory:
+        case .saveFolder:
             folder == nil ? addFolder() : editFolder()
             
-        case .insertModelContext(let modelContext):
-            dbManager.modelContext = modelContext
         }
     }
 }
@@ -58,9 +61,12 @@ extension AddTravelDestinationFolderViewModel {
     
     private func addFolder() {
         
-        let newCategory = EventCategoryDB(title: folderTitle,
-                                          color: getColorRGBA())
-        dbManager.addItem(newCategory)
+        if let travelPlanID {
+            let newFolder = TravelDestinationFolderDB(title: folderTitle,
+                                                      type: "other",
+                                                      travelPlanID: travelPlanID)
+            dbManager.addItem(newFolder)
+        }
     }
     
     private func editFolder() {

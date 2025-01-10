@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AddTravelDestinationFolderView: View {
+    @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel: AddTravelDestinationFolderViewModel
     
@@ -38,6 +39,9 @@ struct AddTravelDestinationFolderView: View {
         .padding(.bottom, 40)
         .navigationTitle("카테고리 생성")
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            viewModel.apply(.insertModelContext(modelContext))
+        }
         .toolbar {
             
             ToolbarItem(placement: .topBarLeading) {
@@ -50,7 +54,7 @@ struct AddTravelDestinationFolderView: View {
             
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {
-                    viewModel.apply(.saveCategory)
+                    viewModel.apply(.saveFolder)
                     dismiss()
                 }) {
                     Text("저장")
@@ -61,5 +65,5 @@ struct AddTravelDestinationFolderView: View {
 }
 
 #Preview {
-    AddTravelDestinationFolderView(viewModel: AddTravelDestinationFolderViewModel(folder: nil))
+    AddTravelDestinationFolderView(viewModel: AddTravelDestinationFolderViewModel(folder: nil,travelID: UUID()))
 }

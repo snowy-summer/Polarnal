@@ -11,6 +11,7 @@ import SwiftData
 
 struct TravelMapView: View {
     
+    @Environment(\.modelContext) var modelContext
     @ObservedObject var sideTabbarViewModel: SideTabBarViewModel
     @StateObject var viewModel: TravelMapViewModel
     
@@ -39,7 +40,7 @@ struct TravelMapView: View {
                         .padding(.horizontal)
                     Spacer()
                     Button(action: {
-                        viewModel.apply(.addFolder)
+                        viewModel.apply(.showAddFolder)
                     }, label: {
                         Image(systemName: "plus")
                     })
@@ -66,12 +67,18 @@ struct TravelMapView: View {
                     }
                 })
         }
-        .sheet(item: $viewModel.sheetType) { sheetType in
+        .onAppear {
+            viewModel.apply(.insertModelContext(modelContext))
+        }
+        .sheet(item: $viewModel.sheetType, onDismiss: {
+            viewModel.apply(.reloadFolderList)
+        }) { sheetType in
             
             NavigationStack {
                 switch sheetType {
                 case .addFolder:
-                    AddTravelDestinationFolderView(viewModel: AddTravelDestinationFolderViewModel(folder: nil))
+                    AddTravelDestinationFolderView(viewModel: AddTravelDestinationFolderViewModel(folder: nil,
+                                                                                                  travelID: viewModel.travelID))
                     
                 case .editFolder:
                     AddTravelDestinationFolderView(viewModel: AddTravelDestinationFolderViewModel(folder: nil))
