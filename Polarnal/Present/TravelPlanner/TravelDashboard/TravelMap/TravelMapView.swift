@@ -28,6 +28,9 @@ struct TravelMapView: View {
                             SearchedResultCell(searchResult: result)
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical)
+                                .onTapGesture {
+                                    viewModel.apply(.selectLocation(result))
+                                }
                         }
                     }
                 }
@@ -56,7 +59,7 @@ struct TravelMapView: View {
             }
             Spacer()
         } detail: {
-            Map()
+            Map(coordinateRegion: $viewModel.searchRegion)
                 .toolbar(content: {
                     ToolbarItem(placement: .topBarLeading) {
                         Button(action: {

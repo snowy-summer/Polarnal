@@ -12,7 +12,7 @@ import Combine
 final class MapSearchManager: NSObject {
     
     private var searchCompleter: MKLocalSearchCompleter? // MKLocalSearchCompleter 인스턴스, 검색 결과를 완성하는 역할
-    private var searchRegion = MKCoordinateRegion(MKMapRect.world) // 검색할 영역
+    private(set) var searchRegion = MKCoordinateRegion(MKMapRect.world) // 검색할 영역
     var completerResults: [MKLocalSearchCompletion]? // 검색 완료된 결과 저장
     private var localSearch: MKLocalSearch? // 실제 검색을 처리하는 객체
     private var places = [MKMapItem]() // 검색된 장소 목록
@@ -91,6 +91,15 @@ extension MapSearchManager {
         search(using: searchRequest) // 검색 실행
     }
     
+    ///  async 제안된 검색 결과에 대해 실제 검색을 실행
+    func search(for suggestedCompletion: MKLocalSearchCompletion) async -> CLLocationCoordinate2D {
+        let searchRequest = MKLocalSearch.Request(completion: suggestedCompletion) // 제안된 결과를 요청으로 변환
+        searchRequest.naturalLanguageQuery = suggestedCompletion.title // 자연어 쿼리 설정
+        
+        let coordinate = await search(using: searchRequest) // 검색 실행
+        return coordinate
+    }
+    
     /// 쿼리 문자열에 대해 검색을 실행
     func search(for queryString: String?) {
         let searchRequest = MKLocalSearch.Request() // 새로운 검색 요청 생성
@@ -110,6 +119,35 @@ extension MapSearchManager {
             
             if !mapItems.isEmpty {
                 places.append(mapItems.first!) // 검색된 첫 번째 장소 추가
+            }
+            
+            if let coordinate = response?.mapItems.first?.placemark.coordinate {
+                searchRegion.center = coordinate // 맵의 중심 위치를 업데이트
+                
+                print(coordinate)
+            }
+            
+        }
+    }
+    
+    func search(using searchRequest: MKLocalSearch.Request) async -> CLLocationCoordinate2D {
+        searchRequest.resultTypes = .pointOfInterest // 관심 지점만 검색
+        
+        // 비동기 작업을 `withCheckedContinuation`로 변환
+        return await withCheckedContinuation { continuation in
+            let localSearch = MKLocalSearch(request: searchRequest)
+            localSearch.start { response, error in
+                if let error = error {
+                    print("검색 오류: \(error.localizedDescription)")
+                    continuation.resume(returning: CLLocationCoordinate2D(latitude: 0, longitude: 0)) // 기본 좌표 반환
+                    return
+                }
+                
+                if let coordinate = response?.mapItems.first?.placemark.coordinate {
+                    continuation.resume(returning: coordinate) // 검색된 좌표 반환
+                } else {
+                    continuation.resume(returning: CLLocationCoordinate2D(latitude: 0, longitude: 0)) // 기본 좌표 반환
+                }
             }
         }
     }

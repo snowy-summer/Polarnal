@@ -19,6 +19,7 @@ final class TravelMapViewModel: ViewModelProtocol {
         case cleanManager
         case clearSearchText
         case reloadFolderList
+        case selectLocation(MKLocalSearchCompletion)
     }
     
     private let dbManager = DBManager()
@@ -29,19 +30,20 @@ final class TravelMapViewModel: ViewModelProtocol {
     @Published var searchText: String = ""
     @Published var destinationFolderList: [TravelDestinationFolderDB] = []
     @Published var placeList: [MKLocalSearchCompletion] = []
+    @Published var searchRegion = MKCoordinateRegion(MKMapRect.world)
     
     let travelID: UUID
     
     init(travelID: UUID) {
         self.travelID = travelID
         binding()
-        updateDestinationFolderList()
     }
     
     func apply(_ intent: Intent) {
         switch intent {
         case .insertModelContext(let model):
             dbManager.modelContext = model
+            updateDestinationFolderList()
             
         case .showAddFolder:
             sheetType = .addFolder
@@ -58,6 +60,16 @@ final class TravelMapViewModel: ViewModelProtocol {
         case .reloadFolderList:
             updateDestinationFolderList()
             
+        case .selectLocation(let location):
+            Task {
+                let coordinate = await searchManager.search(for: location)
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else { return }
+                          searchRegion.center = coordinate
+                          searchRegion.span = MKCoordinateSpan(latitudeDelta: 0.005,
+                                                               longitudeDelta: 0.005)
+                      }
+            }
         }
     }
     
