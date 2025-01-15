@@ -51,7 +51,7 @@ enum WeekDay: CaseIterable {
             return Color.blue
             
         default:
-            return Color.black
+            return Color.folderTitle
         }
     }
 }

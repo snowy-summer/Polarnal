@@ -144,6 +144,7 @@ extension MapSearchManager {
                 }
                 
                 if let coordinate = response?.mapItems.first?.placemark.coordinate {
+                    //TODO: placemark coordinate가 아니라 mapItems의 first를 내보내야 할 것 같음
                     continuation.resume(returning: coordinate) // 검색된 좌표 반환
                 } else {
                     continuation.resume(returning: CLLocationCoordinate2D(latitude: 0, longitude: 0)) // 기본 좌표 반환

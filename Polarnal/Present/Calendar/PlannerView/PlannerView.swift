@@ -46,7 +46,7 @@ struct PlannerView: View {
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 12)
-                                    .fill(Color(uiColor: .systemGray5))
+                                    .fill(.contentBackground)
                                     .frame(height: 44)
                                 HStack {
                                     Image(systemName: "plus.app.fill")
