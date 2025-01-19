@@ -65,6 +65,7 @@ struct FolderListView: View {
                     }
             }
         }
+        .scrollContentBackground(.hidden)
     }
     
 }

@@ -34,6 +34,15 @@ struct NoteListView: View {
                         .frame(maxWidth: .infinity,
                                maxHeight: .infinity)
                     )
+                    .swipeActions(edge: .trailing,
+                                  allowsFullSwipe: false) {
+                        Button(role: .destructive, action: {
+                            noteListViewModel.apply(.deleteNote(note))
+                        }, label: {
+                            Label("삭제", systemImage: "trash")
+                        })
+                        
+                    }
                     .contextMenu {
                         Button(action: {
                             noteListViewModel.apply(.deleteNote(note))

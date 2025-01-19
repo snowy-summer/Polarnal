@@ -51,8 +51,6 @@ struct TravelTodoMiniView: View {
                             })
                             
                         }
-                                      
-                    
                 }
             }
             .listStyle(.plain)

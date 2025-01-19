@@ -34,6 +34,9 @@ struct SideTabBarView: View {
                 viewModel.apply(.selectTab(TabType.setting))
             }
         }
+        .padding(.trailing)
+        .padding(.bottom)
+        .background(.ipadTabbar)
     }
     
     struct TabIconCell: View {

@@ -26,8 +26,7 @@ struct TravelDashboard: View {
                 HStack {
                     SideTabBarView(viewModel: sideTabBarViewModel)
                         .frame(width: 80)
-                    
-                    VStack {
+            
                         List {
                             ForEach(travelList, id: \.id) { travel in
                                 TravelListCell(travel: travel)
@@ -37,7 +36,7 @@ struct TravelDashboard: View {
                                     }
                             }
                         }
-                    }
+                        .scrollContentBackground(.hidden)
                 }
                 
             }
