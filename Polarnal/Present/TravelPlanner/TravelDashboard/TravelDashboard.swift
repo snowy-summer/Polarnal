@@ -160,6 +160,7 @@ struct TravelDashboard: View {
                                     .padding()
                                 }
                             }
+                            .tint(.folderTitle)
                             .padding()
                             .background(Color(uiColor: .systemGray5))
                             .clipShape(RoundedRectangle(cornerRadius: 24))
@@ -223,8 +224,11 @@ struct TravelTicketMiniView: View {
             
             List {
                 Text("✈️  비행기 티켓")
+                    .listRowBackground(Color(uiColor: .systemGray5))
                 Text("🚃  교통 패스")
+                    .listRowBackground(Color(uiColor: .systemGray5))
                 Text("🏨  숙소 예약 정보")
+                    .listRowBackground(Color(uiColor: .systemGray5))
             }
             .listStyle(.plain)
             

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EnumHelper
 
 struct NoteContentView: View {
     
@@ -118,21 +119,6 @@ struct NoteContentToolView: View {
         self.noteContentViewModel = noteContentViewModel
     }
     
-    enum NoteContentToolType: CaseIterable, Identifiable {
-        case text
-        case image
-        
-        var id: String {
-            switch self {
-            case .text:
-                return "text"
-                
-            case .image:
-                return "image"
-            }
-        }
-    }
-    
     var body: some View {
         HStack(spacing: 40) {
             ForEach(NoteContentToolType.allCases) { type in
@@ -156,4 +142,10 @@ struct NoteContentToolView: View {
             }
         }
     }
+}
+
+@IdentifiableEnum
+enum NoteContentToolType: CaseIterable {
+    case text
+    case image
 }

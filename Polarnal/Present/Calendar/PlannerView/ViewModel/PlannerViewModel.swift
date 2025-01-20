@@ -6,6 +6,7 @@
 //
 
 import Combine
+import EnumHelper
 
 final class PlannerViewModel: ViewModelProtocol {
     
@@ -25,51 +26,6 @@ final class PlannerViewModel: ViewModelProtocol {
         case showDDayView
         
         case refreshView
-    }
-    
-    enum EventCategoryType: Identifiable {
-        case add
-        case edit
-        
-        var id: String {
-            switch self {
-            case .add:
-                return "add"
-                
-            case .edit:
-                return "edit"
-            }
-        }
-    }
-    
-    enum DDaySheetType: Identifiable {
-        case add
-        case edit
-        
-        var id: String {
-            switch self {
-            case .add:
-                return "add"
-                
-            case .edit:
-                return "edit"
-            }
-        }
-    }
-    
-    enum TodoSheetType: Identifiable {
-        case add
-        case edit
-        
-        var id: String {
-            switch self {
-            case .add:
-                return "add"
-                
-            case .edit:
-                return "edit"
-            }
-        }
     }
     
     enum PlannerViewType {
@@ -120,3 +76,20 @@ final class PlannerViewModel: ViewModelProtocol {
     
 }
 
+@IdentifiableEnum
+enum EventCategoryType {
+    case add
+    case edit
+}
+
+@IdentifiableEnum
+enum DDaySheetType {
+    case add
+    case edit
+}
+
+@IdentifiableEnum
+enum TodoSheetType {
+    case add
+    case edit
+}

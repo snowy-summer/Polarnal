@@ -8,6 +8,7 @@
 import Foundation
 import SwiftData
 import Combine
+import EnumHelper
 
 final class TravelTicketViewModel: ViewModelProtocol {
     
@@ -65,16 +66,8 @@ extension TravelTicketViewModel {
 
 }
 
-enum TravelTicketSheetType: Identifiable {
+@IdentifiableEnum
+enum TravelTicketSheetType{
     case add
     case edit
-    
-    var id: String {
-        switch self {
-        case .add:
-            return "add"
-        case .edit:
-            return "edit"
-        }
-    }
 }

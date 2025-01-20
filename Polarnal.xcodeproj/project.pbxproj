@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -88,6 +88,7 @@
 		6B790FE32CFFEF530000AC03 /* IconSelectPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FE22CFFEF530000AC03 /* IconSelectPartView.swift */; };
 		6B790FE52CFFEF7E0000AC03 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FE42CFFEF7E0000AC03 /* ColorPalette.swift */; };
 		6B790FE72CFFEFA80000AC03 /* DesignOfFolderIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FE62CFFEFA80000AC03 /* DesignOfFolderIcon.swift */; };
+		6B9F61B52D3E621D00875186 /* EnumHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 6B9F61B42D3E621D00875186 /* EnumHelper */; };
 		6BDAE5002D141DDE00A066E9 /* TravelCostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE4FF2D141DDE00A066E9 /* TravelCostViewModel.swift */; };
 		6BDAE5022D1563CE00A066E9 /* SelectedTravelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5012D1563CE00A066E9 /* SelectedTravelViewModel.swift */; };
 		6BDAE5052D1579E700A066E9 /* CostFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5042D1579E700A066E9 /* CostFormatter.swift */; };
@@ -220,6 +221,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B9F61B52D3E621D00875186 /* EnumHelper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -898,6 +900,9 @@
 				Base,
 			);
 			mainGroup = 6B790F922CFEA3080000AC03;
+			packageReferences = (
+				6B9F61B32D3E621D00875186 /* XCLocalSwiftPackageReference "../../포폴용/EnumHelper" */,
+			);
 			productRefGroup = 6B790F9C2CFEA3080000AC03 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1164,6 +1169,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1196,6 +1202,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1234,6 +1241,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		6B9F61B32D3E621D00875186 /* XCLocalSwiftPackageReference "../../포폴용/EnumHelper" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../../포폴용/EnumHelper";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6B9F61B42D3E621D00875186 /* EnumHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = EnumHelper;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6B790F932CFEA3080000AC03 /* Project object */;
 }

@@ -6,24 +6,11 @@
 //
 
 import Foundation
+import EnumHelper
 
-enum DiaryViewSheetType: Identifiable {
-    
+@IdentifiableEnum
+enum DiaryViewSheetType {
     case addFolder(Folder?)
     case editFolder(Folder)
     case photo
-    
-    var id: String {
-        switch self {
-        case .addFolder:
-            return "addFolder"
-            
-        case .editFolder:
-            return "editFolder"
-            
-        case .photo:
-            return "photo"
-            
-        }
-    }
 }

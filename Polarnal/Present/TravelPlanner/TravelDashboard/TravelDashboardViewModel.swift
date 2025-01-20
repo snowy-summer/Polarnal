@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import SwiftData
+import EnumHelper
 
 final class TravelDashboardViewModel: ViewModelProtocol {
     
@@ -106,17 +107,8 @@ extension TravelDashboardViewModel {
     
 }
 
-enum TravelPlanSheetType: CaseIterable, Identifiable {
+@IdentifiableEnum
+enum TravelPlanSheetType: CaseIterable {
     case addTravelPlan
     case editTravelPlan
-    
-    var id: String {
-        switch self {
-        case .addTravelPlan:
-            return "addTravelPlan"
-            
-        case .editTravelPlan:
-            return "editTravelPlan"
-        }
-    }
 }

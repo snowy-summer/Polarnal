@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import SwiftData
 import MapKit
+import EnumHelper
 
 final class TravelMapViewModel: ViewModelProtocol {
     
@@ -104,17 +105,8 @@ extension TravelMapViewModel {
     }
 }
 
-enum TravelMapSheetType: CaseIterable, Identifiable {
+@IdentifiableEnum
+enum TravelMapSheetType: CaseIterable {
     case addFolder
     case editFolder
-    
-    var id: String {
-        switch self {
-        case .addFolder:
-            return "addFolder"
-            
-        case .editFolder:
-            return "editFolder"
-        }
-    }
 }

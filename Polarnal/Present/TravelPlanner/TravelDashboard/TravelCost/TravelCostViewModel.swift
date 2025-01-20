@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import SwiftData
+import EnumHelper
 
 final class TravelCostViewModel: ViewModelProtocol {
     enum Intent {
@@ -90,20 +91,10 @@ extension TravelCostViewModel {
     }
 }
 
-enum AddTravelCostViewSheetType: Identifiable {
-    
+@IdentifiableEnum
+enum AddTravelCostViewSheetType {
     case add
     case edit
-    
-    var id: String {
-        switch self {
-        case .add:
-            return "add"
-            
-        case .edit:
-            return "edit"
-        }
-    }
 }
 
 struct CategorySum: Equatable {
