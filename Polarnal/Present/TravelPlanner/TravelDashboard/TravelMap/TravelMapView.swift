@@ -59,16 +59,20 @@ struct TravelMapView: View {
             }
             Spacer()
         } detail: {
-            Map(coordinateRegion: $viewModel.searchRegion)
-                .toolbar(content: {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button(action: {
-                            sideTabbarViewModel.apply(.dismissShowMapView)
-                        }) {
-                            Text("Back")
-                        }
+            Map {
+                Marker(viewModel.selectedPlace,
+                       coordinate: viewModel.searchRegion.center)
+                .tint(.red)
+            }
+            .toolbar(content: {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {
+                        sideTabbarViewModel.apply(.dismissShowMapView)
+                    }) {
+                        Text("Back")
                     }
-                })
+                }
+            })
         }
         .onAppear {
             viewModel.apply(.insertModelContext(modelContext))
