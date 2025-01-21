@@ -60,9 +60,11 @@ struct TravelMapView: View {
             Spacer()
         } detail: {
             Map {
-                Marker(viewModel.selectedPlace,
-                       coordinate: viewModel.searchRegion.center)
-                .tint(.red)
+                if let place = viewModel.selectedPlace {
+                    Marker(place.title,
+                           coordinate: place.coordinate)
+                    .tint(.red)
+                }
             }
             .toolbar(content: {
                 ToolbarItem(placement: .topBarLeading) {

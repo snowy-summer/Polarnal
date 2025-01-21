@@ -32,7 +32,7 @@ final class TravelMapViewModel: ViewModelProtocol {
     @Published var destinationFolderList: [TravelDestinationFolderDB] = []
     @Published var placeList: [MKLocalSearchCompletion] = []
     @Published var searchRegion = MKCoordinateRegion(MKMapRect.world)
-    var selectedPlace: String = ""
+    var selectedPlace: MapPlace? = nil
     
     let travelID: UUID
     
@@ -68,9 +68,13 @@ final class TravelMapViewModel: ViewModelProtocol {
                 DispatchQueue.main.async { [weak self] in
                     guard let self else { return }
                     searchRegion.center = coordinate
-                    searchRegion.span = MKCoordinateSpan(latitudeDelta: 0.005,
-                                                         longitudeDelta: 0.005)
-                    selectedPlace = location.title
+                    searchRegion.span = MKCoordinateSpan(latitudeDelta: 0.05,
+                                                         longitudeDelta: 0.05)
+                    selectedPlace = MapPlace(title: location.title,
+                                             type: location.subtitle,
+                                             longitude: coordinate.longitude,
+                                             latitude: coordinate.latitude,
+                                             travelPlanID: travelID)
                 }
             }
         }
