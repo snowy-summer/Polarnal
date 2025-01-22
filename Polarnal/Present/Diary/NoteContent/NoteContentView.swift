@@ -34,6 +34,15 @@ struct NoteContentView: View {
                                                                                 what: newValue)) }
                     )
                 )
+                .swipeActions(edge: .trailing,
+                              allowsFullSwipe: false) {
+                    Button(role: .destructive, action: {
+                        noteContentViewModel.contentApply(.deleteContent(index))
+                    }, label: {
+                        Label("삭제", systemImage: "trash")
+                    })
+                    
+                }
             }.listRowSeparator(.hidden)
             
             NoteContentToolView(noteContentViewModel: noteContentViewModel)
@@ -57,14 +66,18 @@ struct NoteContentCell: View {
     }
     
     var body: some View {
-        switch type {
-        case .text:
-            NoteTextField(noteText: $noteText)
-            
-        case .image:
-            Image(.ex)
-                .resizable()
+        VStack {
+            switch type {
+            case .text:
+                NoteTextField(noteText: $noteText)
+                
+            case .image:
+                Image(.ex)
+                    .resizable()
+            }
         }
+        .background(Color.listBackground)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
     }
     
     
@@ -122,25 +135,41 @@ struct NoteContentToolView: View {
     var body: some View {
         HStack(spacing: 40) {
             ForEach(NoteContentToolType.allCases) { type in
-                RoundedRectangle(cornerRadius: select ? 12 : 40)
-                    .fill(.gray)
-                    .frame(width: 80, height: 80)
-                    .transition(.opacity)
-                    .animation(.linear(duration: 0.3),
-                               value: select)
-                    .onTapGesture {
-                        select.toggle()
-                        
-                        switch type {
-                        case .text:
-                            noteContentViewModel.contentApply(.addTextField)
-                        case .image:
-                            noteContentViewModel.contentApply(.addImage)
+                ZStack {
+                    RoundedRectangle(cornerRadius: select ? 12 : 40)
+                        .fill(.gray)
+                        .frame(width: 80, height: 80)
+                        .transition(.opacity)
+                        .animation(.linear(duration: 0.3),
+                                   value: select)
+                        .onTapGesture {
+                            select.toggle()
+                            
+                            switch type {
+                            case .text:
+                                noteContentViewModel.contentApply(.addTextField)
+                            case .image:
+                                noteContentViewModel.contentApply(.addImage)
+                            }
+                            
                         }
-                        
+                    
+                    switch type {
+                    case .text:
+                        Image(systemName: "text.page")
+                            .resizable()
+                            .frame(width: 32, height: 32)
+                    case .image:
+                        Image(systemName: "photo")
+                            .resizable()
+                            .frame(width: 32, height: 32)
                     }
+                }
             }
         }
+        .padding()
+        .frame(maxWidth: .infinity)
+        .background(Color.listBackground)
     }
 }
 

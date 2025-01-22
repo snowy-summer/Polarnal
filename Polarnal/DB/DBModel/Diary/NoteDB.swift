@@ -14,16 +14,20 @@ final class Note: Identifiable {
     var createAt: Date
     var title: String
     var tag: [Tag]
-    @Relationship(deleteRule: .cascade) var contents: [NoteContentData]
+    @Relationship(deleteRule: .cascade) var contents: [NoteContentDataDB]
+    var folderID: UUID
     
     init(createAt: Date = Date(),
          title: String = "",
          tag: [Tag] = [],
-         contents: [NoteContentData] = []) {
+         contents: [NoteContentDataDB] = [],
+         folderID: UUID) {
+        
         self.createAt = createAt
         self.title = title
         self.tag = tag
         self.contents = contents
+        self.folderID = folderID
     }
 }
 
@@ -33,23 +37,26 @@ enum NoteContentType: String {
 }
 
 @Model
-final class NoteContentData: Identifiable {
+final class NoteContentDataDB: Identifiable {
     @Attribute(.unique) var id: UUID
     @Attribute(.externalStorage) var textValue: String
     @Attribute(.externalStorage) var imageValue: [Data]
     var type: String
     var index: Int
+    var noteID: UUID
 
     init(id: UUID = UUID(),
          type: NoteContentType,
-         imageValue: [Data],
-         textValue: String,
-         index: Int) {
+         imageValue: [Data] = [],
+         textValue: String = "",
+         index: Int,
+         noteID: UUID) {
         self.id = id
         self.type = type.rawValue
         self.imageValue = imageValue
         self.textValue = textValue
         self.index = index
+        self.noteID = noteID
     }
 }
 

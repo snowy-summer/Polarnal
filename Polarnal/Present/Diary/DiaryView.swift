@@ -50,17 +50,6 @@ struct DiaryView: View {
                 }
             }
             .toolbar {
-//                ToolbarItem(placement: .navigationBarTrailing) {
-                   
-//                    Button {
-//                        uiViewModel.apply(.showPhotoPicker)
-//                    } label: {
-//                        Image(systemName: "photo")
-//                    }
-//                    Button("Test Button") {
-//                               print("Button pressed")
-//                           }
-//                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         stateViewModel.apply(.addNote)
@@ -91,6 +80,7 @@ struct DiaryView: View {
         }
         .onAppear {
             folderViewModel.apply(.insertModelContext(modelContext))
+            noteViewModel.apply(.insertModelContext(modelContext))
         }
     }
     

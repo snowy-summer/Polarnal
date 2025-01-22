@@ -17,7 +17,7 @@ final class DiaryStateViewModel: ViewModelProtocol {
         case selectNote(Note)
         case addNote
         case changeNotetitle(String)
-        case changeNoteContent([NoteContentData])
+        case changeNoteContent([NoteContentDataDB])
     }
     
     @Published var selectedFolder: Folder? = nil
@@ -44,7 +44,7 @@ final class DiaryStateViewModel: ViewModelProtocol {
             
         case .addNote:
             guard let selectedFolder = selectedFolder else { return }
-            let note = Note()
+            let note = Note(folderID: selectedFolder.id)
             selectedFolder.noteList.append(note)
             dbManager.addItem(selectedFolder)
             self.selectedFolder = selectedFolder

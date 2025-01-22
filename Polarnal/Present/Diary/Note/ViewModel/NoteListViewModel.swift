@@ -7,10 +7,12 @@
 
 import SwiftUI
 import Combine
+import SwiftData
 
 final class NoteListViewModel: ViewModelProtocol {
     
     enum Intent {
+        case insertModelContext(ModelContext)
         case deleteNote(Note)
         case selectNote(Note)
     }
@@ -21,11 +23,13 @@ final class NoteListViewModel: ViewModelProtocol {
         case editText(of: Int, what: String)
         case saveContent([NoteContentCellData])
         case saveTitle(String)
+        case deleteContent(Int)
     }
     
     //Note List 부분
     @Published var noteList: [Note] = []
     private var selectedIndex: Int?
+    private var selectedNote: Note?
     
     //Note Content부분
     @Published var contentTitle: String = ""
@@ -50,6 +54,7 @@ final class NoteListViewModel: ViewModelProtocol {
         case .selectNote(let note):
             if let index = noteList.firstIndex(of: note) {
                 selectedIndex = index
+                selectedNote = note
                 contentTitle = note.title
                 noteContents = note.contents.compactMap {  content in
                     self.convertToCellData(data: content)
@@ -58,14 +63,21 @@ final class NoteListViewModel: ViewModelProtocol {
             
         case .deleteNote(let note):
             dbManager.deleteItem(note)
+            
+        case .insertModelContext(let model):
+            dbManager.modelContext = model
         }
     }
     
     func contentApply(_ intent : NoteContentIntent) {
         switch intent {
         case .addTextField:
-            noteContents.append(NoteContentCellData(id: UUID(),
-                                                    type: .text))
+            if let selectedNote {
+                let noteContent = NoteContentDataDB(type: .text, index: noteContents.count + 1, noteID: selectedNote.id)
+                
+                dbManager.addItem(noteContent)
+                noteContents.append(NoteContentCellData(id: noteContent.id, type: .text))
+            }
             
         case .addImage:
             noteContents.append(NoteContentCellData(id: UUID(),
@@ -84,6 +96,9 @@ final class NoteListViewModel: ViewModelProtocol {
             guard let selectedIndex else { return }
             noteList[selectedIndex].title = title
             dbManager.addItem(noteList[selectedIndex])
+            
+        case .deleteContent(let index):
+            noteContents.remove(at: index)
         }
     }
     
@@ -119,7 +134,7 @@ final class NoteListViewModel: ViewModelProtocol {
                 guard let self,
                       let selectedIndex else { return }
                 
-//                noteList[selectedIndex].contents = getDBNoteContentList(dataList: data)
+                //                noteList[selectedIndex].contents = getDBNoteContentList(dataList: data)
                 LogManager.log("노트 내용 저장 시도")
                 contentApply(.saveContent(data))
                 
@@ -133,9 +148,9 @@ final class NoteListViewModel: ViewModelProtocol {
 //MARK: - Cell Data와 Content간의 변환
 extension NoteListViewModel {
     
-    private func getDBNoteContentList(dataList: [NoteContentCellData]) -> [NoteContentData] {
+    private func getDBNoteContentList(dataList: [NoteContentCellData]) -> [NoteContentDataDB] {
         
-        var contents = [NoteContentData]()
+        var contents = [NoteContentDataDB]()
         
         for content in dataList {
             guard let convertedContent = convertToDBData(data: content) else {
@@ -148,7 +163,7 @@ extension NoteListViewModel {
         return contents
     }
     
-    private func convertToCellData(data: NoteContentData) -> NoteContentCellData? {
+    private func convertToCellData(data: NoteContentDataDB) -> NoteContentCellData? {
         
         guard let type = NoteContentType(rawValue: data.type) else {
             LogManager.log("잘못된 타입이 존재합니다")
@@ -171,8 +186,8 @@ extension NoteListViewModel {
                                    textContent: data.textValue)
     }
     
-    private func convertToDBData(data: NoteContentCellData) -> NoteContentData? {
-        
+    private func convertToDBData(data: NoteContentCellData) -> NoteContentDataDB? {
+        guard let selectedNote else { return nil }
         
         var imageDataList: [Data] = []
         
@@ -184,11 +199,16 @@ extension NoteListViewModel {
             imageDataList.append(imageData)
         }
         
-        return NoteContentData(id: data.id,
-                               type: data.type,
-                               imageValue: imageDataList,
-                               textValue: data.textContent, index: 0)
-        // index 임시
+        guard let index = noteContents.firstIndex(where: { $0.id == data.id }) else {
+            return nil
+        }
+        
+        return NoteContentDataDB(id: data.id,
+                                 type: data.type,
+                                 imageValue: imageDataList,
+                                 textValue: data.textContent,
+                                 index: index,
+                                 noteID: selectedNote.id)
     }
 }
 
