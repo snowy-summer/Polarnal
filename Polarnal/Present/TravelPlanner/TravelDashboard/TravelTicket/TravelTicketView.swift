@@ -43,6 +43,7 @@ struct TravelTicketView: View {
             ToolbarItem {
                 NavigationLink(destination: AddTravelTicketView(document: nil)) {
                     Image(systemName: "plus")
+                        .tint(Color.normalText)
                 }
             }
         }

@@ -53,7 +53,7 @@ struct TagPartView: View {
                     Text("추가")
                         .fontWeight(.bold)
                         .padding()
-                        .foregroundColor(.black)
+                        .foregroundColor(Color.normalText)
                         .background(Color(UIColor.systemGray6))
                         .cornerRadius(8)
                 }

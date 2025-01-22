@@ -141,7 +141,7 @@ struct AddTravelTicketView: View {
                 }, label: {
                     Image(systemName: "plus")
                         .resizable()
-                        .tint(.black)
+                        .tint(Color.normalText)
                         .frame(width: 28, height: 28)
                         .bold()
                     

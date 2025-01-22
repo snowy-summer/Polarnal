@@ -25,11 +25,11 @@ struct NoteListCell: View {
                     VStack {
                         Text("Apr")
                             .bold()
-                            .foregroundStyle(.black)
+                            .foregroundStyle(Color.normalText)
                         Text("\(13)")
                             .font(.largeTitle)
                             .bold()
-                            .foregroundStyle(.black)
+                            .foregroundStyle(Color.normalText)
                     }
                 }
             VStack(alignment: .leading) {

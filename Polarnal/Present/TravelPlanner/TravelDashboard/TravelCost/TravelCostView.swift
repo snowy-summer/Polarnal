@@ -41,6 +41,7 @@ struct TravelCostView: View {
                     viewModel.apply(.showAddTravelCostView)
                 } label: {
                     Image(systemName: "plus")
+                        .tint(Color.normalText)
                 }
                 
             }

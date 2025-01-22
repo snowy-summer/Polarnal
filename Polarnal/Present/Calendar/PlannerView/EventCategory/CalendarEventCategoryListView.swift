@@ -36,6 +36,8 @@ struct CalendarEventCategoryListView: View {
                                   
             }
         }
+        .scrollContentBackground(.hidden)
+        .background(Color.listBackground)
         .sheet(item: $viewModel.isShowEditEventCategoryView, content: { category in
             NavigationStack {
                 AddEventCategoryView(viewModel: AddEventCategoryViewModel(eventCategory: category))

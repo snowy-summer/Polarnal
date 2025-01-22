@@ -20,7 +20,7 @@ struct MainCalendarView: View {
                     viewModel.apply(.previousMonth)
                 } label: {
                     Image(systemName: "chevron.backward")
-                        .foregroundStyle(.black)
+                        .foregroundStyle(Color.normalText)
                 }
                 .padding()
                 
@@ -32,7 +32,7 @@ struct MainCalendarView: View {
                     viewModel.apply(.nextMonth)
                 } label: {
                     Image(systemName: "chevron.forward")
-                        .foregroundStyle(.black)
+                        .foregroundStyle(Color.normalText)
                 }
                 .padding()
             }
@@ -72,7 +72,7 @@ struct MainCalendarContentView: View {
                                                  isSunday: columnIndex == 0,
                                                  isSaturday: columnIndex == 6,
                                                  isEmptyView: false)
-                            .background(Color(uiColor: .systemGray4))
+                            .background(Color.listBackground)
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                             .frame(height: geometry.size.height / 7)
                             
@@ -82,7 +82,7 @@ struct MainCalendarContentView: View {
                                                  isSaturday: false,
                                                  isEmptyView: true)
                             .foregroundStyle(.clear)
-                            .background(Color(uiColor: .systemGray4))
+                            .background(Color.listBackground)
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                             .frame(height: geometry.size.height / 7)
                         }

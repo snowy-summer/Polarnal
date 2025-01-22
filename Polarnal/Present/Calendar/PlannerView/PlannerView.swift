@@ -38,7 +38,7 @@ struct PlannerView: View {
                                             viewModel.apply(.insertModelContext(modelContext))
                                         }
                                 }
-                                    
+                                
                             }
                         
                         Button(action: {
@@ -46,18 +46,14 @@ struct PlannerView: View {
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 12)
-                                    .fill(.contentBackground)
+                                    .fill(Color.listBackground)
                                     .frame(height: 44)
-                                HStack {
-                                    Image(systemName: "plus.app.fill")
-                                        .resizable()
-                                        .frame(width: 28, height: 28)
-                                        .foregroundStyle(.black)
-                                    Text("카테고리 추가")
-                                        .font(.headline)
-                                        .bold()
-                                        .foregroundStyle(.black)
-                                }
+                                
+                                Label("새로운 폴더", systemImage: "plus.circle")
+                                    .font(.headline)
+                                    .bold()
+                                    .foregroundStyle(Color.normalText)
+                                
                             }
                             .padding(.horizontal, 8)
                         }
@@ -67,7 +63,7 @@ struct PlannerView: View {
                 Divider()
                 
                 MiniCalendarView()
-                    .background(Color(uiColor: .systemGray5))
+                    .background(Color.contentBackground)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             }
         } detail: {
@@ -83,6 +79,7 @@ struct PlannerView: View {
                                 plannerViewModel.apply(.showAddEventView)
                             }) {
                                 Image(systemName: "plus")
+                                    .tint(Color.normalText)
                             }
                         }
                     }
@@ -108,19 +105,19 @@ struct PlannerView: View {
                                 plannerViewModel.apply(.showAddTodoFolder)
                             }) {
                                 Image(systemName: "plus")
+                                    .tint(Color.normalText)
                             }
                         }
                     }
                     .sheet(item: $plannerViewModel.todoSheetType,
                            onDismiss: {
                         
-                        // 뒤로 간 경우
                     }) { type in
                         NavigationStack {
                             switch type {
                             case .add:
                                 AddTodoFolderView(viewModel: AddTodoFolderViewModel(todoFolder: nil))
-                            
+                                
                             default:
                                 EmptyView()
                             }
@@ -135,6 +132,7 @@ struct PlannerView: View {
                                 plannerViewModel.apply(.showAddDDay)
                             }) {
                                 Image(systemName: "plus")
+                                    .tint(Color.normalText)
                             }
                         }
                     }
@@ -153,7 +151,7 @@ struct PlannerView: View {
                         }
                     }
                 
-            
+                
             }
             
         }

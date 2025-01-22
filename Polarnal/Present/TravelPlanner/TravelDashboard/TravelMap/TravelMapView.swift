@@ -46,6 +46,7 @@ struct TravelMapView: View {
                         viewModel.apply(.showAddFolder)
                     }, label: {
                         Image(systemName: "plus")
+                            .tint(Color.normalText)
                     })
                     .padding(.horizontal)
                 }

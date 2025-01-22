@@ -51,6 +51,8 @@ struct PlannerTypeListView: View {
                                       viewModel: viewModel)
             }
         }
+        .scrollContentBackground(.hidden)
+        .background(Color.listBackground)
     }
     
     struct PlannerTypeListCell: View {

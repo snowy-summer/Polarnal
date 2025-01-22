@@ -23,7 +23,7 @@ struct TravelPlanView: View {
                             viewModel.apply(.selectPreviousDate)
                         } label: {
                             Image(systemName: "chevron.backward")
-                                .foregroundStyle(.black)
+                                .foregroundStyle(Color.normalText)
                         }
                         .padding()
                         
@@ -35,7 +35,7 @@ struct TravelPlanView: View {
                             viewModel.apply(.selectNextDate)
                         } label: {
                             Image(systemName: "chevron.forward")
-                                .foregroundStyle(.black)
+                                .foregroundStyle(Color.normalText)
                         }
                         .padding()
                     }
@@ -79,6 +79,7 @@ struct TravelPlanView: View {
                     viewModel.apply(.addPlanDetail)
                 } label: {
                     Image(systemName: "plus")
+                        .tint(Color.normalText)
                 }
                 
             }
@@ -96,7 +97,7 @@ struct TravelPlanCell: View {
             Circle()
                 .fill()
                 .frame(width: 24, height: 24)
-                .background(.white.shadow(.drop(color: .black.opacity(0.1), radius: 3)), in: .circle)
+                .background(.white.shadow(.drop(color: Color.normalText.opacity(0.1), radius: 3)), in: .circle)
             
             ZStack {
                 RoundedRectangle(cornerRadius: 16)

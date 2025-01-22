@@ -29,7 +29,7 @@ struct TravelTodoMiniView: View {
                     viewModel.apply(.addTodo)
                 }, label: {
                     Image(systemName: "plus")
-                        .tint(.black)
+                        .tint(Color.normalText)
                         .bold()
                 })
             }

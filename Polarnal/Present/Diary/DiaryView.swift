@@ -66,6 +66,7 @@ struct DiaryView: View {
                         stateViewModel.apply(.addNote)
                     }) {
                         Image(systemName: "plus")
+                            .tint(Color.normalText)
                     }
                 }
             }

@@ -67,7 +67,7 @@ struct MiniCalendarView: View {
                     viewModel.apply(.previousMonth)
                 } label: {
                     Image(systemName: "chevron.backward")
-                        .foregroundStyle(.black)
+                        .foregroundStyle(Color.normalText)
                 }
                 .padding()
                 
@@ -79,7 +79,7 @@ struct MiniCalendarView: View {
                     viewModel.apply(.nextMonth)
                 } label: {
                     Image(systemName: "chevron.forward")
-                        .foregroundStyle(.black)
+                        .foregroundStyle(Color.normalText)
                 }
                 .padding()
             }
@@ -142,7 +142,7 @@ struct MiniCalendarContentView: View {
             } else if isSaturday {
                 return Color.blue
             } else {
-                return Color.black
+                return Color.normalText
             }
         }
         

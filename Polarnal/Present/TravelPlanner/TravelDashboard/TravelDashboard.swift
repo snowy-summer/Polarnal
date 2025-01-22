@@ -46,6 +46,7 @@ struct TravelDashboard: View {
                         viewModel.apply(.showAddTravelView)
                     }) {
                         Image(systemName: "plus")
+                            .tint(Color.normalText)
                     }
                 }
             })
@@ -125,7 +126,7 @@ struct TravelDashboard: View {
                                         travelPlanDetailViewModel.apply(.selectPreviousDate)
                                     } label: {
                                         Image(systemName: "chevron.backward")
-                                            .foregroundStyle(.black)
+                                            .foregroundStyle(Color.normalText)
                                     }
                                     .padding()
                                     
@@ -137,7 +138,7 @@ struct TravelDashboard: View {
                                         travelPlanDetailViewModel.apply(.selectNextDate)
                                     } label: {
                                         Image(systemName: "chevron.forward")
-                                            .foregroundStyle(.black)
+                                            .foregroundStyle(Color.normalText)
                                     }
                                     .padding()
                                 }
@@ -280,7 +281,7 @@ struct TravelCostMiniView: View {
         }
               .chartBackground { _ in
                   Text("\(String(format: "%.f", viewModel.totalCost)) ₩")
-                      .foregroundStyle(.black)
+                      .foregroundStyle(Color.normalText)
                       .font(.callout)
                       .bold()
               }

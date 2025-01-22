@@ -33,7 +33,7 @@ final class MainCalendarCellViewModel: ViewModelProtocol {
         } else if isSaturday {
             return Color.blue
         } else {
-            return Color.black
+            return Color.normalText
         }
     }
     

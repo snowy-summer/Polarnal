@@ -53,7 +53,7 @@ struct SideTabBarView: View {
                 
                 ZStack {
                     RoundedRectangle(cornerRadius: isSelected ? 12 : 25)
-                        .fill(Color(uiColor: UIColor.systemGray5))
+                        .fill(Color.listBackground)
                         .animation(.linear(duration: 0.3),
                                    value: isSelected)
                         .frame(width: 50,
