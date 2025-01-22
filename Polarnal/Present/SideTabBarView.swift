@@ -49,6 +49,7 @@ struct SideTabBarView: View {
                 RoundedRectangle(cornerRadius: 3)
                     .fill(isSelected ? Color.black : Color.clear)
                     .frame(width: 6, height: 40)
+                    .padding(.leading)
                 
                 ZStack {
                     RoundedRectangle(cornerRadius: isSelected ? 12 : 25)

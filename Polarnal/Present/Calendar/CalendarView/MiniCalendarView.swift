@@ -149,7 +149,7 @@ struct MiniCalendarContentView: View {
         var body: some View {
             ZStack {
                 Circle()
-                    .fill(isToday ? Color.blue : Color.clear)
+                    .fill(isToday ? Color(uiColor: .green.withAlphaComponent(0.5)) : Color.clear)
                     .frame(width: 28, height: 28)
                 
                 Text("\(dateValue.day)")
