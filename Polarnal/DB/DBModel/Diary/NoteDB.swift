@@ -10,7 +10,7 @@ import SwiftData
 
 @Model
 final class Note: Identifiable {
-    @Attribute(.unique)let id = UUID()
+    @Attribute(.unique)var id = UUID()
     var createAt: Date
     var title: String
     var tag: [Tag]
@@ -39,8 +39,8 @@ enum NoteContentType: String {
 @Model
 final class NoteContentDataDB: Identifiable {
     @Attribute(.unique) var id: UUID
-    @Attribute(.externalStorage) var textValue: String
     @Attribute(.externalStorage) var imageValue: [Data]
+    var textValue: String
     var type: String
     var index: Int
     var noteID: UUID

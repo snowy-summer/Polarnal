@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 import EnumHelper
 
 struct NoteContentView: View {
@@ -26,13 +27,14 @@ struct NoteContentView: View {
                     id: \.self) { index in
                 let content = noteContentViewModel.noteContents[index]
                 
-                NoteContentCell(
-                    type: content.type,
-                    noteText: Binding(
-                        get: { content.textContent },
-                        set: { newValue in noteContentViewModel.contentApply(.editText(of: index,
-                                                                                what: newValue)) }
-                    )
+                NoteContentCell(type: content.type,
+                                noteContentViewModel: noteContentViewModel,
+                                index: index
+//                    noteText: Binding(
+//                        get: { content.textContent },
+//                        set: { newValue in noteContentViewModel.contentApply(.editText(of: index,
+//                                                                                what: newValue)) }
+//                    )
                 )
                 .swipeActions(edge: .trailing,
                               allowsFullSwipe: false) {
@@ -56,20 +58,24 @@ struct NoteContentView: View {
 
 struct NoteContentCell: View {
     
+    @ObservedObject private var noteContentViewModel: NoteListViewModel
     private let type: NoteContentType
-    @Binding private var noteText: String
+    private let index: Int
     
     init(type: NoteContentType,
-         noteText: Binding<String>) {
+         noteContentViewModel: NoteListViewModel,
+         index: Int) {
         self.type = type
-        self._noteText = noteText
+        self.noteContentViewModel = noteContentViewModel
+        self.index = index
     }
     
     var body: some View {
         VStack {
             switch type {
             case .text:
-                NoteTextField(noteText: $noteText)
+                NoteTextField(noteContentViewModel: noteContentViewModel,
+                              index: index)
                 
             case .image:
                 Image(.ex)
@@ -87,8 +93,16 @@ struct NoteContentCell: View {
 
 struct NoteTextField: View {
     
-    @Binding var noteText: String
+    @ObservedObject var noteContentViewModel: NoteListViewModel
+    @State var noteText: String = ""
     @State private var textFieldHeight: CGFloat = 44
+    private let index: Int
+    
+    init(noteContentViewModel: NoteListViewModel,
+         index: Int) {
+        self.noteContentViewModel = noteContentViewModel
+        self.index = index
+    }
     
     var body: some View {
         TextEditor(text: $noteText)
@@ -97,6 +111,8 @@ struct NoteTextField: View {
             .frame(minHeight: textFieldHeight)
             .padding(8)
             .onChange(of: noteText) { oldValue, newValue in
+                noteContentViewModel.contentApply(.editText(of: index,
+                                                            what: newValue))
                 updateTextFieldHeight()
             }
     }

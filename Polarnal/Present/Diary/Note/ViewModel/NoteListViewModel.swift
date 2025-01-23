@@ -21,7 +21,7 @@ final class NoteListViewModel: ViewModelProtocol {
         case addTextField
         case addImage
         case editText(of: Int, what: String)
-        case saveContent([NoteContentCellData])
+        case saveContent
         case saveTitle(String)
         case deleteContent(Int)
     }
@@ -72,11 +72,16 @@ final class NoteListViewModel: ViewModelProtocol {
     func contentApply(_ intent : NoteContentIntent) {
         switch intent {
         case .addTextField:
-            if let selectedNote {
-                let noteContent = NoteContentDataDB(type: .text, index: noteContents.count + 1, noteID: selectedNote.id)
-                
-                dbManager.addItem(noteContent)
-                noteContents.append(NoteContentCellData(id: noteContent.id, type: .text))
+            if let selectedNote,
+               let selectedIndex {
+                let noteContent = NoteContentDataDB(type: NoteContentType.text,
+                                                    index: noteContents.count,
+                                                    noteID: selectedNote.id)
+                if let cellData = convertToCellData(data: noteContent) {
+                    noteList[selectedIndex].contents.append(noteContent)
+                    dbManager.addItem(noteList[selectedIndex])
+                    noteContents.append(cellData)
+                }
             }
             
         case .addImage:
@@ -84,11 +89,14 @@ final class NoteListViewModel: ViewModelProtocol {
                                                     type: .image))
         case .editText(let index, let text):
             noteContents[index].textContent = text
+            LogManager.log("노트 내용 저장 시도")
+            contentApply(.saveContent)
             
-        case .saveContent(let dataList):
+        case .saveContent:
             guard let selectedIndex else { return }
-            let contents = getDBNoteContentList(dataList: dataList)
+            let contents = getDBNoteContentList(dataList: noteContents)
             noteList[selectedIndex].contents = contents
+
             dbManager.addItem(noteList[selectedIndex])
             
             
@@ -124,20 +132,6 @@ final class NoteListViewModel: ViewModelProtocol {
                 noteList[selectedIndex].title = text
                 LogManager.log("노트 제목 저장 시도")
                 contentApply(.saveTitle(text))
-            }
-            .store(in: &cancellables)
-        
-        $noteContents
-            .debounce(for: .seconds(1),
-                      scheduler: DispatchQueue.main)
-            .sink { [weak self] data in
-                guard let self,
-                      let selectedIndex else { return }
-                
-                //                noteList[selectedIndex].contents = getDBNoteContentList(dataList: data)
-                LogManager.log("노트 내용 저장 시도")
-                contentApply(.saveContent(data))
-                
             }
             .store(in: &cancellables)
         
@@ -187,7 +181,10 @@ extension NoteListViewModel {
     }
     
     private func convertToDBData(data: NoteContentCellData) -> NoteContentDataDB? {
-        guard let selectedNote else { return nil }
+        guard let selectedNote else {
+            LogManager.log("selectedNote 없음")
+            return nil
+        }
         
         var imageDataList: [Data] = []
         
@@ -200,6 +197,7 @@ extension NoteListViewModel {
         }
         
         guard let index = noteContents.firstIndex(where: { $0.id == data.id }) else {
+            LogManager.log("noteContents중에 동일한 Id를 가진 Content가 존재하지 않습니다")
             return nil
         }
         

@@ -35,7 +35,10 @@ struct NoteListCell: View {
             VStack(alignment: .leading) {
                 Text(viewModel.note.title)
                     .bold()
-                Text("임시 내용")
+                if !viewModel.note.contents.isEmpty,
+                   let text = viewModel.note.contents.first?.textValue {
+                    Text("\(text)")
+                }
             }
             Spacer()
             Image(.ex)
