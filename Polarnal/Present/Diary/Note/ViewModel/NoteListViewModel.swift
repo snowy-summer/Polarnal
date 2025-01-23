@@ -33,7 +33,7 @@ final class NoteListViewModel: ViewModelProtocol {
     
     //Note Content부분
     @Published var contentTitle: String = ""
-    @Published var noteContents = [NoteContentCellData]()
+    @Published var noteContents = [NoteContentDataDB]()
     
     private let dbManager: DBManager = DBManager()
     var cancellables: Set<AnyCancellable> = []
@@ -56,9 +56,7 @@ final class NoteListViewModel: ViewModelProtocol {
                 selectedIndex = index
                 selectedNote = note
                 contentTitle = note.title
-                noteContents = note.contents.compactMap {  content in
-                    self.convertToCellData(data: content)
-                }
+                noteContents = note.contents
             }
             
         case .deleteNote(let note):
@@ -77,25 +75,27 @@ final class NoteListViewModel: ViewModelProtocol {
                 let noteContent = NoteContentDataDB(type: NoteContentType.text,
                                                     index: noteContents.count,
                                                     noteID: selectedNote.id)
-                if let cellData = convertToCellData(data: noteContent) {
-                    noteList[selectedIndex].contents.append(noteContent)
-                    dbManager.addItem(noteList[selectedIndex])
-                    noteContents.append(cellData)
-                }
+                noteContents.append(noteContent)
+                noteList[selectedIndex].contents.append(noteContent)
+                dbManager.addItem(noteList[selectedIndex])
             }
             
         case .addImage:
-            noteContents.append(NoteContentCellData(id: UUID(),
-                                                    type: .image))
+            if let selectedNote {
+                let noteContent = NoteContentDataDB(type: .image,
+                                                    index: noteContents.count,
+                                                    noteID: selectedNote.id)
+                noteContents.append(noteContent)
+            }
+            
         case .editText(let index, let text):
-            noteContents[index].textContent = text
+            noteContents[index].textValue = text
             LogManager.log("노트 내용 저장 시도")
             contentApply(.saveContent)
             
         case .saveContent:
             guard let selectedIndex else { return }
-            let contents = getDBNoteContentList(dataList: noteContents)
-            noteList[selectedIndex].contents = contents
+            noteList[selectedIndex].contents = noteContents
 
             dbManager.addItem(noteList[selectedIndex])
             
@@ -116,9 +116,7 @@ final class NoteListViewModel: ViewModelProtocol {
             guard let self = self else { return }
             contentTitle = noteList[index].title
             
-            noteContents = noteList[index].contents.compactMap { content in
-                self.convertToCellData(data: content)
-            }
+            noteContents = noteList[index].contents
         }
         .store(in: &cancellables)
         
@@ -135,96 +133,6 @@ final class NoteListViewModel: ViewModelProtocol {
             }
             .store(in: &cancellables)
         
-    }
-    
-}
-
-//MARK: - Cell Data와 Content간의 변환
-extension NoteListViewModel {
-    
-    private func getDBNoteContentList(dataList: [NoteContentCellData]) -> [NoteContentDataDB] {
-        
-        var contents = [NoteContentDataDB]()
-        
-        for content in dataList {
-            guard let convertedContent = convertToDBData(data: content) else {
-                LogManager.log("DB 데이터 전환을 실패했습니다")
-                return []
-            }
-            contents.append( convertedContent )
-        }
-        
-        return contents
-    }
-    
-    private func convertToCellData(data: NoteContentDataDB) -> NoteContentCellData? {
-        
-        guard let type = NoteContentType(rawValue: data.type) else {
-            LogManager.log("잘못된 타입이 존재합니다")
-            return nil
-        }
-        
-        var imageValue: [UIImage] = []
-        
-        for imageData in data.imageValue {
-            guard let image = UIImage(data: imageData) else {
-                LogManager.log("이미지 변환 실패")
-                return nil
-            }
-            imageValue.append(image)
-        }
-        
-        return NoteContentCellData(id: data.id,
-                                   type: type,
-                                   images: imageValue,
-                                   textContent: data.textValue)
-    }
-    
-    private func convertToDBData(data: NoteContentCellData) -> NoteContentDataDB? {
-        guard let selectedNote else {
-            LogManager.log("selectedNote 없음")
-            return nil
-        }
-        
-        var imageDataList: [Data] = []
-        
-        for image in data.images {
-            guard let imageData = image.pngData() else {
-                LogManager.log("이미지 변환 실패")
-                return nil
-            }
-            imageDataList.append(imageData)
-        }
-        
-        guard let index = noteContents.firstIndex(where: { $0.id == data.id }) else {
-            LogManager.log("noteContents중에 동일한 Id를 가진 Content가 존재하지 않습니다")
-            return nil
-        }
-        
-        return NoteContentDataDB(id: data.id,
-                                 type: data.type,
-                                 imageValue: imageDataList,
-                                 textValue: data.textContent,
-                                 index: index,
-                                 noteID: selectedNote.id)
-    }
-}
-
-// MARK: - NoteContentCellData
-struct NoteContentCellData: Identifiable {
-    let id: UUID
-    let type: NoteContentType
-    var images: [UIImage]
-    var textContent: String
-    
-    init(id: UUID,
-         type: NoteContentType,
-         images: [UIImage] = [],
-         textContent: String = "") {
-        self.id = id
-        self.type = type
-        self.images = images
-        self.textContent = textContent
     }
     
 }

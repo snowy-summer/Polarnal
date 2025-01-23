@@ -27,14 +27,14 @@ struct NoteContentView: View {
                     id: \.self) { index in
                 let content = noteContentViewModel.noteContents[index]
                 
-                NoteContentCell(type: content.type,
+                NoteContentCell(content: content,
                                 noteContentViewModel: noteContentViewModel,
                                 index: index
-//                    noteText: Binding(
-//                        get: { content.textContent },
-//                        set: { newValue in noteContentViewModel.contentApply(.editText(of: index,
-//                                                                                what: newValue)) }
-//                    )
+                                //                    noteText: Binding(
+                                //                        get: { content.textContent },
+                                //                        set: { newValue in noteContentViewModel.contentApply(.editText(of: index,
+                                //                                                                                what: newValue)) }
+                                //                    )
                 )
                 .swipeActions(edge: .trailing,
                               allowsFullSwipe: false) {
@@ -59,27 +59,40 @@ struct NoteContentView: View {
 struct NoteContentCell: View {
     
     @ObservedObject private var noteContentViewModel: NoteListViewModel
-    private let type: NoteContentType
+    private let content : NoteContentDataDB
     private let index: Int
     
-    init(type: NoteContentType,
+    init(content: NoteContentDataDB,
          noteContentViewModel: NoteListViewModel,
          index: Int) {
-        self.type = type
+        self.content = content
         self.noteContentViewModel = noteContentViewModel
         self.index = index
     }
     
     var body: some View {
         VStack {
-            switch type {
-            case .text:
-                NoteTextField(noteContentViewModel: noteContentViewModel,
-                              index: index)
-                
-            case .image:
-                Image(.ex)
-                    .resizable()
+            if let type = NoteContentType(rawValue: content.type) {
+                switch type {
+                case .text:
+                    NoteTextField(noteText: content.textValue,
+                                  noteContentViewModel: noteContentViewModel,
+                                  index: index)
+                    
+                case .image:
+                    let images = content.imageValue.compactMap { imageData -> UIImage? in
+                        guard let image = UIImage(data: imageData) else {
+                            LogManager.log("이미지 변환 실패: \(imageData)")
+                            return nil
+                        }
+                        return image
+                    }
+                    
+                    if !images.isEmpty {
+                        Image(uiImage: images[0])
+                            .resizable()
+                    }
+                }
             }
         }
         .background(Color.listBackground)
@@ -94,12 +107,14 @@ struct NoteContentCell: View {
 struct NoteTextField: View {
     
     @ObservedObject var noteContentViewModel: NoteListViewModel
-    @State var noteText: String = ""
+    @State var noteText: String
     @State private var textFieldHeight: CGFloat = 44
     private let index: Int
     
-    init(noteContentViewModel: NoteListViewModel,
+    init(noteText: String,
+        noteContentViewModel: NoteListViewModel,
          index: Int) {
+        self.noteText = noteText
         self.noteContentViewModel = noteContentViewModel
         self.index = index
     }
