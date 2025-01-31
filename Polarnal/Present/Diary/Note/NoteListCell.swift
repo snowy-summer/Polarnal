@@ -23,10 +23,10 @@ struct NoteListCell: View {
                        height: 100)
                 .overlay {
                     VStack {
-                        Text("Apr")
+                        Text(MonthCase(rawValue: Int(viewModel.monthString)!)?.shortName ?? "@@")
                             .bold()
                             .foregroundStyle(Color.normalText)
-                        Text("\(13)")
+                        Text(viewModel.dayString)
                             .font(.largeTitle)
                             .bold()
                             .foregroundStyle(Color.normalText)
@@ -41,11 +41,19 @@ struct NoteListCell: View {
                 }
             }
             Spacer()
-            Image(.ex)
-                .resizable()
-                .frame(width: 100,
-                       height: 100)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+            if let image = viewModel.thumnailImage {
+                Image(uiImage: image)
+                    .resizable()
+                    .frame(width: 100,
+                           height: 100)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+            } else {
+                Image(.ex)
+                    .resizable()
+                    .frame(width: 100,
+                           height: 100)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+            }
         }
     }
     

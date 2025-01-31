@@ -4,6 +4,9 @@
     "" : {
 
     },
+    "@@" : {
+
+    },
     "%@" : {
 
     },
@@ -62,7 +65,25 @@
 
     },
     "Apr" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4월"
+          }
+        }
+      }
+    },
+    "Aug" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8월"
+          }
+        }
+      }
     },
     "Back" : {
 
@@ -76,8 +97,85 @@
     "D-Day 생성" : {
 
     },
+    "Dec" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "12월"
+          }
+        }
+      }
+    },
     "ex) 1,300,499" : {
 
+    },
+    "Feb" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2월"
+          }
+        }
+      }
+    },
+    "Jan" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1월"
+          }
+        }
+      }
+    },
+    "Jul" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7월"
+          }
+        }
+      }
+    },
+    "Jun" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6월"
+          }
+        }
+      }
+    },
+    "Mar" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3월"
+          }
+        }
+      }
+    },
+    "May" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5월"
+          }
+        }
+      }
     },
     "New Folder" : {
       "extractionState" : "manual",
@@ -92,6 +190,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "새로운 폴더"
+          }
+        }
+      }
+    },
+    "No" : {
+      "extractionState" : "manual"
+    },
+    "Nov" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "11월"
+          }
+        }
+      }
+    },
+    "Oct" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10월"
+          }
+        }
+      }
+    },
+    "Sep" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "9월"
           }
         }
       }

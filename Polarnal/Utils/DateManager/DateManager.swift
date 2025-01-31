@@ -31,6 +31,12 @@ final class DateManager {
         return dateString
     }
     
+    func getDateString(format: String, date: Date) -> String {
+        dateFormatter.dateFormat = format
+        let dateString = dateFormatter.string(from: date)
+        return dateString
+    }
+    
     func calculateDDay(startDay: Date,
                        goalDay: Date) -> String {
         let calendar = Calendar.current
