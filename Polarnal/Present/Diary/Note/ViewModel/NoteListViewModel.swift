@@ -20,6 +20,7 @@ final class NoteListViewModel: ViewModelProtocol {
     
     enum NoteContentIntent {
         case addTextField
+        case showPhotoPicker
         case addImage
         case editText(of: Int, what: String)
         case saveContent
@@ -36,6 +37,7 @@ final class NoteListViewModel: ViewModelProtocol {
     @Published var contentTitle: String = ""
     @Published var noteContents = [NoteContentDataDB]()
     @Published var noteContentsSheetType: NoteContentSheetType?
+    @Published var noteContentPhotoData = [UIImage]()
     
     private let dbManager: DBManager = DBManager()
     var cancellables: Set<AnyCancellable> = []
@@ -82,13 +84,18 @@ final class NoteListViewModel: ViewModelProtocol {
                 dbManager.addItem(noteList[selectedIndex])
             }
             
-        case .addImage:
+        case .showPhotoPicker:
             noteContentsSheetType = .add
+            
+        case .addImage:
             if let selectedNote {
+                let datas = noteContentPhotoData.compactMap { $0.pngData() }
                 let noteContent = NoteContentDataDB(type: .image,
+                                                    imageValue: datas,
                                                     index: noteContents.count,
                                                     noteID: selectedNote.id)
                 noteContents.append(noteContent)
+                contentApply(.saveContent)
             }
             
         case .editText(let index, let text):

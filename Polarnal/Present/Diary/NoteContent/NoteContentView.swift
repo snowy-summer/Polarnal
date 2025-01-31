@@ -38,6 +38,7 @@ struct NoteContentView: View {
                     }, label: {
                         Label("삭제", systemImage: "trash")
                     })
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
                     
                 }
             }.listRowSeparator(.hidden)
@@ -86,6 +87,8 @@ struct NoteContentCell: View {
                     if !images.isEmpty {
                         Image(uiImage: images[0])
                             .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: .infinity)
                     }
                 }
             }
@@ -175,7 +178,7 @@ struct NoteContentToolView: View {
                             case .text:
                                 noteContentViewModel.contentApply(.addTextField)
                             case .image:
-                                noteContentViewModel.contentApply(.addImage)
+                                noteContentViewModel.contentApply(.showPhotoPicker)
                             }
                             
                         }
@@ -196,6 +199,12 @@ struct NoteContentToolView: View {
         .padding()
         .frame(maxWidth: .infinity)
         .background(Color.listBackground)
+        .sheet(item: $noteContentViewModel.noteContentsSheetType, onDismiss: {
+            noteContentViewModel.contentApply(.addImage)
+        }, content: { _ in
+            PhotoPicker(selectedImages: $noteContentViewModel.noteContentPhotoData)
+        })
+        
     }
 }
 

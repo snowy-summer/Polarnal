@@ -45,7 +45,7 @@ struct DiaryView: View {
         } detail: {
             
             Group {
-                if let note = stateViewModel.selectedNote {
+                if let _ = stateViewModel.selectedNote {
                     NoteContentView(noteContentViewModel: noteViewModel)
                 } else {
                     Text("노트를 선택 해주세요")
