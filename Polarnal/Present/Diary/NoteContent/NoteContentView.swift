@@ -30,11 +30,6 @@ struct NoteContentView: View {
                 NoteContentCell(content: content,
                                 noteContentViewModel: noteContentViewModel,
                                 index: index
-                                //                    noteText: Binding(
-                                //                        get: { content.textContent },
-                                //                        set: { newValue in noteContentViewModel.contentApply(.editText(of: index,
-                                //                                                                                what: newValue)) }
-                                //                    )
                 )
                 .swipeActions(edge: .trailing,
                               allowsFullSwipe: false) {

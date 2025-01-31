@@ -11,6 +11,7 @@ struct AppSettingView: View {
     
     @ObservedObject var sideTabBarViewModel: SideTabBarViewModel
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
+    @AppStorage("userLanguage") private var userLanguage: String = "ko"
     
     var body: some View {
         NavigationSplitView {

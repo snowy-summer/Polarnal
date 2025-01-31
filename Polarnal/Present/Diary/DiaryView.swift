@@ -16,6 +16,8 @@ struct DiaryView: View {
     @StateObject var noteViewModel: NoteListViewModel
     @ObservedObject var sideTabBarViewModel: SideTabBarViewModel
     
+    private let newFolderTitle: LocalizedStringKey = "New Folder"
+    
     var body: some View {
         NavigationSplitView {
             HStack {
@@ -31,7 +33,7 @@ struct DiaryView: View {
             Button(action: {
                 uiViewModel.apply(.showAddFolderView)
             }) {
-                Label("새로운 폴더", systemImage: "plus.circle")
+                Label(newFolderTitle, systemImage: "plus.circle")
             }
             .buttonStyle(PlainButtonStyle())
             .padding(.bottom)

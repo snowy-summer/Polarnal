@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 import SwiftData
+import EnumHelper
 
 final class NoteListViewModel: ViewModelProtocol {
     
@@ -34,6 +35,7 @@ final class NoteListViewModel: ViewModelProtocol {
     //Note Content부분
     @Published var contentTitle: String = ""
     @Published var noteContents = [NoteContentDataDB]()
+    @Published var noteContentsSheetType: NoteContentSheetType?
     
     private let dbManager: DBManager = DBManager()
     var cancellables: Set<AnyCancellable> = []
@@ -81,6 +83,7 @@ final class NoteListViewModel: ViewModelProtocol {
             }
             
         case .addImage:
+            noteContentsSheetType = .add
             if let selectedNote {
                 let noteContent = NoteContentDataDB(type: .image,
                                                     index: noteContents.count,
@@ -135,4 +138,10 @@ final class NoteListViewModel: ViewModelProtocol {
         
     }
     
+}
+
+@IdentifiableEnum
+enum NoteContentSheetType {
+    case add
+    case edit
 }

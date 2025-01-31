@@ -13,6 +13,8 @@ struct PlannerView: View {
     @ObservedObject var sideTabBarViewModel: SideTabBarViewModel
     @StateObject private var plannerViewModel: PlannerViewModel = PlannerViewModel()
     
+    private let newFolderTitle: LocalizedStringKey = "New Folder"
+    
     var body: some View {
         NavigationSplitView {
             VStack {
@@ -49,7 +51,7 @@ struct PlannerView: View {
                                     .fill(Color.listBackground)
                                     .frame(height: 44)
                                 
-                                Label("새로운 폴더", systemImage: "plus.circle")
+                                Label(newFolderTitle, systemImage: "plus.circle")
                                     .font(.headline)
                                     .bold()
                                     .foregroundStyle(Color.normalText)
