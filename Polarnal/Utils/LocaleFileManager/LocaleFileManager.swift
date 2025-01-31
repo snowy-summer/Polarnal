@@ -19,7 +19,7 @@ final class LocaleFileManager {
                    for noteUUID: String,
                    index: Int,
                    type: ImageCase = .note) -> String? {
-        let fileName = "\(type.rawValue)_\(noteUUID)_\(index)"
+        let fileName = "\(type.rawValue)_\(noteUUID)_\(index).jpeg"
         let fileURL = directory.appendingPathComponent(fileName)
         
         guard let data = image.jpegData(compressionQuality: 0.8) else {
@@ -29,8 +29,8 @@ final class LocaleFileManager {
         
         do {
             try data.write(to: fileURL)
-            LogManager.log("이미지 저장 성공\n \(fileURL)")
-            return fileURL.path
+            LogManager.log("이미지 저장 성공\n \(fileURL.path)")
+            return fileName
         } catch {
             LogManager.log("이미지 저장 성공\n \(error)")
             return nil
@@ -38,13 +38,15 @@ final class LocaleFileManager {
     }
     
     /// 이미지 로드
-    func loadImage(from filePath: String) -> UIImage? {
-        let fileURL = URL(fileURLWithPath: filePath)
+    func loadImage(from fileName: String) -> UIImage? {
+        let fileURL = directory.appendingPathComponent(fileName)
         
         guard let image = UIImage(contentsOfFile: fileURL.path) else {
-            LogManager.log("이미지 로드 실패\n \(filePath)")
+            LogManager.log("이미지 로드 실패\n \(fileName)")
             return nil
         }
+        
+        LogManager.log("이미지 로드 성공\n \(fileName)")
         return image
     }
     

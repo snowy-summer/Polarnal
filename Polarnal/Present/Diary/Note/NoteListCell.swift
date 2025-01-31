@@ -34,7 +34,7 @@ struct NoteListCell: View {
                 }
             VStack(alignment: .leading) {
                 Text(viewModel.note.title)
-                    .bold()
+                    .font(.title3)
                 if !viewModel.note.contents.isEmpty,
                    let text = viewModel.note.contents.first?.textValue {
                     Text("\(text)")

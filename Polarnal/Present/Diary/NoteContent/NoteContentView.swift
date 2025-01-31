@@ -38,8 +38,6 @@ struct NoteContentView: View {
                     }, label: {
                         Label("삭제", systemImage: "trash")
                     })
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                    
                 }
             }.listRowSeparator(.hidden)
             
@@ -79,13 +77,6 @@ struct NoteContentCell: View {
                     let images = content.imagePaths.compactMap {
                         LocaleFileManager.shared.loadImage(from: $0.id)
                     }
-//                    let images = content.imageValue.compactMap { imageData -> UIImage? in
-//                        guard let image = UIImage(data: imageData) else {
-//                            LogManager.log("이미지 변환 실패: \(imageData)")
-//                            return nil
-//                        }
-//                        return image
-//                    }
                     
                     if !images.isEmpty {
                         Image(uiImage: images[0])
@@ -118,6 +109,7 @@ struct NoteTextField: View {
         self.noteText = noteText
         self.noteContentViewModel = noteContentViewModel
         self.index = index
+        updateTextFieldHeight()
     }
     
     var body: some View {

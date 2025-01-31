@@ -39,7 +39,7 @@ enum NoteContentType: String {
 @Model
 final class NoteContentDataDB: Identifiable {
     @Attribute(.unique) var id: UUID
-    var imagePaths: [ImagePath]
+    @Relationship(deleteRule: .cascade) var imagePaths: [ImagePath]
     var textValue: String
     var type: String
     var index: Int
