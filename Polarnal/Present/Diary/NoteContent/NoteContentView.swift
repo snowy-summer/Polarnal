@@ -76,13 +76,16 @@ struct NoteContentCell: View {
                                   index: index)
                     
                 case .image:
-                    let images = content.imageValue.compactMap { imageData -> UIImage? in
-                        guard let image = UIImage(data: imageData) else {
-                            LogManager.log("이미지 변환 실패: \(imageData)")
-                            return nil
-                        }
-                        return image
+                    let images = content.imagePaths.compactMap {
+                        LocaleFileManager.shared.loadImage(from: $0.id)
                     }
+//                    let images = content.imageValue.compactMap { imageData -> UIImage? in
+//                        guard let image = UIImage(data: imageData) else {
+//                            LogManager.log("이미지 변환 실패: \(imageData)")
+//                            return nil
+//                        }
+//                        return image
+//                    }
                     
                     if !images.isEmpty {
                         Image(uiImage: images[0])

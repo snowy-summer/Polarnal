@@ -39,7 +39,7 @@ enum NoteContentType: String {
 @Model
 final class NoteContentDataDB: Identifiable {
     @Attribute(.unique) var id: UUID
-    @Attribute(.externalStorage) var imageValue: [Data]
+    var imagePaths: [ImagePath]
     var textValue: String
     var type: String
     var index: Int
@@ -47,16 +47,25 @@ final class NoteContentDataDB: Identifiable {
 
     init(id: UUID = UUID(),
          type: NoteContentType,
-         imageValue: [Data] = [],
+         imagePaths: [ImagePath] = [],
          textValue: String = "",
          index: Int,
          noteID: UUID) {
         self.id = id
         self.type = type.rawValue
-        self.imageValue = imageValue
+        self.imagePaths = imagePaths
         self.textValue = textValue
         self.index = index
         self.noteID = noteID
+    }
+}
+
+@Model
+final class ImagePath: Identifiable {
+    @Attribute(.unique) var id: String
+    
+    init(id: String) {
+        self.id = id
     }
 }
 

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -217,6 +217,10 @@
 		6BDAE52D2D2BD32C00A066E9 /* MapSearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchManager.swift; sourceTree = "<group>"; };
 		6BE6A6A12D13ABDC00931E7B /* CurrencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		6B58254D2D4C60F90003BEB3 /* LocaleFileManager */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = LocaleFileManager; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		6B790F982CFEA3080000AC03 /* Frameworks */ = {
@@ -659,6 +663,7 @@
 		6B790FB42CFEA4270000AC03 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				6B58254D2D4C60F90003BEB3 /* LocaleFileManager */,
 				6BDAE52C2D2BD31700A066E9 /* MapSearchManager */,
 				6BDAE5032D1579CC00A066E9 /* CostFormatter */,
 				6B37A7762D06841700239987 /* DateManager */,
@@ -873,6 +878,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				6B58254D2D4C60F90003BEB3 /* LocaleFileManager */,
 			);
 			name = Polarnal;
 			productName = Polarnal;

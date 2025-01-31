@@ -89,9 +89,16 @@ final class NoteListViewModel: ViewModelProtocol {
             
         case .addImage:
             if let selectedNote {
-                let datas = noteContentPhotoData.compactMap { $0.pngData() }
+                let paths = noteContentPhotoData.compactMap {
+                    LocaleFileManager.shared.saveImage($0,
+                                                       for: selectedNote.id.uuidString,
+                                                       index: 0)
+                }
+                
+                let imagePaths = paths.map { ImagePath(id: $0)}
+
                 let noteContent = NoteContentDataDB(type: .image,
-                                                    imageValue: datas,
+                                                    imagePaths: imagePaths,
                                                     index: noteContents.count,
                                                     noteID: selectedNote.id)
                 noteContents.append(noteContent)
