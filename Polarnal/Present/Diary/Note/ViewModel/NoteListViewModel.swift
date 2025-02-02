@@ -60,7 +60,9 @@ final class NoteListViewModel: ViewModelProtocol {
                 selectedIndex = index
                 selectedNote = note
                 contentTitle = note.title
-                noteContents = note.contents
+                noteContents = note.contents.sorted {
+                    $0.index < $1.index
+                }
             }
             
         case .deleteNote(let note):
@@ -92,7 +94,7 @@ final class NoteListViewModel: ViewModelProtocol {
                 let paths = noteContentPhotoData.compactMap {
                     LocaleFileManager.shared.saveImage($0,
                                                        for: selectedNote.id.uuidString,
-                                                       index: 0)
+                                                       index: noteContents.count)
                 }
                 
                 let imagePaths = paths.map { ImagePath(id: $0)}

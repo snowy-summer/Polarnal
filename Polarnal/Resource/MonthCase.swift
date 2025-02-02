@@ -5,7 +5,7 @@
 //  Created by 최승범 on 1/31/25.
 //
 
-import Foundation
+import SwiftUI
 
 enum MonthCase: Int {
     case January = 1

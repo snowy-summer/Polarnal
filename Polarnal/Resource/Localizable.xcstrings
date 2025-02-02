@@ -195,7 +195,15 @@
       }
     },
     "No" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아니오"
+          }
+        }
+      }
     },
     "Nov" : {
       "extractionState" : "manual",
@@ -231,7 +239,14 @@
       }
     },
     "Todo" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todo"
+          }
+        }
+      }
     },
     "Todo 폴더 삭제" : {
 
