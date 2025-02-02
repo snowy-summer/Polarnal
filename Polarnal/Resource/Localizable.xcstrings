@@ -97,6 +97,23 @@
     "D-Day 생성" : {
 
     },
+    "Dark Mode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark Mode"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다크 모드"
+          }
+        }
+      }
+    },
     "Dec" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -151,6 +168,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "6월"
+          }
+        }
+      }
+    },
+    "Lagauges" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lagauges"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "언어"
           }
         }
       }
@@ -285,9 +319,6 @@
 
     },
     "노트를 선택 해주세요" : {
-
-    },
-    "다크 모드" : {
 
     },
     "목적지를 입력해보세요" : {

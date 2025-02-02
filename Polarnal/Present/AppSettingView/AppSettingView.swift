@@ -13,6 +13,9 @@ struct AppSettingView: View {
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     @AppStorage("userLanguage") private var userLanguage: String = "ko"
     
+    private let darkModeTitle: LocalizedStringKey = "Dark Mode"
+    private let laguageTitle: LocalizedStringKey = "Lagauges"
+    
     var body: some View {
         NavigationSplitView {
             HStack {
@@ -24,11 +27,21 @@ struct AppSettingView: View {
             List {
                 Toggle(isOn: $isDarkMode) {
                     
-                    Text("다크 모드")
+                    Text(darkModeTitle)
                         .frame(height: 44)
                         .font(.title2)
                         .bold()
                 }
+                
+                Picker(laguageTitle, selection: $userLanguage) {
+                    ForEach(ContryCode.allCases, id: \.self) { code in
+                        Text(code.title).tag(code.rawValue)
+                    }
+                }
+                .font(.title2)
+                .bold()
+                .frame(height: 44)
+                
             }
             
         }
@@ -39,4 +52,21 @@ struct AppSettingView: View {
 
 #Preview {
     AppSettingView(sideTabBarViewModel: SideTabBarViewModel())
+}
+
+enum ContryCode: String, CaseIterable {
+    case korea = "ko"
+    case america = "en"
+//    case japan = "ja"
+    
+    var title: String {
+        switch self {
+        case .korea:
+            return "한국어"
+        case .america:
+            return "English"
+//        case .japan:
+//            return "日本語"
+        }
+    }
 }
