@@ -68,6 +68,7 @@ final class AddFolderViewModel: ViewModelProtocol {
             folderTag.remove(at: index)
             
         case .addFolder:
+//            print("aa")
             folder == nil ? addFolder() : editFolder()
             
         case .insertModelContext(let modelContext):
@@ -100,21 +101,25 @@ extension AddFolderViewModel {
     }
     
     private func getColorRGBA() -> CustomColor {
-        
-#if os(macOS)
-        let uiColor = NSColor(folderColor)
-#else
-        let uiColor = UIColor(folderColor)
-#endif
-        
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0
         var alpha: CGFloat = 0
-        
-        uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        
+
+        #if os(macOS)
+        if let cgColor = folderColor.cgColor,
+           let color = NSColor(cgColor: cgColor)?.usingColorSpace(.sRGB) {  // sRGB로 변환 -> 따로 변환을 하지 않으면 오류 발생
+            color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+            return CustomColor(red: red, green: green, blue: blue, alpha: alpha)
+        } else {
+            LogManager.log("잘못된 색상 추출값입니다")
+            return CustomColor(red: 0, green: 0, blue: 0, alpha: 0)
+        }
+        #else
+        let color = UIColor(folderColor)
+        color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         return CustomColor(red: red, green: green, blue: blue, alpha: alpha)
+        #endif
     }
     
 }

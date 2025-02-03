@@ -11,7 +11,7 @@ import SwiftData
 
 @Model
 final class Folder: Identifiable {
-    @Attribute(.unique) let id = UUID()
+    @Attribute(.unique) var id = UUID()
     var title: String
     var createAt: Date
     @Relationship(deleteRule: .cascade) var color: CustomColor
@@ -36,10 +36,10 @@ final class Folder: Identifiable {
 
 @Model
 final class CustomColor {
-    let red: Double
-    let green: Double
-    let blue: Double
-    let alpha: Double
+    var red: Double
+    var green: Double
+    var blue: Double
+    var alpha: Double
     
     init(red: Double,
          green: Double,

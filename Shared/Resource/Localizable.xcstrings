@@ -163,7 +163,14 @@
       }
     },
     "Folder Name" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "폴더 이름"
+          }
+        }
+      }
     },
     "Item at %@" : {
 

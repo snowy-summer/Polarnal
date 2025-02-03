@@ -20,13 +20,20 @@ struct AddFolderView: View {
     var body: some View {
         
             VStack {
-                Text("폴더 생성")
+                Text("New Folder")
                     .font(.headline)
                     .padding(.bottom, 10)
                 
                 TextField("Folder Name", text: $viewModel.folderTitle)
+                    .font(.title3)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.bottom, 20)
+                
+                ColorPalettePartView(selctedColor: $viewModel.folderColor)
+                    .background(.ipadTabbar)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                
+                Divider()
                 
                 HStack {
                     
@@ -44,10 +51,7 @@ struct AddFolderView: View {
                     
                 }
                 
-//                ColorPalettePartView(selctedColor: $viewModel.folderColor)
-//                    .background(Color(UIColor.systemGray5))
-//                    .clipShape(RoundedRectangle(cornerRadius: 24))
-//                    .padding(.horizontal,40)
+               
 //                
 //                IconSelectPartView(viewModel: viewModel)
 //                    .background(Color(UIColor.systemGray5))
