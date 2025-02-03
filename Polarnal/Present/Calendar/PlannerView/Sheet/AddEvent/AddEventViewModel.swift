@@ -49,7 +49,10 @@ final class AddEventViewModel: ViewModelProtocol {
             
         case .insertModelContext(let modelContext):
             dbManager.modelContext = modelContext
-            selectedCategory = dbManager.fetchItems(ofType: EventCategoryDB.self)[0]
+            if !dbManager.fetchItems(ofType: EventCategoryDB.self).isEmpty {
+                selectedCategory = dbManager.fetchItems(ofType: EventCategoryDB.self)[0]
+            }
+            
             
         case .selectCategory(let category):
             selectedCategory = category
