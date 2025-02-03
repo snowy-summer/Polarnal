@@ -68,7 +68,6 @@
 		6B5825512D4CF1C30003BEB3 /* MonthCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5825502D4CF1C30003BEB3 /* MonthCase.swift */; };
 		6B790F9F2CFEA3080000AC03 /* PolarnalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */; };
 		6B790FA52CFEA3090000AC03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA42CFEA3090000AC03 /* Assets.xcassets */; };
-		6B790FA82CFEA3090000AC03 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA72CFEA3090000AC03 /* Preview Assets.xcassets */; };
 		6B790FAF2CFEA33C0000AC03 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FAE2CFEA33B0000AC03 /* .gitignore */; };
 		6B790FB72CFEA4430000AC03 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FB62CFEA4430000AC03 /* LogManager.swift */; };
 		6B790FB92CFEA4830000AC03 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FB82CFEA4830000AC03 /* DBManager.swift */; };
@@ -90,6 +89,61 @@
 		6B790FE32CFFEF530000AC03 /* IconSelectPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FE22CFFEF530000AC03 /* IconSelectPartView.swift */; };
 		6B790FE52CFFEF7E0000AC03 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FE42CFFEF7E0000AC03 /* ColorPalette.swift */; };
 		6B790FE72CFFEFA80000AC03 /* DesignOfFolderIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FE62CFFEFA80000AC03 /* DesignOfFolderIcon.swift */; };
+		6B9129152D4F8EA3005C85D2 /* LocaleFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9129142D4F8EA3005C85D2 /* LocaleFileManager.swift */; };
+		6B9129482D50A7A5005C85D2 /* SideTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A77D2D07D7CC00239987 /* SideTabBarViewModel.swift */; };
+		6B91294A2D50A842005C85D2 /* LocaleFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9129142D4F8EA3005C85D2 /* LocaleFileManager.swift */; };
+		6B91294B2D50A842005C85D2 /* CostFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5042D1579E700A066E9 /* CostFormatter.swift */; };
+		6B91294C2D50A842005C85D2 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7772D06842700239987 /* DateManager.swift */; };
+		6B91294D2D50A842005C85D2 /* MapSearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE52D2D2BD32C00A066E9 /* MapSearchManager.swift */; };
+		6B91294E2D50A842005C85D2 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FB62CFEA4430000AC03 /* LogManager.swift */; };
+		6B9129502D50A84B005C85D2 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2750C12D3D07FB005144FA /* View+Extension.swift */; };
+		6B9129512D50A84B005C85D2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7742D06840400239987 /* Date+Extension.swift */; };
+		6B9129522D50A857005C85D2 /* MonthCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5825502D4CF1C30003BEB3 /* MonthCase.swift */; };
+		6B9129532D50A857005C85D2 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FE42CFFEF7E0000AC03 /* ColorPalette.swift */; };
+		6B9129542D50A857005C85D2 /* DesignOfFolderIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FE62CFFEFA80000AC03 /* DesignOfFolderIcon.swift */; };
+		6B9129552D50A857005C85D2 /* DottedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7F22D12E27800239987 /* DottedLine.swift */; };
+		6B9129562D50A857005C85D2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 6B58254B2D426A3A0003BEB3 /* Localizable.xcstrings */; };
+		6B9129572D50A86D005C85D2 /* EvnentDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7862D08514400239987 /* EvnentDB.swift */; };
+		6B9129582D50A86D005C85D2 /* FolderDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FBB2CFEA4F40000AC03 /* FolderDB.swift */; };
+		6B9129592D50A86D005C85D2 /* CurrencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE6A6A12D13ABDC00931E7B /* CurrencyType.swift */; };
+		6B91295A2D50A86D005C85D2 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FB82CFEA4830000AC03 /* DBManager.swift */; };
+		6B91295B2D50A86D005C85D2 /* TravelCostType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7DA2D100E9C00239987 /* TravelCostType.swift */; };
+		6B91295C2D50A86D005C85D2 /* TodoDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7AA2D0AA4B500239987 /* TodoDB.swift */; };
+		6B91295D2D50A86D005C85D2 /* TravelDocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE50B2D18F38E00A066E9 /* TravelDocumentType.swift */; };
+		6B91295E2D50A86D005C85D2 /* NoteDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FBD2CFEA50A0000AC03 /* NoteDB.swift */; };
+		6B91295F2D50A86D005C85D2 /* TravelDestinationFolderDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE51D2D290FA500A066E9 /* TravelDestinationFolderDB.swift */; };
+		6B9129602D50A86D005C85D2 /* TravelPlanDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7D12D0FEDCB00239987 /* TravelPlanDB.swift */; };
+		6B9129612D50A86D005C85D2 /* DDayDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7A82D0AA49900239987 /* DDayDB.swift */; };
+		6B9129632D50A896005C85D2 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FC02CFF25710000AC03 /* ViewModelProtocol.swift */; };
+		6B9129662D50AA0F005C85D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FA42CFEA3090000AC03 /* Assets.xcassets */; };
+		6B9129772D50ADDC005C85D2 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7712D0683C600239987 /* CalendarViewModel.swift */; };
+		6B9129782D50ADDC005C85D2 /* AddFolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FD92CFFEE810000AC03 /* AddFolderViewModel.swift */; };
+		6B9129792D50ADDC005C85D2 /* MainCalendarCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7C62D0C0A9000239987 /* MainCalendarCellViewModel.swift */; };
+		6B91297A2D50ADDC005C85D2 /* AddTodoFolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7B12D0AAA3000239987 /* AddTodoFolderViewModel.swift */; };
+		6B91297B2D50ADDC005C85D2 /* NoteListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A75E2D00372A00239987 /* NoteListCellViewModel.swift */; };
+		6B91297C2D50ADDC005C85D2 /* PlannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7812D084A2E00239987 /* PlannerViewModel.swift */; };
+		6B91297D2D50ADDC005C85D2 /* AddEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7C32D0BFEED00239987 /* AddEventViewModel.swift */; };
+		6B91297E2D50ADDC005C85D2 /* NoteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A75C2D002D7700239987 /* NoteListViewModel.swift */; };
+		6B91297F2D50ADDC005C85D2 /* CalendarEventCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7922D095E7400239987 /* CalendarEventCategoryViewModel.swift */; };
+		6B9129802D50ADDC005C85D2 /* AddDDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A79A2D097A1400239987 /* AddDDayViewModel.swift */; };
+		6B9129812D50ADDC005C85D2 /* FolderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FD42CFFEDF10000AC03 /* FolderListViewModel.swift */; };
+		6B9129822D50ADDC005C85D2 /* AddEventCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A78D2D0924DD00239987 /* AddEventCategoryViewModel.swift */; };
+		6B9129842D50ADDC005C85D2 /* DDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7A32D0A7DD500239987 /* DDayViewModel.swift */; };
+		6B9129852D50ADDC005C85D2 /* DiaryStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FC82CFFE6AA0000AC03 /* DiaryStateViewModel.swift */; };
+		6B9129862D50ADDC005C85D2 /* TodoFolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7B52D0AF29100239987 /* TodoFolderViewModel.swift */; };
+		6B9129872D50ADDC005C85D2 /* DiaryUIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FCD2CFFEC6A0000AC03 /* DiaryUIViewModel.swift */; };
+		6B9129882D50ADDC005C85D2 /* ExpendedTodoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7BB2D0B08EB00239987 /* ExpendedTodoCellViewModel.swift */; };
+		6B9129892D50ADDC005C85D2 /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7AC2D0AA5AA00239987 /* TodoViewModel.swift */; };
+		6B9129A82D50B3FA005C85D2 /* EnumHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 6B9129A72D50B3FA005C85D2 /* EnumHelper */; };
+		6B9129AE2D50B782005C85D2 /* SideTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7662D055B3800239987 /* SideTabBarView.swift */; };
+		6B9129AF2D50B7D4005C85D2 /* DiaryViewSheetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FD02CFFEC980000AC03 /* DiaryViewSheetType.swift */; };
+		6B9129B02D50B802005C85D2 /* MainCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A77B2D068DA100239987 /* MainCalendarViewModel.swift */; };
+		6B9129B12D50C5A0005C85D2 /* FolderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FCB2CFFE8120000AC03 /* FolderListView.swift */; };
+		6B9129B22D50C5CD005C85D2 /* FolderListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7552D0026B300239987 /* FolderListCell.swift */; };
+		6B9129B62D50E49B005C85D2 /* NoteListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A75A2D002BE300239987 /* NoteListCell.swift */; };
+		6B9129B72D50E49B005C85D2 /* NoteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7582D002BB800239987 /* NoteListView.swift */; };
+		6B9129B82D50E4E0005C85D2 /* NoteContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7622D0046F200239987 /* NoteContentView.swift */; };
+		6B9129BB2D50EC39005C85D2 /* ColorPalettePartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FE02CFFEF220000AC03 /* ColorPalettePartView.swift */; };
 		6B9F61B52D3E621D00875186 /* EnumHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 6B9F61B42D3E621D00875186 /* EnumHelper */; };
 		6BDAE5002D141DDE00A066E9 /* TravelCostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE4FF2D141DDE00A066E9 /* TravelCostViewModel.swift */; };
 		6BDAE5022D1563CE00A066E9 /* SelectedTravelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5012D1563CE00A066E9 /* SelectedTravelViewModel.swift */; };
@@ -112,6 +166,23 @@
 		6BDAE52E2D2BD32C00A066E9 /* MapSearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE52D2D2BD32C00A066E9 /* MapSearchManager.swift */; };
 		6BE6A6A22D13ABDC00931E7B /* CurrencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE6A6A12D13ABDC00931E7B /* CurrencyType.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6B91292D2D50A75A005C85D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6B790F932CFEA3080000AC03 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6B9129192D50A758005C85D2;
+			remoteInfo = MacPolarnal;
+		};
+		6B9129372D50A75A005C85D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6B790F932CFEA3080000AC03 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6B9129192D50A758005C85D2;
+			remoteInfo = MacPolarnal;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		6B2750C12D3D07FB005144FA /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
@@ -176,7 +247,6 @@
 		6B790F9B2CFEA3080000AC03 /* Polarnal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Polarnal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B790F9E2CFEA3080000AC03 /* PolarnalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarnalApp.swift; sourceTree = "<group>"; };
 		6B790FA42CFEA3090000AC03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6B790FA72CFEA3090000AC03 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6B790FAE2CFEA33B0000AC03 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		6B790FB62CFEA4430000AC03 /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		6B790FB82CFEA4830000AC03 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
@@ -198,6 +268,10 @@
 		6B790FE22CFFEF530000AC03 /* IconSelectPartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSelectPartView.swift; sourceTree = "<group>"; };
 		6B790FE42CFFEF7E0000AC03 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		6B790FE62CFFEFA80000AC03 /* DesignOfFolderIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignOfFolderIcon.swift; sourceTree = "<group>"; };
+		6B9129142D4F8EA3005C85D2 /* LocaleFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleFileManager.swift; sourceTree = "<group>"; };
+		6B91291A2D50A758005C85D2 /* MacPolarnal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacPolarnal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B91292C2D50A75A005C85D2 /* MacPolarnalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacPolarnalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B9129362D50A75A005C85D2 /* MacPolarnalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacPolarnalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BDAE4FF2D141DDE00A066E9 /* TravelCostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelCostViewModel.swift; sourceTree = "<group>"; };
 		6BDAE5012D1563CE00A066E9 /* SelectedTravelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTravelViewModel.swift; sourceTree = "<group>"; };
 		6BDAE5042D1579E700A066E9 /* CostFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostFormatter.swift; sourceTree = "<group>"; };
@@ -221,7 +295,9 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		6B58254D2D4C60F90003BEB3 /* LocaleFileManager */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = LocaleFileManager; sourceTree = "<group>"; };
+		6B91291B2D50A758005C85D2 /* MacPolarnal */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MacPolarnal; sourceTree = "<group>"; };
+		6B91292F2D50A75A005C85D2 /* MacPolarnalTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MacPolarnalTests; sourceTree = "<group>"; };
+		6B9129392D50A75A005C85D2 /* MacPolarnalUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MacPolarnalUITests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +309,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6B9129172D50A758005C85D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B9129A82D50B3FA005C85D2 /* EnumHelper in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B9129292D50A75A005C85D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B9129332D50A75A005C85D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -241,18 +339,8 @@
 			children = (
 				6B37A7582D002BB800239987 /* NoteListView.swift */,
 				6B37A75A2D002BE300239987 /* NoteListCell.swift */,
-				6B37A7602D0039A600239987 /* ViewModel */,
 			);
 			path = Note;
-			sourceTree = "<group>";
-		};
-		6B37A7602D0039A600239987 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				6B37A75C2D002D7700239987 /* NoteListViewModel.swift */,
-				6B37A75E2D00372A00239987 /* NoteListCellViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		6B37A7612D0046E300239987 /* NoteContent */ = {
@@ -276,7 +364,6 @@
 			isa = PBXGroup;
 			children = (
 				6B37A76A2D055E6D00239987 /* PlannerView.swift */,
-				6B37A7832D084D6200239987 /* ViewModel */,
 				6B37A7942D0972E800239987 /* PlannerTypeView */,
 				6B37A78A2D0923CE00239987 /* EventCategory */,
 				6B37A7912D095E4800239987 /* Sheet */,
@@ -289,19 +376,8 @@
 			children = (
 				6B37A76E2D05669600239987 /* MiniCalendarView.swift */,
 				6B37A7792D068C1500239987 /* MainCalendarView.swift */,
-				6B37A7702D0683B200239987 /* ViewModel */,
 			);
 			path = CalendarView;
-			sourceTree = "<group>";
-		};
-		6B37A7702D0683B200239987 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				6B37A7712D0683C600239987 /* CalendarViewModel.swift */,
-				6B37A77B2D068DA100239987 /* MainCalendarViewModel.swift */,
-				6B37A7C62D0C0A9000239987 /* MainCalendarCellViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		6B37A7732D0683EE00239987 /* Extension */ = {
@@ -319,14 +395,6 @@
 				6B37A7772D06842700239987 /* DateManager.swift */,
 			);
 			path = DateManager;
-			sourceTree = "<group>";
-		};
-		6B37A7832D084D6200239987 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				6B37A7812D084A2E00239987 /* PlannerViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		6B37A7842D0850EA00239987 /* Diary */ = {
@@ -352,7 +420,6 @@
 			isa = PBXGroup;
 			children = (
 				6B37A78F2D095E1700239987 /* CalendarEventCategoryListView.swift */,
-				6B37A7922D095E7400239987 /* CalendarEventCategoryViewModel.swift */,
 			);
 			path = EventCategory;
 			sourceTree = "<group>";
@@ -382,7 +449,6 @@
 			isa = PBXGroup;
 			children = (
 				6B37A7882D08617D00239987 /* DDayView.swift */,
-				6B37A7A32D0A7DD500239987 /* DDayViewModel.swift */,
 			);
 			path = DDayView;
 			sourceTree = "<group>";
@@ -391,7 +457,6 @@
 			isa = PBXGroup;
 			children = (
 				6B37A78B2D0923FB00239987 /* AddEventCategoryView.swift */,
-				6B37A78D2D0924DD00239987 /* AddEventCategoryViewModel.swift */,
 			);
 			path = AddEventCategory;
 			sourceTree = "<group>";
@@ -400,7 +465,6 @@
 			isa = PBXGroup;
 			children = (
 				6B37A7982D0978D900239987 /* AddDDayView.swift */,
-				6B37A79A2D097A1400239987 /* AddDDayViewModel.swift */,
 				6B37A79E2D09AA9700239987 /* Component */,
 			);
 			path = AddDDay;
@@ -418,7 +482,9 @@
 		6B37A7A52D0A9CBC00239987 /* TodoView */ = {
 			isa = PBXGroup;
 			children = (
-				6B37A7B72D0B086B00239987 /* TodoFolder */,
+				6B37A7A62D0A9CEE00239987 /* TodoView.swift */,
+				6B37A7B32D0AF24F00239987 /* TodoFolderCell.swift */,
+				6B37A7B92D0B088700239987 /* ExpendedTodoFolderCell.swift */,
 			);
 			path = TodoView;
 			sourceTree = "<group>";
@@ -427,45 +493,14 @@
 			isa = PBXGroup;
 			children = (
 				6B37A7AF2D0AAA0100239987 /* AddTodoFolderView.swift */,
-				6B37A7B12D0AAA3000239987 /* AddTodoFolderViewModel.swift */,
 			);
 			path = AddTodo;
-			sourceTree = "<group>";
-		};
-		6B37A7B72D0B086B00239987 /* TodoFolder */ = {
-			isa = PBXGroup;
-			children = (
-				6B37A7A62D0A9CEE00239987 /* TodoView.swift */,
-				6B37A7AC2D0AA5AA00239987 /* TodoViewModel.swift */,
-				6B37A7BD2D0BC67500239987 /* Normal */,
-				6B37A7B82D0B087700239987 /* Expended */,
-			);
-			path = TodoFolder;
-			sourceTree = "<group>";
-		};
-		6B37A7B82D0B087700239987 /* Expended */ = {
-			isa = PBXGroup;
-			children = (
-				6B37A7B92D0B088700239987 /* ExpendedTodoFolderCell.swift */,
-				6B37A7BB2D0B08EB00239987 /* ExpendedTodoCellViewModel.swift */,
-			);
-			path = Expended;
-			sourceTree = "<group>";
-		};
-		6B37A7BD2D0BC67500239987 /* Normal */ = {
-			isa = PBXGroup;
-			children = (
-				6B37A7B32D0AF24F00239987 /* TodoFolderCell.swift */,
-				6B37A7B52D0AF29100239987 /* TodoFolderViewModel.swift */,
-			);
-			path = Normal;
 			sourceTree = "<group>";
 		};
 		6B37A7BE2D0BCDD800239987 /* AddEvent */ = {
 			isa = PBXGroup;
 			children = (
 				6B37A7BF2D0BCDEC00239987 /* AddEventView.swift */,
-				6B37A7C32D0BFEED00239987 /* AddEventViewModel.swift */,
 				6B37A7C52D0BFF1C00239987 /* Component */,
 			);
 			path = AddEvent;
@@ -583,7 +618,12 @@
 			isa = PBXGroup;
 			children = (
 				6B790FAE2CFEA33B0000AC03 /* .gitignore */,
-				6B790F9D2CFEA3080000AC03 /* Polarnal */,
+				6B9129652D50A980005C85D2 /* Shared */,
+				6B790F9D2CFEA3080000AC03 /* IpadPolarnal */,
+				6B91291B2D50A758005C85D2 /* MacPolarnal */,
+				6B91292F2D50A75A005C85D2 /* MacPolarnalTests */,
+				6B9129392D50A75A005C85D2 /* MacPolarnalUITests */,
+				6B9129A62D50B3F9005C85D2 /* Frameworks */,
 				6B790F9C2CFEA3080000AC03 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -592,42 +632,30 @@
 			isa = PBXGroup;
 			children = (
 				6B790F9B2CFEA3080000AC03 /* Polarnal.app */,
+				6B91291A2D50A758005C85D2 /* MacPolarnal.app */,
+				6B91292C2D50A75A005C85D2 /* MacPolarnalTests.xctest */,
+				6B9129362D50A75A005C85D2 /* MacPolarnalUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6B790F9D2CFEA3080000AC03 /* Polarnal */ = {
+		6B790F9D2CFEA3080000AC03 /* IpadPolarnal */ = {
 			isa = PBXGroup;
 			children = (
 				6B790FB12CFEA3590000AC03 /* App */,
 				6B790FB02CFEA3530000AC03 /* Present */,
-				6B790FB32CFEA4150000AC03 /* DB */,
-				6B790FB42CFEA4270000AC03 /* Utils */,
-				6B37A7732D0683EE00239987 /* Extension */,
-				6B790FB22CFEA3700000AC03 /* Resource */,
-				6B790FA62CFEA3090000AC03 /* Preview Content */,
 			);
-			path = Polarnal;
-			sourceTree = "<group>";
-		};
-		6B790FA62CFEA3090000AC03 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				6B790FA72CFEA3090000AC03 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
+			path = IpadPolarnal;
 			sourceTree = "<group>";
 		};
 		6B790FB02CFEA3530000AC03 /* Present */ = {
 			isa = PBXGroup;
 			children = (
 				6B37A7662D055B3800239987 /* SideTabBarView.swift */,
-				6B37A77D2D07D7CC00239987 /* SideTabBarViewModel.swift */,
 				6B37A7682D055E4500239987 /* Calendar */,
 				6B790FC52CFFE65E0000AC03 /* Diary */,
 				6B37A7C82D0FBAB700239987 /* TravelPlanner */,
 				6BDAE51A2D290AFE00A066E9 /* AppSettingView */,
-				6B790FBF2CFF25560000AC03 /* BaseProtocol */,
 				6B790FC22CFF25870000AC03 /* CommonView */,
 			);
 			path = Present;
@@ -666,7 +694,7 @@
 		6B790FB42CFEA4270000AC03 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				6B58254D2D4C60F90003BEB3 /* LocaleFileManager */,
+				6B9129692D50AABA005C85D2 /* LocaleFileManager */,
 				6BDAE52C2D2BD31700A066E9 /* MapSearchManager */,
 				6BDAE5032D1579CC00A066E9 /* CostFormatter */,
 				6B37A7762D06841700239987 /* DateManager */,
@@ -713,7 +741,6 @@
 			isa = PBXGroup;
 			children = (
 				6B790FC62CFFE66A0000AC03 /* DiaryView.swift */,
-				6B790FD22CFFEDC70000AC03 /* DiaryViewModel */,
 				6B790FCA2CFFE8060000AC03 /* Folder */,
 				6B37A7572D002BA600239987 /* Note */,
 				6B37A7612D0046E300239987 /* NoteContent */,
@@ -727,7 +754,6 @@
 			children = (
 				6B790FCB2CFFE8120000AC03 /* FolderListView.swift */,
 				6B37A7552D0026B300239987 /* FolderListCell.swift */,
-				6B790FD32CFFEDDE0000AC03 /* ViewModel */,
 			);
 			path = Folder;
 			sourceTree = "<group>";
@@ -735,34 +761,15 @@
 		6B790FCF2CFFEC8D0000AC03 /* Sheet */ = {
 			isa = PBXGroup;
 			children = (
-				6B790FD02CFFEC980000AC03 /* DiaryViewSheetType.swift */,
 				6B790FD62CFFEE620000AC03 /* AddFolderView */,
 			);
 			path = Sheet;
-			sourceTree = "<group>";
-		};
-		6B790FD22CFFEDC70000AC03 /* DiaryViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				6B790FC82CFFE6AA0000AC03 /* DiaryStateViewModel.swift */,
-				6B790FCD2CFFEC6A0000AC03 /* DiaryUIViewModel.swift */,
-			);
-			path = DiaryViewModel;
-			sourceTree = "<group>";
-		};
-		6B790FD32CFFEDDE0000AC03 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				6B790FD42CFFEDF10000AC03 /* FolderListViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		6B790FD62CFFEE620000AC03 /* AddFolderView */ = {
 			isa = PBXGroup;
 			children = (
 				6B790FD72CFFEE6E0000AC03 /* AddFolderView.swift */,
-				6B790FE82CFFEFC20000AC03 /* ViewModel */,
 				6B790FDB2CFFEED30000AC03 /* Component */,
 			);
 			path = AddFolderView;
@@ -779,12 +786,164 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
-		6B790FE82CFFEFC20000AC03 /* ViewModel */ = {
+		6B9129652D50A980005C85D2 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				6B790FD92CFFEE810000AC03 /* AddFolderViewModel.swift */,
+				6B9129672D50AA66005C85D2 /* ViewModel */,
+				6B790FB32CFEA4150000AC03 /* DB */,
+				6B790FB42CFEA4270000AC03 /* Utils */,
+				6B37A7732D0683EE00239987 /* Extension */,
+				6B790FB22CFEA3700000AC03 /* Resource */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		6B9129672D50AA66005C85D2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6B790FBF2CFF25560000AC03 /* BaseProtocol */,
+				6B9129682D50AA7B005C85D2 /* SideBar */,
+				6B91296A2D50AAD3005C85D2 /* Planner */,
+				6B91296B2D50AADD005C85D2 /* Diary */,
+				6B91296C2D50AAE4005C85D2 /* Travel */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6B9129682D50AA7B005C85D2 /* SideBar */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A77D2D07D7CC00239987 /* SideTabBarViewModel.swift */,
+			);
+			path = SideBar;
+			sourceTree = "<group>";
+		};
+		6B9129692D50AABA005C85D2 /* LocaleFileManager */ = {
+			isa = PBXGroup;
+			children = (
+				6B9129142D4F8EA3005C85D2 /* LocaleFileManager.swift */,
+			);
+			path = LocaleFileManager;
+			sourceTree = "<group>";
+		};
+		6B91296A2D50AAD3005C85D2 /* Planner */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A7812D084A2E00239987 /* PlannerViewModel.swift */,
+				6B91296E2D50AB3C005C85D2 /* DDay */,
+				6B91296D2D50AB29005C85D2 /* Todo */,
+				6B91296F2D50ABAE005C85D2 /* EventCategory */,
+				6B9129712D50AC2F005C85D2 /* Calendar */,
+				6B9129702D50ABE5005C85D2 /* ModalSheet */,
+			);
+			path = Planner;
+			sourceTree = "<group>";
+		};
+		6B91296B2D50AADD005C85D2 /* Diary */ = {
+			isa = PBXGroup;
+			children = (
+				6B9129722D50ACD6005C85D2 /* Diary */,
+				6B9129732D50ACE4005C85D2 /* Folder */,
+				6B9129742D50ACF3005C85D2 /* Note */,
+				6B9129762D50ACF4005C85D2 /* ModalSheet */,
+			);
+			path = Diary;
+			sourceTree = "<group>";
+		};
+		6B91296C2D50AAE4005C85D2 /* Travel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Travel;
+			sourceTree = "<group>";
+		};
+		6B91296D2D50AB29005C85D2 /* Todo */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A7AC2D0AA5AA00239987 /* TodoViewModel.swift */,
+				6B37A7B52D0AF29100239987 /* TodoFolderViewModel.swift */,
+				6B37A7BB2D0B08EB00239987 /* ExpendedTodoCellViewModel.swift */,
+			);
+			path = Todo;
+			sourceTree = "<group>";
+		};
+		6B91296E2D50AB3C005C85D2 /* DDay */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A7A32D0A7DD500239987 /* DDayViewModel.swift */,
+			);
+			path = DDay;
+			sourceTree = "<group>";
+		};
+		6B91296F2D50ABAE005C85D2 /* EventCategory */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A7922D095E7400239987 /* CalendarEventCategoryViewModel.swift */,
+			);
+			path = EventCategory;
+			sourceTree = "<group>";
+		};
+		6B9129702D50ABE5005C85D2 /* ModalSheet */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A7C32D0BFEED00239987 /* AddEventViewModel.swift */,
+				6B37A7B12D0AAA3000239987 /* AddTodoFolderViewModel.swift */,
+				6B37A79A2D097A1400239987 /* AddDDayViewModel.swift */,
+				6B37A78D2D0924DD00239987 /* AddEventCategoryViewModel.swift */,
+			);
+			path = ModalSheet;
+			sourceTree = "<group>";
+		};
+		6B9129712D50AC2F005C85D2 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A7712D0683C600239987 /* CalendarViewModel.swift */,
+				6B37A77B2D068DA100239987 /* MainCalendarViewModel.swift */,
+				6B37A7C62D0C0A9000239987 /* MainCalendarCellViewModel.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		6B9129722D50ACD6005C85D2 /* Diary */ = {
+			isa = PBXGroup;
+			children = (
+				6B790FC82CFFE6AA0000AC03 /* DiaryStateViewModel.swift */,
+				6B790FCD2CFFEC6A0000AC03 /* DiaryUIViewModel.swift */,
+			);
+			path = Diary;
+			sourceTree = "<group>";
+		};
+		6B9129732D50ACE4005C85D2 /* Folder */ = {
+			isa = PBXGroup;
+			children = (
+				6B790FD42CFFEDF10000AC03 /* FolderListViewModel.swift */,
+			);
+			path = Folder;
+			sourceTree = "<group>";
+		};
+		6B9129742D50ACF3005C85D2 /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				6B37A75C2D002D7700239987 /* NoteListViewModel.swift */,
+				6B37A75E2D00372A00239987 /* NoteListCellViewModel.swift */,
+			);
+			path = Note;
+			sourceTree = "<group>";
+		};
+		6B9129762D50ACF4005C85D2 /* ModalSheet */ = {
+			isa = PBXGroup;
+			children = (
+				6B790FD02CFFEC980000AC03 /* DiaryViewSheetType.swift */,
+				6B790FD92CFFEE810000AC03 /* AddFolderViewModel.swift */,
+			);
+			path = ModalSheet;
+			sourceTree = "<group>";
+		};
+		6B9129A62D50B3F9005C85D2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		6BDAE4FE2D140FA600A066E9 /* AddTravelCost */ = {
@@ -882,13 +1041,79 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				6B58254D2D4C60F90003BEB3 /* LocaleFileManager */,
-			);
 			name = Polarnal;
 			productName = Polarnal;
 			productReference = 6B790F9B2CFEA3080000AC03 /* Polarnal.app */;
 			productType = "com.apple.product-type.application";
+		};
+		6B9129192D50A758005C85D2 /* MacPolarnal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B91293E2D50A75A005C85D2 /* Build configuration list for PBXNativeTarget "MacPolarnal" */;
+			buildPhases = (
+				6B9129162D50A758005C85D2 /* Sources */,
+				6B9129172D50A758005C85D2 /* Frameworks */,
+				6B9129182D50A758005C85D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				6B91291B2D50A758005C85D2 /* MacPolarnal */,
+			);
+			name = MacPolarnal;
+			packageProductDependencies = (
+				6B9129A72D50B3FA005C85D2 /* EnumHelper */,
+			);
+			productName = MacPolarnal;
+			productReference = 6B91291A2D50A758005C85D2 /* MacPolarnal.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6B91292B2D50A75A005C85D2 /* MacPolarnalTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B9129412D50A75A005C85D2 /* Build configuration list for PBXNativeTarget "MacPolarnalTests" */;
+			buildPhases = (
+				6B9129282D50A75A005C85D2 /* Sources */,
+				6B9129292D50A75A005C85D2 /* Frameworks */,
+				6B91292A2D50A75A005C85D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6B91292E2D50A75A005C85D2 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				6B91292F2D50A75A005C85D2 /* MacPolarnalTests */,
+			);
+			name = MacPolarnalTests;
+			packageProductDependencies = (
+			);
+			productName = MacPolarnalTests;
+			productReference = 6B91292C2D50A75A005C85D2 /* MacPolarnalTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6B9129352D50A75A005C85D2 /* MacPolarnalUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B9129442D50A75A005C85D2 /* Build configuration list for PBXNativeTarget "MacPolarnalUITests" */;
+			buildPhases = (
+				6B9129322D50A75A005C85D2 /* Sources */,
+				6B9129332D50A75A005C85D2 /* Frameworks */,
+				6B9129342D50A75A005C85D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6B9129382D50A75A005C85D2 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				6B9129392D50A75A005C85D2 /* MacPolarnalUITests */,
+			);
+			name = MacPolarnalUITests;
+			packageProductDependencies = (
+			);
+			productName = MacPolarnalUITests;
+			productReference = 6B9129362D50A75A005C85D2 /* MacPolarnalUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -897,11 +1122,22 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1530;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					6B790F9A2CFEA3080000AC03 = {
 						CreatedOnToolsVersion = 15.3;
+					};
+					6B9129192D50A758005C85D2 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					6B91292B2D50A75A005C85D2 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 6B9129192D50A758005C85D2;
+					};
+					6B9129352D50A75A005C85D2 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 6B9129192D50A758005C85D2;
 					};
 				};
 			};
@@ -924,6 +1160,9 @@
 			projectRoot = "";
 			targets = (
 				6B790F9A2CFEA3080000AC03 /* Polarnal */,
+				6B9129192D50A758005C85D2 /* MacPolarnal */,
+				6B91292B2D50A75A005C85D2 /* MacPolarnalTests */,
+				6B9129352D50A75A005C85D2 /* MacPolarnalUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -933,10 +1172,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B790FA82CFEA3090000AC03 /* Preview Assets.xcassets in Resources */,
 				6B790FAF2CFEA33C0000AC03 /* .gitignore in Resources */,
 				6B58254C2D426A3A0003BEB3 /* Localizable.xcstrings in Resources */,
 				6B790FA52CFEA3090000AC03 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B9129182D50A758005C85D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B9129662D50AA0F005C85D2 /* Assets.xcassets in Resources */,
+				6B9129562D50A857005C85D2 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B91292A2D50A75A005C85D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B9129342D50A75A005C85D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1024,6 +1285,7 @@
 				6B37A7F02D129D1300239987 /* AddTravelCostView.swift in Sources */,
 				6B37A7A92D0AA49900239987 /* DDayDB.swift in Sources */,
 				6BDAE52B2D2BB73400A066E9 /* TravelMapViewModel.swift in Sources */,
+				6B9129152D4F8EA3005C85D2 /* LocaleFileManager.swift in Sources */,
 				6B790FC72CFFE66A0000AC03 /* DiaryView.swift in Sources */,
 				6B790FC12CFF25710000AC03 /* ViewModelProtocol.swift in Sources */,
 				6B37A7992D0978D900239987 /* AddDDayView.swift in Sources */,
@@ -1049,7 +1311,92 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6B9129162D50A758005C85D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B9129522D50A857005C85D2 /* MonthCase.swift in Sources */,
+				6B9129B82D50E4E0005C85D2 /* NoteContentView.swift in Sources */,
+				6B9129532D50A857005C85D2 /* ColorPalette.swift in Sources */,
+				6B9129542D50A857005C85D2 /* DesignOfFolderIcon.swift in Sources */,
+				6B9129552D50A857005C85D2 /* DottedLine.swift in Sources */,
+				6B9129502D50A84B005C85D2 /* View+Extension.swift in Sources */,
+				6B9129B02D50B802005C85D2 /* MainCalendarViewModel.swift in Sources */,
+				6B9129572D50A86D005C85D2 /* EvnentDB.swift in Sources */,
+				6B9129582D50A86D005C85D2 /* FolderDB.swift in Sources */,
+				6B9129592D50A86D005C85D2 /* CurrencyType.swift in Sources */,
+				6B9129BB2D50EC39005C85D2 /* ColorPalettePartView.swift in Sources */,
+				6B91295A2D50A86D005C85D2 /* DBManager.swift in Sources */,
+				6B9129AE2D50B782005C85D2 /* SideTabBarView.swift in Sources */,
+				6B91295B2D50A86D005C85D2 /* TravelCostType.swift in Sources */,
+				6B91295C2D50A86D005C85D2 /* TodoDB.swift in Sources */,
+				6B91295D2D50A86D005C85D2 /* TravelDocumentType.swift in Sources */,
+				6B91295E2D50A86D005C85D2 /* NoteDB.swift in Sources */,
+				6B9129772D50ADDC005C85D2 /* CalendarViewModel.swift in Sources */,
+				6B9129782D50ADDC005C85D2 /* AddFolderViewModel.swift in Sources */,
+				6B9129792D50ADDC005C85D2 /* MainCalendarCellViewModel.swift in Sources */,
+				6B91297A2D50ADDC005C85D2 /* AddTodoFolderViewModel.swift in Sources */,
+				6B91297B2D50ADDC005C85D2 /* NoteListCellViewModel.swift in Sources */,
+				6B91297C2D50ADDC005C85D2 /* PlannerViewModel.swift in Sources */,
+				6B91297D2D50ADDC005C85D2 /* AddEventViewModel.swift in Sources */,
+				6B91297E2D50ADDC005C85D2 /* NoteListViewModel.swift in Sources */,
+				6B91297F2D50ADDC005C85D2 /* CalendarEventCategoryViewModel.swift in Sources */,
+				6B9129802D50ADDC005C85D2 /* AddDDayViewModel.swift in Sources */,
+				6B9129812D50ADDC005C85D2 /* FolderListViewModel.swift in Sources */,
+				6B9129AF2D50B7D4005C85D2 /* DiaryViewSheetType.swift in Sources */,
+				6B9129822D50ADDC005C85D2 /* AddEventCategoryViewModel.swift in Sources */,
+				6B9129842D50ADDC005C85D2 /* DDayViewModel.swift in Sources */,
+				6B9129852D50ADDC005C85D2 /* DiaryStateViewModel.swift in Sources */,
+				6B9129862D50ADDC005C85D2 /* TodoFolderViewModel.swift in Sources */,
+				6B9129872D50ADDC005C85D2 /* DiaryUIViewModel.swift in Sources */,
+				6B9129882D50ADDC005C85D2 /* ExpendedTodoCellViewModel.swift in Sources */,
+				6B9129892D50ADDC005C85D2 /* TodoViewModel.swift in Sources */,
+				6B9129B22D50C5CD005C85D2 /* FolderListCell.swift in Sources */,
+				6B91295F2D50A86D005C85D2 /* TravelDestinationFolderDB.swift in Sources */,
+				6B9129602D50A86D005C85D2 /* TravelPlanDB.swift in Sources */,
+				6B9129612D50A86D005C85D2 /* DDayDB.swift in Sources */,
+				6B9129512D50A84B005C85D2 /* Date+Extension.swift in Sources */,
+				6B9129482D50A7A5005C85D2 /* SideTabBarViewModel.swift in Sources */,
+				6B91294A2D50A842005C85D2 /* LocaleFileManager.swift in Sources */,
+				6B91294B2D50A842005C85D2 /* CostFormatter.swift in Sources */,
+				6B91294C2D50A842005C85D2 /* DateManager.swift in Sources */,
+				6B91294D2D50A842005C85D2 /* MapSearchManager.swift in Sources */,
+				6B9129B12D50C5A0005C85D2 /* FolderListView.swift in Sources */,
+				6B9129632D50A896005C85D2 /* ViewModelProtocol.swift in Sources */,
+				6B9129B62D50E49B005C85D2 /* NoteListCell.swift in Sources */,
+				6B9129B72D50E49B005C85D2 /* NoteListView.swift in Sources */,
+				6B91294E2D50A842005C85D2 /* LogManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B9129282D50A75A005C85D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B9129322D50A75A005C85D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6B91292E2D50A75A005C85D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6B9129192D50A758005C85D2 /* MacPolarnal */;
+			targetProxy = 6B91292D2D50A75A005C85D2 /* PBXContainerItemProxy */;
+		};
+		6B9129382D50A75A005C85D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6B9129192D50A758005C85D2 /* MacPolarnal */;
+			targetProxy = 6B9129372D50A75A005C85D2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		6B790FA92CFEA3090000AC03 /* Debug */ = {
@@ -1180,7 +1527,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Polarnal/Preview Content\"";
 				DEVELOPMENT_TEAM = F8Q3Y446GH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1197,7 +1543,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = beom.Polarnal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				REGISTER_APP_GROUPS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1214,7 +1561,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Polarnal/Preview Content\"";
 				DEVELOPMENT_TEAM = F8Q3Y446GH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1231,13 +1577,144 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = beom.Polarnal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				REGISTER_APP_GROUPS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		6B91293F2D50A75A005C85D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MacPolarnal/MacPolarnal.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F8Q3Y446GH;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = beom.MacPolarnal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		6B9129402D50A75A005C85D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MacPolarnal/MacPolarnal.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F8Q3Y446GH;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = beom.MacPolarnal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		6B9129422D50A75A005C85D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F8Q3Y446GH;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = beom.MacPolarnalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MacPolarnal.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MacPolarnal";
+			};
+			name = Debug;
+		};
+		6B9129432D50A75A005C85D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F8Q3Y446GH;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = beom.MacPolarnalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MacPolarnal.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MacPolarnal";
+			};
+			name = Release;
+		};
+		6B9129452D50A75A005C85D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F8Q3Y446GH;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = beom.MacPolarnalUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = MacPolarnal;
+			};
+			name = Debug;
+		};
+		6B9129462D50A75A005C85D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F8Q3Y446GH;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = beom.MacPolarnalUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = MacPolarnal;
 			};
 			name = Release;
 		};
@@ -1262,6 +1739,33 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		6B91293E2D50A75A005C85D2 /* Build configuration list for PBXNativeTarget "MacPolarnal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B91293F2D50A75A005C85D2 /* Debug */,
+				6B9129402D50A75A005C85D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6B9129412D50A75A005C85D2 /* Build configuration list for PBXNativeTarget "MacPolarnalTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B9129422D50A75A005C85D2 /* Debug */,
+				6B9129432D50A75A005C85D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6B9129442D50A75A005C85D2 /* Build configuration list for PBXNativeTarget "MacPolarnalUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B9129452D50A75A005C85D2 /* Debug */,
+				6B9129462D50A75A005C85D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
@@ -1272,6 +1776,11 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6B9129A72D50B3FA005C85D2 /* EnumHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B9F61B32D3E621D00875186 /* XCLocalSwiftPackageReference "../../포폴용/EnumHelper" */;
+			productName = EnumHelper;
+		};
 		6B9F61B42D3E621D00875186 /* EnumHelper */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = EnumHelper;
