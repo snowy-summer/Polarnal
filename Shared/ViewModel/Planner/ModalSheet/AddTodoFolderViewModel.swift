@@ -20,9 +20,9 @@ final class AddTodoFolderViewModel: ViewModelProtocol {
             self.todoFolder = todoFolder
             todoFolderTitle = todoFolder.title
             todoFolderColor = Color(red: todoFolder.color.red,
-                                  green: todoFolder.color.green,
-                                  blue: todoFolder.color.blue,
-                                  opacity: todoFolder.color.alpha)
+                                    green: todoFolder.color.green,
+                                    blue: todoFolder.color.blue,
+                                    opacity: todoFolder.color.alpha)
         } else {
             todoFolderTitle = ""
             todoFolderColor = .blue
@@ -57,7 +57,7 @@ extension AddTodoFolderViewModel {
     private func addFolder() {
         
         let newTodoFolder = TodoFolderDB(title: todoFolderTitle,
-                                       color: getColorRGBA())
+                                         color: getColorRGBA())
         dbManager.addItem(newTodoFolder)
     }
     
@@ -65,14 +65,18 @@ extension AddTodoFolderViewModel {
         if todoFolder != nil {
             todoFolder?.title = todoFolderTitle
             todoFolder?.color = getColorRGBA()
-           
+            
             dbManager.addItem(todoFolder!)
         }
     }
     
     private func getColorRGBA() -> CustomColor {
         
+#if os(macOS)
+        let uiColor = NSColor(todoFolderColor)
+#else
         let uiColor = UIColor(todoFolderColor)
+#endif
         
         var red: CGFloat = 0
         var green: CGFloat = 0

@@ -6,6 +6,13 @@
 //
 
 import SwiftUI
+#if os(iOS)
+import UIKit
+typealias PlatformColor = UIColor
+#elseif os(macOS)
+import AppKit
+typealias PlatformColor = NSColor
+#endif
 
 struct NoteListCell: View {
     @StateObject private var viewModel: NoteListCellViewModel
@@ -18,7 +25,7 @@ struct NoteListCell: View {
         HStack(alignment: .top) {
             
             RoundedRectangle(cornerRadius: 12)
-                .fill(Color(UIColor.systemGray5))
+                .fill(Color(PlatformColor.systemGray))
                 .frame(width: 60,
                        height: 100)
                 .overlay {
@@ -41,19 +48,24 @@ struct NoteListCell: View {
                 }
             }
             Spacer()
+#if os(macOS)
+            if let image = viewModel.thumnailImage {
+                Image(nsImage: image)
+                    .resizable()
+                    .frame(width: 100,
+                           height: 100)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+            }
+#elseif os(iOS)
             if let image = viewModel.thumnailImage {
                 Image(uiImage: image)
                     .resizable()
                     .frame(width: 100,
                            height: 100)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
-            } else {
-                Image(.ex)
-                    .resizable()
-                    .frame(width: 100,
-                           height: 100)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
             }
+#endif
+            
         }
     }
     

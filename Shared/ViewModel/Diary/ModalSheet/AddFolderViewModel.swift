@@ -101,7 +101,11 @@ extension AddFolderViewModel {
     
     private func getColorRGBA() -> CustomColor {
         
+#if os(macOS)
+        let uiColor = NSColor(folderColor)
+#else
         let uiColor = UIColor(folderColor)
+#endif
         
         var red: CGFloat = 0
         var green: CGFloat = 0

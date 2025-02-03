@@ -10,7 +10,7 @@ import SwiftData
 
 @Model
 final class DDayDB {
-    @Attribute(.unique) let id = UUID()
+    @Attribute(.unique) var id = UUID()
     var title: String
     var startDate: Date
     var goalDate: Date

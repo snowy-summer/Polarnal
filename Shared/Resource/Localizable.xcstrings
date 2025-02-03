@@ -64,6 +64,19 @@
     "2024.04.12" : {
 
     },
+    "Add Folder" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "폴더 추가"
+          }
+        }
+      }
+    },
+    "Add Item" : {
+
+    },
     "Apr" : {
       "localizations" : {
         "ko" : {
@@ -87,6 +100,16 @@
     },
     "Back" : {
 
+    },
+    "Cancel" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "취소"
+          }
+        }
+      }
     },
     "D +" : {
 
@@ -138,6 +161,12 @@
           }
         }
       }
+    },
+    "Folder Name" : {
+
+    },
+    "Item at %@" : {
+
     },
     "Jan" : {
       "extractionState" : "manual",
@@ -260,6 +289,9 @@
           }
         }
       }
+    },
+    "Select an item" : {
+
     },
     "Sep" : {
       "extractionState" : "manual",
@@ -388,6 +420,9 @@
 
     },
     "폴더 생성" : {
+
+    },
+    "폴더 생성ddd" : {
 
     },
     "폴더 이름" : {

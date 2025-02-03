@@ -8,54 +8,6 @@
 import SwiftUI
 import Combine
 
-struct DateValue: Identifiable {
-    var id: UUID = UUID()
-    var day: Int
-    var date: Date
-}
-
-enum WeekDay: CaseIterable {
-    case sunday
-    case monday
-    case tuesday
-    case wednesday
-    case thursday
-    case friday
-    case saturday
-
-    var text: String {
-        switch self {
-        case .sunday:
-            return "일"
-        case .monday:
-            return "월"
-        case .tuesday:
-            return "화"
-        case .wednesday:
-            return "수"
-        case .thursday:
-            return "목"
-        case .friday:
-            return "금"
-        case .saturday:
-            return "토"
-        }
-    }
-    
-    var color: Color {
-        switch self {
-        case .sunday:
-            return Color.red
-            
-        case .saturday:
-            return Color.blue
-            
-        default:
-            return Color.folderTitle
-        }
-    }
-}
-
 struct MiniCalendarView: View {
     
     @StateObject var viewModel: CalendarViewModel = CalendarViewModel()

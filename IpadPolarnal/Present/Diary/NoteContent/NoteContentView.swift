@@ -79,10 +79,18 @@ struct NoteContentCell: View {
                     }
                     
                     if !images.isEmpty {
+#if os(macOS)
+                        Image(nsImage: images[0])
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: .infinity)
+#elseif os(iOS)
                         Image(uiImage: images[0])
                             .resizable()
                             .scaledToFit()
                             .frame(maxWidth: .infinity)
+#endif
+      
                     }
                 }
             }
@@ -130,18 +138,23 @@ struct NoteTextField: View {
 extension NoteTextField {
     
     private func updateTextFieldHeight() {
+        #if os(iOS)
         let font = UIFont.systemFont(ofSize: 20)
         let textWidth = UIScreen.main.bounds.width - 64
+        let lineHeight = font.lineHeight
+        #elseif os(macOS)
+        let font = NSFont.systemFont(ofSize: 20)
+        let textWidth = NSScreen.main?.frame.width ?? 800 - 64
+        let lineHeight = font.ascender - font.descender + font.leading
+        #endif
+
         let boundingRect = NSString(string: noteText)
-            .boundingRect(with: CGSize(width: textWidth,
-                                       height: .infinity),
+            .boundingRect(with: CGSize(width: textWidth, height: .infinity),
                           options: .usesLineFragmentOrigin,
                           attributes: [.font: font],
                           context: nil)
-        
-        let lineHeight = font.lineHeight
+
         let lineCount = Int(ceil(boundingRect.height / lineHeight))
-        
         textFieldHeight = max(44, CGFloat(lineCount) * lineHeight + 26)
     }
     
@@ -197,7 +210,7 @@ struct NoteContentToolView: View {
         .sheet(item: $noteContentViewModel.noteContentsSheetType, onDismiss: {
             noteContentViewModel.contentApply(.addImage)
         }, content: { _ in
-            PhotoPicker(selectedImages: $noteContentViewModel.noteContentPhotoData)
+//            PhotoPicker(selectedImages: $noteContentViewModel.noteContentPhotoData)
         })
         
     }

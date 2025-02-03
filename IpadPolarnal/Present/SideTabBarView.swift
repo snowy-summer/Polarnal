@@ -16,6 +16,12 @@ struct SideTabBarView: View {
     
     var body: some View {
         VStack(alignment: .center) {
+#if os(macOS)
+            Rectangle()
+                .frame(height: 16)
+                .opacity(0)
+#endif
+            
             ForEach(TabType.allCases, id: \.self) { type in
                 if type != TabType.setting {
                     TabIconCell(type: type,
@@ -25,6 +31,7 @@ struct SideTabBarView: View {
                     }
                 }
             }
+            
             
             Spacer()
             
@@ -61,8 +68,8 @@ struct SideTabBarView: View {
                     
                     Image(systemName: type.iconText)
                         .resizable()
-                        .frame(width: 28,
-                               height: 28)
+                        .frame(width: 24,
+                               height: 24)
                 }
             }
         }
