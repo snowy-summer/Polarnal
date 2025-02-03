@@ -76,7 +76,7 @@ struct TravelTicketCell: View {
             }
             
             if !document.contentImageData.isEmpty,
-               let image = UIImage(data: document.contentImageData.first!) {
+               let image = PlatformImage(data: document.contentImageData.first!) {
                 
                 Image(uiImage: image)
                     .resizable()

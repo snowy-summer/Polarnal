@@ -10,6 +10,12 @@ import Combine
 import SwiftData
 import EnumHelper
 
+#if os(iOS)
+import UIKit
+#elseif os(macOS)
+import AppKit
+#endif
+
 final class NoteListViewModel: ViewModelProtocol {
     
     enum Intent {
@@ -28,16 +34,14 @@ final class NoteListViewModel: ViewModelProtocol {
         case deleteContent(Int)
     }
     
-    //Note List 부분
     @Published var noteList: [Note] = []
     private var selectedIndex: Int?
     private var selectedNote: Note?
     
-    //Note Content부분
     @Published var contentTitle: String = ""
     @Published var noteContents = [NoteContentDataDB]()
     @Published var noteContentsSheetType: NoteContentSheetType?
-    @Published var noteContentPhotoData = [UIImage]()
+    @Published var noteContentPhotoData = [PlatformImage]()  // 변경된 부분
     
     private let dbManager: DBManager = DBManager()
     var cancellables: Set<AnyCancellable> = []
@@ -60,9 +64,7 @@ final class NoteListViewModel: ViewModelProtocol {
                 selectedIndex = index
                 selectedNote = note
                 contentTitle = note.title
-                noteContents = note.contents.sorted {
-                    $0.index < $1.index
-                }
+                noteContents = note.contents.sorted { $0.index < $1.index }
             }
             
         case .deleteNote(let note):
@@ -76,9 +78,8 @@ final class NoteListViewModel: ViewModelProtocol {
     func contentApply(_ intent : NoteContentIntent) {
         switch intent {
         case .addTextField:
-            if let selectedNote,
-               let selectedIndex {
-                let noteContent = NoteContentDataDB(type: NoteContentType.text,
+            if let selectedNote, let selectedIndex {
+                let noteContent = NoteContentDataDB(type: .text,
                                                     index: noteContents.count,
                                                     noteID: selectedNote.id)
                 noteContents.append(noteContent)
@@ -97,8 +98,7 @@ final class NoteListViewModel: ViewModelProtocol {
                                                        index: noteContents.count)
                 }
                 
-                let imagePaths = paths.map { ImagePath(id: $0)}
-
+                let imagePaths = paths.map { ImagePath(id: $0) }
                 let noteContent = NoteContentDataDB(type: .image,
                                                     imagePaths: imagePaths,
                                                     index: noteContents.count,
@@ -115,9 +115,7 @@ final class NoteListViewModel: ViewModelProtocol {
         case .saveContent:
             guard let selectedIndex else { return }
             noteList[selectedIndex].contents = noteContents
-
             dbManager.addItem(noteList[selectedIndex])
-            
             
         case .saveTitle(let title):
             guard let selectedIndex else { return }
@@ -130,30 +128,16 @@ final class NoteListViewModel: ViewModelProtocol {
     }
     
     func binding() {
-        
-        selectedIndex.publisher.sink { [weak self] index in
-            guard let self = self else { return }
-            contentTitle = noteList[index].title
-            
-            noteContents = noteList[index].contents
-        }
-        .store(in: &cancellables)
-        
         $contentTitle
-            .debounce(for: .seconds(1),
-                      scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
             .sink { [weak self] text in
-                guard let self,
-                      let selectedIndex else { return }
-                
+                guard let self, let selectedIndex else { return }
                 noteList[selectedIndex].title = text
                 LogManager.log("노트 제목 저장 시도")
                 contentApply(.saveTitle(text))
             }
             .store(in: &cancellables)
-        
     }
-    
 }
 
 @IdentifiableEnum

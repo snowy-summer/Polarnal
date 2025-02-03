@@ -31,12 +31,9 @@ final class TodoViewModel: ViewModelProtocol {
             dbManager.modelContext = modelContext
         
         case .selectFolder(let folder):
-            print("선택되어있는거", selectedFolder?.title)
-            print("선택한거", folder.title)
             selectedFolder = folder
             
         case.clearSelectedFolder:
-            print("초기화")
             selectedFolder = nil
         }
     }

@@ -25,7 +25,7 @@ final class AddTravelTicketViewModel: ViewModelProtocol {
     
     @Published var title: String = ""
     @Published var selecteddocumentType: TravelDocumentType = .flight
-    @Published var imageList: [UIImage] = []
+    @Published var imageList: [PlatformImage] = []
     @Published var isShowPhotopicker = false
     
     init(document: TravelDocumentDB? = nil) {
@@ -68,7 +68,7 @@ extension AddTravelTicketViewModel {
     private func convertProperty(document: TravelDocumentDB?) {
         if let document {
             title = document.title
-            imageList = document.contentImageData.compactMap { UIImage(data: $0) }
+            imageList = document.contentImageData.compactMap { PlatformImage(data: $0) }
         }
     }
     

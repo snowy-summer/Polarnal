@@ -15,7 +15,7 @@ final class NoteListCellViewModel: ViewModelProtocol {
     }
     
     @Published var note: Note
-    @Published var thumnailImage: UIImage?
+    @Published var thumnailImage: PlatformImage?
     let monthString: String
     let dayString: String
     private let dateManager = DateManager.shared

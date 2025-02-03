@@ -38,7 +38,7 @@ final class AddTravelCostViewModel: ViewModelProtocol {
     @Published var selectedCostType: TravelCostType = .hotel
     @Published var costDescription: String = ""
     @Published var spentDate: Date = Date()
-    @Published var imageList: [UIImage] = []
+    @Published var imageList: [PlatformImage] = []
     var dateString: String {
         DateManager.shared.getDateString(date: spentDate)
     }
