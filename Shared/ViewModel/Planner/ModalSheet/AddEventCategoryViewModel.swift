@@ -19,10 +19,11 @@ final class AddEventCategoryViewModel: ViewModelProtocol {
         if let eventCategory {
             self.eventCategory = eventCategory
             categoryTitle = eventCategory.title
-            categoryColor = Color(red: eventCategory.color.red,
-                                  green: eventCategory.color.green,
-                                  blue: eventCategory.color.blue,
-                                  opacity: eventCategory.color.alpha)
+            categoryColor = Color(hex: eventCategory.colorCode)
+//            categoryColor = Color(red: eventCategory.color.red,
+//                                  green: eventCategory.color.green,
+//                                  blue: eventCategory.color.blue,
+//                                  opacity: eventCategory.color.alpha)
         } else {
             categoryTitle = ""
             categoryColor = .blue
@@ -57,16 +58,20 @@ final class AddEventCategoryViewModel: ViewModelProtocol {
 extension AddEventCategoryViewModel {
     
     private func addFolder() {
-        
-        let newCategory = EventCategoryDB(title: categoryTitle,
-                                          color: getColorRGBA())
-        dbManager.addItem(newCategory)
+        if let hexCode = categoryColor.toHex() {
+            let newCategory = EventCategoryDB(title: categoryTitle,
+                                              colorCode: hexCode)
+            dbManager.addItem(newCategory)
+        }
     }
     
     private func editFolder() {
         if eventCategory != nil {
             eventCategory?.title = categoryTitle
-            eventCategory?.color = getColorRGBA()
+            if let hexCode = categoryColor.toHex() {
+                eventCategory?.colorCode = hexCode
+            }
+//            eventCategory?.color = getColorRGBA()
            
             dbManager.addItem(eventCategory!)
         }

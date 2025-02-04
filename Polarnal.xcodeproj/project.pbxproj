@@ -144,6 +144,8 @@
 		6B9129B72D50E49B005C85D2 /* NoteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7582D002BB800239987 /* NoteListView.swift */; };
 		6B9129B82D50E4E0005C85D2 /* NoteContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7622D0046F200239987 /* NoteContentView.swift */; };
 		6B9129BB2D50EC39005C85D2 /* ColorPalettePartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FE02CFFEF220000AC03 /* ColorPalettePartView.swift */; };
+		6B9129CF2D51999A005C85D2 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9129CE2D51999A005C85D2 /* Color+Extension.swift */; };
+		6B9129D02D51999A005C85D2 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9129CE2D51999A005C85D2 /* Color+Extension.swift */; };
 		6B9F61B52D3E621D00875186 /* EnumHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 6B9F61B42D3E621D00875186 /* EnumHelper */; };
 		6BDAE5002D141DDE00A066E9 /* TravelCostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE4FF2D141DDE00A066E9 /* TravelCostViewModel.swift */; };
 		6BDAE5022D1563CE00A066E9 /* SelectedTravelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5012D1563CE00A066E9 /* SelectedTravelViewModel.swift */; };
@@ -272,6 +274,7 @@
 		6B91291A2D50A758005C85D2 /* MacPolarnal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacPolarnal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B91292C2D50A75A005C85D2 /* MacPolarnalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacPolarnalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B9129362D50A75A005C85D2 /* MacPolarnalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacPolarnalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B9129CE2D51999A005C85D2 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		6BDAE4FF2D141DDE00A066E9 /* TravelCostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelCostViewModel.swift; sourceTree = "<group>"; };
 		6BDAE5012D1563CE00A066E9 /* SelectedTravelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTravelViewModel.swift; sourceTree = "<group>"; };
 		6BDAE5042D1579E700A066E9 /* CostFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostFormatter.swift; sourceTree = "<group>"; };
@@ -385,6 +388,7 @@
 			children = (
 				6B37A7742D06840400239987 /* Date+Extension.swift */,
 				6B2750C12D3D07FB005144FA /* View+Extension.swift */,
+				6B9129CE2D51999A005C85D2 /* Color+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1304,6 +1308,7 @@
 				6B37A7D22D0FEDCB00239987 /* TravelPlanDB.swift in Sources */,
 				6B37A7C02D0BCDEC00239987 /* AddEventView.swift in Sources */,
 				6BDAE5172D1CDE9A00A066E9 /* TravelPlanView.swift in Sources */,
+				6B9129D02D51999A005C85D2 /* Color+Extension.swift in Sources */,
 				6B37A7722D0683C600239987 /* CalendarViewModel.swift in Sources */,
 				6B790FCC2CFFE8120000AC03 /* FolderListView.swift in Sources */,
 				6B37A7932D095E7400239987 /* CalendarEventCategoryViewModel.swift in Sources */,
@@ -1338,6 +1343,7 @@
 				6B91297A2D50ADDC005C85D2 /* AddTodoFolderViewModel.swift in Sources */,
 				6B91297B2D50ADDC005C85D2 /* NoteListCellViewModel.swift in Sources */,
 				6B91297C2D50ADDC005C85D2 /* PlannerViewModel.swift in Sources */,
+				6B9129CF2D51999A005C85D2 /* Color+Extension.swift in Sources */,
 				6B91297D2D50ADDC005C85D2 /* AddEventViewModel.swift in Sources */,
 				6B91297E2D50ADDC005C85D2 /* NoteListViewModel.swift in Sources */,
 				6B91297F2D50ADDC005C85D2 /* CalendarEventCategoryViewModel.swift in Sources */,

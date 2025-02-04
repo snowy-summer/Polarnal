@@ -24,10 +24,11 @@ final class AddFolderViewModel: ViewModelProtocol {
             folderTitle = folder.title
             newTagName = ""
             folderTag = folder.tag
-            folderColor = Color(red: folder.color.red,
-                                green: folder.color.green,
-                                blue: folder.color.blue,
-                                opacity: folder.color.alpha)
+            folderColor = Color(hex: folder.colorCode)
+//            folderColor = Color(red: folder.color.red,
+//                                green: folder.color.green,
+//                                blue: folder.color.blue,
+//                                opacity: folder.color.alpha)
             folderIcon = DesignOfFolderIcon(rawValue: folder.icon)
         } else {
             folderTitle = ""
@@ -68,7 +69,6 @@ final class AddFolderViewModel: ViewModelProtocol {
             folderTag.remove(at: index)
             
         case .addFolder:
-//            print("aa")
             folder == nil ? addFolder() : editFolder()
             
         case .insertModelContext(let modelContext):
@@ -80,9 +80,9 @@ final class AddFolderViewModel: ViewModelProtocol {
 extension AddFolderViewModel {
     
     private func addFolder() {
-        
+        let hexCode = folderColor.toHex()
         let newFolder = Folder(title: folderTitle,
-                               color: getColorRGBA(),
+                               colorCode: hexCode ?? "#FFFFFF",
                                icon: folderIcon.rawValue,
                                createAt: Date(),
                                tag: folderTag,
@@ -93,7 +93,7 @@ extension AddFolderViewModel {
     private func editFolder() {
         if folder != nil {
             folder?.title = folderTitle
-            folder?.color = getColorRGBA()
+            folder?.colorCode = folderColor.toHex() ?? "#FFFFFF"
             folder?.icon = folderIcon.rawValue
             folder?.tag = folderTag
             dbManager.addItem(folder!)

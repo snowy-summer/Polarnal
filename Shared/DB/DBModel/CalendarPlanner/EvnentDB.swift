@@ -11,24 +11,24 @@ import SwiftData
 
 @Model
 final class EventCategoryDB {
-    @Attribute(.unique) let id = UUID()
+    @Attribute(.unique) var id = UUID()
     var title: String
+    var colorCode: String
     @Relationship(deleteRule: .cascade) var planList: [EventDB]
-    @Relationship(deleteRule: .cascade) var color: CustomColor
     
     init(planList: [EventDB] = [],
          title: String,
-         color: CustomColor = CustomColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0)) {
+         colorCode: String = "#FFFFFF") {
         self.planList = planList
         self.title = title
-        self.color = color
+        self.colorCode = colorCode
     }
     
 }
 
 @Model
 final class EventDB {
-    @Attribute(.unique) let id: UUID
+    @Attribute(.unique) var id: UUID
     var content: String
     var isPeriod: Bool
     var date: Date

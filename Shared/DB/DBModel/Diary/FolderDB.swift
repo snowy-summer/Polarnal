@@ -14,19 +14,19 @@ final class Folder: Identifiable {
     @Attribute(.unique) var id = UUID()
     var title: String
     var createAt: Date
-    @Relationship(deleteRule: .cascade) var color: CustomColor
+    var colorCode: String
     var icon: String
     var tag: [Tag]
     @Relationship(deleteRule: .cascade) var noteList: [Note]
     
     init(title: String,
-         color: CustomColor = CustomColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0),
+         colorCode: String = "#FFFFFF",
          icon: String = "",
          createAt: Date = Date(),
          tag: [Tag] = [],
          noteList: [Note] = []) {
         self.title = title
-        self.color = color
+        self.colorCode = colorCode
         self.icon = icon
         self.createAt = createAt
         self.tag = tag

@@ -20,10 +20,11 @@ struct FolderListCell: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 8)
                     .frame(width: 40, height: 40)
-                    .foregroundStyle(Color(red: folder.color.red,
-                                           green: folder.color.green,
-                                           blue: folder.color.blue,
-                                           opacity: folder.color.alpha))
+//                    .foregroundStyle(Color(red: folder.color.red,
+//                                           green: folder.color.green,
+//                                           blue: folder.color.blue,
+//                                           opacity: folder.color.alpha))
+                    .foregroundStyle(Color(hex: folder.colorCode))
                 
                 Image(systemName: DesignOfFolderIcon(rawValue: folder.icon).iconName)
                     .resizable()
