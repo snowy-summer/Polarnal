@@ -49,6 +49,7 @@ final class NoteListViewModel: ViewModelProtocol {
     init(stateViewModel: DiaryStateViewModel) {
         stateViewModel.$selectedFolder
             .sink { [weak self] folder in
+                self?.clear()
                 self?.noteList = folder?.noteList ?? []
                 LogManager.log("NoteListViewModel에서 폴더 선택함: \(folder?.title ?? "미선택")")
             }
@@ -124,6 +125,7 @@ final class NoteListViewModel: ViewModelProtocol {
             
         case .deleteContent(let index):
             noteContents.remove(at: index)
+            contentApply(.saveContent)
         }
     }
     
@@ -144,6 +146,17 @@ final class NoteListViewModel: ViewModelProtocol {
             .store(in: &cancellables)
         
         
+    }
+    
+    private func clear() {
+        
+        noteList = []
+        selectedIndex = nil
+        selectedNote = nil
+        
+        contentTitle = ""
+        noteContents = [NoteContentDataDB]()
+        noteContentPhotoData = [PlatformImage]()
     }
 }
 

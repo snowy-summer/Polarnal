@@ -21,7 +21,7 @@ struct NoteContentView: View {
         List {
             TextField("제목", text: $noteContentViewModel.contentTitle)
                 .font(.title)
-                .frame(height: 80)
+                .frame(height: 60)
                 .padding()
             ForEach(noteContentViewModel.noteContents.indices,
                     id: \.self) { index in
@@ -31,6 +31,14 @@ struct NoteContentView: View {
                                 noteContentViewModel: noteContentViewModel,
                                 index: index
                 )
+                .contextMenu {
+                    Button(role: .destructive, action: {
+                        noteContentViewModel.contentApply(.deleteContent(index))
+                    }, label: {
+                        Label("삭제", systemImage: "trash")
+                    })
+                    
+                }
                 .swipeActions(edge: .trailing,
                               allowsFullSwipe: false) {
                     Button(role: .destructive, action: {
@@ -39,7 +47,9 @@ struct NoteContentView: View {
                         Label("삭제", systemImage: "trash")
                     })
                 }
-            }.listRowSeparator(.hidden)
+                              
+                              
+            }
             
 #if os(macOS)
             NoteContentToolView(noteContentViewModel: noteContentViewModel, isMacOS: true)
@@ -204,7 +214,7 @@ struct NoteContentToolView: View {
                         .transition(.opacity)
                         .animation(.linear(duration: 0.3),
                                    value: select)
-                        
+                    
                     
                     switch type {
                     case .text:

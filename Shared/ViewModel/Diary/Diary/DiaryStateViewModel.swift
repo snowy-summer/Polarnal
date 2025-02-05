@@ -33,8 +33,8 @@ final class DiaryStateViewModel: ViewModelProtocol {
     func apply(_ intent: Intent) {
         switch intent {
         case .selectFolder(let folder):
-            selectedFolder = folder
             selectedNote = nil
+            selectedFolder = folder
             
         case .selectedFolderClear:
             selectedFolder = nil
