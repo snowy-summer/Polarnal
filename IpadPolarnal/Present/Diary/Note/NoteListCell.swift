@@ -17,8 +17,21 @@ typealias PlatformColor = NSColor
 struct NoteListCell: View {
     @StateObject private var viewModel: NoteListCellViewModel
     
-    init(note: Note) {
+    private let rectangleWidth: CGFloat
+    private let rectangleHeight: CGFloat
+    private let imageWight: CGFloat
+    private let imageHeight: CGFloat
+    
+    init(note: Note,
+         isMacOS: Bool = false) {
+        
         _viewModel = StateObject(wrappedValue: NoteListCellViewModel(note: note))
+        
+        rectangleWidth = isMacOS ? 80 : 60
+        rectangleHeight = isMacOS ? 80 : 100
+        imageWight = isMacOS ? 80 : 100
+        imageHeight = isMacOS ? 80 : 100
+        
     }
     
     var body: some View {
@@ -26,8 +39,8 @@ struct NoteListCell: View {
             
             RoundedRectangle(cornerRadius: 12)
                 .fill(Color(PlatformColor.systemGray))
-                .frame(width: 60,
-                       height: 100)
+                .frame(width: rectangleWidth,
+                       height: rectangleHeight)
                 .overlay {
                     VStack {
                         Text(MonthCase(rawValue: Int(viewModel.monthString)!)?.shortName ?? "@@")
@@ -45,6 +58,7 @@ struct NoteListCell: View {
                 if !viewModel.note.contents.isEmpty,
                    let text = viewModel.note.contents.first?.textValue {
                     Text("\(text)")
+                        .lineLimit(3)
                 }
             }
             Spacer()
@@ -52,16 +66,16 @@ struct NoteListCell: View {
             if let image = viewModel.thumnailImage {
                 Image(nsImage: image)
                     .resizable()
-                    .frame(width: 100,
-                           height: 100)
+                    .frame(width: imageWight,
+                           height: imageHeight)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             }
 #elseif os(iOS)
             if let image = viewModel.thumnailImage {
                 Image(uiImage: image)
                     .resizable()
-                    .frame(width: 100,
-                           height: 100)
+                    .frame(width: imageWight,
+                           height: imageHeight)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             }
 #endif

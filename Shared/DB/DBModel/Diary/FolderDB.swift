@@ -10,7 +10,7 @@ import SwiftUI
 import SwiftData
 
 @Model
-final class Folder: Identifiable {
+final class Folder: Identifiable, Hashable {
     @Attribute(.unique) var id = UUID()
     var title: String
     var createAt: Date

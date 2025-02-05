@@ -21,35 +21,53 @@ struct NoteContentView: View {
         List {
             TextField("제목", text: $noteContentViewModel.contentTitle)
                 .font(.title)
-                .frame(height: 80)
+                .frame(height: 60)
                 .padding()
-            ForEach(noteContentViewModel.noteContents.indices,
-                    id: \.self) { index in
-                let content = noteContentViewModel.noteContents[index]
+            
+            ForEach(noteContentViewModel.noteContents,
+                    id: \.id) { noteContent in
                 
-                NoteContentCell(content: content,
+                NoteContentCell(content: noteContent,
                                 noteContentViewModel: noteContentViewModel,
-                                index: index
+                                index: noteContent.index
                 )
+                .contextMenu {
+                    Button(role: .destructive, action: {
+                        noteContentViewModel.contentApply(.deleteContent(noteContent))
+                    }, label: {
+                        Label("삭제", systemImage: "trash")
+                    })
+                    
+                }
                 .swipeActions(edge: .trailing,
                               allowsFullSwipe: false) {
                     Button(role: .destructive, action: {
-                        noteContentViewModel.contentApply(.deleteContent(index))
+                        noteContentViewModel.contentApply(.deleteContent(noteContent))
                     }, label: {
                         Label("삭제", systemImage: "trash")
                     })
                 }
-            }.listRowSeparator(.hidden)
+                              
+                              
+            }
             
-            NoteContentToolView(noteContentViewModel: noteContentViewModel)
+#if os(macOS)
+            NoteContentToolView(noteContentViewModel: noteContentViewModel, isMacOS: true)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .frame(maxWidth: .infinity)
                 .frame(height: 120)
+#else
+            NoteContentToolView(noteContentViewModel: noteContentViewModel, isMacOS: false)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .frame(maxWidth: .infinity)
+                .frame(height: 120)
+#endif
         }
     }
     
 }
 
+//MARK: - ContentCell
 struct NoteContentCell: View {
     
     @ObservedObject private var noteContentViewModel: NoteListViewModel
@@ -90,7 +108,7 @@ struct NoteContentCell: View {
                             .scaledToFit()
                             .frame(maxWidth: .infinity)
 #endif
-      
+                        
                     }
                 }
             }
@@ -104,6 +122,7 @@ struct NoteContentCell: View {
     
 }
 
+//MARK: - TextField
 struct NoteTextField: View {
     
     @ObservedObject var noteContentViewModel: NoteListViewModel
@@ -112,7 +131,7 @@ struct NoteTextField: View {
     private let index: Int
     
     init(noteText: String,
-        noteContentViewModel: NoteListViewModel,
+         noteContentViewModel: NoteListViewModel,
          index: Int) {
         self.noteText = noteText
         self.noteContentViewModel = noteContentViewModel
@@ -138,69 +157,95 @@ struct NoteTextField: View {
 extension NoteTextField {
     
     private func updateTextFieldHeight() {
-        #if os(iOS)
+#if os(iOS)
         let font = UIFont.systemFont(ofSize: 20)
         let textWidth = UIScreen.main.bounds.width - 64
         let lineHeight = font.lineHeight
-        #elseif os(macOS)
+#elseif os(macOS)
         let font = NSFont.systemFont(ofSize: 20)
         let textWidth = NSScreen.main?.frame.width ?? 800 - 64
         let lineHeight = font.ascender - font.descender + font.leading
-        #endif
-
+#endif
+        
         let boundingRect = NSString(string: noteText)
             .boundingRect(with: CGSize(width: textWidth, height: .infinity),
                           options: .usesLineFragmentOrigin,
                           attributes: [.font: font],
                           context: nil)
-
+        
         let lineCount = Int(ceil(boundingRect.height / lineHeight))
         textFieldHeight = max(44, CGFloat(lineCount) * lineHeight + 26)
     }
     
 }
 
+//MARK: - ToolView
 struct NoteContentToolView: View {
     @State private var selectedCircleIndex: Int? = nil
     @State private var select = false
     @ObservedObject private var noteContentViewModel: NoteListViewModel
     
-    init(noteContentViewModel: NoteListViewModel) {
+    private let rectangleWidth: CGFloat
+    private let rectangleHeight: CGFloat
+    private var rectangleCornerRadius: CGFloat {
+        rectangleWidth / 2
+    }
+    private let imageWidth: CGFloat
+    private let imageHeight: CGFloat
+    
+    init(noteContentViewModel: NoteListViewModel,
+         isMacOS: Bool) {
         self.noteContentViewModel = noteContentViewModel
+        
+        rectangleWidth = isMacOS ? 44 : 80
+        rectangleHeight = isMacOS ? 44 : 80
+        imageWidth = isMacOS ? 20 : 32
+        imageHeight = isMacOS ? 20 : 32
     }
     
     var body: some View {
         HStack(spacing: 40) {
             ForEach(NoteContentToolType.allCases) { type in
                 ZStack {
-                    RoundedRectangle(cornerRadius: select ? 12 : 40)
+                    RoundedRectangle(cornerRadius: select ? 8 : rectangleCornerRadius)
                         .fill(.gray)
-                        .frame(width: 80, height: 80)
+                        .frame(width: rectangleWidth,
+                               height: rectangleHeight)
                         .transition(.opacity)
                         .animation(.linear(duration: 0.3),
                                    value: select)
-                        .onTapGesture {
-                            select.toggle()
-                            
-                            switch type {
-                            case .text:
-                                noteContentViewModel.contentApply(.addTextField)
-                            case .image:
-                                noteContentViewModel.contentApply(.showPhotoPicker)
-                            }
-                            
-                        }
+                    
                     
                     switch type {
                     case .text:
                         Image(systemName: "text.page")
                             .resizable()
-                            .frame(width: 32, height: 32)
+                            .frame(width: imageWidth,
+                                   height: imageHeight)
                     case .image:
-                        Image(systemName: "photo")
-                            .resizable()
-                            .frame(width: 32, height: 32)
+                        
+                        PhotoPicker(selectedImages: $noteContentViewModel.noteContentPhotoData) {
+                            Image(systemName: "photo")
+                                .resizable()
+                                .frame(width: imageWidth,
+                                       height: imageHeight)
+                                
+                        }
+                        .background(Color.clear)
+                        
                     }
+                }
+                .onTapGesture {
+                    select.toggle()
+                    
+                    switch type {
+                    case .text:
+                        noteContentViewModel.contentApply(.addTextField)
+                    case .image:
+//                        noteContentViewModel.contentApply(.showPhotoPicker)
+                        return
+                    }
+                    
                 }
             }
         }
@@ -210,7 +255,9 @@ struct NoteContentToolView: View {
         .sheet(item: $noteContentViewModel.noteContentsSheetType, onDismiss: {
             noteContentViewModel.contentApply(.addImage)
         }, content: { _ in
-//            PhotoPicker(selectedImages: $noteContentViewModel.noteContentPhotoData)
+#if os(iOS)
+//                        PhotoPicker(selectedImages: $noteContentViewModel.noteContentPhotoData)
+#endif
         })
         
     }
@@ -221,3 +268,4 @@ enum NoteContentToolType: CaseIterable {
     case text
     case image
 }
+

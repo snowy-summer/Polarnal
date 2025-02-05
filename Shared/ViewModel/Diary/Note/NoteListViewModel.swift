@@ -22,6 +22,7 @@ final class NoteListViewModel: ViewModelProtocol {
         case insertModelContext(ModelContext)
         case deleteNote(Note)
         case selectNote(Note)
+        case selectFolder(Folder)
     }
     
     enum NoteContentIntent {
@@ -31,12 +32,13 @@ final class NoteListViewModel: ViewModelProtocol {
         case editText(of: Int, what: String)
         case saveContent
         case saveTitle(String)
-        case deleteContent(Int)
+        case deleteContent(NoteContentDataDB)
     }
     
     @Published var noteList: [Note] = []
     private var selectedIndex: Int?
-    private var selectedNote: Note?
+    @Published private var selectedNote: Note?
+    private var selectFolder: Folder?
     
     @Published var contentTitle: String = ""
     @Published var noteContents = [NoteContentDataDB]()
@@ -46,14 +48,7 @@ final class NoteListViewModel: ViewModelProtocol {
     private let dbManager: DBManager = DBManager()
     var cancellables: Set<AnyCancellable> = []
     
-    init(stateViewModel: DiaryStateViewModel) {
-        stateViewModel.$selectedFolder
-            .sink { [weak self] folder in
-                self?.noteList = folder?.noteList ?? []
-                LogManager.log("NoteListViewModel에서 폴더 선택함: \(folder?.title ?? "미선택")")
-            }
-            .store(in: &cancellables)
-        
+    init() {
         binding()
     }
     
@@ -61,14 +56,24 @@ final class NoteListViewModel: ViewModelProtocol {
         switch intent {
         case .selectNote(let note):
             if let index = noteList.firstIndex(of: note) {
-                selectedIndex = index
-                selectedNote = note
-                contentTitle = note.title
-                noteContents = note.contents.sorted { $0.index < $1.index }
+                LogManager.log("노트 선택: \(note.title)")
+                DispatchQueue.main.async { [weak self] in
+                    self?.selectedIndex = index
+                    self?.selectedNote = note
+                    self?.contentTitle = note.title
+                    self?.noteContents = note.contents.sorted { $0.index < $1.index }
+                }
             }
             
         case .deleteNote(let note):
             dbManager.deleteItem(note)
+            
+        case .selectFolder(let folder):
+            clearAll()
+            selectFolder = folder
+            noteList = folder.noteList
+            print(noteList.count)
+            LogManager.log("NoteListViewModel에서 폴더 선택함: \(folder.title)")
             
         case .insertModelContext(let model):
             dbManager.modelContext = model
@@ -91,21 +96,25 @@ final class NoteListViewModel: ViewModelProtocol {
             noteContentsSheetType = .add
             
         case .addImage:
-            if let selectedNote {
-                let paths = noteContentPhotoData.compactMap {
-                    LocaleFileManager.shared.saveImage($0,
-                                                       for: selectedNote.id.uuidString,
-                                                       index: noteContents.count)
-                }
-                
-                let imagePaths = paths.map { ImagePath(id: $0) }
-                let noteContent = NoteContentDataDB(type: .image,
-                                                    imagePaths: imagePaths,
-                                                    index: noteContents.count,
-                                                    noteID: selectedNote.id)
-                noteContents.append(noteContent)
-                contentApply(.saveContent)
+            guard let selectedNote else {
+                LogManager.log("선택된 노트가 없습니다")
+                return
             }
+            
+            let paths = noteContentPhotoData.compactMap {
+                LocaleFileManager.shared.saveImage($0,
+                                                   for: selectedNote.id.uuidString,
+                                                   index: noteContents.count)
+            }
+            
+            let imagePaths = paths.map { ImagePath(id: $0) }
+            let noteContent = NoteContentDataDB(type: .image,
+                                                imagePaths: imagePaths,
+                                                index: noteContents.count,
+                                                noteID: selectedNote.id)
+            noteContents.append(noteContent)
+            contentApply(.saveContent)
+            
             
         case .editText(let index, let text):
             noteContents[index].textValue = text
@@ -122,8 +131,9 @@ final class NoteListViewModel: ViewModelProtocol {
             noteList[selectedIndex].title = title
             dbManager.addItem(noteList[selectedIndex])
             
-        case .deleteContent(let index):
-            noteContents.remove(at: index)
+        case .deleteContent(let noteContent):
+            noteContents.remove(at: noteContent.index)
+            contentApply(.saveContent)
         }
     }
     
@@ -131,12 +141,34 @@ final class NoteListViewModel: ViewModelProtocol {
         $contentTitle
             .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
             .sink { [weak self] text in
-                guard let self, let selectedIndex else { return }
+                guard let self else { return }
+                guard let selectedIndex else {
+                    LogManager.log("선택된 Index가 없습니다")
+                    return
+                }
+                
                 noteList[selectedIndex].title = text
                 LogManager.log("노트 제목 저장 시도")
                 contentApply(.saveTitle(text))
             }
             .store(in: &cancellables)
+        
+        
+    }
+    
+    private func clearAll() {
+        
+        noteList = []
+        selectedIndex = nil
+        selectedNote = nil
+        
+        noteClear()
+    }
+    
+    private func noteClear() {
+        contentTitle = ""
+        noteContents = [NoteContentDataDB]()
+        noteContentPhotoData = [PlatformImage]()
     }
 }
 

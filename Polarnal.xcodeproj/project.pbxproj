@@ -139,13 +139,14 @@
 		6B9129AF2D50B7D4005C85D2 /* DiaryViewSheetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FD02CFFEC980000AC03 /* DiaryViewSheetType.swift */; };
 		6B9129B02D50B802005C85D2 /* MainCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A77B2D068DA100239987 /* MainCalendarViewModel.swift */; };
 		6B9129B12D50C5A0005C85D2 /* FolderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FCB2CFFE8120000AC03 /* FolderListView.swift */; };
-		6B9129B22D50C5CD005C85D2 /* FolderListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7552D0026B300239987 /* FolderListCell.swift */; };
 		6B9129B62D50E49B005C85D2 /* NoteListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A75A2D002BE300239987 /* NoteListCell.swift */; };
 		6B9129B72D50E49B005C85D2 /* NoteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7582D002BB800239987 /* NoteListView.swift */; };
-		6B9129B82D50E4E0005C85D2 /* NoteContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7622D0046F200239987 /* NoteContentView.swift */; };
 		6B9129BB2D50EC39005C85D2 /* ColorPalettePartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FE02CFFEF220000AC03 /* ColorPalettePartView.swift */; };
 		6B9129CF2D51999A005C85D2 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9129CE2D51999A005C85D2 /* Color+Extension.swift */; };
 		6B9129D02D51999A005C85D2 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9129CE2D51999A005C85D2 /* Color+Extension.swift */; };
+		6B9129D32D532A96005C85D2 /* FolderListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7552D0026B300239987 /* FolderListCell.swift */; };
+		6B9129D72D53365C005C85D2 /* NoteContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7622D0046F200239987 /* NoteContentView.swift */; };
+		6B9129D82D53546D005C85D2 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FC32CFF25960000AC03 /* PhotoPicker.swift */; };
 		6B9F61B52D3E621D00875186 /* EnumHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 6B9F61B42D3E621D00875186 /* EnumHelper */; };
 		6BDAE5002D141DDE00A066E9 /* TravelCostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE4FF2D141DDE00A066E9 /* TravelCostViewModel.swift */; };
 		6BDAE5022D1563CE00A066E9 /* SelectedTravelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5012D1563CE00A066E9 /* SelectedTravelViewModel.swift */; };
@@ -1321,11 +1322,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B9129522D50A857005C85D2 /* MonthCase.swift in Sources */,
-				6B9129B82D50E4E0005C85D2 /* NoteContentView.swift in Sources */,
 				6B9129532D50A857005C85D2 /* ColorPalette.swift in Sources */,
 				6B9129542D50A857005C85D2 /* DesignOfFolderIcon.swift in Sources */,
 				6B9129552D50A857005C85D2 /* DottedLine.swift in Sources */,
 				6B9129502D50A84B005C85D2 /* View+Extension.swift in Sources */,
+				6B9129D72D53365C005C85D2 /* NoteContentView.swift in Sources */,
 				6B9129B02D50B802005C85D2 /* MainCalendarViewModel.swift in Sources */,
 				6B9129572D50A86D005C85D2 /* EvnentDB.swift in Sources */,
 				6B9129582D50A86D005C85D2 /* FolderDB.swift in Sources */,
@@ -1340,6 +1341,7 @@
 				6B9129772D50ADDC005C85D2 /* CalendarViewModel.swift in Sources */,
 				6B9129782D50ADDC005C85D2 /* AddFolderViewModel.swift in Sources */,
 				6B9129792D50ADDC005C85D2 /* MainCalendarCellViewModel.swift in Sources */,
+				6B9129D32D532A96005C85D2 /* FolderListCell.swift in Sources */,
 				6B91297A2D50ADDC005C85D2 /* AddTodoFolderViewModel.swift in Sources */,
 				6B91297B2D50ADDC005C85D2 /* NoteListCellViewModel.swift in Sources */,
 				6B91297C2D50ADDC005C85D2 /* PlannerViewModel.swift in Sources */,
@@ -1357,7 +1359,6 @@
 				6B9129872D50ADDC005C85D2 /* DiaryUIViewModel.swift in Sources */,
 				6B9129882D50ADDC005C85D2 /* ExpendedTodoCellViewModel.swift in Sources */,
 				6B9129892D50ADDC005C85D2 /* TodoViewModel.swift in Sources */,
-				6B9129B22D50C5CD005C85D2 /* FolderListCell.swift in Sources */,
 				6B91295F2D50A86D005C85D2 /* TravelDestinationFolderDB.swift in Sources */,
 				6B9129602D50A86D005C85D2 /* TravelPlanDB.swift in Sources */,
 				6B9129612D50A86D005C85D2 /* DDayDB.swift in Sources */,
@@ -1369,6 +1370,7 @@
 				6B91294D2D50A842005C85D2 /* MapSearchManager.swift in Sources */,
 				6B9129B12D50C5A0005C85D2 /* FolderListView.swift in Sources */,
 				6B9129632D50A896005C85D2 /* ViewModelProtocol.swift in Sources */,
+				6B9129D82D53546D005C85D2 /* PhotoPicker.swift in Sources */,
 				6B9129B62D50E49B005C85D2 /* NoteListCell.swift in Sources */,
 				6B9129B72D50E49B005C85D2 /* NoteListView.swift in Sources */,
 				6B91294E2D50A842005C85D2 /* LogManager.swift in Sources */,

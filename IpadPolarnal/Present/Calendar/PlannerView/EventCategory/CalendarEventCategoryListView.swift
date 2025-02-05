@@ -57,7 +57,7 @@ struct CalendarEventCategoryListView: View {
             HStack {
                 RoundedRectangle(cornerRadius: 8)
                     .frame(width: 32, height: 32)
-                    .foregroundStyle(category.color.convertToColor())
+                    .foregroundStyle(Color(hex: category.colorCode))
                 
                 Text(category.title)
                     .bold()

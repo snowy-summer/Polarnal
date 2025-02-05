@@ -36,7 +36,7 @@ struct PolarnalApp: App {
                     DiaryView(stateViewModel: diaryStateViewModel,
                               uiViewModel: DiaryUIViewModel(),
                               folderViewModel: FolderListViewModel(),
-                              noteViewModel: NoteListViewModel(stateViewModel: diaryStateViewModel),
+                              noteViewModel: NoteListViewModel(),
                               sideTabBarViewModel: sideTabBarViewModel)
                     .preferredColorScheme(isDarkMode ? .dark : .light)
                     .environment(\.locale, .init(identifier: locale))
