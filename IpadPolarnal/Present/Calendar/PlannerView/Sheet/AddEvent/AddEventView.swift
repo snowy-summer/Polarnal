@@ -67,7 +67,7 @@ extension AddEventView {
         VStack {
             HStack {
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(viewModel.selectedCategory?.color.convertToColor() ?? .gray)
+                    .fill(Color(hex: viewModel.selectedCategory?.colorCode ?? "#FFFFFF"))
                     .frame(width: 40,
                            height: 40)
             

@@ -23,6 +23,28 @@ struct FolderListView: View {
     }
     
     var body: some View {
+#if os(macOS)
+        List(selection: $stateViewModel.selectedFolder) {
+            ForEach(folderListViewModel.folderList) { folder in
+                FolderListCell(folder: folder,
+                               isMac: true)
+                    .contextMenu {
+                        Button(role: .destructive, action: {
+                            folderListViewModel.apply(.deleteFolder(folder))
+                        }, label: {
+                            Label("삭제", systemImage: "trash")
+                        })
+                    
+                        Button(action: {
+                            uiViewModel.apply(.showEditFolderView(folder))
+                        }) {
+                            Label("편집", systemImage: "pencil")
+                        }
+                    }
+            }
+        }
+        .scrollContentBackground(.hidden)
+        #else
         List {
             ForEach(folderListViewModel.folderList) { folder in
                 
@@ -66,6 +88,8 @@ struct FolderListView: View {
             }
         }
         .scrollContentBackground(.hidden)
+#endif
+        
     }
     
 }
