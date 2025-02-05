@@ -36,7 +36,7 @@ final class NoteListViewModel: ViewModelProtocol {
     
     @Published var noteList: [Note] = []
     private var selectedIndex: Int?
-    private var selectedNote: Note?
+    @Published private var selectedNote: Note?
     
     @Published var contentTitle: String = ""
     @Published var noteContents = [NoteContentDataDB]()
@@ -131,12 +131,19 @@ final class NoteListViewModel: ViewModelProtocol {
         $contentTitle
             .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
             .sink { [weak self] text in
-                guard let self, let selectedIndex else { return }
+                guard let self else { return }
+                guard let selectedIndex else {
+                    LogManager.log("선택된 Index가 없습니다")
+                    return
+                }
+                
                 noteList[selectedIndex].title = text
                 LogManager.log("노트 제목 저장 시도")
                 contentApply(.saveTitle(text))
             }
             .store(in: &cancellables)
+        
+        
     }
 }
 

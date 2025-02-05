@@ -43,7 +43,10 @@ final class DiaryStateViewModel: ViewModelProtocol {
             selectedNote = note
             
         case .addNote:
-            guard let selectedFolder = selectedFolder else { return }
+            guard let selectedFolder = selectedFolder else {
+                LogManager.log("선택된 폴더가 없습니다")
+                return
+            }
             let note = Note(folderID: selectedFolder.id)
             selectedFolder.noteList.append(note)
             dbManager.addItem(selectedFolder)

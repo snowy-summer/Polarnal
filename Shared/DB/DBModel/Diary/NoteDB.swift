@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class Note: Identifiable {
+final class Note: Identifiable, Hashable {
     @Attribute(.unique)var id = UUID()
     var createAt: Date
     var title: String
@@ -37,7 +37,7 @@ enum NoteContentType: String {
 }
 
 @Model
-final class NoteContentDataDB: Identifiable {
+final class NoteContentDataDB: Identifiable, Hashable {
     @Attribute(.unique) var id: UUID
     @Relationship(deleteRule: .cascade) var imagePaths: [ImagePath]
     var textValue: String
@@ -61,7 +61,7 @@ final class NoteContentDataDB: Identifiable {
 }
 
 @Model
-final class ImagePath: Identifiable {
+final class ImagePath: Identifiable, Hashable {
     @Attribute(.unique) var id: String
     
     init(id: String) {
@@ -70,7 +70,7 @@ final class ImagePath: Identifiable {
 }
 
 @Model
-final class Tag {
+final class Tag: Hashable {
     var content: String
     
     init(content: String) {

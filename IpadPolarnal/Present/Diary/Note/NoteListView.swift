@@ -20,6 +20,32 @@ struct NoteListView: View {
     }
     
     var body: some View {
+#if os(macOS)
+        List {
+            ForEach(noteListViewModel.noteList,
+                    id: \.id) { note in
+               
+                NoteListCell(note: note,
+                             isMacOS: true)
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    stateViewModel.apply(.selectNote(note))
+                    noteListViewModel.apply(.selectNote(note))
+                }
+                .contextMenu {
+                    Button(action: {
+                        noteListViewModel.apply(.deleteNote(note))
+                    }) {
+                        Label("삭제", systemImage: "trash")
+                    }
+                }
+                    
+            }
+                    .scrollContentBackground(.hidden)
+        }
+        
+#else
+        
         List {
             ForEach(noteListViewModel.noteList,
                     id: \.id) { note in
@@ -43,14 +69,19 @@ struct NoteListView: View {
                         })
                         
                     }
-                    .contextMenu {
-                        Button(action: {
-                            noteListViewModel.apply(.deleteNote(note))
-                        }) {
-                            Label("삭제", systemImage: "trash")
-                        }
-                    }
+                                  .contextMenu {
+                                      Button(action: {
+                                          noteListViewModel.apply(.deleteNote(note))
+                                      }) {
+                                          Label("삭제", systemImage: "trash")
+                                      }
+                                  }
+                    
             }
+                    
+            
         }
+        
+#endif
     }
 }

@@ -28,6 +28,7 @@ struct FolderListView: View {
             ForEach(folderListViewModel.folderList) { folder in
                 FolderListCell(folder: folder,
                                isMac: true)
+                .tag(folder)
                     .contextMenu {
                         Button(role: .destructive, action: {
                             folderListViewModel.apply(.deleteFolder(folder))

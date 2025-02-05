@@ -48,31 +48,28 @@ struct DiaryView: View {
                         .buttonStyle(PlainButtonStyle())
                         .padding(.bottom)
                     }
-                    Rectangle()
-                        .fill(.gray)
-//                    NoteListView(stateViewModel: stateViewModel,
-//                                 noteListViewModel: noteViewModel)
-//                    .navigationTitle(stateViewModel.selectedFolder?.title ?? "")
                     
-//                    Group {
-//                        if let _ = stateViewModel.selectedNote {
-//                            NoteContentView(noteContentViewModel: noteViewModel)
-//                        } else {
-//                            Text("노트를 선택 해주세요")
-//                        }
-//                    }
-                    Rectangle()
-                        .fill(.blue)
-//                    .toolbar {
-//                        ToolbarItem(placement: .navigationBarTrailing) {
-//                            Button(action: {
-//                                stateViewModel.apply(.addNote)
-//                            }) {
-//                                Image(systemName: "plus")
-//                                    .tint(Color.normalText)
-//                            }
-//                        }
-//                    }
+                    NoteListView(stateViewModel: stateViewModel,
+                                 noteListViewModel: noteViewModel)
+                    .navigationTitle(stateViewModel.selectedFolder?.title ?? "")
+                    
+                    Group {
+                        if let _ = stateViewModel.selectedNote {
+                            NoteContentView(noteContentViewModel: noteViewModel)
+                        } else {
+                            Text("노트를 선택 해주세요")
+                        }
+                    }
+                    .toolbar {
+                        ToolbarItem {
+                            Button(action: {
+                                stateViewModel.apply(.addNote)
+                            }) {
+                                Image(systemName: "plus")
+                                    .tint(Color.normalText)
+                            }
+                        }
+                    }
                 }
             }
             .sheet(item: $uiViewModel.sheetType, onDismiss: {
