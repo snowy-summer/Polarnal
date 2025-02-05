@@ -20,7 +20,10 @@ final class LocaleFileManager {
     private let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 
     /// 이미지 저장
-    func saveImage(_ image: PlatformImage, for noteUUID: String, index: Int, type: ImageCase = .note) -> String? {
+    func saveImage(_ image: PlatformImage,
+                   for noteUUID: String,
+                   index: Int,
+                   type: ImageCase = .note) -> String? {
         let fileName = "\(type.rawValue)_\(noteUUID)_\(index).jpeg"
         let fileURL = directory.appendingPathComponent(fileName)
 
@@ -49,7 +52,8 @@ final class LocaleFileManager {
             return nil
         }
         #elseif os(macOS)
-        guard let image = PlatformImage(contentsOf: fileURL) else {
+        
+        guard let image = PlatformImage(contentsOfFile: fileURL.path) else {
             LogManager.log("이미지 로드 실패\n \(fileName)")
             return nil
         }

@@ -23,17 +23,17 @@ struct NoteContentView: View {
                 .font(.title)
                 .frame(height: 60)
                 .padding()
-            ForEach(noteContentViewModel.noteContents.indices,
-                    id: \.self) { index in
-                let content = noteContentViewModel.noteContents[index]
+            
+            ForEach(noteContentViewModel.noteContents,
+                    id: \.id) { noteContent in
                 
-                NoteContentCell(content: content,
+                NoteContentCell(content: noteContent,
                                 noteContentViewModel: noteContentViewModel,
-                                index: index
+                                index: noteContent.index
                 )
                 .contextMenu {
                     Button(role: .destructive, action: {
-                        noteContentViewModel.contentApply(.deleteContent(index))
+                        noteContentViewModel.contentApply(.deleteContent(noteContent))
                     }, label: {
                         Label("삭제", systemImage: "trash")
                     })
@@ -42,7 +42,7 @@ struct NoteContentView: View {
                 .swipeActions(edge: .trailing,
                               allowsFullSwipe: false) {
                     Button(role: .destructive, action: {
-                        noteContentViewModel.contentApply(.deleteContent(index))
+                        noteContentViewModel.contentApply(.deleteContent(noteContent))
                     }, label: {
                         Label("삭제", systemImage: "trash")
                     })
@@ -223,10 +223,16 @@ struct NoteContentToolView: View {
                             .frame(width: imageWidth,
                                    height: imageHeight)
                     case .image:
-                        Image(systemName: "photo")
-                            .resizable()
-                            .frame(width: imageWidth,
-                                   height: imageHeight)
+                        
+                        PhotoPicker(selectedImages: $noteContentViewModel.noteContentPhotoData) {
+                            Image(systemName: "photo")
+                                .resizable()
+                                .frame(width: imageWidth,
+                                       height: imageHeight)
+                                
+                        }
+                        .background(Color.clear)
+                        
                     }
                 }
                 .onTapGesture {
@@ -236,7 +242,8 @@ struct NoteContentToolView: View {
                     case .text:
                         noteContentViewModel.contentApply(.addTextField)
                     case .image:
-                        noteContentViewModel.contentApply(.showPhotoPicker)
+//                        noteContentViewModel.contentApply(.showPhotoPicker)
+                        return
                     }
                     
                 }
@@ -248,7 +255,9 @@ struct NoteContentToolView: View {
         .sheet(item: $noteContentViewModel.noteContentsSheetType, onDismiss: {
             noteContentViewModel.contentApply(.addImage)
         }, content: { _ in
-            //            PhotoPicker(selectedImages: $noteContentViewModel.noteContentPhotoData)
+#if os(iOS)
+//                        PhotoPicker(selectedImages: $noteContentViewModel.noteContentPhotoData)
+#endif
         })
         
     }

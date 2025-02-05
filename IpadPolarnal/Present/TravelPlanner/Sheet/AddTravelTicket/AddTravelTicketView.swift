@@ -54,7 +54,7 @@ struct AddTravelTicketView: View {
             }
         }
         .sheet(isPresented: $viewModel.isShowPhotopicker) {
-            PhotoPicker(selectedImages: $viewModel.imageList)
+//            PhotoPicker(selectedImages: $viewModel.imageList)
         }
         .onAppear {
             viewModel.apply(.insertModelContext(modelContext,

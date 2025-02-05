@@ -24,21 +24,12 @@ struct DiaryView: View {
                     .frame(maxHeight: .infinity)
                     .frame(width: 72)
                 
-//                ZStack {
-//                    Rectangle()
-//                        .fill(.white)
-//                        .frame(maxHeight: .infinity)
-//                        .frame(width: 72)
-//                        .overlay(Color(nsColor: NSColor.controlBackgroundColor).opacity(0.5))
-//                    RoundedRectangle(cornerRadius: 12)
-//                        .fill(.calendarSelect)
-//                        .frame(width: 54, height: 54)
-//                }
                 NavigationView {
                     VStack {
                         FolderListView(stateViewModel: stateViewModel,
                                        uiViewModel: uiViewModel,
-                                       folderListViewModel: folderViewModel)
+                                       folderListViewModel: folderViewModel,
+                                       noteListViewModel: noteViewModel)
                         
                         Button(action: {
                             uiViewModel.apply(.showAddFolderView)

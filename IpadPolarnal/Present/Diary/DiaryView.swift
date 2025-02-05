@@ -25,7 +25,8 @@ struct DiaryView: View {
                     .frame(width: 80)
                 FolderListView(stateViewModel: stateViewModel,
                                uiViewModel: uiViewModel,
-                               folderListViewModel: folderViewModel)
+                               folderListViewModel: folderViewModel,
+                               noteListViewModel: noteViewModel)
             }
             
             Divider()

@@ -29,8 +29,8 @@ struct NoteListView: View {
                              isMacOS: true)
                 .contentShape(Rectangle())
                 .onTapGesture {
-                    stateViewModel.apply(.selectNote(note))
                     noteListViewModel.apply(.selectNote(note))
+                    stateViewModel.apply(.selectNote(note))
                 }
                 .contextMenu {
                     Button(action: {
@@ -52,8 +52,8 @@ struct NoteListView: View {
                 NoteListCell(note: note)
                     .background(
                         Button(action: {
-                            stateViewModel.apply(.selectNote(note))
                             noteListViewModel.apply(.selectNote(note))
+                            stateViewModel.apply(.selectNote(note))
                         }) {
                             Color.clear
                         }
