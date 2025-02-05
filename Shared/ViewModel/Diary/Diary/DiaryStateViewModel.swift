@@ -16,6 +16,7 @@ final class DiaryStateViewModel: ViewModelProtocol {
         case selectedFolderClear
         case selectNote(Note)
         case addNote
+        case insertModelContext(ModelContext)
     }
     
     @Published var selectedFolder: Folder? = nil
@@ -46,6 +47,10 @@ final class DiaryStateViewModel: ViewModelProtocol {
             selectedFolder.noteList.append(note)
             dbManager.addItem(selectedFolder)
             self.selectedFolder = selectedFolder
+            
+        case .insertModelContext(let model):
+            dbManager.modelContext = model
+            
         }
     }
    

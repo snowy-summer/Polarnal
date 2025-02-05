@@ -227,12 +227,14 @@ struct NoteContentToolView: View {
                         PhotoPicker(selectedImages: $noteContentViewModel.noteContentPhotoData) {
                             Image(systemName: "photo")
                                 .resizable()
+                                .background(Color.clear)
                                 .frame(width: imageWidth,
                                        height: imageHeight)
                                 
+                        } dismiss: {
+                            noteContentViewModel.contentApply(.addImage)
                         }
-                        .background(Color.clear)
-                        
+                       
                     }
                 }
                 .onTapGesture {

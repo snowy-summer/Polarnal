@@ -12,18 +12,13 @@ import SwiftData
 struct MacPolarnalApp: App {
     private let modelContainer = DBManager.makeModelContainer()
     @StateObject private var sideTabBarViewModel: SideTabBarViewModel = SideTabBarViewModel()
-    private let diaryStateViewModel: DiaryStateViewModel = DiaryStateViewModel()
     
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     @AppStorage("userLanguage") private var locale = "ko"
 
     var body: some Scene {
         WindowGroup {
-            DiaryView(stateViewModel: diaryStateViewModel,
-                      uiViewModel: DiaryUIViewModel(),
-                      folderViewModel: FolderListViewModel(),
-                      noteViewModel: NoteListViewModel(),
-                      sideTabBarViewModel: sideTabBarViewModel)
+            DiaryView(sideTabBarViewModel: sideTabBarViewModel)
             .preferredColorScheme(isDarkMode ? .dark : .light)
             .environment(\.locale, .init(identifier: locale))
 //            if sideTabBarViewModel.isShowMapView {

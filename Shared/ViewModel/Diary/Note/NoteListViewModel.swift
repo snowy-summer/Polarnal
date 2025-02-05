@@ -66,13 +66,18 @@ final class NoteListViewModel: ViewModelProtocol {
             }
             
         case .deleteNote(let note):
-            dbManager.deleteItem(note)
-            
+            if let index = noteList.firstIndex(of: note) {
+                if selectedIndex == index {
+                    noteClear()
+                }
+                noteList.remove(at: index)
+                dbManager.deleteItem(note)
+            }
+    
         case .selectFolder(let folder):
             clearAll()
             selectFolder = folder
             noteList = folder.noteList
-            print(noteList.count)
             LogManager.log("NoteListViewModel에서 폴더 선택함: \(folder.title)")
             
         case .insertModelContext(let model):
@@ -98,6 +103,11 @@ final class NoteListViewModel: ViewModelProtocol {
         case .addImage:
             guard let selectedNote else {
                 LogManager.log("선택된 노트가 없습니다")
+                return
+            }
+            
+            if noteContentPhotoData.isEmpty {
+                LogManager.log("추가할 사진이 없습니다")
                 return
             }
             
@@ -157,7 +167,6 @@ final class NoteListViewModel: ViewModelProtocol {
     }
     
     private func clearAll() {
-        
         noteList = []
         selectedIndex = nil
         selectedNote = nil

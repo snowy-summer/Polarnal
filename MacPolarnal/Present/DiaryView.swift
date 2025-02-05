@@ -10,10 +10,10 @@ import Combine
 
 struct DiaryView: View {
     @Environment(\.modelContext) private var modelContext
-    @StateObject var stateViewModel: DiaryStateViewModel
-    @StateObject var uiViewModel: DiaryUIViewModel
-    @StateObject var folderViewModel: FolderListViewModel
-    @StateObject var noteViewModel: NoteListViewModel
+    @StateObject var stateViewModel: DiaryStateViewModel = DiaryStateViewModel()
+    @StateObject var uiViewModel: DiaryUIViewModel = DiaryUIViewModel()
+    @StateObject var folderViewModel: FolderListViewModel = FolderListViewModel()
+    @StateObject var noteViewModel: NoteListViewModel = NoteListViewModel()
     @ObservedObject var sideTabBarViewModel: SideTabBarViewModel
     
     private let newFolderTitle: LocalizedStringKey = "New Folder"
@@ -83,6 +83,7 @@ struct DiaryView: View {
             .onAppear {
                 folderViewModel.apply(.insertModelContext(modelContext))
                 noteViewModel.apply(.insertModelContext(modelContext))
+                stateViewModel.apply(.insertModelContext(modelContext))
             }
             
     }
