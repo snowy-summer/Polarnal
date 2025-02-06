@@ -33,6 +33,11 @@ struct AddFolderView: View {
                     .background(.ipadTabbar)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                 
+                
+                IconSelectPartView(viewModel: viewModel)
+                    .background(.ipadTabbar)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                
                 Divider()
                 
                 HStack {
@@ -51,18 +56,8 @@ struct AddFolderView: View {
                     
                 }
                 
-               
-//                
-//                IconSelectPartView(viewModel: viewModel)
-//                    .background(Color(UIColor.systemGray5))
-//                    .clipShape(RoundedRectangle(cornerRadius: 24))
-//                    .padding(40)
-                
             }
             .padding()
-        
-        .navigationTitle("폴더 생성ddd")
-//        .navigationBarTitleDisplayMode(.inline)
         .onAppear() {
             viewModel.apply(.insertModelContext(modelContext))
         }

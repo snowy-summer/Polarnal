@@ -147,6 +147,7 @@
 		6B9129D32D532A96005C85D2 /* FolderListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7552D0026B300239987 /* FolderListCell.swift */; };
 		6B9129D72D53365C005C85D2 /* NoteContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7622D0046F200239987 /* NoteContentView.swift */; };
 		6B9129D82D53546D005C85D2 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FC32CFF25960000AC03 /* PhotoPicker.swift */; };
+		6B9129D92D544227005C85D2 /* IconSelectPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FE22CFFEF530000AC03 /* IconSelectPartView.swift */; };
 		6B9F61B52D3E621D00875186 /* EnumHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 6B9F61B42D3E621D00875186 /* EnumHelper */; };
 		6BDAE5002D141DDE00A066E9 /* TravelCostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE4FF2D141DDE00A066E9 /* TravelCostViewModel.swift */; };
 		6BDAE5022D1563CE00A066E9 /* SelectedTravelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5012D1563CE00A066E9 /* SelectedTravelViewModel.swift */; };
@@ -1371,6 +1372,7 @@
 				6B9129B12D50C5A0005C85D2 /* FolderListView.swift in Sources */,
 				6B9129632D50A896005C85D2 /* ViewModelProtocol.swift in Sources */,
 				6B9129D82D53546D005C85D2 /* PhotoPicker.swift in Sources */,
+				6B9129D92D544227005C85D2 /* IconSelectPartView.swift in Sources */,
 				6B9129B62D50E49B005C85D2 /* NoteListCell.swift in Sources */,
 				6B9129B72D50E49B005C85D2 /* NoteListView.swift in Sources */,
 				6B91294E2D50A842005C85D2 /* LogManager.swift in Sources */,

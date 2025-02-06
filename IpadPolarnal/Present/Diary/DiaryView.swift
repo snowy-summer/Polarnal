@@ -55,7 +55,7 @@ struct DiaryView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        stateViewModel.apply(.addNote)
+                        noteViewModel.apply(.addNote)
                     }) {
                         Image(systemName: "plus")
                             .tint(Color.normalText)
