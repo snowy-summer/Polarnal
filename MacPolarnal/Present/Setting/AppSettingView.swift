@@ -1,8 +1,8 @@
 //
 //  AppSettingView.swift
-//  Polarnal
+//  MacPolarnal
 //
-//  Created by 최승범 on 1/4/25.
+//  Created by 최승범 on 2/6/25.
 //
 
 import SwiftUI
@@ -17,20 +17,21 @@ struct AppSettingView: View {
     private let laguageTitle: LocalizedStringKey = "Lagauges"
     
     var body: some View {
-        NavigationSplitView {
-            HStack {
-                SideTabBarView(viewModel: sideTabBarViewModel)
-                    .frame(width: 80)
-                Spacer()
-            }
-        } detail: {
+        
+        HStack {
+            SideTabBarView(viewModel: sideTabBarViewModel)
+                .frame(maxHeight: .infinity)
+                .frame(width: 72)
+            
             List {
-                Toggle(isOn: $isDarkMode) {
-                    
+                HStack {
                     Text(darkModeTitle)
-                        .frame(height: 44)
-                        .font(.title2)
+                        .font(.title3)
                         .bold()
+                        .frame(height: 44)
+                    Spacer()
+                    Toggle("", isOn: $isDarkMode)
+                        .labelsHidden()
                 }
                 
                 Picker(laguageTitle, selection: $userLanguage) {
@@ -38,9 +39,8 @@ struct AppSettingView: View {
                         Text(code.title).tag(code.rawValue)
                     }
                 }
-                .font(.title2)
+                .font(.title3)
                 .bold()
-                .frame(height: 44)
                 
             }
             
@@ -48,8 +48,4 @@ struct AppSettingView: View {
         
         
     }
-}
-
-#Preview {
-    AppSettingView(sideTabBarViewModel: SideTabBarViewModel())
 }

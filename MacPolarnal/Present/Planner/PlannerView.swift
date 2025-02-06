@@ -62,9 +62,10 @@ struct PlannerView: View {
                     
                     Divider()
                     
-                    MiniCalendarView()
-                        .background(Color.contentBackground)
+                    MiniCalendarView(isMacOS: true)
+                        .background(Color.listBackground)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .padding([.horizontal, .bottom], 8)
                 }
                 
                 switch plannerViewModel.showedViewType {
