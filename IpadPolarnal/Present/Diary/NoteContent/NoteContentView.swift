@@ -141,8 +141,8 @@ struct NoteTextField: View {
     
     var body: some View {
         TextEditor(text: $noteText)
-            .font(.title2)
-            .scrollDisabled(false)
+            .font(.title3)
+            .scrollDisabled(true)
             .scrollContentBackground(.hidden)
             .frame(minHeight: textFieldHeight)
             .padding(8)

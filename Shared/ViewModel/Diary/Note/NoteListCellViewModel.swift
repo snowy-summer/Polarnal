@@ -15,7 +15,32 @@ final class NoteListCellViewModel: ViewModelProtocol {
     }
     
     @Published var note: Note
-    @Published var thumnailImage: PlatformImage?
+    
+    var subTitle: String {
+        let contents = note.contents.sorted {
+            $0.index < $1.index
+        }
+        
+        let firstTextContents = contents.first { content in
+            if !content.textValue.isEmpty { return true }
+            else { return false }
+        }
+        
+        return firstTextContents?.textValue ?? ""
+    }
+    
+    var thumnailImage: PlatformImage? {
+        for content in note.contents {
+            if !content.imagePaths.isEmpty {
+                if let path = content.imagePaths.first?.id {
+                    return LocaleFileManager.shared.loadImage(from: path)
+                }
+            }
+        }
+        
+        return nil
+    }
+    
     let monthString: String
     let dayString: String
     private let dateManager = DateManager.shared
@@ -27,22 +52,10 @@ final class NoteListCellViewModel: ViewModelProtocol {
                                                date: note.createAt)
         dayString = dateManager.getDateString(format: "dd",
                                                date: note.createAt)
-        getThumbnail()
+        
     }
     
     func apply(_ intent: Intent) {
         
-    }
-    
-    
-    private func getThumbnail() {
-        for content in note.contents {
-            if !content.imagePaths.isEmpty {
-                if let path = content.imagePaths.first?.id {
-                    thumnailImage = LocaleFileManager.shared.loadImage(from: path)
-                    return
-                }
-            }
-        }
     }
 }

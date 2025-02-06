@@ -55,11 +55,12 @@ struct NoteListCell: View {
             VStack(alignment: .leading) {
                 Text(viewModel.note.title)
                     .font(.title3)
-                if !viewModel.note.contents.isEmpty,
-                   let text = viewModel.note.contents.first?.textValue {
-                    Text("\(text)")
-                        .lineLimit(3)
-                }
+                    .bold()
+                
+                Text("\(viewModel.subTitle)")
+                    .font(.subheadline)
+                    .lineLimit(3)
+                
             }
             Spacer()
 #if os(macOS)
