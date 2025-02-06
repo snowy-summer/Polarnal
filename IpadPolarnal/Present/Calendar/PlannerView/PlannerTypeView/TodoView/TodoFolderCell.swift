@@ -43,7 +43,7 @@ struct TodoFolderCell: View {
                 ForEach(viewModel.todoList, id: \.id) { todo in
                     TodoCell(todo: todo)
                         .listRowSeparator(.hidden)
-                        .listRowBackground(Color(uiColor: .systemGray5))
+                        .listRowBackground(Color.customGray5)
                 }
             }
             .listStyle(.plain)

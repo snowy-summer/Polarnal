@@ -1,8 +1,8 @@
 //
 //  AddDDayView.swift
-//  Polarnal
+//  MacPolarnal
 //
-//  Created by 최승범 on 12/11/24.
+//  Created by 최승범 on 2/6/25.
 //
 
 import SwiftUI
@@ -169,35 +169,24 @@ struct AddDDayView: View {
                     .padding(.top, 40)
                 }
             }
+            
+            HStack {
+                Button("Cancel") {
+                    dismiss()
+                }
+                
+                Spacer()
+                
+                Button("Save") {
+                    viewModel.apply(.saveDday)
+                    dismiss()
+                }
+                .disabled(viewModel.ddayTitle.isEmpty)
+                
+            }
         }
         .onAppear {
             viewModel.apply(.insertModelContext(modelContext))
         }
-        .navigationTitle("D-Day 생성")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    dismiss()
-                }) {
-                    Text("취소")
-                }
-                
-            }
-            
-            ToolbarItem(placement: .topBarTrailing) {
-                Button(action: {
-                    viewModel.apply(.saveDday)
-                    dismiss()
-                }) {
-                    Text("저장")
-                }
-            }
-        }
-        
     }
-}
-
-#Preview {
-    AddDDayView(viewModel: AddDDayViewModel(dday: nil))
 }

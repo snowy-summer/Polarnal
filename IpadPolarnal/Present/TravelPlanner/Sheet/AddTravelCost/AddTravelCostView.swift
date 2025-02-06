@@ -26,7 +26,7 @@ struct AddTravelCostView: View {
                     HStack {
                         totalReceiptCard()
                             .frame(width: geometry.size.width / 3)
-                            .background(Color(uiColor: .systemGray5))
+                            .background(Color.customGray5)
                             .clipShape(RoundedRectangle(cornerRadius: 12))
                         Spacer()
                         costInputView()
@@ -43,7 +43,7 @@ struct AddTravelCostView: View {
                     .environment(\.locale, Locale(identifier: "ko_KR"))
                     Spacer()
                 }
-                .background(Color(uiColor: .systemGray6))
+                .background(Color.customGray6)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .padding()
                 
@@ -54,11 +54,11 @@ struct AddTravelCostView: View {
                         .frame(height: 60)
                         .font(.title3)
                         .bold()
-                        .background(Color(uiColor: .systemGray5))
+                        .background(Color.customGray5)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                     Spacer()
                 }
-                .background(Color(uiColor: .systemGray6))
+                .background(Color.customGray6)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .padding()
                 
@@ -161,7 +161,7 @@ struct AddTravelCostView: View {
         HStack {
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(uiColor: .systemGray5))
+                    .fill(Color.customGray5)
                     .frame(width: 50,
                            height: 50)
                 
@@ -212,7 +212,7 @@ struct AddTravelCostView: View {
                         .hidden()
                     ZStack {
                         RoundedRectangle(cornerRadius: 12)
-                            .fill(Color(uiColor: .systemGray6))
+                            .fill(Color.customGray6)
                         DropDownMenu(cost: $viewModel.convertedCost,
                                      selectedOptionIndex: $viewModel.selectedConvertedIndex, showDropdown: $viewModel.isShowConvertedDropdown)
                         .padding(.bottom)
@@ -223,7 +223,7 @@ struct AddTravelCostView: View {
                 VStack {
                     ZStack {
                         RoundedRectangle(cornerRadius: 12)
-                            .fill(Color(uiColor: .systemGray6))
+                            .fill(Color.customGray6)
                         DropDownMenu(cost: $viewModel.spentCost,
                                      selectedOptionIndex: $viewModel.selectedSpentIndex, showDropdown: $viewModel.isShowSpentDropdown)
                         .padding(.bottom)
@@ -340,7 +340,7 @@ struct AddTravelCostView: View {
             
             
         }
-        .background(Color(uiColor: .systemGray6))
+        .background(Color.customGray6)
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .padding()
         

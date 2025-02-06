@@ -19,13 +19,13 @@ struct TravelCostView: View {
         VStack {
             HStack {
                 TravelCostOverView(viewModel: viewModel)
-                    .background(Color(uiColor: .systemGray5))
+                    .background(Color.customGray5)
                     .clipShape(RoundedRectangle(cornerRadius: 24))
                     .padding()
                 
                 
                 TravelCostListView(viewModel: viewModel)
-                    .background(Color(uiColor: .systemGray5))
+                    .background(Color.customGray5)
                     .clipShape(RoundedRectangle(cornerRadius: 24))
                     .padding()
             }

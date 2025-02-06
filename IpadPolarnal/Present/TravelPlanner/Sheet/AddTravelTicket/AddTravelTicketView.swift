@@ -26,7 +26,7 @@ struct AddTravelTicketView: View {
                     .font(.title)
                     .frame(height: 44)
                     .padding()
-                    .background(Color(UIColor.systemGray6))
+                    .background(Color.customGray6)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                     .padding(.horizontal)
             }
@@ -66,7 +66,7 @@ struct AddTravelTicketView: View {
         HStack {
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(uiColor: .systemGray5))
+                    .fill(Color.customGray5)
                     .frame(width: 50,
                            height: 50)
                 
@@ -105,7 +105,7 @@ struct AddTravelTicketView: View {
                 .padding()
             }
         }
-        .background(Color(uiColor: .systemGray6))
+        .background(Color.customGray6)
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .padding()
     }
@@ -150,7 +150,7 @@ struct AddTravelTicketView: View {
                 .padding(.trailing, 40)
             }
         }
-        .background(Color(uiColor: .systemGray6))
+        .background(Color.customGray6)
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .padding()
         

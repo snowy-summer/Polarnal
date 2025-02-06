@@ -25,14 +25,16 @@ struct FolderListCell: View {
         HStack {
             ZStack {
                 RoundedRectangle(cornerRadius: cornerRadius)
-                    .frame(width: rectangleSize, height: rectangleSize)
+                    .frame(width: rectangleSize,
+                           height: rectangleSize)
                     .foregroundStyle(Color(hex: folder.colorCode))
                 
                 Image(systemName: DesignOfFolderIcon(rawValue: folder.icon).iconName)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .foregroundStyle(.white)
-                    .frame(width: iconSize, height: iconSize)
+                    .frame(width: iconSize,
+                           height: iconSize)
             }
             
             Text(folder.title)

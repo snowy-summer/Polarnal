@@ -21,7 +21,7 @@ struct AddTravelDestinationFolderView: View {
                 
                 TextField("그룹 이름", text: $viewModel.folderTitle)
                     .padding()
-                    .background(Color(UIColor.systemGray6))
+                    .background(Color.customGray6)
                     .cornerRadius(8)
                     .padding(.horizontal, 40)
             }
@@ -31,7 +31,7 @@ struct AddTravelDestinationFolderView: View {
             
             
             ColorPalettePartView(selctedColor: $viewModel.folderColor)
-                .background(Color(UIColor.systemGray5))
+                .background(Color.customGray5)
                 .clipShape(RoundedRectangle(cornerRadius: 24))
                 .padding(.horizontal,40)
             

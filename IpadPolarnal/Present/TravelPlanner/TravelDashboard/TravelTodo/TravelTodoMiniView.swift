@@ -42,7 +42,7 @@ struct TravelTodoMiniView: View {
                 ForEach(viewModel.todoList, id: \.id) { todo in
                     TravelTodoCell(todo: todo)
                         .listRowSeparator(.hidden)
-                        .listRowBackground(Color(uiColor: .systemGray5))
+                        .listRowBackground(Color.customGray5)
                         .swipeActions(edge: .trailing,
                                       allowsFullSwipe: false) {
                             Button(role: .destructive, action: {

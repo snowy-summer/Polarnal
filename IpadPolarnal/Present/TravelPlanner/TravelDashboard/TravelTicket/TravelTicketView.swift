@@ -21,7 +21,7 @@ struct TravelTicketView: View {
                 
                 ForEach(viewModel.documentList, id: \.id) { ticket in
                     TravelTicketCell(document: ticket)
-                        .background(Color(uiColor: .systemGray5))
+                        .background(Color.customGray5)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                         .contextMenu {
                             Button(role: .destructive, action: {

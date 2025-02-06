@@ -36,7 +36,7 @@ struct TodoView: View {
                                 id: \.id) { todoFolder in
                             TodoFolderCell(todoFolder: todoFolder,
                                            animation: animation)
-                            .background(Color(uiColor: .systemGray5))
+                            .background(Color.customGray5)
                             .frame(height: 400)
                             .clipShape(RoundedRectangle(cornerRadius: 24))
                             .shadow(radius: 5, x: 2, y:2)

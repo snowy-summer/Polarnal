@@ -22,7 +22,7 @@ struct DDayView: View {
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(ddayList,id: \.id) { dday in
                     DDayCell(dDay: dday)
-                        .background(Color(uiColor: .systemGray5))
+                        .background(Color.customGray5)
                         .frame(height: 160)
                         .clipShape(RoundedRectangle(cornerRadius: 24))
                         .shadow(radius: 5, x: 2, y:2)

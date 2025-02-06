@@ -107,7 +107,7 @@ struct TravelMapView: View {
         HStack {
             TextField("장소 검색", text: $viewModel.searchText)
                 .padding()
-                .background(Color(UIColor.systemGray6))
+                .background(Color.customGray6)
                 .cornerRadius(12)
                 .padding(.leading, 8)
     

@@ -19,7 +19,7 @@ struct AddDDayCell: View {
         HStack {
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(uiColor: .systemGray5))
+                    .fill(Color.customGray5)
                     .frame(width: 50,
                            height: 50)
                 
