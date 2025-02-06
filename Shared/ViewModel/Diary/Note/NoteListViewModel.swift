@@ -20,6 +20,7 @@ final class NoteListViewModel: ViewModelProtocol {
     
     enum Intent {
         case insertModelContext(ModelContext)
+        case addNote
         case deleteNote(Note)
         case selectNote(Note)
         case selectFolder(Folder)
@@ -38,7 +39,7 @@ final class NoteListViewModel: ViewModelProtocol {
     @Published var noteList: [Note] = []
     private var selectedIndex: Int?
     @Published private var selectedNote: Note?
-    private var selectFolder: Folder?
+    private var selectedFolder: Folder?
     
     @Published var contentTitle: String = ""
     @Published var noteContents = [NoteContentDataDB]()
@@ -65,14 +66,31 @@ final class NoteListViewModel: ViewModelProtocol {
                 }
             }
             
-        case .deleteNote(let note):
-            dbManager.deleteItem(note)
+        case .addNote:
+            guard let selectedFolder = selectedFolder else {
+                LogManager.log("선택된 폴더가 없습니다")
+                return
+            }
+            let note = Note(folderID: selectedFolder.id)
+            selectedFolder.noteList.append(note)
+            noteList = selectedFolder.noteList
+            dbManager.addItem(selectedFolder)
+            self.selectedFolder = selectedFolder
             
+        case .deleteNote(let note):
+            if let index = noteList.firstIndex(of: note) {
+                if selectedIndex == index {
+                    noteClear()
+                }
+                noteList.remove(at: index)
+                selectedFolder?.noteList = noteList
+                dbManager.deleteItem(note)
+            }
+    
         case .selectFolder(let folder):
             clearAll()
-            selectFolder = folder
+            selectedFolder = folder
             noteList = folder.noteList
-            print(noteList.count)
             LogManager.log("NoteListViewModel에서 폴더 선택함: \(folder.title)")
             
         case .insertModelContext(let model):
@@ -98,6 +116,11 @@ final class NoteListViewModel: ViewModelProtocol {
         case .addImage:
             guard let selectedNote else {
                 LogManager.log("선택된 노트가 없습니다")
+                return
+            }
+            
+            if noteContentPhotoData.isEmpty {
+                LogManager.log("추가할 사진이 없습니다")
                 return
             }
             
@@ -157,7 +180,6 @@ final class NoteListViewModel: ViewModelProtocol {
     }
     
     private func clearAll() {
-        
         noteList = []
         selectedIndex = nil
         selectedNote = nil

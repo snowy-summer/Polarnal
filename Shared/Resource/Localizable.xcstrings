@@ -74,9 +74,6 @@
         }
       }
     },
-    "Add Item" : {
-
-    },
     "Apr" : {
       "localizations" : {
         "ko" : {
@@ -110,6 +107,9 @@
           }
         }
       }
+    },
+    "Category Name" : {
+
     },
     "D +" : {
 
@@ -171,9 +171,6 @@
           }
         }
       }
-    },
-    "Item at %@" : {
-
     },
     "Jan" : {
       "extractionState" : "manual",
@@ -247,6 +244,9 @@
         }
       }
     },
+    "New Category" : {
+
+    },
     "New Folder" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -297,7 +297,7 @@
         }
       }
     },
-    "Select an item" : {
+    "Save" : {
 
     },
     "Sep" : {
@@ -427,9 +427,6 @@
 
     },
     "폴더 생성" : {
-
-    },
-    "폴더 생성ddd" : {
 
     },
     "폴더 이름" : {

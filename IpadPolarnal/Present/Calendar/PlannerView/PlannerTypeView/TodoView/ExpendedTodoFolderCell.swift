@@ -81,7 +81,7 @@ struct ExpandedFolderView: View {
         .matchedGeometryEffect(id: viewModel.todofolder.id,
                                in: animation)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(uiColor: .systemGray5))
+        .background(Color.customGray5)
         .clipShape(RoundedRectangle(cornerRadius: 24))
         .shadow(radius: 10)
         .padding()

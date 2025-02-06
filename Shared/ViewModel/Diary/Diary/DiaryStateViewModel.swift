@@ -15,7 +15,7 @@ final class DiaryStateViewModel: ViewModelProtocol {
         case selectFolder(Folder)
         case selectedFolderClear
         case selectNote(Note)
-        case addNote
+        case insertModelContext(ModelContext)
     }
     
     @Published var selectedFolder: Folder? = nil
@@ -37,15 +37,9 @@ final class DiaryStateViewModel: ViewModelProtocol {
         case .selectNote(let note):
             selectedNote = note
             
-        case .addNote:
-            guard let selectedFolder = selectedFolder else {
-                LogManager.log("선택된 폴더가 없습니다")
-                return
-            }
-            let note = Note(folderID: selectedFolder.id)
-            selectedFolder.noteList.append(note)
-            dbManager.addItem(selectedFolder)
-            self.selectedFolder = selectedFolder
+        case .insertModelContext(let model):
+            dbManager.modelContext = model
+            
         }
     }
    

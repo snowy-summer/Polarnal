@@ -141,7 +141,8 @@ struct NoteTextField: View {
     
     var body: some View {
         TextEditor(text: $noteText)
-            .font(.title2)
+            .font(.title3)
+            .scrollDisabled(true)
             .scrollContentBackground(.hidden)
             .frame(minHeight: textFieldHeight)
             .padding(8)
@@ -181,8 +182,7 @@ extension NoteTextField {
 
 //MARK: - ToolView
 struct NoteContentToolView: View {
-    @State private var selectedCircleIndex: Int? = nil
-    @State private var select = false
+    @State private var selectedType: NoteContentToolType? = nil
     @ObservedObject private var noteContentViewModel: NoteListViewModel
     
     private let rectangleWidth: CGFloat
@@ -193,73 +193,67 @@ struct NoteContentToolView: View {
     private let imageWidth: CGFloat
     private let imageHeight: CGFloat
     
-    init(noteContentViewModel: NoteListViewModel,
-         isMacOS: Bool) {
+    init(noteContentViewModel: NoteListViewModel, isMacOS: Bool) {
         self.noteContentViewModel = noteContentViewModel
-        
-        rectangleWidth = isMacOS ? 44 : 80
-        rectangleHeight = isMacOS ? 44 : 80
-        imageWidth = isMacOS ? 20 : 32
-        imageHeight = isMacOS ? 20 : 32
+        self.rectangleWidth = isMacOS ? 44 : 80
+        self.rectangleHeight = isMacOS ? 44 : 80
+        self.imageWidth = isMacOS ? 20 : 32
+        self.imageHeight = isMacOS ? 20 : 32
     }
     
     var body: some View {
         HStack(spacing: 40) {
             ForEach(NoteContentToolType.allCases) { type in
-                ZStack {
-                    RoundedRectangle(cornerRadius: select ? 8 : rectangleCornerRadius)
-                        .fill(.gray)
-                        .frame(width: rectangleWidth,
-                               height: rectangleHeight)
-                        .transition(.opacity)
-                        .animation(.linear(duration: 0.3),
-                                   value: select)
-                    
-                    
-                    switch type {
-                    case .text:
-                        Image(systemName: "text.page")
-                            .resizable()
-                            .frame(width: imageWidth,
-                                   height: imageHeight)
-                    case .image:
-                        
-                        PhotoPicker(selectedImages: $noteContentViewModel.noteContentPhotoData) {
-                            Image(systemName: "photo")
-                                .resizable()
-                                .frame(width: imageWidth,
-                                       height: imageHeight)
-                                
-                        }
-                        .background(Color.clear)
-                        
-                    }
-                }
-                .onTapGesture {
-                    select.toggle()
-                    
-                    switch type {
-                    case .text:
-                        noteContentViewModel.contentApply(.addTextField)
-                    case .image:
-//                        noteContentViewModel.contentApply(.showPhotoPicker)
-                        return
-                    }
-                    
-                }
+                toolButton(for: type)
             }
         }
         .padding()
         .frame(maxWidth: .infinity)
         .background(Color.listBackground)
-        .sheet(item: $noteContentViewModel.noteContentsSheetType, onDismiss: {
-            noteContentViewModel.contentApply(.addImage)
-        }, content: { _ in
-#if os(iOS)
-//                        PhotoPicker(selectedImages: $noteContentViewModel.noteContentPhotoData)
-#endif
-        })
+    }
+    
+    @ViewBuilder
+    private func toolButton(for type: NoteContentToolType) -> some View {
+        let isSelected = selectedType == type
         
+        switch type {
+        case .text:
+            ZStack {
+                contentBackground(isSelected: isSelected)
+                Image(systemName: "text.page")
+                    .resizable()
+                    .frame(width: imageWidth, height: imageHeight)
+            }
+            .onTapGesture {
+                withAnimation(.linear(duration: 0.3)) {
+                    selectedType = (selectedType == type) ? nil : type
+                }
+                noteContentViewModel.contentApply(.addTextField)
+            }
+            
+        case .image:
+            PhotoPicker(selectedImages: $noteContentViewModel.noteContentPhotoData) {
+                ZStack {
+                    contentBackground(isSelected: isSelected)
+                    Image(systemName: "photo")
+                        .resizable()
+                        .frame(width: imageWidth, height: imageHeight)
+                }
+            } dismiss: {
+                withAnimation(.linear(duration: 0.3)) {
+                    selectedType = type
+                }
+                noteContentViewModel.contentApply(.addImage)
+            }
+            .buttonStyle(.plain)
+        }
+    }
+    
+    private func contentBackground(isSelected: Bool) -> some View {
+        RoundedRectangle(cornerRadius: isSelected ? 8 : rectangleCornerRadius)
+            .fill(isSelected ? Color.blue : Color.gray)
+            .frame(width: rectangleWidth, height: rectangleHeight)
+            .animation(.linear(duration: 0.3), value: isSelected)
     }
 }
 

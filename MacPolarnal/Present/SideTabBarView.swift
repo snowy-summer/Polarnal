@@ -1,8 +1,8 @@
 //
 //  SideTabBarView.swift
-//  Polarnal
+//  MacPolarnal
 //
-//  Created by 최승범 on 12/8/24.
+//  Created by 최승범 on 2/6/25.
 //
 
 import SwiftUI
@@ -16,11 +16,9 @@ struct SideTabBarView: View {
     
     var body: some View {
         VStack(alignment: .center) {
-#if os(macOS)
             Rectangle()
-                .frame(height: 16)
+                .frame(height: 8)
                 .opacity(0)
-#endif
             
             ForEach(TabType.allCases, id: \.self) { type in
                 if type != TabType.setting {
@@ -54,22 +52,22 @@ struct SideTabBarView: View {
             
             HStack {
                 RoundedRectangle(cornerRadius: 3)
-                    .fill(isSelected ? Color.black : Color.clear)
+                    .fill(isSelected ? Color.normalText : Color.clear)
                     .frame(width: 6, height: 40)
                     .padding(.leading)
                 
                 ZStack {
-                    RoundedRectangle(cornerRadius: isSelected ? 12 : 25)
+                    RoundedRectangle(cornerRadius: isSelected ? 12 : 22)
                         .fill(Color.listBackground)
                         .animation(.linear(duration: 0.3),
                                    value: isSelected)
-                        .frame(width: 50,
-                               height: 50)
+                        .frame(width: 44,
+                               height: 44)
                     
                     Image(systemName: type.iconText)
                         .resizable()
-                        .frame(width: 24,
-                               height: 24)
+                        .frame(width: 16,
+                               height: 16)
                 }
             }
         }

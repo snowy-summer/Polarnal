@@ -18,22 +18,22 @@ struct CalendarEventCategoryListView: View {
             ForEach(eventCategoryList, id: \.id) { category in
                 CalendarEventCategoryCell(category: category,
                                           viewModel: viewModel)
-                    .padding(.top, 4)
-                    .swipeActions(edge: .trailing,
-                                  allowsFullSwipe: false) {
-                        Button(role: .destructive, action: {
-                            viewModel.apply(.deleteEventCategory(category))
-                        }, label: {
-                            Label("삭제", systemImage: "trash")
-                        })
-                        
-                        Button(action: {
-                            viewModel.apply(.editEventCategory(category))
-                        }, label: {
-                            Label("편집", systemImage: "pencil")
-                        })
-                    }
-                                  
+                .padding(.top, 4)
+                .swipeActions(edge: .trailing,
+                              allowsFullSwipe: false) {
+                    Button(role: .destructive, action: {
+                        viewModel.apply(.deleteEventCategory(category))
+                    }, label: {
+                        Label("삭제", systemImage: "trash")
+                    })
+                    
+                    Button(action: {
+                        viewModel.apply(.editEventCategory(category))
+                    }, label: {
+                        Label("편집", systemImage: "pencil")
+                    })
+                }
+                
             }
         }
         .scrollContentBackground(.hidden)
@@ -53,10 +53,26 @@ struct CalendarEventCategoryListView: View {
         let category: EventCategoryDB
         let viewModel: CalendarEventCategoryViewModel
         
+#if os(macOS)
+        private let isMacOS: Bool = true
+#else
+        private let isMacOS: Bool = false
+#endif
+        
+        private var cornerRadius: CGFloat {
+            isMacOS ? 4 : 8
+            
+        }
+        
+        private var rectangleSize: CGFloat {
+            isMacOS ? 20 : 32
+        }
+        
         var body: some View {
             HStack {
-                RoundedRectangle(cornerRadius: 8)
-                    .frame(width: 32, height: 32)
+                RoundedRectangle(cornerRadius: cornerRadius)
+                    .frame(width: rectangleSize,
+                           height: rectangleSize)
                     .foregroundStyle(Color(hex: category.colorCode))
                 
                 Text(category.title)

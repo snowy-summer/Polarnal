@@ -31,7 +31,7 @@ struct TagPartView: View {
                 
                 TextField("폴더 이름", text: $viewModel.folderTitle)
                     .padding()
-                    .background(Color(UIColor.systemGray6))
+                    .background(Color.customGray6)
                     .cornerRadius(8)
                     .padding(.horizontal, 40)
             }
@@ -44,7 +44,7 @@ struct TagPartView: View {
             HStack {
                 TextField("태그 입력", text: $viewModel.newTagName)
                     .padding()
-                    .background(Color(UIColor.systemGray6))
+                    .background(Color.customGray6)
                     .cornerRadius(8)
                 
                 Button {
@@ -54,7 +54,7 @@ struct TagPartView: View {
                         .fontWeight(.bold)
                         .padding()
                         .foregroundColor(Color.normalText)
-                        .background(Color(UIColor.systemGray6))
+                        .background(Color.customGray6)
                         .cornerRadius(8)
                 }
                 .padding(.leading, 20)

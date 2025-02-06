@@ -19,8 +19,6 @@ struct ColorPalettePartView: View {
     private let spacing: CGFloat = 50
 #endif
 
-    
-    
     var body: some View {
         let columns = [
             GridItem(.adaptive(minimum: spacing))

@@ -101,7 +101,7 @@ struct TravelPlanCell: View {
             
             ZStack {
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(Color(uiColor: .systemGray6))
+                    .fill(Color.customGray6)
                     .shadow(radius: 4)
                 
                 VStack(alignment: .leading, spacing: 8) {
@@ -146,7 +146,7 @@ struct planDetialEditView: View {
                 .font(.title)
                 .frame(height: 44)
                 .padding()
-                .background(Color(UIColor.systemGray6))
+                .background(Color.customGray6)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .padding([.horizontal, .top])
             dateSection()
@@ -170,7 +170,7 @@ struct planDetialEditView: View {
         HStack {
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(uiColor: .systemGray5))
+                    .fill(Color.customGray5)
                     .frame(width: 50,
                            height: 50)
                 
@@ -209,7 +209,7 @@ struct planDetialEditView: View {
                 .padding()
             }
         }
-        .background(Color(uiColor: .systemGray6))
+        .background(Color.customGray6)
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .padding()
     }
@@ -223,7 +223,7 @@ struct planDetialEditView: View {
             .environment(\.locale, Locale(identifier: "ko_KR"))
             Spacer()
         }
-        .background(Color(uiColor: .systemGray6))
+        .background(Color.customGray6)
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .padding()
     }

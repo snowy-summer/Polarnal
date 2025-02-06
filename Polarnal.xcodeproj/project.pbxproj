@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B16AB452D5490A800745FE5 /* MainCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7792D068C1500239987 /* MainCalendarView.swift */; };
+		6B16AB462D5490A800745FE5 /* AddDDayCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A79F2D09AAC700239987 /* AddDDayCategoryCell.swift */; };
+		6B16AB472D5490A800745FE5 /* TodoFolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7B32D0AF24F00239987 /* TodoFolderCell.swift */; };
+		6B16AB482D5490A800745FE5 /* MiniCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A76E2D05669600239987 /* MiniCalendarView.swift */; };
+		6B16AB492D5490A800745FE5 /* TodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7A62D0A9CEE00239987 /* TodoView.swift */; };
+		6B16AB4B2D5490A800745FE5 /* AddEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7C12D0BCF4B00239987 /* AddEventCell.swift */; };
+		6B16AB4C2D5490A800745FE5 /* PlannerTypeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7952D0972FD00239987 /* PlannerTypeListView.swift */; };
+		6B16AB4D2D5490A800745FE5 /* ExpendedTodoFolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7B92D0B088700239987 /* ExpendedTodoFolderCell.swift */; };
+		6B16AB4F2D5490A800745FE5 /* AddDDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7A12D09AADB00239987 /* AddDDayCell.swift */; };
+		6B16AB512D5490A800745FE5 /* CalendarEventCategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A78F2D095E1700239987 /* CalendarEventCategoryListView.swift */; };
+		6B16AB522D5490A800745FE5 /* DDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7882D08617D00239987 /* DDayView.swift */; };
+		6B16AB542D54A27C00745FE5 /* AddEventCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B16AB532D54A27C00745FE5 /* AddEventCellType.swift */; };
+		6B16AB552D54A27C00745FE5 /* AddEventCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B16AB532D54A27C00745FE5 /* AddEventCellType.swift */; };
+		6B16AB612D54A47000745FE5 /* AddDDayCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B16AB602D54A47000745FE5 /* AddDDayCellType.swift */; };
+		6B16AB622D54A47000745FE5 /* AddDDayCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B16AB602D54A47000745FE5 /* AddDDayCellType.swift */; };
+		6B16AB672D54B1AA00745FE5 /* ContryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B16AB662D54B1AA00745FE5 /* ContryCode.swift */; };
+		6B16AB682D54B1AA00745FE5 /* ContryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B16AB662D54B1AA00745FE5 /* ContryCode.swift */; };
+		6B16AB6E2D54BB0E00745FE5 /* TabTye.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B16AB6D2D54BB0E00745FE5 /* TabTye.swift */; };
+		6B16AB6F2D54BB0E00745FE5 /* TabTye.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B16AB6D2D54BB0E00745FE5 /* TabTye.swift */; };
 		6B2750C22D3D07FB005144FA /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2750C12D3D07FB005144FA /* View+Extension.swift */; };
 		6B37A7562D0026B300239987 /* FolderListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7552D0026B300239987 /* FolderListCell.swift */; };
 		6B37A7592D002BB800239987 /* NoteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7582D002BB800239987 /* NoteListView.swift */; };
@@ -135,7 +154,6 @@
 		6B9129882D50ADDC005C85D2 /* ExpendedTodoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7BB2D0B08EB00239987 /* ExpendedTodoCellViewModel.swift */; };
 		6B9129892D50ADDC005C85D2 /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7AC2D0AA5AA00239987 /* TodoViewModel.swift */; };
 		6B9129A82D50B3FA005C85D2 /* EnumHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 6B9129A72D50B3FA005C85D2 /* EnumHelper */; };
-		6B9129AE2D50B782005C85D2 /* SideTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7662D055B3800239987 /* SideTabBarView.swift */; };
 		6B9129AF2D50B7D4005C85D2 /* DiaryViewSheetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FD02CFFEC980000AC03 /* DiaryViewSheetType.swift */; };
 		6B9129B02D50B802005C85D2 /* MainCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A77B2D068DA100239987 /* MainCalendarViewModel.swift */; };
 		6B9129B12D50C5A0005C85D2 /* FolderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FCB2CFFE8120000AC03 /* FolderListView.swift */; };
@@ -147,6 +165,7 @@
 		6B9129D32D532A96005C85D2 /* FolderListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7552D0026B300239987 /* FolderListCell.swift */; };
 		6B9129D72D53365C005C85D2 /* NoteContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7622D0046F200239987 /* NoteContentView.swift */; };
 		6B9129D82D53546D005C85D2 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FC32CFF25960000AC03 /* PhotoPicker.swift */; };
+		6B9129D92D544227005C85D2 /* IconSelectPartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FE22CFFEF530000AC03 /* IconSelectPartView.swift */; };
 		6B9F61B52D3E621D00875186 /* EnumHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 6B9F61B42D3E621D00875186 /* EnumHelper */; };
 		6BDAE5002D141DDE00A066E9 /* TravelCostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE4FF2D141DDE00A066E9 /* TravelCostViewModel.swift */; };
 		6BDAE5022D1563CE00A066E9 /* SelectedTravelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5012D1563CE00A066E9 /* SelectedTravelViewModel.swift */; };
@@ -188,6 +207,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6B16AB532D54A27C00745FE5 /* AddEventCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventCellType.swift; sourceTree = "<group>"; };
+		6B16AB602D54A47000745FE5 /* AddDDayCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDDayCellType.swift; sourceTree = "<group>"; };
+		6B16AB662D54B1AA00745FE5 /* ContryCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContryCode.swift; sourceTree = "<group>"; };
+		6B16AB6D2D54BB0E00745FE5 /* TabTye.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTye.swift; sourceTree = "<group>"; };
 		6B2750C12D3D07FB005144FA /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		6B37A7552D0026B300239987 /* FolderListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderListCell.swift; sourceTree = "<group>"; };
 		6B37A7582D002BB800239987 /* NoteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListView.swift; sourceTree = "<group>"; };
@@ -683,6 +706,7 @@
 				6B790FE62CFFEFA80000AC03 /* DesignOfFolderIcon.swift */,
 				6B58254B2D426A3A0003BEB3 /* Localizable.xcstrings */,
 				6B5825502D4CF1C30003BEB3 /* MonthCase.swift */,
+				6B16AB662D54B1AA00745FE5 /* ContryCode.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -819,6 +843,7 @@
 			isa = PBXGroup;
 			children = (
 				6B37A77D2D07D7CC00239987 /* SideTabBarViewModel.swift */,
+				6B16AB6D2D54BB0E00745FE5 /* TabTye.swift */,
 			);
 			path = SideBar;
 			sourceTree = "<group>";
@@ -895,6 +920,8 @@
 				6B37A7B12D0AAA3000239987 /* AddTodoFolderViewModel.swift */,
 				6B37A79A2D097A1400239987 /* AddDDayViewModel.swift */,
 				6B37A78D2D0924DD00239987 /* AddEventCategoryViewModel.swift */,
+				6B16AB532D54A27C00745FE5 /* AddEventCellType.swift */,
+				6B16AB602D54A47000745FE5 /* AddDDayCellType.swift */,
 			);
 			path = ModalSheet;
 			sourceTree = "<group>";
@@ -1234,6 +1261,7 @@
 				6B37A7BC2D0B08EB00239987 /* ExpendedTodoCellViewModel.swift in Sources */,
 				6B37A7822D084A2E00239987 /* PlannerViewModel.swift in Sources */,
 				6B37A76B2D055E6D00239987 /* PlannerView.swift in Sources */,
+				6B16AB682D54B1AA00745FE5 /* ContryCode.swift in Sources */,
 				6B37A7A72D0A9CEE00239987 /* TodoView.swift in Sources */,
 				6B37A7C42D0BFEED00239987 /* AddEventViewModel.swift in Sources */,
 				6B37A75B2D002BE300239987 /* NoteListCell.swift in Sources */,
@@ -1263,6 +1291,7 @@
 				6B37A7A42D0A7DD500239987 /* DDayViewModel.swift in Sources */,
 				6B790FD82CFFEE6E0000AC03 /* AddFolderView.swift in Sources */,
 				6BDAE5272D29194C00A066E9 /* AddTravelDestinationFolderViewModel.swift in Sources */,
+				6B16AB552D54A27C00745FE5 /* AddEventCellType.swift in Sources */,
 				6B37A7562D0026B300239987 /* FolderListCell.swift in Sources */,
 				6B790FE72CFFEFA80000AC03 /* DesignOfFolderIcon.swift in Sources */,
 				6B37A7632D0046F200239987 /* NoteContentView.swift in Sources */,
@@ -1300,8 +1329,10 @@
 				6B5825512D4CF1C30003BEB3 /* MonthCase.swift in Sources */,
 				6B37A7B42D0AF24F00239987 /* TodoFolderCell.swift in Sources */,
 				6BDAE52E2D2BD32C00A066E9 /* MapSearchManager.swift in Sources */,
+				6B16AB6F2D54BB0E00745FE5 /* TabTye.swift in Sources */,
 				6B37A7DD2D103D4100239987 /* TravelDashboardViewModel.swift in Sources */,
 				6BDAE5112D193E5700A066E9 /* AddTravelTicketViewModel.swift in Sources */,
+				6B16AB612D54A47000745FE5 /* AddDDayCellType.swift in Sources */,
 				6B790FBE2CFEA50A0000AC03 /* NoteDB.swift in Sources */,
 				6BDAE5192D1D365B00A066E9 /* TravelPlanDetailViewModel.swift in Sources */,
 				6B790F9F2CFEA3080000AC03 /* PolarnalApp.swift in Sources */,
@@ -1333,13 +1364,14 @@
 				6B9129592D50A86D005C85D2 /* CurrencyType.swift in Sources */,
 				6B9129BB2D50EC39005C85D2 /* ColorPalettePartView.swift in Sources */,
 				6B91295A2D50A86D005C85D2 /* DBManager.swift in Sources */,
-				6B9129AE2D50B782005C85D2 /* SideTabBarView.swift in Sources */,
+				6B16AB622D54A47000745FE5 /* AddDDayCellType.swift in Sources */,
 				6B91295B2D50A86D005C85D2 /* TravelCostType.swift in Sources */,
 				6B91295C2D50A86D005C85D2 /* TodoDB.swift in Sources */,
 				6B91295D2D50A86D005C85D2 /* TravelDocumentType.swift in Sources */,
 				6B91295E2D50A86D005C85D2 /* NoteDB.swift in Sources */,
 				6B9129772D50ADDC005C85D2 /* CalendarViewModel.swift in Sources */,
 				6B9129782D50ADDC005C85D2 /* AddFolderViewModel.swift in Sources */,
+				6B16AB6E2D54BB0E00745FE5 /* TabTye.swift in Sources */,
 				6B9129792D50ADDC005C85D2 /* MainCalendarCellViewModel.swift in Sources */,
 				6B9129D32D532A96005C85D2 /* FolderListCell.swift in Sources */,
 				6B91297A2D50ADDC005C85D2 /* AddTodoFolderViewModel.swift in Sources */,
@@ -1352,6 +1384,19 @@
 				6B9129802D50ADDC005C85D2 /* AddDDayViewModel.swift in Sources */,
 				6B9129812D50ADDC005C85D2 /* FolderListViewModel.swift in Sources */,
 				6B9129AF2D50B7D4005C85D2 /* DiaryViewSheetType.swift in Sources */,
+				6B16AB452D5490A800745FE5 /* MainCalendarView.swift in Sources */,
+				6B16AB672D54B1AA00745FE5 /* ContryCode.swift in Sources */,
+				6B16AB462D5490A800745FE5 /* AddDDayCategoryCell.swift in Sources */,
+				6B16AB472D5490A800745FE5 /* TodoFolderCell.swift in Sources */,
+				6B16AB482D5490A800745FE5 /* MiniCalendarView.swift in Sources */,
+				6B16AB492D5490A800745FE5 /* TodoView.swift in Sources */,
+				6B16AB4B2D5490A800745FE5 /* AddEventCell.swift in Sources */,
+				6B16AB4C2D5490A800745FE5 /* PlannerTypeListView.swift in Sources */,
+				6B16AB4D2D5490A800745FE5 /* ExpendedTodoFolderCell.swift in Sources */,
+				6B16AB4F2D5490A800745FE5 /* AddDDayCell.swift in Sources */,
+				6B16AB542D54A27C00745FE5 /* AddEventCellType.swift in Sources */,
+				6B16AB512D5490A800745FE5 /* CalendarEventCategoryListView.swift in Sources */,
+				6B16AB522D5490A800745FE5 /* DDayView.swift in Sources */,
 				6B9129822D50ADDC005C85D2 /* AddEventCategoryViewModel.swift in Sources */,
 				6B9129842D50ADDC005C85D2 /* DDayViewModel.swift in Sources */,
 				6B9129852D50ADDC005C85D2 /* DiaryStateViewModel.swift in Sources */,
@@ -1371,6 +1416,7 @@
 				6B9129B12D50C5A0005C85D2 /* FolderListView.swift in Sources */,
 				6B9129632D50A896005C85D2 /* ViewModelProtocol.swift in Sources */,
 				6B9129D82D53546D005C85D2 /* PhotoPicker.swift in Sources */,
+				6B9129D92D544227005C85D2 /* IconSelectPartView.swift in Sources */,
 				6B9129B62D50E49B005C85D2 /* NoteListCell.swift in Sources */,
 				6B9129B72D50E49B005C85D2 /* NoteListView.swift in Sources */,
 				6B91294E2D50A842005C85D2 /* LogManager.swift in Sources */,

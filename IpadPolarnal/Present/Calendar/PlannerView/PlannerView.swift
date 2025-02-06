@@ -65,7 +65,7 @@ struct PlannerView: View {
                 Divider()
                 
                 MiniCalendarView()
-                    .background(Color.contentBackground)
+                    .background(Color.listBackground)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             }
         } detail: {

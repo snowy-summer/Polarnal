@@ -20,7 +20,7 @@ struct AddEventCategoryView: View {
                 
                 TextField("카테고리 이름", text: $viewModel.categoryTitle)
                     .padding()
-                    .background(Color(UIColor.systemGray6))
+                    .background(Color.customGray6)
                     .cornerRadius(8)
                     .padding(.horizontal, 40)
             }
@@ -30,7 +30,7 @@ struct AddEventCategoryView: View {
             
             
             ColorPalettePartView(selctedColor: $viewModel.categoryColor)
-                .background(Color(UIColor.systemGray5))
+                .background(Color.customGray5)
                 .clipShape(RoundedRectangle(cornerRadius: 24))
                 .padding(.horizontal,40)
             

@@ -21,17 +21,17 @@ struct AddFolderView: View {
         ScrollView {
             VStack {
                 TagPartView(viewModel: viewModel)
-                    .background(Color(UIColor.systemGray5))
+                    .background(Color.customGray5)
                     .clipShape(RoundedRectangle(cornerRadius: 24))
                     .padding(40)
                 
                 ColorPalettePartView(selctedColor: $viewModel.folderColor)
-                    .background(Color(UIColor.systemGray5))
+                    .background(Color.customGray5)
                     .clipShape(RoundedRectangle(cornerRadius: 24))
                     .padding(.horizontal,40)
                 
                 IconSelectPartView(viewModel: viewModel)
-                    .background(Color(UIColor.systemGray5))
+                    .background(Color.customGray5)
                     .clipShape(RoundedRectangle(cornerRadius: 24))
                     .padding(40)
                 

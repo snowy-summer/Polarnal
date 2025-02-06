@@ -1,8 +1,8 @@
 //
 //  AddTodoFolderView.swift
-//  Polarnal
+//  MacPolarnal
 //
-//  Created by 최승범 on 12/12/24.
+//  Created by 최승범 on 2/6/25.
 //
 
 import SwiftUI
@@ -35,35 +35,25 @@ struct AddTodoFolderView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 24))
                 .padding(.horizontal,40)
             
-        }
-        .padding(.bottom, 40)
-        .navigationTitle("Todo 폴더 생성")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            
-            ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
+            HStack {
+                Button("Cancel") {
                     dismiss()
-                }) {
-                    Text("취소")
                 }
-            }
-            
-            ToolbarItem(placement: .topBarTrailing) {
-                Button(action: {
+                
+                Spacer()
+                
+                Button("Save") {
                     viewModel.apply(.saveTodoFolder)
                     dismiss()
-                }) {
-                    Text("저장")
                 }
+                .disabled(viewModel.todoFolderTitle.isEmpty)
+                
             }
+            
         }
+        .padding(.bottom, 40)
         .onAppear {
             viewModel.apply(.insertModelContext(modelContext))
         }
     }
-}
-
-#Preview {
-    AddTodoFolderView(viewModel: AddTodoFolderViewModel(todoFolder: nil))
 }

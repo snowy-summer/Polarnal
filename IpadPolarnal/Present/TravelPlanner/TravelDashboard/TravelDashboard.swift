@@ -69,7 +69,7 @@ struct TravelDashboard: View {
                     VStack {
                         HStack {
                             TravelTodoMiniView(travel: selectedTravel)
-                                .background(Color(uiColor: .systemGray5))
+                                .background(Color.customGray5)
                                 .clipShape(RoundedRectangle(cornerRadius: 24))
                                 .padding(.trailing)
                             
@@ -79,7 +79,7 @@ struct TravelDashboard: View {
                                         NavigationLink(destination: TravelTicketView(viewModel: TravelTicketViewModel())) {
                                             TravelTicketMiniView()
                                                 .frame(width: geometry.size.width, height: geometry.size.height)
-                                                .background(Color(uiColor: .systemGray5))
+                                                .background(Color.customGray5)
                                                 .clipShape(RoundedRectangle(cornerRadius: 24))
                                         }
                                     }
@@ -88,7 +88,7 @@ struct TravelDashboard: View {
                                         NavigationLink(destination: TravelCostView(viewModel: travelCostViewModel)) {
                                             TravelCostMiniView(viewModel: travelCostViewModel)
                                                 .frame(width: geometry.size.width, height: geometry.size.height)
-                                                .background(Color(uiColor: .systemGray5))
+                                                .background(Color.customGray5)
                                                 .clipShape(RoundedRectangle(cornerRadius: 24))
                                         }
                                     }
@@ -110,7 +110,7 @@ struct TravelDashboard: View {
                                     GeometryReader { geometry in
                                         TravelDiaryMiniView()
                                             .frame(width: geometry.size.width, height: geometry.size.height)
-                                            .background(Color(uiColor: .systemGray5))
+                                            .background(Color.customGray5)
                                             .clipShape(RoundedRectangle(cornerRadius: 24))
                                     }
                                 }
@@ -163,7 +163,7 @@ struct TravelDashboard: View {
                             }
                             .tint(.folderTitle)
                             .padding()
-                            .background(Color(uiColor: .systemGray5))
+                            .background(Color.customGray5)
                             .clipShape(RoundedRectangle(cornerRadius: 24))
                             .padding()
                             .onAppear {
@@ -225,11 +225,11 @@ struct TravelTicketMiniView: View {
             
             List {
                 Text("✈️  비행기 티켓")
-                    .listRowBackground(Color(uiColor: .systemGray5))
+                    .listRowBackground(Color.customGray5)
                 Text("🚃  교통 패스")
-                    .listRowBackground(Color(uiColor: .systemGray5))
+                    .listRowBackground(Color.customGray5)
                 Text("🏨  숙소 예약 정보")
-                    .listRowBackground(Color(uiColor: .systemGray5))
+                    .listRowBackground(Color.customGray5)
             }
             .listStyle(.plain)
             

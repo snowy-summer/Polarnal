@@ -24,7 +24,7 @@ struct AddTravelPlanView: View {
                     .font(.title)
                     .frame(height: 44)
                     .padding()
-                    .background(Color(UIColor.systemGray6))
+                    .background(Color.customGray6)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                     .padding(.horizontal, 40)
                 
@@ -68,7 +68,7 @@ extension AddTravelPlanView {
             HStack {
                 ZStack {
                     RoundedRectangle(cornerRadius: 12)
-                        .fill(Color(uiColor: .systemGray5))
+                        .fill(Color.customGray5)
                         .frame(width: 50, height: 50)
                     
                     Image(systemName: AddTravelSectionType.destination.icon)
@@ -84,13 +84,13 @@ extension AddTravelPlanView {
                     .font(.title3)
                     .frame(height: 32)
                     .padding()
-                    .background(Color(UIColor.systemGray5))
+                    .background(Color.customGray5)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             }
             .padding()
             
         }
-        .background(Color(uiColor: .systemGray6))
+        .background(Color.customGray6)
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .padding(.horizontal, 40)
         .padding(.top, 40)
@@ -103,7 +103,7 @@ extension AddTravelPlanView {
             HStack {
                 ZStack {
                     RoundedRectangle(cornerRadius: 12)
-                        .fill(Color(uiColor: .systemGray5))
+                        .fill(Color.customGray5)
                         .frame(width: 50, height: 50)
                     
                     Image(systemName: AddTravelSectionType.period.icon)
@@ -126,7 +126,7 @@ extension AddTravelPlanView {
             datePickerSection(title: "마지막 날짜:", date: $viewModel.endDate)
             
         }
-        .background(Color(uiColor: .systemGray6))
+        .background(Color.customGray6)
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .padding(.horizontal, 40)
         .padding(.top, 40)

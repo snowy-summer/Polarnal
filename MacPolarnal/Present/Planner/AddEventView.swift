@@ -1,8 +1,8 @@
 //
 //  AddEventView.swift
-//  Polarnal
+//  MacPolarnal
 //
-//  Created by 최승범 on 12/13/24.
+//  Created by 최승범 on 2/6/25.
 //
 
 import SwiftUI
@@ -32,31 +32,26 @@ struct AddEventView: View {
                 categorySection()
                 periodToggleSection()
             }
+            
+            HStack {
+                Button("Cancel") {
+                    dismiss()
+                }
+                
+                Spacer()
+                
+                Button("Add Folder") {
+                    viewModel.apply(.saveEvent)
+                    dismiss()
+                }
+                .disabled(viewModel.eventContent.isEmpty)
+                
+            }
         }
         .onAppear {
             viewModel.apply(.insertModelContext(modelContext))
         }
         .navigationTitle("일정 생성")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    dismiss()
-                }) {
-                    Text("취소")
-                }
-                
-            }
-            
-            ToolbarItem(placement: .topBarTrailing) {
-                Button(action: {
-                    viewModel.apply(.saveEvent)
-                    dismiss()
-                }) {
-                    Text("저장")
-                }
-            }
-        }
         
     }
 }
@@ -160,6 +155,3 @@ extension AddEventView {
     }
 }
 
-#Preview {
-    AddEventView(viewModel: AddEventViewModel(eventData: nil))
-}
