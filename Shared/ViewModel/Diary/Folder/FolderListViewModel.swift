@@ -24,7 +24,6 @@ final class FolderListViewModel: ViewModelProtocol {
     func apply(_ intent: Intent) {
         
         switch intent {
-            // view 생성시 ModelContext주입
         case .insertModelContext(let modelContext):
             dbManager.modelContext = modelContext
             fetchFolderList()
@@ -46,7 +45,10 @@ extension FolderListViewModel {
     }
     
     func deleteFolder(_ folder: Folder) {
-        dbManager.deleteItem(folder)
+        if let index = folderList.firstIndex(of: folder) {
+            folderList.remove(at: index)
+            dbManager.deleteItem(folder)
+        }
     }
     
 }
