@@ -67,6 +67,7 @@ struct PlannerView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                         .padding([.horizontal, .bottom], 8)
                 }
+                .frame(width: 220)
                 
                 switch plannerViewModel.showedViewType {
                 case .calendar:

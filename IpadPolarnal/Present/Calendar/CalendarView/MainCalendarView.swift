@@ -72,7 +72,7 @@ struct MainCalendarContentView: View {
                                                  isSunday: columnIndex == 0,
                                                  isSaturday: columnIndex == 6,
                                                  isEmptyView: false)
-                            .background(Color.listBackground)
+                            .background(Color.contentBackground)
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                             .frame(height: geometry.size.height / 7)
                             
@@ -82,7 +82,7 @@ struct MainCalendarContentView: View {
                                                  isSaturday: false,
                                                  isEmptyView: true)
                             .foregroundStyle(.clear)
-                            .background(Color.listBackground)
+                            .background(Color.contentBackground)
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                             .frame(height: geometry.size.height / 7)
                         }

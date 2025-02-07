@@ -13,9 +13,15 @@ struct EventCategoryListCell: View {
     
     var body: some View {
         HStack {
+#if os(macOS)
+            RoundedRectangle(cornerRadius: 8)
+                .frame(width: 20, height: 20)
+                .foregroundStyle(Color(hex: category.colorCode))
+            #else
             RoundedRectangle(cornerRadius: 8)
                 .frame(width: 32, height: 32)
                 .foregroundStyle(Color(hex: category.colorCode))
+#endif
             
             Text(category.title)
                 .bold()
