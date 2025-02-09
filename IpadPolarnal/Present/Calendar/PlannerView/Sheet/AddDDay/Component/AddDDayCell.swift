@@ -18,6 +18,17 @@ struct AddDDayCell: View {
     var body: some View {
         HStack {
             ZStack {
+#if os(macOS)
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.customGray5)
+                    .frame(width: 32,
+                           height: 32)
+                
+                Image(systemName: type.icon)
+                    .resizable()
+                    .frame(width: 20,
+                           height: 20)
+                #else
                 RoundedRectangle(cornerRadius: 12)
                     .fill(Color.customGray5)
                     .frame(width: 50,
@@ -27,11 +38,18 @@ struct AddDDayCell: View {
                     .resizable()
                     .frame(width: 28,
                            height: 28)
+                
+#endif
             }
             
+#if os(macOS)
+            Text(type.text)
+                .font(.title3)
+#else
             Text(type.text)
                 .font(.title2)
                 .bold()
+#endif
             
             switch type {
             case .plusOrMinus:

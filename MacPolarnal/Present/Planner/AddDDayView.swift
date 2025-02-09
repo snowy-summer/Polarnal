@@ -19,15 +19,18 @@ struct AddDDayView: View {
     }
     
     var body: some View {
+        
         ScrollView {
             VStack {
-                TextField("제목", text: $viewModel.ddayTitle)
-                    .font(.title)
-                    .frame(height: 44)
-                    .padding()
-                    .background(Color.customGray6)
-                    .cornerRadius(12)
-                    .padding(.horizontal, 40)
+                Text("New D-Day")
+                    .font(.headline)
+                    .padding(.vertical, 16)
+                
+                TextField("Name", text: $viewModel.ddayTitle)
+                    .font(.title3)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal)
+                    .padding(.bottom, 20)
                 
                 VStack {
                     AddDDayCell(type: .plusOrMinus)
@@ -43,21 +46,22 @@ struct AddDDayView: View {
                                 if viewModel.isDDay{
                                     Image(systemName: "checkmark.circle.fill")
                                         .resizable()
-                                        .frame(width: 30, height: 30)
+                                        .frame(width: 20, height: 20)
                                 } else {
                                     Image(systemName: "circle.fill")
                                         .resizable()
-                                        .frame(width: 30, height: 30)
+                                        .frame(width: 20, height: 20)
                                 }
                                 
                                 Text("D-Day")
-                                    .font(.title3)
+                                    .font(.caption)
                                     .bold()
                             }
                             .padding()
                             .background(Color.customGray5)
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
                         })
+                        .buttonStyle(.plain)
                         
                         Button(action: {
                             viewModel.apply(.selectDPlus)
@@ -66,55 +70,57 @@ struct AddDDayView: View {
                                 if viewModel.isDPlus{
                                     Image(systemName: "checkmark.circle.fill")
                                         .resizable()
-                                        .frame(width: 30, height: 30)
+                                        .frame(width: 20, height: 20)
                                 } else {
                                     Image(systemName: "circle.fill")
                                         .resizable()
-                                        .frame(width: 30, height: 30)
+                                        .frame(width: 20, height: 20)
                                 }
                                 
                                 Text("D +")
-                                    .font(.title3)
+                                    .font(.caption)
                                     .bold()
                             }
                             .padding()
                             .background(Color.customGray5)
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
                         })
+                        .buttonStyle(.plain)
                     }
                     .padding()
                 }
                 .background(Color.customGray6)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .padding(.horizontal, 40)
-                .padding(.top, 40)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .padding(.horizontal)
                 
                 VStack {
-                    Toggle(isOn: $viewModel.showCategory) {
-                        HStack {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 12)
-                                    .fill(Color.customGray5)
-                                    .frame(width: 50,
-                                           height: 50)
-                                
-                                Image(systemName: "star.fill")
-                                    .resizable()
-                                    .frame(width: 28,
-                                           height: 28)
-                            }
+                    HStack {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(Color.customGray5)
+                                .frame(width: 32,
+                                       height: 32)
                             
-                            Text("카테고리")
-                                .font(.title2)
-                                .bold()
-                            
-                            Text("\(viewModel.selectedCategory?.title ?? "")")
-                                .font(.title3)
-                                .foregroundStyle(.gray)
-                                .padding(.horizontal)
+                            Image(systemName: "star.fill")
+                                .resizable()
+                                .frame(width: 20,
+                                       height: 20)
                         }
+                        
+                        Text("카테고리")
+                            .font(.title3)
+                        
+                        
+                        Text("\(viewModel.selectedCategory?.title ?? "")")
+                            .font(.caption)
+                            .foregroundStyle(.gray)
+                            .padding(.horizontal)
+                        
+                        Spacer()
+                        Toggle("",isOn: $viewModel.showCategory)
+                            .labelsHidden()
                     }
-                    .padding()
+                    .padding(16)
                     
                     if viewModel.showCategory {
                         Divider()
@@ -124,21 +130,21 @@ struct AddDDayView: View {
                             ForEach(eventCategoryList,
                                     id: \.id) { category in
                                 EventCategoryListCell(category: category)
+                                    .contentShape(Rectangle())
                                     .onTapGesture {
                                         viewModel.apply(.selectCategory(category))
                                     }
+                                    .padding()
                             }
                         }
+                        .scrollContentBackground(.hidden)
+                        .listStyle(.plain)
                         .frame(height: 200)
                     }
-                    
-                    
-                    
                 }
                 .background(Color.customGray6)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .padding(.horizontal, 40)
-                .padding(.top, 40)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .padding(.horizontal)
                 
                 
                 HStack {
@@ -150,9 +156,8 @@ struct AddDDayView: View {
                     Spacer()
                 }
                 .background(Color.customGray6)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .padding(.horizontal, 40)
-                .padding(.top, 40)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .padding(.horizontal)
                 
                 if viewModel.isDDay {
                     HStack {
@@ -164,29 +169,34 @@ struct AddDDayView: View {
                         Spacer()
                     }
                     .background(Color.customGray6)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                    .padding(.horizontal, 40)
-                    .padding(.top, 40)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .padding(.horizontal)
                 }
-            }
-            
-            HStack {
-                Button("Cancel") {
-                    dismiss()
-                }
-                
-                Spacer()
-                
-                Button("Save") {
-                    viewModel.apply(.saveDday)
-                    dismiss()
-                }
-                .disabled(viewModel.ddayTitle.isEmpty)
-                
             }
         }
         .onAppear {
             viewModel.apply(.insertModelContext(modelContext))
         }
+        
+        Divider()
+        
+        HStack {
+            
+            Button("Cancel") {
+                dismiss()
+            }
+            
+            Spacer()
+            
+            Button("Save") {
+                viewModel.apply(.saveDday)
+                dismiss()
+            }
+            .disabled(viewModel.ddayTitle.isEmpty)
+            
+        }
+        .padding()
+        
+        
     }
 }

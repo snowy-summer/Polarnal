@@ -244,7 +244,13 @@
         }
       }
     },
+    "Name" : {
+
+    },
     "New Category" : {
+
+    },
+    "New D-Day" : {
 
     },
     "New Folder" : {
@@ -263,6 +269,9 @@
           }
         }
       }
+    },
+    "New Todo" : {
+
     },
     "No" : {
       "extractionState" : "manual",
@@ -320,6 +329,9 @@
           }
         }
       }
+    },
+    "Todo Name" : {
+
     },
     "Todo 폴더 삭제" : {
 
