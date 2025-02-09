@@ -25,7 +25,7 @@ struct TodoFolderCell: View {
             HStack {
                 RoundedRectangle(cornerRadius: 12)
                     .frame(width: 44, height: 44)
-                    .foregroundStyle(viewModel.todofolder.color.convertToColor())
+                    .foregroundStyle(Color(hex: viewModel.todofolder.colorCode))
                     .padding(.leading, 20)
                 
                 Text(viewModel.todofolder.title)
@@ -46,6 +46,7 @@ struct TodoFolderCell: View {
                         .listRowBackground(Color.customGray5)
                 }
             }
+            .scrollContentBackground(.hidden)
             .listStyle(.plain)
             
         }

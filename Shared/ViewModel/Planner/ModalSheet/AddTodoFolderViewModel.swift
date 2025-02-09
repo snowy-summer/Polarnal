@@ -19,10 +19,7 @@ final class AddTodoFolderViewModel: ViewModelProtocol {
         if let todoFolder {
             self.todoFolder = todoFolder
             todoFolderTitle = todoFolder.title
-            todoFolderColor = Color(red: todoFolder.color.red,
-                                    green: todoFolder.color.green,
-                                    blue: todoFolder.color.blue,
-                                    opacity: todoFolder.color.alpha)
+            todoFolderColor = Color(hex: todoFolder.colorCode)
         } else {
             todoFolderTitle = ""
             todoFolderColor = .blue
@@ -56,15 +53,20 @@ extension AddTodoFolderViewModel {
     
     private func addFolder() {
         
-        let newTodoFolder = TodoFolderDB(title: todoFolderTitle,
-                                         color: getColorRGBA())
-        dbManager.addItem(newTodoFolder)
+        if let hexCode = todoFolderColor.toHex() {
+            let newTodoFolder = TodoFolderDB(title: todoFolderTitle,
+                                             colorCode: hexCode)
+            dbManager.addItem(newTodoFolder)
+        }
+        
     }
     
     private func editFolder() {
         if todoFolder != nil {
             todoFolder?.title = todoFolderTitle
-            todoFolder?.color = getColorRGBA()
+            if let hexcode = todoFolderColor.toHex() {
+                todoFolder?.colorCode = hexcode
+            }
             
             dbManager.addItem(todoFolder!)
         }
