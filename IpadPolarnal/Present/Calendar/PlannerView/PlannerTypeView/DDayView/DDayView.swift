@@ -38,6 +38,7 @@ struct DDayView: View {
                         }
                 }
             }
+            .padding(.top, 8)
         }
         .onAppear {
             viewModel.apply(.insertModelContext(modelContext))

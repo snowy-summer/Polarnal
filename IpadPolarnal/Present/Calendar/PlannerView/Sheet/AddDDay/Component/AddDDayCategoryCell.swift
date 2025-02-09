@@ -14,7 +14,7 @@ struct EventCategoryListCell: View {
     var body: some View {
         HStack {
 #if os(macOS)
-            RoundedRectangle(cornerRadius: 8)
+            RoundedRectangle(cornerRadius: 4)
                 .frame(width: 20, height: 20)
                 .foregroundStyle(Color(hex: category.colorCode))
             #else

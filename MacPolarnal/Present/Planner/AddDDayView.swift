@@ -130,16 +130,17 @@ struct AddDDayView: View {
                             ForEach(eventCategoryList,
                                     id: \.id) { category in
                                 EventCategoryListCell(category: category)
+                                    .contentShape(Rectangle())
                                     .onTapGesture {
                                         viewModel.apply(.selectCategory(category))
                                     }
+                                    .padding()
                             }
                         }
+                        .scrollContentBackground(.hidden)
+                        .listStyle(.plain)
                         .frame(height: 200)
                     }
-                    
-                    
-                    
                 }
                 .background(Color.customGray6)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
