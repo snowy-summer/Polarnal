@@ -270,6 +270,9 @@
         }
       }
     },
+    "New Todo" : {
+
+    },
     "No" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -326,6 +329,9 @@
           }
         }
       }
+    },
+    "Todo Name" : {
+
     },
     "Todo 폴더 삭제" : {
 

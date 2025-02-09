@@ -14,28 +14,23 @@ struct AddTodoFolderView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Circle()
-                    .frame(width: 100, height: 100)
-                    .foregroundStyle(viewModel.todoFolderColor)
-                
-                TextField("Todo 폴더 이름", text: $viewModel.todoFolderTitle)
-                    .padding()
-                    .background(Color.customGray6)
-                    .cornerRadius(8)
-                    .padding(.horizontal, 40)
-            }
-            .padding(.horizontal, 40)
-            .padding(.top, 40)
-            .padding(.bottom, 20)
+            Text("New Todo")
+                .font(.headline)
+                .padding(.bottom, 10)
             
+            TextField("Todo Name", text: $viewModel.todoFolderTitle)
+                .font(.title3)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding(.bottom, 20)
             
             ColorPalettePartView(selctedColor: $viewModel.todoFolderColor)
-                .background(Color.customGray5)
-                .clipShape(RoundedRectangle(cornerRadius: 24))
-                .padding(.horizontal,40)
+                .background(.ipadTabbar)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+            
+            Divider()
             
             HStack {
+                
                 Button("Cancel") {
                     dismiss()
                 }
@@ -51,7 +46,7 @@ struct AddTodoFolderView: View {
             }
             
         }
-        .padding(.bottom, 40)
+        .padding()
         .onAppear {
             viewModel.apply(.insertModelContext(modelContext))
         }
