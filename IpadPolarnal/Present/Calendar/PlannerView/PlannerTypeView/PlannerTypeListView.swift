@@ -49,6 +49,7 @@ struct PlannerTypeListView: View {
             ForEach(EventType.allCases, id: \.self) { type in
                 PlannerTypeListCell(type: type,
                                       viewModel: viewModel)
+                .contentShape(Rectangle())
             }
         }
         .scrollContentBackground(.hidden)
