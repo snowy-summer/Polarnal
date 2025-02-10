@@ -29,10 +29,7 @@ final class AddTravelDestinationFolderViewModel: ViewModelProtocol {
         if let folder {
             self.folder = folder
             folderTitle = folder.title
-            folderColor = Color(red: folder.color.red,
-                                  green: folder.color.green,
-                                  blue: folder.color.blue,
-                                  opacity: folder.color.alpha)
+            folderColor = Color(hex: folder.colorCode)
         } else {
             folderTitle = ""
             folderColor = .blue
@@ -72,26 +69,13 @@ extension AddTravelDestinationFolderViewModel {
     private func editFolder() {
         if folder != nil {
             folder?.title = folderTitle
-            folder?.color = getColorRGBA()
-           
+            if let hexCode = folderColor.toHex() {
+                folder?.colorCode = hexCode
+            }
+
             dbManager.addItem(folder!)
         }
     }
-    
-    private func getColorRGBA() -> CustomColor {
-        
-        let uiColor = UIColor(folderColor)
-        
-        var red: CGFloat = 0
-        var green: CGFloat = 0
-        var blue: CGFloat = 0
-        var alpha: CGFloat = 0
-        
-        uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        
-        return CustomColor(red: red, green: green, blue: blue, alpha: alpha)
-    }
-    
 }
 
 

@@ -24,9 +24,9 @@ final class DBManager {
             EventDB.self,
             DDayDB.self,
             TodoFolderDB.self,
-            TodoDB.self,
-            TravelPlanDB.self,
-            TravelDestinationFolderDB.self
+            TodoDB.self
+//            TravelPlanDB.self,
+//            TravelDestinationFolderDB.self
         ])
         
         let modelConfiguration = ModelConfiguration(schema: schema,

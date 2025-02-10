@@ -81,7 +81,7 @@ struct CalendarEventCategoryListView: View {
                 
                 Spacer()
                 
-                Text("\(category.planList.count)")
+                Text("\(category.planList?.count ?? 0000)")
             }
             .contextMenu {
                 Button(role: .destructive, action: {

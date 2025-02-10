@@ -72,24 +72,6 @@ extension AddTodoFolderViewModel {
         }
     }
     
-    private func getColorRGBA() -> CustomColor {
-        
-#if os(macOS)
-        let uiColor = NSColor(todoFolderColor)
-#else
-        let uiColor = UIColor(todoFolderColor)
-#endif
-        
-        var red: CGFloat = 0
-        var green: CGFloat = 0
-        var blue: CGFloat = 0
-        var alpha: CGFloat = 0
-        
-        uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        
-        return CustomColor(red: red, green: green, blue: blue, alpha: alpha)
-    }
-    
 }
 
 

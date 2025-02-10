@@ -17,7 +17,12 @@ final class NoteListCellViewModel: ViewModelProtocol {
     @Published var note: Note
     
     var subTitle: String {
-        let contents = note.contents.sorted {
+        
+        guard let noteContent = note.contents else {
+            return ""
+        }
+        
+        let contents = noteContent.sorted {
             $0.index < $1.index
         }
         
@@ -30,11 +35,14 @@ final class NoteListCellViewModel: ViewModelProtocol {
     }
     
     var thumnailImage: PlatformImage? {
-        for content in note.contents {
-            if !content.imagePaths.isEmpty {
-                if let path = content.imagePaths.first?.id {
-                    return LocaleFileManager.shared.loadImage(from: path)
-                }
+        
+        guard let noteContent = note.contents else {
+            return nil
+        }
+        
+        for content in noteContent {
+            if let imagePath = content.imagePaths?.first?.id {
+                return LocaleFileManager.shared.loadImage(from: imagePath)
             }
         }
         

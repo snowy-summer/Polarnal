@@ -123,7 +123,7 @@ struct MainCalendarContentView: View {
                         ForEach(viewModel.eventList, id: \.id) { event in
                             ZStack {
                                 RoundedRectangle(cornerRadius: 4)
-                                    .fill(Color(hex: event.category.colorCode))
+                                    .fill(Color(hex: event.category?.colorCode ?? "#FFFFFF"))
                                     .frame(height: 20)
 
                                 Text(event.content)

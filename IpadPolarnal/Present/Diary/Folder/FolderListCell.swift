@@ -42,7 +42,7 @@ struct FolderListCell: View {
             
             Spacer()
             
-            Text("\(folder.noteList.count)")
+            Text("\(folder.noteList?.count ?? 0000)")
         }
     }
 }

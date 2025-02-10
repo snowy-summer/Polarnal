@@ -26,7 +26,7 @@ final class TodoFolderCellViewModel: ViewModelProtocol {
     init(folder: TodoFolderDB) {
         self.todofolder = folder
         self.todoList = dbManager.fetchItems(ofType: TodoDB.self).filter { todo in
-            todo.folder.id == folder.id
+            todo.folder == folder
         }
     }
     
@@ -35,7 +35,7 @@ final class TodoFolderCellViewModel: ViewModelProtocol {
         switch intent {
         case .viewSetting:
             todoList = dbManager.fetchItems(ofType: TodoDB.self).filter { todo in
-                todo.folder.id == todofolder.id
+                todo.folder == todofolder
             }
             
         case .insertModelContext(let modelContext):
@@ -44,13 +44,13 @@ final class TodoFolderCellViewModel: ViewModelProtocol {
         case .addTodo:
             dbManager.addItem(TodoDB(content: "", folder: todofolder))
             todoList = dbManager.fetchItems(ofType: TodoDB.self).filter { todo in
-                    todo.folder.id == todofolder.id
-                }
+                todo.folder == todofolder
+            }
             
         case .deleteTodo(let todo):
             dbManager.deleteItem(todo)
             todoList = dbManager.fetchItems(ofType: TodoDB.self).filter { todo in
-                todo.folder.id == todofolder.id
+                todo.folder == todofolder
             }
         }
         

@@ -10,10 +10,10 @@ import SwiftData
 
 @Model
 final class TodoFolderDB {
-    @Attribute(.unique) var id: UUID
-    var title: String
-    @Relationship(deleteRule: .cascade) var todoList: [TodoDB]
-    var colorCode: String
+    var id: UUID = UUID()
+    var title: String = ""
+    @Relationship(deleteRule: .cascade) var todoList: [TodoDB]?
+    var colorCode: String = ""
     
     init(id: UUID = UUID(),
          title: String,
@@ -28,10 +28,10 @@ final class TodoFolderDB {
 
 @Model
 final class TodoDB {
-    @Attribute(.unique) var id: UUID
-    var content: String
-    var isDone: Bool
-    @Relationship(deleteRule: .nullify) var folder: TodoFolderDB
+    var id: UUID = UUID()
+    var content: String = ""
+    var isDone: Bool = false
+    @Relationship(deleteRule: .nullify, inverse: \TodoFolderDB.todoList) var folder: TodoFolderDB?
     
     init(id: UUID = UUID(),
          content: String,

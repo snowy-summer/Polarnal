@@ -92,10 +92,10 @@ struct NoteContentCell: View {
                                   index: index)
                     
                 case .image:
-                    let images = content.imagePaths.compactMap {
+                    let images = (content.imagePaths ?? []).compactMap {
                         LocaleFileManager.shared.loadImage(from: $0.id)
                     }
-                    
+
                     if !images.isEmpty {
 #if os(macOS)
                         Image(nsImage: images[0])

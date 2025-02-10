@@ -10,24 +10,24 @@ import SwiftData
 
 @Model
 final class Note: Identifiable, Hashable {
-    @Attribute(.unique)var id = UUID()
-    var createAt: Date
-    var title: String
-    var tag: [Tag]
-    @Relationship(deleteRule: .cascade) var contents: [NoteContentDataDB]
-    var folderID: UUID
+    var id = UUID()
+    var createAt: Date = Date()
+    var title: String = ""
+    var tag: [String] = []
+    @Relationship(deleteRule: .cascade) var contents: [NoteContentDataDB]?
+    @Relationship(deleteRule: .nullify, inverse: \Folder.noteList) var folder: Folder?
     
     init(createAt: Date = Date(),
          title: String = "",
-         tag: [Tag] = [],
+         tag: [String] = [],
          contents: [NoteContentDataDB] = [],
-         folderID: UUID) {
+         folder: Folder) {
         
         self.createAt = createAt
         self.title = title
         self.tag = tag
         self.contents = contents
-        self.folderID = folderID
+        self.folder = folder
     }
 }
 
@@ -38,31 +38,32 @@ enum NoteContentType: String {
 
 @Model
 final class NoteContentDataDB: Identifiable, Hashable {
-    @Attribute(.unique) var id: UUID
-    @Relationship(deleteRule: .cascade) var imagePaths: [ImagePath]
-    var textValue: String
-    var type: String
-    var index: Int
-    var noteID: UUID
+    var id: UUID = UUID()
+    @Relationship(deleteRule: .cascade) var imagePaths: [ImagePath]?
+    var textValue: String = ""
+    var type: String = ""
+    var index: Int = 0
+    @Relationship(deleteRule: .nullify, inverse: \Note.contents) var note: Note?
 
     init(id: UUID = UUID(),
          type: NoteContentType,
          imagePaths: [ImagePath] = [],
          textValue: String = "",
          index: Int,
-         noteID: UUID) {
+         note: Note) {
         self.id = id
         self.type = type.rawValue
         self.imagePaths = imagePaths
         self.textValue = textValue
         self.index = index
-        self.noteID = noteID
+        self.note = note
     }
 }
 
 @Model
 final class ImagePath: Identifiable, Hashable {
-    @Attribute(.unique) var id: String
+    var id: String = ""
+    @Relationship(deleteRule: .nullify, inverse: \NoteContentDataDB.imagePaths) var noteContentData: NoteContentDataDB?
     
     init(id: String) {
         self.id = id
@@ -71,7 +72,7 @@ final class ImagePath: Identifiable, Hashable {
 
 @Model
 final class Tag: Hashable {
-    var content: String
+    var content: String = ""
     
     init(content: String) {
         self.content = content

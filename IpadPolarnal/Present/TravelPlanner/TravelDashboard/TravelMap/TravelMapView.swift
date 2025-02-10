@@ -133,7 +133,7 @@ struct TravelMapView: View {
             HStack {
                 RoundedRectangle(cornerRadius: 8)
                     .frame(width: 32, height: 32)
-                    .foregroundStyle(folder.color.convertToColor())
+                    .foregroundStyle(Color(hex: folder.colorCode))
                 
                 Text(folder.title)
                     .bold()

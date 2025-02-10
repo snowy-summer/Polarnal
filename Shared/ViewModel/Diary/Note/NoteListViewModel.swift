@@ -62,7 +62,10 @@ final class NoteListViewModel: ViewModelProtocol {
                     self?.selectedIndex = index
                     self?.selectedNote = note
                     self?.contentTitle = note.title
-                    self?.noteContents = note.contents.sorted { $0.index < $1.index }
+                    if let content = note.contents {
+                        self?.noteContents = content.sorted { $0.index < $1.index }
+                    }
+                    
                 }
             }
             
@@ -71,9 +74,11 @@ final class NoteListViewModel: ViewModelProtocol {
                 LogManager.log("선택된 폴더가 없습니다")
                 return
             }
-            let note = Note(folderID: selectedFolder.id)
-            selectedFolder.noteList.append(note)
-            noteList = selectedFolder.noteList
+            
+            let note = Note(folder: selectedFolder)
+            
+            selectedFolder.noteList?.append(note)
+            noteList = selectedFolder.noteList ?? []
             dbManager.addItem(selectedFolder)
             self.selectedFolder = selectedFolder
             
@@ -90,7 +95,7 @@ final class NoteListViewModel: ViewModelProtocol {
         case .selectFolder(let folder):
             clearAll()
             selectedFolder = folder
-            noteList = folder.noteList
+            noteList = folder.noteList ?? []
             LogManager.log("NoteListViewModel에서 폴더 선택함: \(folder.title)")
             
         case .insertModelContext(let model):
@@ -104,9 +109,9 @@ final class NoteListViewModel: ViewModelProtocol {
             if let selectedNote, let selectedIndex {
                 let noteContent = NoteContentDataDB(type: .text,
                                                     index: noteContents.count,
-                                                    noteID: selectedNote.id)
+                                                    note: selectedNote)
                 noteContents.append(noteContent)
-                noteList[selectedIndex].contents.append(noteContent)
+                noteList[selectedIndex].contents?.append(noteContent)
                 dbManager.addItem(noteList[selectedIndex])
             }
             
@@ -134,7 +139,7 @@ final class NoteListViewModel: ViewModelProtocol {
             let noteContent = NoteContentDataDB(type: .image,
                                                 imagePaths: imagePaths,
                                                 index: noteContents.count,
-                                                noteID: selectedNote.id)
+                                                note: selectedNote)
             noteContents.append(noteContent)
             contentApply(.saveContent)
             

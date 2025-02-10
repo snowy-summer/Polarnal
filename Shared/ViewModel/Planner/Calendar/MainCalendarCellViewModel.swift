@@ -68,7 +68,10 @@ extension MainCalendarCellViewModel {
         eventList = allEventList.filter {
             dateManager.getDateString(date: dateValue.date) == dateManager.getDateString(date: $0.date)
         }.sorted {
-            $0.category.title < $1.category.title
+            guard let categoryA = $0.category, let categoryB = $1.category else {
+                return $0.category != nil
+            }
+            return categoryA.title < categoryB.title
         }
         
     }

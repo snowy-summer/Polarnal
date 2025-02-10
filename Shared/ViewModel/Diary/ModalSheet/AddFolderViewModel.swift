@@ -13,7 +13,7 @@ final class AddFolderViewModel: ViewModelProtocol {
     
     @Published var folderTitle: String
     @Published var newTagName: String
-    @Published var folderTag: [Tag]
+    @Published var folderTag: [String]
     @Published var folderColor: Color
     @Published var folderIcon: DesignOfFolderIcon
     private var folder: Folder?
@@ -62,7 +62,7 @@ final class AddFolderViewModel: ViewModelProtocol {
             folderIcon = icon
             
         case .addTag:
-            folderTag.append(Tag(content: newTagName))
+            folderTag.append(newTagName)
             newTagName = ""
             
         case .deleteTag(let index):
@@ -99,29 +99,6 @@ extension AddFolderViewModel {
             dbManager.addItem(folder!)
         }
     }
-    
-    private func getColorRGBA() -> CustomColor {
-        var red: CGFloat = 0
-        var green: CGFloat = 0
-        var blue: CGFloat = 0
-        var alpha: CGFloat = 0
-
-        #if os(macOS)
-        if let cgColor = folderColor.cgColor,
-           let color = NSColor(cgColor: cgColor)?.usingColorSpace(.sRGB) {  // sRGB로 변환 -> 따로 변환을 하지 않으면 오류 발생
-            color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-            return CustomColor(red: red, green: green, blue: blue, alpha: alpha)
-        } else {
-            LogManager.log("잘못된 색상 추출값입니다")
-            return CustomColor(red: 0, green: 0, blue: 0, alpha: 0)
-        }
-        #else
-        let color = UIColor(folderColor)
-        color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        return CustomColor(red: red, green: green, blue: blue, alpha: alpha)
-        #endif
-    }
-    
 }
 
 

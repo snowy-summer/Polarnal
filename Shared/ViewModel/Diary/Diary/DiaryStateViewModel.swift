@@ -57,7 +57,7 @@ extension DiaryStateViewModel {
     private func addNote(note: Note) {
         guard let folder = selectedFolder else { return }
         
-        folder.noteList.append(note)
+        folder.noteList?.append(note)
         dbManager.addItem(folder)
     }
     
@@ -73,7 +73,10 @@ extension DiaryStateViewModel {
         guard let selectedFolder else { return }
         
         for index in offsets {
-            dbManager.deleteItem(selectedFolder.noteList[index])
+            if let note = selectedFolder.noteList?[index] {
+                dbManager.deleteItem(note)
+            }
+            
         }
     }
     

@@ -10,11 +10,11 @@ import SwiftData
 
 @Model
 final class DDayDB {
-    @Attribute(.unique) var id = UUID()
-    var title: String
-    var startDate: Date
-    var goalDate: Date
-    var type: String
+    var id = UUID()
+    var title: String = ""
+    var startDate: Date = Date()
+    var goalDate: Date = Date()
+    var type: String = "none"
     
     init(title: String,
          startDate: Date,

@@ -90,11 +90,14 @@ extension AddEventView {
             List {
                 ForEach(eventCategoryList, id: \.id) { category in
                     EventCategoryListCell(category: category)
+                        .contentShape(Rectangle())
                         .onTapGesture {
                             viewModel.apply(.selectCategory(category))
                         }
                 }
             }
+            .scrollContentBackground(.hidden)
+            .listStyle(.plain)
             .frame(height: 200)
         }
         .background(Color.customGray6)

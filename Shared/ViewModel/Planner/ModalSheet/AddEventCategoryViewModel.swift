@@ -77,24 +77,6 @@ extension AddEventCategoryViewModel {
         }
     }
     
-    private func getColorRGBA() -> CustomColor {
-        
-        #if os(macOS)
-        let uiColor = NSColor(categoryColor)
-        #else
-        let uiColor = UIColor(categoryColor)
-        #endif
-        
-        var red: CGFloat = 0
-        var green: CGFloat = 0
-        var blue: CGFloat = 0
-        var alpha: CGFloat = 0
-        
-        uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        
-        return CustomColor(red: red, green: green, blue: blue, alpha: alpha)
-    }
-    
 }
 
 

@@ -70,7 +70,7 @@ extension AddEventViewModel {
                                 endDate: isPeriod ? goalDate : Date(),
                                 category: selectedCategory)
             dbManager.addItem(event)
-            selectedCategory.planList.append(event)
+            selectedCategory.planList?.append(event)
             dbManager.addItem(selectedCategory)
         }
     }
@@ -83,7 +83,7 @@ extension AddEventViewModel {
            let eventData {
             eventData.category = selectedCategory
             dbManager.addItem(eventData)
-            selectedCategory.planList.append(eventData)
+            selectedCategory.planList?.append(eventData)
             dbManager.addItem(selectedCategory)
         } else {
             LogManager.log("Event 수정 실패")

@@ -81,7 +81,7 @@ struct TagCollectionView: UIViewRepresentable {
             }
             
             let tag = viewModel.folderTag[indexPath.row]
-            cell.updateContent(title: tag.content)
+            cell.updateContent(title: tag)
             
             return cell
         }

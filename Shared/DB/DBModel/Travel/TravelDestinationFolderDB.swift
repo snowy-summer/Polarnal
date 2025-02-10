@@ -16,8 +16,8 @@ final class TravelDestinationFolderDB: Identifiable {
     var type: String
     var date: Date?
     var destinationList: [TravelDestinationDB]
-    let travelPlanID: UUID
-    @Relationship(deleteRule: .cascade) var color: CustomColor
+    var travelPlanID: UUID
+    var colorCode: String
     
     init(id: UUID = UUID(),
          title: String,
@@ -25,14 +25,14 @@ final class TravelDestinationFolderDB: Identifiable {
          date: Date? = nil,
          destinationList: [TravelDestinationDB] = [],
          travelPlanID: UUID,
-         color: CustomColor = CustomColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0)) {
+         colorCode: String = "#FFFFFF") {
         self.id = id
         self.title = title
         self.type = type
         self.date = date
         self.destinationList = destinationList
         self.travelPlanID = travelPlanID
-        self.color = color
+        self.colorCode = colorCode
     }
 }
 
