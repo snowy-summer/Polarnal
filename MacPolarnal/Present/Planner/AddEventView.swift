@@ -19,19 +19,24 @@ struct AddEventView: View {
     }
     
     var body: some View {
-        ScrollView {
-            VStack {
-                TextField("내용", text: $viewModel.eventContent)
-                    .font(.title)
-                    .frame(height: 44)
-                    .padding()
-                    .background(Color.customGray6)
-                    .cornerRadius(12)
-                    .padding(.horizontal, 40)
+        VStack {
+            ScrollView {
+                VStack {
+                    
+                    TextField("일정 내용", text: $viewModel.eventContent)
+                        .font(.title)
+                        .textFieldStyle(.squareBorder)
+                        .frame(height: 44)
+                        .padding()
+                    
+                    categorySection()
+                    periodToggleSection()
+                }
                 
-                categorySection()
-                periodToggleSection()
+                
             }
+            
+            Divider()
             
             HStack {
                 Button("Cancel") {
@@ -40,13 +45,14 @@ struct AddEventView: View {
                 
                 Spacer()
                 
-                Button("Add Folder") {
+                Button("Save") {
                     viewModel.apply(.saveEvent)
                     dismiss()
                 }
                 .disabled(viewModel.eventContent.isEmpty)
                 
             }
+            .padding()
         }
         .onAppear {
             viewModel.apply(.insertModelContext(modelContext))
@@ -61,14 +67,14 @@ extension AddEventView {
     private func categorySection() -> some View {
         VStack {
             HStack {
-                RoundedRectangle(cornerRadius: 12)
+                RoundedRectangle(cornerRadius: 8)
                     .fill(Color(hex: viewModel.selectedCategory?.colorCode ?? "#FFFFFF"))
-                    .frame(width: 40,
-                           height: 40)
-            
+                    .frame(width: 32,
+                           height: 32)
+                
                 Text(AddEventCellType.category.text)
-                .font(.title2)
-                .bold()
+                    .font(.title2)
+                    .bold()
                 
                 Text("\(viewModel.selectedCategory?.title ?? "")")
                     .font(.title3)
@@ -88,37 +94,46 @@ extension AddEventView {
                         .onTapGesture {
                             viewModel.apply(.selectCategory(category))
                         }
+                        .padding(.horizontal)
                 }
             }
+            .scrollContentBackground(.hidden)
+            .listStyle(.plain)
             .frame(height: 200)
         }
         .background(Color.customGray6)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
-        .padding(.horizontal, 40)
-        .padding(.top, 40)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .padding(.horizontal)
     }
     
     @ViewBuilder
     private func periodToggleSection() -> some View {
         VStack {
-            Toggle(isOn: $viewModel.isPeriod) {
-                HStack {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 12)
-                            .fill(Color.customGray5)
-                            .frame(width: 50, height: 50)
-                        
-                        Image(systemName: AddEventCellType.period.icon)
-                            .resizable()
-                            .frame(width: 28, height: 28)
-                    }
+            
+            HStack {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color.customGray5)
+                        .frame(width: 32, height: 32)
                     
-                    Text(AddEventCellType.period.text)
-                        .font(.title2)
-                        .bold()
+                    Image(systemName: AddEventCellType.period.icon)
+                        .resizable()
+                        .frame(width: 16, height: 16)
                 }
+                .padding(.leading)
+                
+                Text(AddEventCellType.period.text)
+                    .font(.title2)
+                    .bold()
+                
+                Spacer()
+                
+                Toggle(isOn: $viewModel.isPeriod) {
+                    
+                }
+                .padding(.horizontal)
             }
-            .padding()
+            .padding(.top)
             
             Divider()
                 .padding(.horizontal)
@@ -130,9 +145,8 @@ extension AddEventView {
             }
         }
         .background(Color.customGray6)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
-        .padding(.horizontal, 40)
-        .padding(.top, 40)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .padding(.horizontal)
         
     }
     

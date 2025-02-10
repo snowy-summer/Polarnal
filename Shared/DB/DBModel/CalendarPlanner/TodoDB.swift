@@ -13,16 +13,16 @@ final class TodoFolderDB {
     @Attribute(.unique) var id: UUID
     var title: String
     @Relationship(deleteRule: .cascade) var todoList: [TodoDB]
-    @Relationship(deleteRule: .cascade) var color: CustomColor
+    var colorCode: String
     
     init(id: UUID = UUID(),
          title: String,
          todoList: [TodoDB] = [],
-         color: CustomColor = CustomColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0)) {
+         colorCode: String = "#FFFFFF") {
         self.id = id
         self.title = title
         self.todoList = todoList
-        self.color = color
+        self.colorCode = colorCode
     }
 }
 

@@ -33,6 +33,7 @@ struct ExpandedFolderView: View {
                         .frame(width: 44, height: 44)
                         .foregroundColor(.gray)
                 }
+                .buttonStyle(.plain)
                 .padding()
                 Spacer()
                 Text(viewModel.todofolder.title)
@@ -48,6 +49,7 @@ struct ExpandedFolderView: View {
                         .bold()
                         .foregroundColor(.gray)
                 }
+                .buttonStyle(.plain)
                 .padding()
                 
             }
@@ -70,6 +72,7 @@ struct ExpandedFolderView: View {
                         }
                     
                 }
+                .scrollContentBackground(.hidden)
                 .listStyle(.plain)
             }
             .onAppear {
