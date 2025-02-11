@@ -10,7 +10,7 @@ import Foundation
 enum ContryCode: String, CaseIterable {
     case korea = "ko"
     case america = "en"
-//    case japan = "ja"
+    case japan = "ja"
     
     var title: String {
         switch self {
@@ -18,8 +18,8 @@ enum ContryCode: String, CaseIterable {
             return "한국어"
         case .america:
             return "English"
-//        case .japan:
-//            return "日本語"
+        case .japan:
+            return "日本語"
         }
     }
 }

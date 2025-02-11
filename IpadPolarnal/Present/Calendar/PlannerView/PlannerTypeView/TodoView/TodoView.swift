@@ -44,7 +44,7 @@ struct TodoView: View {
                                 Button(role: .destructive, action: {
                                     viewModel.apply(.deleteTodoFolder(todoFolder))
                                 }) {
-                                    Label("Todo 폴더 삭제", systemImage: "trash")
+                                    Label("Delete", systemImage: "trash")
                                 }
                             }
                             .onTapGesture {

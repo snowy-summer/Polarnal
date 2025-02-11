@@ -44,7 +44,7 @@ extension Color {
         let r = Int(red * 255)
         let g = Int(green * 255)
         let b = Int(blue * 255)
-        let a = Int(alpha * 255)
+//        let a = Int(alpha * 255)
         
         // RGBA 형식으로 반환 (필요시 #RRGGBB로 수정 가능)
         return String(format: "#%02X%02X%02X", r, g, b)

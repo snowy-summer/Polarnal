@@ -66,6 +66,12 @@
     },
     "Add Folder" : {
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "追加"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -76,6 +82,12 @@
     },
     "Apr" : {
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4月"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -87,6 +99,12 @@
     "Aug" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8月"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -96,7 +114,20 @@
       }
     },
     "Back" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "戻る"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이전"
+          }
+        }
+      }
     },
     "Cancel" : {
       "localizations" : {
@@ -109,7 +140,14 @@
       }
     },
     "Category Name" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "카테고리 이름"
+          }
+        }
+      }
     },
     "D +" : {
 
@@ -140,10 +178,26 @@
     "Dec" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "12月"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "12월"
+          }
+        }
+      }
+    },
+    "Delete" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "削除"
           }
         }
       }
@@ -154,6 +208,12 @@
     "Feb" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2月"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -175,6 +235,12 @@
     "Jan" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1月"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -186,6 +252,12 @@
     "Jul" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7月"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -197,6 +269,12 @@
     "Jun" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6月"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -225,6 +303,12 @@
     "Mar" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3月"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -236,6 +320,12 @@
     "May" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5月"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -245,10 +335,24 @@
       }
     },
     "Name" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이름"
+          }
+        }
+      }
     },
     "New Category" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "새로운 카테고리"
+          }
+        }
+      }
     },
     "New D-Day" : {
 
@@ -271,7 +375,14 @@
       }
     },
     "New Todo" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Todo"
+          }
+        }
+      }
     },
     "No" : {
       "extractionState" : "manual",
@@ -287,6 +398,12 @@
     "Nov" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "11月"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -298,6 +415,12 @@
     "Oct" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10月"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -307,11 +430,30 @@
       }
     },
     "Save" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "저장"
+          }
+        }
+      }
     },
     "Sep" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "9月"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
@@ -331,16 +473,37 @@
       }
     },
     "Todo Name" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todo 이름"
+          }
+        }
+      }
     },
     "Todo 폴더 삭제" : {
-
+      "extractionState" : "stale"
     },
     "Todo 폴더 생성" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todo 폴더 생성"
+          }
+        }
+      }
     },
     "Todo 폴더 이름" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todo 폴더 이름"
+          }
+        }
+      }
     },
     "Usage" : {
 
