@@ -5,6 +5,7 @@
 //  Created by 최승범 on 2/3/25.
 //
 
+#if os(macOS)
 import SwiftUI
 import Combine
 
@@ -89,5 +90,5 @@ struct DiaryView: View {
     }
     
 }
-
+#endif
 

@@ -4,7 +4,7 @@
 //
 //  Created by 최승범 on 12/12/24.
 //
-
+#if os(iOS)
 import SwiftUI
 
 struct AddTodoFolderView: View {
@@ -67,3 +67,4 @@ struct AddTodoFolderView: View {
 #Preview {
     AddTodoFolderView(viewModel: AddTodoFolderViewModel(todoFolder: nil))
 }
+#endif

@@ -4,7 +4,7 @@
 //
 //  Created by 최승범 on 12/23/24.
 //
-
+#if os(iOS)
 import Foundation
 import SwiftData
 import Combine
@@ -71,3 +71,4 @@ enum TravelTicketSheetType{
     case add
     case edit
 }
+#endif

@@ -4,7 +4,7 @@
 //
 //  Created by 최승범 on 12/19/24.
 //
-
+#if os(iOS)
 import Foundation
 import Combine
 import SwiftData
@@ -101,3 +101,4 @@ struct CategorySum: Equatable {
     var category: TravelCostType
     var totalCost: Double
 }
+#endif

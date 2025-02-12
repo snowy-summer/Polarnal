@@ -4,7 +4,7 @@
 //
 //  Created by 최승범 on 12/8/24.
 //
-
+#if os(iOS)
 import SwiftUI
 import SwiftData
 
@@ -166,3 +166,4 @@ struct PlannerView: View {
 #Preview {
     PlannerView(sideTabBarViewModel: SideTabBarViewModel())
 }
+#endif

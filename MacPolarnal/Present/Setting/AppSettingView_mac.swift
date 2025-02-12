@@ -5,6 +5,7 @@
 //  Created by 최승범 on 2/6/25.
 //
 
+#if os(macOS)
 import SwiftUI
 
 struct AppSettingView: View {
@@ -49,3 +50,5 @@ struct AppSettingView: View {
         
     }
 }
+
+#endif

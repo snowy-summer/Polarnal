@@ -4,7 +4,7 @@
 //
 //  Created by 최승범 on 12/17/24.
 //
-
+#if os(iOS)
 import Foundation
 import Combine
 import SwiftData
@@ -53,3 +53,4 @@ final class TravelTodoCellViewModel: ViewModelProtocol {
             .store(in: &cancellables)
     }
 }
+#endif

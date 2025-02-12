@@ -4,7 +4,7 @@
 //
 //  Created by 최승범 on 12/17/24.
 //
-
+#if os(iOS)
 import SwiftUI
 import SwiftData
 import Charts
@@ -164,7 +164,7 @@ struct TravelCostListView: View {
 #Preview {
     TravelCostView(viewModel: TravelCostViewModel())
 }
-
+#endif
 // 날짜
 // 사진
 // 내용

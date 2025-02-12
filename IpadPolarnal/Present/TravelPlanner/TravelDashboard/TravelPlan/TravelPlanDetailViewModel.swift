@@ -4,7 +4,7 @@
 //
 //  Created by 최승범 on 12/26/24.
 //
-
+#if os(iOS)
 import Foundation
 import Combine
 import SwiftData
@@ -179,3 +179,4 @@ enum AddTravelPlanDetailSheetType {
     case add
     case edit
 }
+#endif

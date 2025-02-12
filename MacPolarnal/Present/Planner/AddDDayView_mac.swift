@@ -5,6 +5,7 @@
 //  Created by 최승범 on 2/6/25.
 //
 
+#if os(macOS)
 import SwiftUI
 import SwiftData
 
@@ -200,3 +201,5 @@ struct AddDDayView: View {
         
     }
 }
+
+#endif

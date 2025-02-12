@@ -4,7 +4,7 @@
 //
 //  Created by 최승범 on 12/23/24.
 //
-
+#if os(iOS)
 import SwiftUI
 import SwiftData
 
@@ -184,3 +184,4 @@ enum AddTravelTicketSectionType {
 #Preview {
     AddTravelTicketView(document: nil)
 }
+#endif

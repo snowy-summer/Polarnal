@@ -4,7 +4,7 @@
 //
 //  Created by 최승범 on 12/13/24.
 //
-
+#if os(iOS)
 import SwiftUI
 import SwiftData
 
@@ -166,3 +166,4 @@ extension AddEventView {
 #Preview {
     AddEventView(viewModel: AddEventViewModel(eventData: nil))
 }
+#endif

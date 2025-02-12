@@ -4,7 +4,7 @@
 //
 //  Created by 최승범 on 1/6/25.
 //
-
+#if os(iOS)
 import Foundation
 import Combine
 import SwiftData
@@ -116,3 +116,4 @@ enum TravelMapSheetType: CaseIterable {
     case addFolder
     case editFolder
 }
+#endif

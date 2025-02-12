@@ -4,7 +4,7 @@
 //
 //  Created by 최승범 on 12/24/24.
 //
-
+#if os(iOS)
 import SwiftUI
 import MapKit
 import SwiftData
@@ -186,3 +186,4 @@ struct TravelMapView: View {
     
 }
 
+#endif

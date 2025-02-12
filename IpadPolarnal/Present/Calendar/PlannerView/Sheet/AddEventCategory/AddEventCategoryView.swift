@@ -4,7 +4,7 @@
 //
 //  Created by 최승범 on 12/11/24.
 //
-
+#if os(iOS)
 import SwiftUI
 
 struct AddEventCategoryView: View {
@@ -63,3 +63,4 @@ struct AddEventCategoryView: View {
 #Preview {
     AddEventCategoryView(viewModel: AddEventCategoryViewModel(eventCategory: nil))
 }
+#endif

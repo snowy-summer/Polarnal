@@ -325,8 +325,27 @@
 		6BE6A6A12D13ABDC00931E7B /* CurrencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		6B7099D92D5C57C300AB94F1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				MacPolarnalApp_mac.swift,
+				Present/Diary/AddFolderView_mac.swift,
+				Present/Diary/DiaryView_mac.swift,
+				Present/Planner/AddDDayView_mac.swift,
+				Present/Planner/AddEventCategoryView_mac.swift,
+				Present/Planner/AddEventView_mac.swift,
+				Present/Planner/AddTodoFolderView_mac.swift,
+				Present/Planner/PlannerView_mac.swift,
+				Present/Setting/AppSettingView_mac.swift,
+				Present/SideTabBarView_mac.swift,
+			);
+			target = 6B790F9A2CFEA3080000AC03 /* Polarnal */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		6B91291B2D50A758005C85D2 /* MacPolarnal */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MacPolarnal; sourceTree = "<group>"; };
+		6B91291B2D50A758005C85D2 /* MacPolarnal */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (6B7099D92D5C57C300AB94F1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = MacPolarnal; sourceTree = "<group>"; };
 		6B91292F2D50A75A005C85D2 /* MacPolarnalTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MacPolarnalTests; sourceTree = "<group>"; };
 		6B9129392D50A75A005C85D2 /* MacPolarnalUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MacPolarnalUITests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */

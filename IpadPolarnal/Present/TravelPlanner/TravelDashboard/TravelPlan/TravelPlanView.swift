@@ -4,7 +4,7 @@
 //
 //  Created by 최승범 on 12/26/24.
 //
-
+#if os(iOS)
 import SwiftUI
 import SwiftData
 
@@ -285,3 +285,4 @@ struct planDetialEditView: View {
 #Preview {
     TravelPlanView(viewModel: TravelPlanDetailViewModel())
 }
+#endif

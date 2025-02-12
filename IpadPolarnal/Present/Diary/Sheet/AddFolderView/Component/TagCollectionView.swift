@@ -5,6 +5,7 @@
 //  Created by 최승범 on 12/4/24.
 //
 
+#if os(iOS)
 import SwiftUI
 
 struct TagCollectionView: UIViewRepresentable {
@@ -134,3 +135,4 @@ final class TagCell: UICollectionViewCell {
         tagTitle.text = title
     }
 }
+#endif

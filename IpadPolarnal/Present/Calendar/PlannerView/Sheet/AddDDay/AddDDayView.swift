@@ -4,7 +4,7 @@
 //
 //  Created by 최승범 on 12/11/24.
 //
-
+#if os(iOS)
 import SwiftUI
 import SwiftData
 
@@ -201,3 +201,4 @@ struct AddDDayView: View {
 #Preview {
     AddDDayView(viewModel: AddDDayViewModel(dday: nil))
 }
+#endif

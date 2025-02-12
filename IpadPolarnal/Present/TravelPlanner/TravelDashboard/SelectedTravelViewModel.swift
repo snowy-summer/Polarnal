@@ -4,7 +4,7 @@
 //
 //  Created by 최승범 on 12/20/24.
 //
-
+#if os(iOS)
 import Foundation
 import Combine
 
@@ -24,3 +24,4 @@ final class SelectedTravelViewModel: ViewModelProtocol {
         }
     }
 }
+#endif

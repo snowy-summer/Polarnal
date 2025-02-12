@@ -7,6 +7,10 @@
 
 import CloudKit
 
+#if os(macOS)
+import AppKit
+#endif
+
 final class ImageStorageManager {
     static let shared = ImageStorageManager()
     private init() {}

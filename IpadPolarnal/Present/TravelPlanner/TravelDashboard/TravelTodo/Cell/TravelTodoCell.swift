@@ -4,7 +4,7 @@
 //
 //  Created by 최승범 on 12/17/24.
 //
-
+#if os(iOS)
 import Foundation
 import SwiftUI
 import SwiftData
@@ -45,3 +45,4 @@ struct TravelTodoCell: View {
     }
 }
 
+#endif

@@ -5,6 +5,7 @@
 //  Created by 최승범 on 12/4/24.
 //
 
+#if os(iOS)
 import SwiftUI
 
 struct TagPartView: View {
@@ -77,3 +78,4 @@ struct TagPartView: View {
 #Preview {
     TagPartView(viewModel: AddFolderViewModel(folder: nil))
 }
+#endif

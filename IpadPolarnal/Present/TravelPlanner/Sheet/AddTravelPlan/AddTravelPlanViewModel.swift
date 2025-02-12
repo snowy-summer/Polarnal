@@ -4,7 +4,7 @@
 //
 //  Created by 최승범 on 12/16/24.
 //
-
+#if os(iOS)
 import SwiftUI
 import Combine
 import SwiftData
@@ -73,3 +73,4 @@ extension AddTravelPlanViewModel {
     }
     
 }
+#endif

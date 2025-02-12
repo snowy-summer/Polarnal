@@ -4,7 +4,7 @@
 //
 //  Created by 최승범 on 1/4/25.
 //
-
+#if os(iOS)
 import SwiftUI
 import SwiftData
 
@@ -81,4 +81,4 @@ struct TravelDestinationListView: View {
         }
     }
 }
-
+#endif

@@ -156,7 +156,3 @@ struct MiniCalendarContentView: View {
     }
     
 }
-
-#Preview {
-    PlannerView(sideTabBarViewModel: SideTabBarViewModel())
-}

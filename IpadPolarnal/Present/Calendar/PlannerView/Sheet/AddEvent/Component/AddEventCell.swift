@@ -5,6 +5,7 @@
 //  Created by 최승범 on 12/13/24.
 //
 
+#if os(iOS)
 import SwiftUI
 
 struct AddEventCell: View {
@@ -43,4 +44,4 @@ struct AddEventCell: View {
         .padding()
     }
 }
-
+#endif

@@ -4,7 +4,7 @@
 //
 //  Created by 최승범 on 12/23/24.
 //
-
+#if os(iOS)
 import SwiftUI
 
 struct TravelTicketView: View {
@@ -102,3 +102,4 @@ struct TravelTicketCell: View {
 #Preview {
     TravelTicketView(viewModel: TravelTicketViewModel())
 }
+#endif

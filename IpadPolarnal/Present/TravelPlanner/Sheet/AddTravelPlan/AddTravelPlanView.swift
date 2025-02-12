@@ -4,7 +4,7 @@
 //
 //  Created by 최승범 on 12/16/24.
 //
-
+#if os(iOS)
 import SwiftUI
 
 struct AddTravelPlanView: View {
@@ -185,3 +185,4 @@ enum AddTravelSectionType: CaseIterable {
 #Preview {
     AddTravelPlanView(viewModel: AddTravelPlanViewModel(travelPlanData: nil))
 }
+#endif

@@ -143,8 +143,3 @@ struct MainCalendarContentView: View {
         }
     }
 }
-
-#Preview {
-    PlannerView(sideTabBarViewModel: SideTabBarViewModel())
-}
-

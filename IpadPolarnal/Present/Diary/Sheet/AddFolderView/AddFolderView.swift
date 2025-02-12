@@ -5,6 +5,7 @@
 //  Created by 최승범 on 12/4/24.
 //
 
+#if os(iOS)
 import SwiftUI
 
 struct AddFolderView: View {
@@ -58,3 +59,4 @@ struct AddFolderView: View {
     }
     
 }
+#endif

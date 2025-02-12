@@ -5,6 +5,7 @@
 //  Created by 최승범 on 12/8/24.
 //
 
+#if os(iOS)
 import SwiftUI
 
 struct SideTabBarView: View {
@@ -16,12 +17,6 @@ struct SideTabBarView: View {
     
     var body: some View {
         VStack(alignment: .center) {
-#if os(macOS)
-            Rectangle()
-                .frame(height: 16)
-                .opacity(0)
-#endif
-            
             ForEach(TabType.allCases, id: \.self) { type in
                 if type != TabType.setting {
                     TabIconCell(type: type,
@@ -76,3 +71,4 @@ struct SideTabBarView: View {
     }
     
 }
+#endif

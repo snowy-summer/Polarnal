@@ -4,7 +4,7 @@
 //
 //  Created by 최승범 on 12/16/24.
 //
-
+#if os(iOS)
 import SwiftUI
 import SwiftData
 import Charts
@@ -309,3 +309,4 @@ struct TravelDiaryMiniView: View {
         }
     }
 }
+#endif

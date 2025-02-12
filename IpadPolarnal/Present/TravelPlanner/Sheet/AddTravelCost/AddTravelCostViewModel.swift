@@ -4,7 +4,7 @@
 //
 //  Created by 최승범 on 12/18/24.
 //
-
+#if os(iOS)
 import SwiftUI
 import Combine
 import SwiftData
@@ -113,3 +113,4 @@ extension AddTravelCostViewModel {
     }
     
 }
+#endif
