@@ -91,7 +91,7 @@ final class NoteListViewModel: ViewModelProtocol {
                 selectedFolder?.noteList = noteList
                 dbManager.deleteItem(note)
             }
-    
+            
         case .selectFolder(let folder):
             clearAll()
             selectedFolder = folder
@@ -119,29 +119,35 @@ final class NoteListViewModel: ViewModelProtocol {
             noteContentsSheetType = .add
             
         case .addImage:
-            guard let selectedNote else {
-                LogManager.log("선택된 노트가 없습니다")
-                return
+            Task {
+                guard let selectedNote = selectedNote else {
+                    LogManager.log("선택된 노트가 없습니다")
+                    return
+                }
+                
+                if noteContentPhotoData.isEmpty {
+                    LogManager.log("추가할 사진이 없습니다")
+                    return
+                }
+                
+                //현재 1개의 사진 뷰만 제공
+                
+                guard let path = await ImageStorageManager.shared.saveImageWithCloudSync(noteContentPhotoData[0],
+                                                                                         for: selectedNote.id.uuidString, index: noteContents.count) else {
+                    LogManager.log("이미지 path 저장에 실패했습니다")
+                    return
+                }
+                
+                
+                let noteContent = NoteContentDataDB(type: .image,
+                                                    imagePaths: [path],
+                                                    index: noteContents.count,
+                                                    note: selectedNote)
+                DispatchQueue.main.async { [weak self] in
+                    self?.noteContents.append(noteContent)
+                    self?.contentApply(.saveContent)
+                }
             }
-            
-            if noteContentPhotoData.isEmpty {
-                LogManager.log("추가할 사진이 없습니다")
-                return
-            }
-            
-            let paths = noteContentPhotoData.compactMap {
-                LocaleFileManager.shared.saveImage($0,
-                                                   for: selectedNote.id.uuidString,
-                                                   index: noteContents.count)
-            }
-            
-            let imagePaths = paths.map { ImagePath(id: $0) }
-            let noteContent = NoteContentDataDB(type: .image,
-                                                imagePaths: imagePaths,
-                                                index: noteContents.count,
-                                                note: selectedNote)
-            noteContents.append(noteContent)
-            contentApply(.saveContent)
             
             
         case .editText(let index, let text):

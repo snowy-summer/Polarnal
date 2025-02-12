@@ -34,15 +34,24 @@ final class NoteListCellViewModel: ViewModelProtocol {
         return firstTextContents?.textValue ?? ""
     }
     
-    var thumnailImage: PlatformImage? {
+    var thumbnailImage: PlatformImage?  {
         
         guard let noteContent = note.contents else {
             return nil
         }
         
         for content in noteContent {
-            if let imagePath = content.imagePaths?.first?.id {
-                return LocaleFileManager.shared.loadImage(from: imagePath)
+            if let imagePath = content.imagePaths?.first {
+                let localImage = LocaleFileManager.shared.loadImage(from: imagePath.id)
+                
+                if localImage == nil {
+                    Task {
+                        let image = await ImageStorageManager.shared.fetchImageFromCloudKit(recordName: imagePath.cloudPath)
+                        
+                        return image
+                    }
+                }
+                
             }
         }
         
@@ -57,13 +66,14 @@ final class NoteListCellViewModel: ViewModelProtocol {
     init(note: Note) {
         self.note = note
         monthString = dateManager.getDateString(format: "MM",
-                                               date: note.createAt)
+                                                date: note.createAt)
         dayString = dateManager.getDateString(format: "dd",
-                                               date: note.createAt)
+                                              date: note.createAt)
         
     }
     
     func apply(_ intent: Intent) {
         
     }
+  
 }

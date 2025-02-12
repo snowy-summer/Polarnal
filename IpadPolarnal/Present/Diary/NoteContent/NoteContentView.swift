@@ -47,8 +47,8 @@ struct NoteContentView: View {
                         Label("삭제", systemImage: "trash")
                     })
                 }
-                              
-                              
+                
+                
             }
             
 #if os(macOS)
@@ -71,6 +71,7 @@ struct NoteContentView: View {
 struct NoteContentCell: View {
     
     @ObservedObject private var noteContentViewModel: NoteListViewModel
+    @State private var loadedImages: [PlatformImage] = []
     private let content : NoteContentDataDB
     private let index: Int
     
@@ -92,18 +93,18 @@ struct NoteContentCell: View {
                                   index: index)
                     
                 case .image:
-                    let images = (content.imagePaths ?? []).compactMap {
-                        LocaleFileManager.shared.loadImage(from: $0.id)
-                    }
-
-                    if !images.isEmpty {
+//                                        let images = (content.imagePaths ?? []).compactMap {
+//                                            LocaleFileManager.shared.loadImage(from: $0.id)
+//                                        }
+                    
+                    if !loadedImages.isEmpty {
 #if os(macOS)
-                        Image(nsImage: images[0])
+                        Image(nsImage: loadedImages[0])
                             .resizable()
                             .scaledToFit()
                             .frame(maxWidth: .infinity)
 #elseif os(iOS)
-                        Image(uiImage: images[0])
+                        Image(uiImage: loadedImages[0])
                             .resizable()
                             .scaledToFit()
                             .frame(maxWidth: .infinity)
@@ -113,11 +114,35 @@ struct NoteContentCell: View {
                 }
             }
         }
+        .onAppear {
+            loadImages()
+        }
         .background(Color.listBackground)
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
     
+    private func loadImages() {
+        Task {
+            let images = await loadImagesFromPaths(content.imagePaths ?? [])
+            loadedImages = images
+        }
+    }
     
+    private func loadImagesFromPaths(_ paths: [ImagePath]) async -> [PlatformImage] {
+        var images: [PlatformImage] = []
+        
+        for path in paths {
+            if let image = ImageStorageManager.shared.loadImage(from: path.id) {
+                images.append(image)
+            } else {
+                if let image = await ImageStorageManager.shared.fetchImageFromCloudKit(recordName: path.cloudPath) {
+                    images.append(image)
+                }
+            }
+        }
+        
+        return images
+    }
     
     
 }

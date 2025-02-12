@@ -482,9 +482,6 @@
         }
       }
     },
-    "Todo 폴더 삭제" : {
-      "extractionState" : "stale"
-    },
     "Todo 폴더 생성" : {
       "localizations" : {
         "ko" : {

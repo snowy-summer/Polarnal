@@ -64,7 +64,7 @@ struct NoteListCell: View {
             }
             Spacer()
 #if os(macOS)
-            if let image = viewModel.thumnailImage {
+            if let image = viewModel.thumbnailImage {
                 Image(nsImage: image)
                     .resizable()
                     .frame(width: imageWight,
@@ -72,7 +72,7 @@ struct NoteListCell: View {
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             }
 #elseif os(iOS)
-            if let image = viewModel.thumnailImage {
+            if let image = viewModel.thumbnailImage {
                 Image(uiImage: image)
                     .resizable()
                     .frame(width: imageWight,

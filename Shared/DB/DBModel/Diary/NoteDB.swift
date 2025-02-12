@@ -63,10 +63,13 @@ final class NoteContentDataDB: Identifiable, Hashable {
 @Model
 final class ImagePath: Identifiable, Hashable {
     var id: String = ""
+    var cloudPath: String = ""
     @Relationship(deleteRule: .nullify, inverse: \NoteContentDataDB.imagePaths) var noteContentData: NoteContentDataDB?
     
-    init(id: String) {
+    init(id: String,
+         cloudPath: String) {
         self.id = id
+        self.cloudPath = cloudPath
     }
 }
 

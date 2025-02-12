@@ -13,11 +13,13 @@ import AppKit
 typealias PlatformImage = NSImage
 #endif
 
+import CloudKit
+
 final class LocaleFileManager {
     static let shared = LocaleFileManager()
     private init() {}
     
-    private let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 
     /// 이미지 저장
     func saveImage(_ image: PlatformImage,
@@ -35,6 +37,7 @@ final class LocaleFileManager {
         do {
             try data.write(to: fileURL)
             LogManager.log("이미지 저장 성공\n \(fileURL.path)")
+            
             return fileName
         } catch {
             LogManager.log("이미지 저장 실패\n \(error)")
@@ -46,19 +49,11 @@ final class LocaleFileManager {
     func loadImage(from fileName: String) -> PlatformImage? {
         let fileURL = directory.appendingPathComponent(fileName)
 
-        #if os(iOS)
         guard let image = PlatformImage(contentsOfFile: fileURL.path) else {
             LogManager.log("이미지 로드 실패\n \(fileName)")
             return nil
         }
-        #elseif os(macOS)
         
-        guard let image = PlatformImage(contentsOfFile: fileURL.path) else {
-            LogManager.log("이미지 로드 실패\n \(fileName)")
-            return nil
-        }
-        #endif
-
         LogManager.log("이미지 로드 성공\n \(fileName)")
         return image
     }
