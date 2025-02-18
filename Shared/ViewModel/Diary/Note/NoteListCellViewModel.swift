@@ -50,6 +50,8 @@ final class NoteListCellViewModel: ViewModelProtocol {
                         
                         return image
                     }
+                } else {
+                    return localImage
                 }
                 
             }
@@ -58,18 +60,20 @@ final class NoteListCellViewModel: ViewModelProtocol {
         return nil
     }
     
-    let monthString: String
-    let dayString: String
+    var monthString: String {
+        dateManager.getDateString(format: "MM",
+                                                date: note.createAt)
+    }
+    var dayString: String {
+        dateManager.getDateString(format: "dd",
+                                              date: note.createAt)
+    }
+    
     private let dateManager = DateManager.shared
     var cancellables: Set<AnyCancellable> = []
     
     init(note: Note) {
         self.note = note
-        monthString = dateManager.getDateString(format: "MM",
-                                                date: note.createAt)
-        dayString = dateManager.getDateString(format: "dd",
-                                              date: note.createAt)
-        
     }
     
     func apply(_ intent: Intent) {

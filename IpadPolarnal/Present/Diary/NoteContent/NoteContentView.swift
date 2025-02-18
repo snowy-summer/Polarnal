@@ -19,10 +19,17 @@ struct NoteContentView: View {
     
     var body: some View {
         List {
-            TextField("제목", text: $noteContentViewModel.contentTitle)
-                .font(.title)
-                .frame(height: 60)
-                .padding()
+            
+            HStack {
+                TextField("제목", text: $noteContentViewModel.contentTitle)
+                    .font(.title)
+                    .frame(height: 60)
+                
+                DatePicker("", selection: $noteContentViewModel.noteDate,
+                           displayedComponents: .date)
+                .labelsHidden()
+            }
+            .padding()
             
             ForEach(noteContentViewModel.noteContents,
                     id: \.id) { noteContent in
@@ -181,17 +188,25 @@ struct NoteTextField: View {
 }
 
 extension NoteTextField {
-    
     private func updateTextFieldHeight() {
 #if os(iOS)
-        let font = UIFont.systemFont(ofSize: 20)
+        let font = UIFont.systemFont(ofSize: 16)
         let textWidth = UIScreen.main.bounds.width - 64
+        let boundingRect = NSString(string: noteText)
+            .boundingRect(with: CGSize(width: textWidth,
+                                       height: .infinity),
+                          options: .usesLineFragmentOrigin,
+                          attributes: [.font: font],
+                          context: nil)
+        
         let lineHeight = font.lineHeight
+        let lineCount = Int(ceil(boundingRect.height / lineHeight))
+        
+        textFieldHeight = max(40, CGFloat(lineCount) * lineHeight + 26)
 #elseif os(macOS)
         let font = NSFont.systemFont(ofSize: 20)
         let textWidth = NSScreen.main?.frame.width ?? 800 - 64
         let lineHeight = font.ascender - font.descender + font.leading
-#endif
         
         let boundingRect = NSString(string: noteText)
             .boundingRect(with: CGSize(width: textWidth, height: .infinity),
@@ -201,8 +216,8 @@ extension NoteTextField {
         
         let lineCount = Int(ceil(boundingRect.height / lineHeight))
         textFieldHeight = max(44, CGFloat(lineCount) * lineHeight + 26)
+#endif
     }
-    
 }
 
 //MARK: - ToolView

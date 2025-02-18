@@ -33,6 +33,7 @@ final class NoteListViewModel: ViewModelProtocol {
         case editText(of: Int, what: String)
         case saveContent
         case saveTitle(String)
+        case saveDate(Date)
         case deleteContent(NoteContentDataDB)
     }
     
@@ -41,6 +42,7 @@ final class NoteListViewModel: ViewModelProtocol {
     @Published private var selectedNote: Note?
     private var selectedFolder: Folder?
     
+    @Published var noteDate: Date = Date()
     @Published var contentTitle: String = ""
     @Published var noteContents = [NoteContentDataDB]()
     @Published var noteContentsSheetType: NoteContentSheetType?
@@ -59,6 +61,7 @@ final class NoteListViewModel: ViewModelProtocol {
             if let index = noteList.firstIndex(of: note) {
                 LogManager.log("노트 선택: \(note.title)")
                 DispatchQueue.main.async { [weak self] in
+                    
                     self?.selectedIndex = index
                     self?.selectedNote = note
                     self?.contentTitle = note.title
@@ -165,6 +168,11 @@ final class NoteListViewModel: ViewModelProtocol {
             noteList[selectedIndex].title = title
             dbManager.addItem(noteList[selectedIndex])
             
+        case .saveDate(let date):
+            guard let selectedIndex else { return }
+            noteList[selectedIndex].createAt = date
+            dbManager.addItem(noteList[selectedIndex])
+            
         case .deleteContent(let noteContent):
             noteContents.remove(at: noteContent.index)
             contentApply(.saveContent)
@@ -176,14 +184,25 @@ final class NoteListViewModel: ViewModelProtocol {
             .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
             .sink { [weak self] text in
                 guard let self else { return }
-                guard let selectedIndex else {
+                guard selectedIndex != nil else {
                     LogManager.log("선택된 Index가 없습니다")
                     return
                 }
                 
-                noteList[selectedIndex].title = text
                 LogManager.log("노트 제목 저장 시도")
                 contentApply(.saveTitle(text))
+            }
+            .store(in: &cancellables)
+        
+        $noteDate
+            .sink { [weak self] date in
+                guard let self else { return }
+                guard selectedIndex != nil else {
+                    LogManager.log("선택된 Index가 없습니다")
+                    return
+                }
+                LogManager.log("노트 날짜 저장 시도")
+                contentApply(.saveDate(date))
             }
             .store(in: &cancellables)
         

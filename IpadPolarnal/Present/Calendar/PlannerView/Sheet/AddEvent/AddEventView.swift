@@ -94,9 +94,9 @@ extension AddEventView {
                         .onTapGesture {
                             viewModel.apply(.selectCategory(category))
                         }
+                        .listRowBackground(Color.clear)
                 }
             }
-            .scrollContentBackground(.hidden)
             .listStyle(.plain)
             .frame(height: 200)
         }

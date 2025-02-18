@@ -189,6 +189,8 @@
 		6BDAE52B2D2BB73400A066E9 /* TravelMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE52A2D2BB73400A066E9 /* TravelMapViewModel.swift */; };
 		6BDAE52E2D2BD32C00A066E9 /* MapSearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE52D2D2BD32C00A066E9 /* MapSearchManager.swift */; };
 		6BE6A6A22D13ABDC00931E7B /* CurrencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE6A6A12D13ABDC00931E7B /* CurrencyType.swift */; };
+		6BF08AFF2D655070002D7015 /* RoutineDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF08AFE2D655070002D7015 /* RoutineDB.swift */; };
+		6BF08B002D655070002D7015 /* RoutineDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF08AFE2D655070002D7015 /* RoutineDB.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -323,6 +325,7 @@
 		6BDAE52A2D2BB73400A066E9 /* TravelMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMapViewModel.swift; sourceTree = "<group>"; };
 		6BDAE52D2D2BD32C00A066E9 /* MapSearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchManager.swift; sourceTree = "<group>"; };
 		6BE6A6A12D13ABDC00931E7B /* CurrencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyType.swift; sourceTree = "<group>"; };
+		6BF08AFE2D655070002D7015 /* RoutineDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineDB.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -453,6 +456,7 @@
 			children = (
 				6B790FBB2CFEA4F40000AC03 /* FolderDB.swift */,
 				6B790FBD2CFEA50A0000AC03 /* NoteDB.swift */,
+				6BF08AFE2D655070002D7015 /* RoutineDB.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -1368,6 +1372,7 @@
 				6BDAE5172D1CDE9A00A066E9 /* TravelPlanView.swift in Sources */,
 				6B9129D02D51999A005C85D2 /* Color+Extension.swift in Sources */,
 				6B37A7722D0683C600239987 /* CalendarViewModel.swift in Sources */,
+				6BF08B002D655070002D7015 /* RoutineDB.swift in Sources */,
 				6B790FCC2CFFE8120000AC03 /* FolderListView.swift in Sources */,
 				6B37A7932D095E7400239987 /* CalendarEventCategoryViewModel.swift in Sources */,
 				6B790FE12CFFEF220000AC03 /* ColorPalettePartView.swift in Sources */,
@@ -1430,6 +1435,7 @@
 				6B9129862D50ADDC005C85D2 /* TodoFolderViewModel.swift in Sources */,
 				6B9129872D50ADDC005C85D2 /* DiaryUIViewModel.swift in Sources */,
 				6B9129882D50ADDC005C85D2 /* ExpendedTodoCellViewModel.swift in Sources */,
+				6BF08AFF2D655070002D7015 /* RoutineDB.swift in Sources */,
 				6B9129892D50ADDC005C85D2 /* TodoViewModel.swift in Sources */,
 				6B91295F2D50A86D005C85D2 /* TravelDestinationFolderDB.swift in Sources */,
 				6B9129602D50A86D005C85D2 /* TravelPlanDB.swift in Sources */,
