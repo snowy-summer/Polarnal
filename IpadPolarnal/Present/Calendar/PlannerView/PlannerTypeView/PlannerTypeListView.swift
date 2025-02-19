@@ -16,6 +16,7 @@ struct PlannerTypeListView: View {
         case calendar
         case todo
         case dDay
+        case routine
         
         var text: String {
             switch self {
@@ -27,6 +28,9 @@ struct PlannerTypeListView: View {
                 
             case .dDay:
                 return "D - Day"
+                
+            case .routine:
+                return "Routine"
             }
         }
         
@@ -40,6 +44,9 @@ struct PlannerTypeListView: View {
                 
             case .dDay:
                 return "clock.badge.checkmark"
+                
+            case .routine:
+                return "clock.arrow.trianglehead.2.counterclockwise.rotate.90"
             }
         }
     }
@@ -59,6 +66,7 @@ struct PlannerTypeListView: View {
     struct PlannerTypeListCell: View {
         
         @Query var ddayList: [DDayDB]
+
         let type: EventType
         let viewModel: PlannerViewModel
         
@@ -73,14 +81,14 @@ struct PlannerTypeListView: View {
                 Spacer()
                 
                 switch type {
-                case .calendar:
-                    EmptyView()
-                    
-                case .todo:
-                    EmptyView()
                     
                 case .dDay:
                     Text("\(ddayList.count)")
+                    
+                default:
+                    EmptyView()
+                    
+                    
                 }
             }
             .onTapGesture {
@@ -93,6 +101,9 @@ struct PlannerTypeListView: View {
                     
                 case.todo:
                     viewModel.apply(.showTodoView)
+                    
+                case .routine:
+                    viewModel.apply(.showRoutineView)
                 }
                 
             }

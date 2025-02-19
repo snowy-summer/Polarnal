@@ -24,6 +24,7 @@ final class PlannerViewModel: ViewModelProtocol {
         case showCalendarView
         case showTodoView
         case showDDayView
+        case showRoutineView
         
         case refreshView
     }
@@ -32,6 +33,7 @@ final class PlannerViewModel: ViewModelProtocol {
         case calendar
         case dday
         case todo
+        case routine
     }
     
     @Published var showedViewType: PlannerViewType = .calendar
@@ -68,6 +70,9 @@ final class PlannerViewModel: ViewModelProtocol {
             
         case .showTodoView:
             showedViewType = .todo
+            
+        case .showRoutineView:
+            showedViewType = .routine
             
         case .refreshView:
             refreshTrigger.toggle()

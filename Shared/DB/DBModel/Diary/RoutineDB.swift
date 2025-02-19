@@ -13,18 +13,20 @@ final class RoutineDB {
     var id: UUID = UUID()
     var name: String = ""
     var startDate: Date = Date()
-    var repeatDays: Set<Day> = []
+    var repeatDays: Set<Day>?
     var repeatInterval: Int = 1 // 반복 주기 1 = 매주, 2 = 격주, 3 = 3주마다
     @Relationship(deleteRule: .cascade) var routineItems: [RoutineItemDB]?
+    var colorCode: String = "#FFFFFF"
     
     var isPushEnabled: Bool = false
     var pushTime: Date?
     
     init(name: String,
          startDate: Date = Date(),
-         repeatDays: Set<Day>,
+         repeatDays: Set<Day> = [],
          repeatInterval: Int = 1,
          routineItems: [RoutineItemDB] = [],
+         colorCode: String = "#FFFFFF",
          isPushEnabled: Bool = false,
          pushTime: Date? = nil) {
         self.name = name
@@ -32,6 +34,7 @@ final class RoutineDB {
         self.repeatDays = repeatDays
         self.repeatInterval = repeatInterval
         self.routineItems = routineItems
+        self.colorCode = colorCode
         self.isPushEnabled = isPushEnabled
         self.pushTime = pushTime
     }

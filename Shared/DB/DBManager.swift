@@ -24,7 +24,8 @@ final class DBManager {
             EventDB.self,
             DDayDB.self,
             TodoFolderDB.self,
-            TodoDB.self
+            TodoDB.self,
+            RoutineDB.self
 //            TravelPlanDB.self,
 //            TravelDestinationFolderDB.self
         ])

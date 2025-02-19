@@ -153,6 +153,33 @@ struct PlannerView: View {
                         }
                     }
                 
+            case .routine:
+                RoutineView()
+                    .toolbar {
+                        ToolbarItem(placement: .topBarTrailing) {
+                            Button(action: {
+                                plannerViewModel.apply(.showAddDDay)
+                            }) {
+                                Image(systemName: "plus")
+                                    .tint(Color.normalText)
+                            }
+                        }
+                    }
+                    .sheet(item: $plannerViewModel.dDaySheetType,
+                           onDismiss: {
+                        
+                        // 뒤로 간 경우
+                    }) { type in
+                        NavigationStack {
+                            switch type {
+                            case .add:
+                                AddDDayView(viewModel: AddDDayViewModel(dday: nil))
+                            default:
+                                EmptyView()
+                            }
+                        }
+                    }
+                
                 
             }
             
