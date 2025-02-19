@@ -59,6 +59,7 @@ struct AddRoutineView: View {
                 }) {
                     Text("Save")
                 }
+                .disabled(viewModel.saveDisabled)
             }
         }
         
@@ -108,58 +109,6 @@ struct AddRoutineView: View {
         }
     }
     
-    @ViewBuilder
-    private func pushToggleSection() -> some View {
-        VStack {
-            Toggle(isOn: $viewModel.isPushEnabled) {
-                HStack {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 12)
-                            .fill(Color.customGray5)
-                            .frame(width: 50, height: 50)
-                        
-                        Image(systemName: AddEventCellType.period.icon)
-                            .resizable()
-                            .frame(width: 28, height: 28)
-                    }
-                    
-                    Text(AddEventCellType.period.text)
-                        .font(.title2)
-                        .bold()
-                }
-            }
-            .padding()
-            
-            Divider()
-                .padding(.horizontal)
-            
-            datePickerSection(title: "시작 날짜:", date: $viewModel.startDate)
-            
-        }
-        .background(Color.customGray6)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
-        .padding(.horizontal, 40)
-        .padding(.top, 40)
-        
-    }
-    
-    // MARK: - DatePicker Section
-    @ViewBuilder
-    private func datePickerSection(title: String,
-                                   date: Binding<Date>) -> some View {
-        HStack {
-            Text(title)
-                .font(.title3)
-                .bold()
-            
-            DatePicker("", selection: date, displayedComponents: .date)
-                .labelsHidden()
-                .environment(\.locale, Locale(identifier: "ko_KR"))
-            
-            Spacer()
-        }
-        .padding()
-    }
 }
 
 #Preview {

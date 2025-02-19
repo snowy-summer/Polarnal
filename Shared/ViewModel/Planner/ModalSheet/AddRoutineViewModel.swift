@@ -18,6 +18,11 @@ final class AddRoutineViewModel: ViewModelProtocol {
     @Published var routineColor: Color = .mint
     @Published var isPushEnabled: Bool = false
     @Published var pushTime: Date?
+    var saveDisabled: Bool {
+        if routineName.isEmpty { return true }
+        if repeatDays.isEmpty { return true }
+        return false
+    }
     
     private var routine: RoutineDB?
     

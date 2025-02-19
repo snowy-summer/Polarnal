@@ -22,9 +22,9 @@ struct RoutineView: View {
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(routineList,
                         id: \.id) { routine in
-                    RoutineCell(routineDB: routine)
+                    RoutineCell(viewModel: RoutineCellViewModel(routine: routine))
                         .background(Color.customGray5)
-                        .frame(height: 160)
+                        .frame(height: 200)
                         .clipShape(RoundedRectangle(cornerRadius: 24))
                         .shadow(radius: 5, x: 2, y:2)
                         .onTapGesture {
@@ -47,54 +47,72 @@ struct RoutineView: View {
 }
 
 struct RoutineCell: View {
+    @Environment(\.modelContext) var modelContext
+    private let viewModel: RoutineCellViewModel
     
-    let routineDB: RoutineDB
-    let dateManager = DateManager.shared
+    init(viewModel: RoutineCellViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         VStack {
-            Text(routineDB.name)
+            Text(viewModel.routineDB.name)
                 .font(.title2)
                 .bold()
+                .padding(.top)
             
             gridView()
-                .padding()
+                .padding(.horizontal)
             
             HStack {
-                Button("Done") {
-                    
-                }
-                
-                Divider()
+               
                 HStack {
                     Image(systemName: "flame.fill")
-                        .tint(.red)
-                    Text("\(routineDB.routineItems?.count ?? 0)")
+                        .foregroundStyle(.red)
+                    Text("\(viewModel.streakCount)")
                 }
+                .padding(.horizontal)
+                
+                Divider()
+                
+                Button("Done") {
+                    viewModel.apply(.doenTodayRoutine)
+                }
+                .disabled(viewModel.isDoneDisabled)
+                .padding(.horizontal)
             }
+            .padding(.vertical)
             
             
+        }
+        .onAppear {
+            viewModel.apply(.insertModelContext(modelContext))
         }
         
     }
     
     @ViewBuilder
     func gridView() -> some View {
-        if let routineItems = routineDB.routineItems {
-            let gridItems = GridItem(.flexible(),
+        if let routineItems = viewModel.routineDB.routineItems {
+            let gridItems = GridItem(.fixed(24),
                                      spacing: 4)
             let columns = Array(repeating: gridItems,
                                 count: 10)
-            LazyVGrid(columns: columns, spacing: 4) {
-                ForEach(routineItems, id: \.id) { item in
-                    RoundedRectangle(cornerRadius: 4)
-                        .fill(Color(hex: routineDB.colorCode))
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 4) {
+                    ForEach(routineItems, id: \.id) { item in
+                        RoundedRectangle(cornerRadius: 4)
+                            .fill(item.isDone ? Color(hex: viewModel.routineDB.colorCode) : Color.customGray6)
+                            .frame(height: 24)
+                    }
                 }
             }
+            .frame(height: 92)
         } else {
             EmptyView()
         }
     }
+    
 }
 
 #Preview {

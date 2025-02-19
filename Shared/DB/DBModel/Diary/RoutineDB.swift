@@ -57,7 +57,7 @@ final class RoutineItemDB {
     }
 }
 
-enum Day: String, CaseIterable, Codable {
+enum Day: Int, CaseIterable, Codable {
     case sunday, monday, tuesday, wednesday, thursday, friday, saturday
     
     var name: String {

@@ -76,5 +76,11 @@ final class DateManager {
         
         return "D+\(-(dayDifference - 1))"
     }
+
+    func getWeekday(from date: Date) -> Day? {
+        let calendar = Calendar.current
+        
+        return Day(rawValue: calendar.component(.weekday, from: date))
+    }
     
 }
