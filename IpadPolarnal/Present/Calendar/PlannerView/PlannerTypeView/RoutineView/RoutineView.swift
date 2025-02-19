@@ -39,7 +39,7 @@ struct RoutineView: View {
         }
         .sheet(item: $viewModel.selectedDDay) { dday in
             NavigationStack {
-                AddDDayView(viewModel: AddDDayViewModel(dday: dday))
+                AddRoutineView(viewModel: AddRoutineViewModel(routine: nil))
             }
         }
         .padding()
@@ -76,42 +76,6 @@ struct RoutineCell: View {
             
         }
         
-        //        HStack {
-        //
-        //            VStack(alignment: .leading) {
-        //                Text(dDay.title)
-        //                    .font(.title)
-        //                    .bold()
-        //
-        //                if DDayType(rawValue: dDay.type) == .DDay {
-        //                    Text(dateManager.getDateString(date: dDay.goalDate))
-        //                } else {
-        //                    Text(dateManager.getDateString(date: dDay.startDate))
-        //                }
-        //                Spacer()
-        //            }
-        //            .padding()
-        //
-        //            VStack {
-        //                Spacer()
-        //                HStack {
-        //
-        //                    if DDayType(rawValue: dDay.type) == .DDay {
-        //                        Text(dateManager.calculateDDay(startDay: dDay.startDate,
-        //                                                       goalDay: dDay.goalDate))
-        //                        .font(.title)
-        //                        .bold()
-        //                        .padding()
-        //                    } else {
-        //                            Text(dateManager.calculateDPlus(startDay: dDay.startDate))
-        //                            .font(.title)
-        //                            .bold()
-        //                            .padding()
-        //                    }
-        //                }
-        //            }
-        //        }
-        
     }
     
     @ViewBuilder
@@ -134,5 +98,5 @@ struct RoutineCell: View {
 }
 
 #Preview {
-    DDayView()
+    RoutineView()
 }

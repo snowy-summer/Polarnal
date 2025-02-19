@@ -20,6 +20,7 @@ final class PlannerViewModel: ViewModelProtocol {
         
         case showAddTodoFolder
         case showAddDDay
+        case showAddRoutine
         
         case showCalendarView
         case showTodoView
@@ -41,6 +42,7 @@ final class PlannerViewModel: ViewModelProtocol {
     @Published var eventSheetType: EventCategoryType?
     @Published var todoSheetType: TodoSheetType?
     @Published var dDaySheetType: DDaySheetType?
+    @Published var routineSheetType: RoutineSheetType?
     @Published var refreshTrigger: Bool = false
     
     var cancellables: Set<AnyCancellable> = []
@@ -61,6 +63,9 @@ final class PlannerViewModel: ViewModelProtocol {
             
         case .showAddDDay:
             dDaySheetType = .add
+            
+        case .showAddRoutine:
+            routineSheetType = .add
             
         case .showCalendarView:
             showedViewType = .calendar
@@ -95,6 +100,12 @@ enum DDaySheetType {
 
 @IdentifiableEnum
 enum TodoSheetType {
+    case add
+    case edit
+}
+
+@IdentifiableEnum
+enum RoutineSheetType {
     case add
     case edit
 }

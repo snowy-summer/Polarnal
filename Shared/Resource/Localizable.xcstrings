@@ -149,6 +149,9 @@
         }
       }
     },
+    "Create Routine" : {
+
+    },
     "D +" : {
 
     },
@@ -447,6 +450,9 @@
           }
         }
       }
+    },
+    "Select days" : {
+
     },
     "Sep" : {
       "extractionState" : "manual",

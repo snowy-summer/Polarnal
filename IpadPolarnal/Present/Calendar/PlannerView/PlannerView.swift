@@ -158,14 +158,14 @@ struct PlannerView: View {
                     .toolbar {
                         ToolbarItem(placement: .topBarTrailing) {
                             Button(action: {
-                                plannerViewModel.apply(.showAddDDay)
+                                plannerViewModel.apply(.showAddRoutine)
                             }) {
                                 Image(systemName: "plus")
                                     .tint(Color.normalText)
                             }
                         }
                     }
-                    .sheet(item: $plannerViewModel.dDaySheetType,
+                    .sheet(item: $plannerViewModel.routineSheetType,
                            onDismiss: {
                         
                         // 뒤로 간 경우
@@ -173,7 +173,7 @@ struct PlannerView: View {
                         NavigationStack {
                             switch type {
                             case .add:
-                                AddDDayView(viewModel: AddDDayViewModel(dday: nil))
+                                AddRoutineView(viewModel: AddRoutineViewModel(routine: nil))
                             default:
                                 EmptyView()
                             }
