@@ -12,7 +12,7 @@ struct RoutineView: View {
     @Environment(\.modelContext) var modelContext
     @Query var routineList: [RoutineDB]
     
-    @StateObject private var viewModel: DDayViewModel = DDayViewModel()
+    @StateObject private var viewModel: RoutineViewModel = RoutineViewModel()
     private let gridItems = GridItem(.flexible(), spacing: 16)
     
     var body: some View {
@@ -25,24 +25,32 @@ struct RoutineView: View {
                     RoutineCell(viewModel: RoutineCellViewModel(routine: routine))
                         .background(Color.customGray5)
                         .frame(height: 200)
+                        .frame(minWidth: 240)
                         .clipShape(RoundedRectangle(cornerRadius: 24))
-                        .shadow(radius: 5, x: 2, y:2)
-                        .onTapGesture {
-//                            viewModel.apply(.showEditView(dday))
+                        .shadow(radius: 3, x: 2, y:2)
+                        .contextMenu {
+                            Button(role: .destructive, action: {
+                                viewModel.apply(.deleteRoutine(routine))
+                            }) {
+                                Label("삭제", systemImage: "trash")
+                            }
                         }
+                        .onTapGesture {
+                            viewModel.apply(.showEditView(routine))
+                        }
+                        
                 }
             }
-            .padding(.top, 8)
+            .padding()
         }
         .onAppear {
             viewModel.apply(.insertModelContext(modelContext))
         }
-        .sheet(item: $viewModel.selectedDDay) { dday in
+        .sheet(item: $viewModel.selectedRoutine) { routine in
             NavigationStack {
-                AddRoutineView(viewModel: AddRoutineViewModel(routine: nil))
+                AddRoutineView(viewModel: AddRoutineViewModel(routine: routine))
             }
         }
-        .padding()
     }
 }
 
@@ -66,6 +74,7 @@ struct RoutineCell: View {
             
             HStack {
                
+                Spacer()
                 HStack {
                     Image(systemName: "flame.fill")
                         .foregroundStyle(.red)
@@ -73,13 +82,19 @@ struct RoutineCell: View {
                 }
                 .padding(.horizontal)
                 
+                Spacer()
+                
                 Divider()
+                
+                Spacer()
                 
                 Button("Done") {
                     viewModel.apply(.doenTodayRoutine)
                 }
+                .tint(Color.normalText)
                 .disabled(viewModel.isDoneDisabled)
                 .padding(.horizontal)
+                Spacer()
             }
             .padding(.vertical)
             
@@ -93,8 +108,15 @@ struct RoutineCell: View {
     
     @ViewBuilder
     func gridView() -> some View {
+        
+#if os(iOS)
+        let size: CGFloat = 24
+        #elseif os(macOS)
+        let size: CGFloat = 16
+#endif
+        
         if let routineItems = viewModel.routineDB.routineItems {
-            let gridItems = GridItem(.fixed(24),
+            let gridItems = GridItem(.fixed(size),
                                      spacing: 4)
             let columns = Array(repeating: gridItems,
                                 count: 10)
@@ -103,7 +125,7 @@ struct RoutineCell: View {
                     ForEach(routineItems, id: \.id) { item in
                         RoundedRectangle(cornerRadius: 4)
                             .fill(item.isDone ? Color(hex: viewModel.routineDB.colorCode) : Color.customGray6)
-                            .frame(height: 24)
+                            .frame(height: size)
                     }
                 }
             }

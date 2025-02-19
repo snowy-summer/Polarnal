@@ -153,6 +153,32 @@ struct PlannerView: View {
                             }
                         }
                     
+                case .routine:
+                    RoutineView()
+                        .toolbar {
+                            ToolbarItem {
+                                Button(action: {
+                                    plannerViewModel.apply(.showAddRoutine)
+                                }) {
+                                    Image(systemName: "plus")
+                                        .tint(Color.normalText)
+                                }
+                            }
+                        }
+                        .sheet(item: $plannerViewModel.routineSheetType,
+                               onDismiss: {
+                            
+                        }) { type in
+                            NavigationStack {
+                                switch type {
+                                case .add:
+                                    AddRoutineView(viewModel: AddRoutineViewModel(routine: nil))
+                                default:
+                                    EmptyView()
+                                }
+                            }
+                        }
+                    
                     
                 }
             }

@@ -24,11 +24,11 @@ final class AddRoutineViewModel: ViewModelProtocol {
         return false
     }
     
-    private var routine: RoutineDB?
+    private var routineDB: RoutineDB?
     
     init(routine: RoutineDB?) {
         if let routine {
-            self.routine = routine
+            self.routineDB = routine
             routineName = routine.name
             repeatDays = routine.repeatDays ?? []
             repeatInterval = routine.repeatInterval
@@ -65,15 +65,27 @@ final class AddRoutineViewModel: ViewModelProtocol {
                 LogManager.log("RoutineColor hex변환 실패")
                 return
             }
-            let routine = RoutineDB(name: routineName,
-                                    startDate: startDate,
-                                    repeatDays: repeatDays,
-                                    repeatInterval: repeatInterval,
-                                    routineItems: [],
-                                    colorCode: hexCode,
-                                    isPushEnabled: isPushEnabled,
-                                    pushTime: pushTime)
-            dbManager.addItem(routine)
+            
+            if routineDB != nil {
+                routineDB?.name = routineName
+                routineDB?.startDate = startDate
+                routineDB?.repeatDays = repeatDays
+                routineDB?.repeatInterval = repeatInterval
+                routineDB?.colorCode = hexCode
+                routineDB?.isPushEnabled = isPushEnabled
+                routineDB?.pushTime = pushTime
+                dbManager.addItem(routineDB!)
+            } else {
+                let routine = RoutineDB(name: routineName,
+                                        startDate: startDate,
+                                        repeatDays: repeatDays,
+                                        repeatInterval: repeatInterval,
+                                        routineItems: [],
+                                        colorCode: hexCode,
+                                        isPushEnabled: isPushEnabled,
+                                        pushTime: pushTime)
+                dbManager.addItem(routine)
+            }
             
         case .insertModelContext(let modelContext):
             dbManager.modelContext = modelContext

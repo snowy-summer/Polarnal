@@ -1,14 +1,14 @@
 //
-//  AddRoutineView.swift
+//  AddRoutineView_mac.swift
 //  Polarnal
 //
 //  Created by 최승범 on 2/19/25.
 //
 
-#if os(iOS)
 import SwiftUI
 import SwiftData
 
+#if os(macOS)
 struct AddRoutineView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
@@ -41,27 +41,25 @@ struct AddRoutineView: View {
             viewModel.apply(.insertModelContext(modelContext))
         }
         .navigationTitle("Create Routine")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    dismiss()
-                }) {
-                    Text("Cancel")
-                }
-                
+        
+        Divider()
+        
+        HStack {
+            
+            Button("Cancel") {
+                dismiss()
             }
             
-            ToolbarItem(placement: .topBarTrailing) {
-                Button(action: {
-                    viewModel.apply(.saveRoutine)
-                    dismiss()
-                }) {
-                    Text("Save")
-                }
-                .disabled(viewModel.saveDisabled)
+            Spacer()
+            
+            Button("Save") {
+                viewModel.apply(.saveRoutine)
+                dismiss()
             }
+            .disabled(viewModel.saveDisabled)
+            
         }
+        .padding()
         
     }
     
@@ -109,9 +107,5 @@ struct AddRoutineView: View {
         }
     }
     
-}
-
-#Preview {
-    AddRoutineView(viewModel: AddRoutineViewModel(routine: nil))
 }
 #endif
