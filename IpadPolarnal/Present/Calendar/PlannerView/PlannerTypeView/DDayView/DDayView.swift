@@ -13,42 +13,50 @@ struct DDayView: View {
     @Query var ddayList: [DDayDB]
     
     @StateObject private var viewModel: DDayViewModel = DDayViewModel()
-    private let gridItems = GridItem(.flexible(), spacing: 16)
     
     var body: some View {
-        ScrollView {
-            let columns = Array(repeating: gridItems,
-                                count: 3)
-            LazyVGrid(columns: columns, spacing: 16) {
-                ForEach(ddayList,id: \.id) { dday in
-                    DDayCell(dDay: dday)
-                        .background(Color.customGray5)
-                        .frame(height: 160)
-                        .clipShape(RoundedRectangle(cornerRadius: 24))
-                        .shadow(radius: 5, x: 2, y:2)
-                        .contextMenu {
-                            Button(role: .destructive, action: {
-                                viewModel.apply(.deleteDDay(dday))
-                            }) {
-                                Label("삭제", systemImage: "trash")
+        GeometryReader { geometry in
+            let availableWidth = geometry.size.width
+#if os(macOS)
+            let columnCount = max(1, Int(availableWidth / 200))
+#else
+            let columnCount = 4
+#endif
+            let columns = Array(repeating: GridItem(.flexible(), spacing: 16),
+                                count: columnCount)
+            
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 16) {
+                    ForEach(ddayList, id: \.id) { dday in
+                        DDayCell(dDay: dday)
+                            .background(Color.customGray6)
+                            .frame(height: 160)
+                            .clipShape(RoundedRectangle(cornerRadius: 24))
+                            .shadow(radius: 2, x: 1, y: 1)
+                            .contextMenu {
+                                Button(role: .destructive) {
+                                    viewModel.apply(.deleteDDay(dday))
+                                } label: {
+                                    Label("삭제", systemImage: "trash")
+                                }
                             }
-                        }
-                        .onTapGesture {
-                            viewModel.apply(.showEditView(dday))
-                        }
+                            .onTapGesture {
+                                viewModel.apply(.showEditView(dday))
+                            }
+                    }
+                }
+                .padding(.top, 8)
+            }
+            .onAppear {
+                viewModel.apply(.insertModelContext(modelContext))
+            }
+            .sheet(item: $viewModel.selectedDDay) { dday in
+                NavigationStack {
+                    AddDDayView(viewModel: AddDDayViewModel(dday: dday))
                 }
             }
-            .padding(.top, 8)
+            .padding()
         }
-        .onAppear {
-            viewModel.apply(.insertModelContext(modelContext))
-        }
-        .sheet(item: $viewModel.selectedDDay) { dday in
-            NavigationStack {
-                AddDDayView(viewModel: AddDDayViewModel(dday: dday))
-            }
-        }
-        .padding()
     }
 }
 
@@ -62,7 +70,7 @@ struct DDayCell: View {
             
             VStack(alignment: .leading) {
                 Text(dDay.title)
-                    .font(.title)
+                    .font(.title2)
                     .bold()
                 
                 if DDayType(rawValue: dDay.type) == .DDay {
@@ -85,7 +93,7 @@ struct DDayCell: View {
                         .bold()
                         .padding()
                     } else {
-                            Text(dateManager.calculateDPlus(startDay: dDay.startDate))
+                        Text(dateManager.calculateDPlus(startDay: dDay.startDate))
                             .font(.title)
                             .bold()
                             .padding()

@@ -29,7 +29,7 @@ struct TodoFolderCell: View {
                     .padding(.leading, 20)
                 
                 Text(viewModel.todofolder.title)
-                    .font(.title)
+                    .font(.title2)
                     .bold()
                     .padding()
             

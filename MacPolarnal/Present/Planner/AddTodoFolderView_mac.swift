@@ -25,7 +25,7 @@ struct AddTodoFolderView: View {
                 .padding(.bottom, 20)
             
             ColorPalettePartView(selctedColor: $viewModel.todoFolderColor)
-                .background(.ipadTabbar)
+                .background(Color.customGray6)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
             
             Divider()

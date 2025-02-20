@@ -16,39 +16,46 @@ struct RoutineView: View {
     private let gridItems = GridItem(.flexible(), spacing: 16)
     
     var body: some View {
-        ScrollView {
-            let columns = Array(repeating: gridItems,
-                                count: 3)
-            LazyVGrid(columns: columns, spacing: 16) {
-                ForEach(routineList,
-                        id: \.id) { routine in
-                    RoutineCell(viewModel: RoutineCellViewModel(routine: routine))
-                        .background(Color.customGray5)
-                        .frame(height: 200)
-                        .frame(minWidth: 240)
-                        .clipShape(RoundedRectangle(cornerRadius: 24))
-                        .shadow(radius: 3, x: 2, y:2)
-                        .contextMenu {
-                            Button(role: .destructive, action: {
-                                viewModel.apply(.deleteRoutine(routine))
-                            }) {
-                                Label("삭제", systemImage: "trash")
+        GeometryReader { geometry in
+            let availableWidth = geometry.size.width
+#if os(macOS)
+            let columnCount = max(1, Int(availableWidth / 250))
+#else
+            let columnCount = 3
+#endif
+            let columns = Array(repeating: GridItem(.flexible(), spacing: 16),
+                                count: columnCount)
+            
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 16) {
+                    ForEach(routineList, id: \.id) { routine in
+                        RoutineCell(viewModel: RoutineCellViewModel(routine: routine))
+                            .background(Color.customGray6)
+                            .frame(height: 200)
+                            .frame(minWidth: 240, maxWidth: 300)
+                            .clipShape(RoundedRectangle(cornerRadius: 24))
+                            .shadow(radius: 2, x: 1, y:1)
+                            .contextMenu {
+                                Button(role: .destructive) {
+                                    viewModel.apply(.deleteRoutine(routine))
+                                } label: {
+                                    Label("삭제", systemImage: "trash")
+                                }
                             }
-                        }
-                        .onTapGesture {
-                            viewModel.apply(.showEditView(routine))
-                        }
-                        
+                            .onTapGesture {
+                                viewModel.apply(.showEditView(routine))
+                            }
+                    }
                 }
+                .padding()
             }
-            .padding()
-        }
-        .onAppear {
-            viewModel.apply(.insertModelContext(modelContext))
-        }
-        .sheet(item: $viewModel.selectedRoutine) { routine in
-            NavigationStack {
-                AddRoutineView(viewModel: AddRoutineViewModel(routine: routine))
+            .onAppear {
+                viewModel.apply(.insertModelContext(modelContext))
+            }
+            .sheet(item: $viewModel.selectedRoutine) { routine in
+                NavigationStack {
+                    AddRoutineView(viewModel: AddRoutineViewModel(routine: routine))
+                }
             }
         }
     }
@@ -73,7 +80,7 @@ struct RoutineCell: View {
                 .padding(.horizontal)
             
             HStack {
-               
+                
                 Spacer()
                 HStack {
                     Image(systemName: "flame.fill")
@@ -111,7 +118,7 @@ struct RoutineCell: View {
         
 #if os(iOS)
         let size: CGFloat = 24
-        #elseif os(macOS)
+#elseif os(macOS)
         let size: CGFloat = 16
 #endif
         
