@@ -40,9 +40,8 @@ struct TodoView: View {
                         LazyVGrid(columns: columns, spacing: 16) {
                             ForEach(todoFolderList,
                                     id: \.id) { todoFolder in
-                                TodoFolderCell(todoFolder: todoFolder,
-                                               animation: animation)
-                                .background(Color.customGray5)
+                                TodoCell(todoFolder: todoFolder)
+                                .background(Color.customGray6)
                                 .frame(height: 400)
                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                                 .shadow(radius: 5, x: 2, y:2)
@@ -51,12 +50,6 @@ struct TodoView: View {
                                         viewModel.apply(.deleteTodoFolder(todoFolder))
                                     }) {
                                         Label("Delete", systemImage: "trash")
-                                    }
-                                }
-                                .onTapGesture {
-                                    viewModel.apply(.clearSelectedFolder)
-                                    withAnimation(.easeInOut(duration: 0.5)) {
-                                        viewModel.apply(.selectFolder(todoFolder))
                                     }
                                 }
                                 .padding()
