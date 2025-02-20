@@ -7,29 +7,55 @@
 
 import XCTest
 
-final class PolarnalTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+final class DateManagerTest: XCTestCase {
+    
+    private let dateManager = DateManager.shared
+    
+    // 년 월 일이 똑바로 나오는지 테스트
+    //getYearAndMonthString 테스트
+    private func test_getYearAndMonthString() throws {
+        let calendar = Calendar.current
+        var components = DateComponents()
+        components.year = 2024
+        components.month = 2
+        components.day = 17
+        let settingDate = calendar.date(from: components)!
+        
+        let ymd = dateManager.getYearAndMonthString(currentDate: settingDate)
+        
+        XCTAssertEqual(ymd, ["2024", "02", "17"])
+        
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    // getDateString 테스트
+    private func test_getDateString() throws {
+        let calendar = Calendar.current
+        var components = DateComponents()
+        components.year = 2024
+        components.month = 2
+        components.day = 17
+        let settingDate = calendar.date(from: components)!
+        
+        let dateString = dateManager.getDateString(date: settingDate)
+        
+        XCTAssertEqual(dateString, "2024.02.17")
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    private func test_getDateString_format() throws {
+        let calendar = Calendar.current
+        var components = DateComponents()
+        components.year = 2024
+        components.month = 2
+        components.day = 17
+        let settingDate = calendar.date(from: components)!
+        
+        let dateString = dateManager.getDateString(format: "YYYY-MM-dd",date: settingDate)
+        
+        
+        XCTAssertEqual(dateString, "2024-02-17")
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
+    
+    // D-Day 계산 테스트
+    
+    
 }

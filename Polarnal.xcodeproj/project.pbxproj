@@ -203,6 +203,9 @@
 		6BF08B1F2D65E177002D7015 /* RoutineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF08B1D2D65E177002D7015 /* RoutineViewModel.swift */; };
 		6BF08B242D66B859002D7015 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF08B232D66B859002D7015 /* TodoCell.swift */; };
 		6BF08B252D66B859002D7015 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF08B232D66B859002D7015 /* TodoCell.swift */; };
+		6BF08B262D66C6F0002D7015 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7772D06842700239987 /* DateManager.swift */; };
+		6BF08B272D66C93E002D7015 /* RoutineDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF08AFE2D655070002D7015 /* RoutineDB.swift */; };
+		6BF08B282D66CAF5002D7015 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FB62CFEA4430000AC03 /* LogManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1588,6 +1591,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BF08B282D66CAF5002D7015 /* LogManager.swift in Sources */,
+				6BF08B262D66C6F0002D7015 /* DateManager.swift in Sources */,
+				6BF08B272D66C93E002D7015 /* RoutineDB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
