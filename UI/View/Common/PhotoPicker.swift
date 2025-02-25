@@ -8,7 +8,6 @@
 import SwiftUI
 import PhotosUI
 
-//#if os(macOS)
 struct PhotoPicker<Content: View>: View {
     @State private var selectedPhotos: [PhotosPickerItem] = []
     @Binding private var selectedImages: [PlatformImage]
