@@ -37,7 +37,7 @@ final class RoutineCellViewModel: ViewModelProtocol {
         }
         
         if !repeatDays.contains(today) { return true }
-        
+//        routineDB.routineItems?.append(RoutineItemDB(isDone: false))
         if let items = routineDB.routineItems,
            !items.isEmpty,
            let lastDate = items.last?.date {
@@ -59,7 +59,7 @@ final class RoutineCellViewModel: ViewModelProtocol {
     }
     
     func apply(_ intent: Intent) {
-        
+        //루틴을 불러왔을떄 루틴의 맨 마지막이 오늘 날짜가 아니면 새롭게 데이터를 추가 해놔야한다
         switch intent {
         case .doenTodayRoutine:
             routineDB.routineItems?.append(RoutineItemDB(isDone: true))
