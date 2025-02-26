@@ -26,8 +26,6 @@ final class PlannerViewModel: ViewModelProtocol {
         case showTodoView
         case showDDayView
         case showRoutineView
-        
-        case refreshView
     }
     
     enum PlannerViewType {
@@ -43,7 +41,6 @@ final class PlannerViewModel: ViewModelProtocol {
     @Published var todoSheetType: TodoSheetType?
     @Published var dDaySheetType: DDaySheetType?
     @Published var routineSheetType: RoutineSheetType?
-    @Published var refreshTrigger: Bool = false
     
     var cancellables: Set<AnyCancellable> = []
     
@@ -78,9 +75,6 @@ final class PlannerViewModel: ViewModelProtocol {
             
         case .showRoutineView:
             showedViewType = .routine
-            
-        case .refreshView:
-            refreshTrigger.toggle()
         }
     }
     

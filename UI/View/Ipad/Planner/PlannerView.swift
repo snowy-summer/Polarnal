@@ -13,8 +13,6 @@ struct PlannerView: View {
     @ObservedObject var sideTabBarViewModel: SideTabBarViewModel
     @StateObject private var plannerViewModel: PlannerViewModel = PlannerViewModel()
     
-    private let newFolderTitle: LocalizedStringKey = "New Folder"
-    
     var body: some View {
         NavigationSplitView {
             VStack {
@@ -51,7 +49,7 @@ struct PlannerView: View {
                                     .fill(Color.listBackground)
                                     .frame(height: 44)
                                 
-                                Label(newFolderTitle, systemImage: "plus.circle")
+                                Label("New Folder", systemImage: "plus.circle")
                                     .font(.headline)
                                     .bold()
                                     .foregroundStyle(Color.normalText)
@@ -72,7 +70,7 @@ struct PlannerView: View {
             
             switch plannerViewModel.showedViewType {
             case .calendar:
-                let viewModel = MainCalendarViewModel()
+                let viewModel = MainCalendarViewModel(useCase: CalendarUseCase())
                 MainCalendarView(viewModel: viewModel)
                     .padding(.horizontal)
                     .toolbar {
