@@ -16,7 +16,7 @@ final class CalendarViewModel: ViewModelProtocol {
         case viewUpdate
     }
     
-    private let calendarUseCase: CalendarUseCaseProtocol
+    private let calendarUseCase: CalendarDateUseCaseProtocol
     
     @Published private(set) var calendarYear: String = ""
     @Published private(set) var calendarMonth: Int = 0
@@ -26,7 +26,7 @@ final class CalendarViewModel: ViewModelProtocol {
     
     var cancellables: Set<AnyCancellable> = []
     
-    init(useCase: CalendarUseCaseProtocol) {
+    init(useCase: CalendarDateUseCaseProtocol) {
         calendarUseCase = useCase
         getYearAndMonthString(currentDate: currentDate)
     }

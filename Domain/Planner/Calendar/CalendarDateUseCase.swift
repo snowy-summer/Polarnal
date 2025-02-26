@@ -1,5 +1,5 @@
 //
-//  CalendarUseCase.swift
+//  CalendarDateUseCase.swift
 //  Polarnal
 //
 //  Created by 최승범 on 2/26/25.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class CalendarUseCase: CalendarUseCaseProtocol {
+final class CalendarDateUseCase: CalendarDateUseCaseProtocol {
     
     func extractDate(currentDate: Date) -> [DateValue] {
         let calendar = Calendar.current

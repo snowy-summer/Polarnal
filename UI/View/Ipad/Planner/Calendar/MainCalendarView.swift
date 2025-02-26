@@ -95,7 +95,7 @@ struct MainCalendarContentView: View {
     struct MainCalendarDateCell: View {
         @Environment(\.modelContext) var modelContext
         @StateObject var viewModel: MainCalendarCellViewModel
-    
+        
         init(dateValue: DateValue,
              isSunday: Bool,
              isSaturday: Bool,
@@ -125,7 +125,7 @@ struct MainCalendarContentView: View {
                                 RoundedRectangle(cornerRadius: 4)
                                     .fill(Color(hex: event.category?.colorCode ?? "#FFFFFF"))
                                     .frame(height: 20)
-
+                                
                                 Text(event.content)
                                     .lineLimit(1)
                                     .truncationMode(.tail)
@@ -138,7 +138,9 @@ struct MainCalendarContentView: View {
                 }
             }
             .onAppear {
-                viewModel.apply(.insertModelContext(modelContext))
+                let repository = EventRepository(modelContext: modelContext)
+                let calendarEventUseCase = CalendarEventUseCase(eventRepository: repository)
+                viewModel.apply(.ingectDependencies(useCase: calendarEventUseCase))
             }
         }
     }

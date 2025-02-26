@@ -13,6 +13,9 @@ final class MainCalendarCellViewModel: ViewModelProtocol {
     
     private let dbManager = DBManager()
     private let dateManager = DateManager.shared
+    
+    private var calendarEventUseCase: CalendarEventUseCaseProtocol?
+    
     var cancellables: Set<AnyCancellable> = []
     
     let dateValue: DateValue
@@ -23,9 +26,8 @@ final class MainCalendarCellViewModel: ViewModelProtocol {
     let isEmptyView: Bool
     var isToday: Bool {
         if isEmptyView { return false }
-        let inputYearMonthDay = DateManager.shared.getYearAndMonthString(currentDate: dateValue.date)
-        let currentYearMonthDay = DateManager.shared.getYearAndMonthString(currentDate: Date())
-        return inputYearMonthDay == currentYearMonthDay
+        
+        return calendarEventUseCase?.isToday(date: dateValue.date) ?? false
     }
     var color: Color {
         if isSunday {
@@ -37,10 +39,12 @@ final class MainCalendarCellViewModel: ViewModelProtocol {
         }
     }
     
-    init(dateValue: DateValue,
+    init(useCase: CalendarEventUseCaseProtocol? = nil,
+         dateValue: DateValue,
          isSunday: Bool,
          isSaturday: Bool,
          isEmptyView: Bool) {
+        self.calendarEventUseCase = useCase
         self.dateValue = dateValue
         self.isSunday = isSunday
         self.isSaturday = isSaturday
@@ -48,31 +52,15 @@ final class MainCalendarCellViewModel: ViewModelProtocol {
     }
     
     enum Intent {
-        case insertModelContext(ModelContext)
+        case ingectDependencies(useCase: CalendarEventUseCaseProtocol)
     }
     
     func apply(_ intent: Intent) {
         switch intent {
-        case .insertModelContext(let modelContext):
-            dbManager.modelContext = modelContext
-            getEventList()
+        case .ingectDependencies(let useCase):
+            calendarEventUseCase = useCase
+            eventList = calendarEventUseCase!.eventRepository.fetchEvents(for: dateValue.date)
+            
         }
-    }
-}
-
-extension MainCalendarCellViewModel {
-    
-    private func getEventList() {
-        if isEmptyView { return }
-        let allEventList = dbManager.fetchItems(ofType: EventDB.self)
-        eventList = allEventList.filter {
-            dateManager.getDateString(date: dateValue.date) == dateManager.getDateString(date: $0.date)
-        }.sorted {
-            guard let categoryA = $0.category, let categoryB = $1.category else {
-                return $0.category != nil
-            }
-            return categoryA.title < categoryB.title
-        }
-        
     }
 }
