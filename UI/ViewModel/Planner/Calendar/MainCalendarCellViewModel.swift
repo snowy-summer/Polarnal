@@ -11,24 +11,23 @@ import Combine
 
 final class MainCalendarCellViewModel: ViewModelProtocol {
     
-    private let dbManager = DBManager()
-    private let dateManager = DateManager.shared
-    
     private var calendarEventUseCase: CalendarEventUseCaseProtocol?
     
     var cancellables: Set<AnyCancellable> = []
     
-    let dateValue: DateValue
     @Published var eventList: [EventDB] = []
     
+    let dateValue: DateValue
     let isSunday: Bool
     let isSaturday: Bool
     let isEmptyView: Bool
+    
     var isToday: Bool {
         if isEmptyView { return false }
         
         return calendarEventUseCase?.isToday(date: dateValue.date) ?? false
     }
+    
     var color: Color {
         if isSunday {
             return Color.red

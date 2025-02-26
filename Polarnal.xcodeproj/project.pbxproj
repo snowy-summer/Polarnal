@@ -110,12 +110,16 @@
 				Planner/Calendar/CalendarDateUseCase.swift,
 				Planner/Calendar/CalendarEventUseCase.swift,
 				Planner/Calendar/CalendarUseCaseProtocol.swift,
+				Planner/DDay/DDayUseCase.swift,
+				Planner/DDay/DDayUseCaseProtocol.swift,
 			);
 			target = 6B790F9A2CFEA3080000AC03 /* Polarnal */;
 		};
 		6B92FC312D6F39B400E68E0E /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Repository/Planner/DDay/DDayRepository.swift,
+				Repository/Planner/DDay/DDayRepositoryProtocol.swift,
 				Repository/Planner/Event/EventRepository.swift,
 				Repository/Planner/Event/EventRepositoryProtocol.swift,
 			);

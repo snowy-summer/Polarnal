@@ -7,27 +7,27 @@
 
 import Foundation
 import Combine
-import SwiftData
 
 final class DDayViewModel: ViewModelProtocol {
     
     enum Intent {
         case deleteDDay(DDayDB)
-        case insertModelContext(ModelContext)
+        case ingectDependencies(useCase: DDayUseCaseProtocol)
         case showEditView(DDayDB)
     }
     
-    private let dbManager = DBManager()
+    private var useCase: DDayUseCaseProtocol?
+
     var cancellables: Set<AnyCancellable> = []
     @Published var selectedDDay: DDayDB?
     
     func apply(_ intent: Intent) {
         switch intent {
         case .deleteDDay(let dday):
-            dbManager.deleteItem(dday)
+            useCase?.deleteDDay(dday)
             
-        case .insertModelContext(let modelContext):
-            dbManager.modelContext = modelContext
+        case .ingectDependencies(let useCase):
+            self.useCase = useCase
             
         case .showEditView(let dday):
             selectedDDay = dday

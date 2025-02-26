@@ -48,7 +48,9 @@ struct DDayView: View {
                 .padding(.top, 8)
             }
             .onAppear {
-                viewModel.apply(.insertModelContext(modelContext))
+                let repository = DDayRepository(modelContext: modelContext)
+                let useCase = DDayUseCase(repository: repository)
+                viewModel.apply(.ingectDependencies(useCase: useCase))
             }
             .sheet(item: $viewModel.selectedDDay) { dday in
                 NavigationStack {
@@ -87,7 +89,7 @@ struct DDayCell: View {
                 HStack {
                     
                     if DDayType(rawValue: dDay.type) == .DDay {
-                        Text(dateManager.calculateDDay(startDay: dDay.startDate,
+                        Text(dateManager.calculateDDay(startDay: Date(),
                                                        goalDay: dDay.goalDate))
                         .font(.title)
                         .bold()
