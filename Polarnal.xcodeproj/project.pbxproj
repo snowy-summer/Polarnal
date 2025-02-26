@@ -260,7 +260,6 @@
 				ViewModel/Diary/Note/NoteListViewModel.swift,
 				ViewModel/Planner/Calendar/CalendarViewModel.swift,
 				ViewModel/Planner/Calendar/MainCalendarCellViewModel.swift,
-				ViewModel/Planner/Calendar/MainCalendarViewModel.swift,
 				ViewModel/Planner/DDay/DDayViewModel.swift,
 				ViewModel/Planner/EventCategory/CalendarEventCategoryViewModel.swift,
 				ViewModel/Planner/ModalSheet/AddDDayCellType.swift,

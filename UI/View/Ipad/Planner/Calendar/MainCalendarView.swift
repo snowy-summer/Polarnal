@@ -10,7 +10,7 @@ import SwiftData
 
 struct MainCalendarView: View {
     
-    @ObservedObject var viewModel: MainCalendarViewModel
+    @ObservedObject var viewModel: CalendarViewModel
     
     var body: some View {
         
@@ -45,7 +45,7 @@ struct MainCalendarView: View {
 
 struct MainCalendarContentView: View {
     
-    @ObservedObject var calendarViewModel: MainCalendarViewModel
+    @ObservedObject var calendarViewModel: CalendarViewModel
     
     private let columns = Array(repeating: GridItem(.flexible()),
                                 count: 7)

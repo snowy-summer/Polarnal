@@ -10,7 +10,7 @@ import Combine
 
 struct MiniCalendarView: View {
     
-    @StateObject var viewModel: CalendarViewModel = CalendarViewModel()
+    @StateObject var viewModel: CalendarViewModel = CalendarViewModel(useCase: CalendarUseCase())
     
     private let isMacOS: Bool
     private let calendarYearFont: Font

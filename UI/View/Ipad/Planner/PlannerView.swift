@@ -70,7 +70,7 @@ struct PlannerView: View {
             
             switch plannerViewModel.showedViewType {
             case .calendar:
-                let viewModel = MainCalendarViewModel(useCase: CalendarUseCase())
+                let viewModel = CalendarViewModel(useCase: CalendarUseCase())
                 MainCalendarView(viewModel: viewModel)
                     .padding(.horizontal)
                     .toolbar {
