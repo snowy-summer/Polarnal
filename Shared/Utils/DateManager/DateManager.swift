@@ -40,7 +40,7 @@ final class DateManager {
     func calculateDDay(startDay: Date,
                        goalDay: Date) -> String {
         let calendar = Calendar.current
-        let today = startDay
+        let today = calendar.startOfDay(for: startDay)
         let target = calendar.startOfDay(for: goalDay)
         
         let components = calendar.dateComponents([.day],
@@ -55,7 +55,7 @@ final class DateManager {
         if dayDifference == 0 {
             return "D-Day"
         } else if dayDifference > 0 {
-            return "D-\(dayDifference + 1)"
+            return "D-\(dayDifference)"
         } else {
             return "D+\(-dayDifference)"
         }
