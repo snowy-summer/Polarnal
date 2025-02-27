@@ -49,13 +49,13 @@ final class AddRoutineViewModel: ViewModelProtocol {
     
     enum Intent {
         case saveRoutine
-        case insertModelContext(ModelContext)
+        case ingectDependencies(RoutineUseCaseProtocol)
         
         case selectRepeatDay(Day)
         case selectInterval(Int)
     }
     
-    private let dbManager = DBManager()
+    private var useCase: RoutineUseCaseProtocol?
     var cancellables = Set<AnyCancellable>()
     
     func apply(_ intent: Intent) {
@@ -74,7 +74,7 @@ final class AddRoutineViewModel: ViewModelProtocol {
                 routineDB?.colorCode = hexCode
                 routineDB?.isPushEnabled = isPushEnabled
                 routineDB?.pushTime = pushTime
-                dbManager.addItem(routineDB!)
+                useCase?.saveRoutine(routineDB!)
             } else {
                 let routine = RoutineDB(name: routineName,
                                         startDate: startDate,
@@ -84,11 +84,11 @@ final class AddRoutineViewModel: ViewModelProtocol {
                                         colorCode: hexCode,
                                         isPushEnabled: isPushEnabled,
                                         pushTime: pushTime)
-                dbManager.addItem(routine)
+                useCase?.saveRoutine(routine)
             }
             
-        case .insertModelContext(let modelContext):
-            dbManager.modelContext = modelContext
+        case .ingectDependencies(let useCase):
+            self.useCase = useCase
             
         case .selectRepeatDay(let day):
             if repeatDays.contains(day) {

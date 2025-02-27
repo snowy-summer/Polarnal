@@ -13,14 +13,14 @@ final class RoutineCellViewModel: ViewModelProtocol {
     
     enum Intent {
         case doenTodayRoutine
-        case insertModelContext(ModelContext)
+        case sortRoutine
     }
     
+    private var useCase: RoutineUseCaseProtocol
+    private let dateManager = DateManager.shared
     var cancellables: Set<AnyCancellable> = []
     
     @Published var routineDB: RoutineDB
-    private let dbManager = DBManager()
-    private let dateManager = DateManager.shared
     var streakCount: Int {
         guard let items = routineDB.routineItems else { return 0 }
         return items.reversed().prefix { $0.isDone }.count
@@ -37,36 +37,39 @@ final class RoutineCellViewModel: ViewModelProtocol {
         }
         
         if !repeatDays.contains(today) { return true }
-//        routineDB.routineItems?.append(RoutineItemDB(isDone: false))
         if let items = routineDB.routineItems,
-           !items.isEmpty,
-           let lastDate = items.last?.date {
+           !items.isEmpty {
+            let item = items.first {  dateManager.getDateString(date: $0.date) == dateManager.getDateString(date: Date())
+            }
             
-            let lastDateString = dateManager.getDateString(date: lastDate)
-            let todayDateString = dateManager.getDateString(date: Date())
-            
-            if lastDateString == todayDateString {
+            if let item = item,
+               item.isDone == false {
+                return false
+            } else {
                 return true
             }
+            
         }
         
         return false
         
     }
     
-    init(routine: RoutineDB) {
+    init(routine: RoutineDB,
+         useCase: RoutineUseCaseProtocol) {
         routineDB = routine
+        self.useCase = useCase
     }
     
     func apply(_ intent: Intent) {
-        //루틴을 불러왔을떄 루틴의 맨 마지막이 오늘 날짜가 아니면 새롭게 데이터를 추가 해놔야한다
+
         switch intent {
         case .doenTodayRoutine:
-            routineDB.routineItems?.append(RoutineItemDB(isDone: true))
-            dbManager.addItem(routineDB)
+            useCase.doneTodayRoutine(routineDB)
+            routineDB.routineItems?.sort { $0.date < $1.date }
             
-        case .insertModelContext(let model):
-            dbManager.modelContext = model
+        case .sortRoutine:
+            routineDB.routineItems?.sort { $0.date < $1.date }
         }
     }
     

@@ -114,6 +114,7 @@
 				Planner/DDay/DDayUseCaseProtocol.swift,
 				Planner/EventCategory/EventCategoryUseCase.swift,
 				Planner/EventCategory/EventCategoryUseCaseProtocol.swift,
+				Planner/Routine/RoutineUseCase.swift,
 				Planner/Todo/TodoUseCase.swift,
 				Planner/Todo/TodoUseCaseProtocol.swift,
 			);
@@ -128,6 +129,8 @@
 				Repository/Planner/Event/EventRepositoryProtocol.swift,
 				Repository/Planner/EventCategory/EventCategoryRepository.swift,
 				Repository/Planner/EventCategory/EventCategoryRepositoryProtocol.swift,
+				Repository/Planner/Routine/RoutineRepository.swift,
+				Repository/Planner/Routine/RoutineRepositoryProtocol.swift,
 				Repository/Planner/Todo/TodoRepository.swift,
 				Repository/Planner/Todo/TodoRepositoryProtocol.swift,
 			);

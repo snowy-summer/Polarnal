@@ -38,7 +38,9 @@ struct AddRoutineView: View {
             .padding(.horizontal, 40)
         }
         .onAppear {
-            viewModel.apply(.insertModelContext(modelContext))
+            let repository = RoutineRepository(modelContext: modelContext)
+            let useCase = RoutineUseCase(routineRepository: repository)
+            viewModel.apply(.ingectDependencies(useCase))
         }
         .navigationTitle("Create Routine")
         .navigationBarTitleDisplayMode(.inline)

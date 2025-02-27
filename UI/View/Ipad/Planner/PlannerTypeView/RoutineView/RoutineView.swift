@@ -29,7 +29,11 @@ struct RoutineView: View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(routineList, id: \.id) { routine in
-                        RoutineCell(viewModel: RoutineCellViewModel(routine: routine))
+                        let repository = RoutineRepository(modelContext: modelContext)
+                        let useCase = RoutineUseCase(routineRepository: repository)
+                        let routineCellViewModel = RoutineCellViewModel(routine: routine,
+                                                                        useCase: useCase)
+                        RoutineCell(viewModel: routineCellViewModel)
                             .background(Color.customGray6)
                             .frame(height: 200)
                             .frame(minWidth: 240, maxWidth: 300)
@@ -50,7 +54,9 @@ struct RoutineView: View {
                 .padding()
             }
             .onAppear {
-                viewModel.apply(.insertModelContext(modelContext))
+                let repository = RoutineRepository(modelContext: modelContext)
+                let useCase = RoutineUseCase(routineRepository: repository)
+                viewModel.apply(.ingectDependencies(useCase))
             }
             .sheet(item: $viewModel.selectedRoutine) { routine in
                 NavigationStack {
@@ -63,7 +69,7 @@ struct RoutineView: View {
 
 struct RoutineCell: View {
     @Environment(\.modelContext) var modelContext
-    private let viewModel: RoutineCellViewModel
+    @ObservedObject private var viewModel: RoutineCellViewModel
     
     init(viewModel: RoutineCellViewModel) {
         self.viewModel = viewModel
@@ -108,7 +114,7 @@ struct RoutineCell: View {
             
         }
         .onAppear {
-            viewModel.apply(.insertModelContext(modelContext))
+            viewModel.apply(.sortRoutine)
         }
         
     }
@@ -131,7 +137,7 @@ struct RoutineCell: View {
                 LazyVGrid(columns: columns, spacing: 4) {
                     ForEach(routineItems, id: \.id) { item in
                         RoundedRectangle(cornerRadius: 4)
-                            .fill(item.isDone ? Color(hex: viewModel.routineDB.colorCode) : Color.customGray6)
+                            .fill(item.isDone ? Color(hex: viewModel.routineDB.colorCode) : Color.gray.opacity(0.8))
                             .frame(height: size)
                     }
                 }

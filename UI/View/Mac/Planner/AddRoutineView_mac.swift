@@ -37,7 +37,9 @@ struct AddRoutineView: View {
             }
         }
         .onAppear {
-            viewModel.apply(.insertModelContext(modelContext))
+            let repository = RoutineRepository(modelContext: modelContext)
+            let useCase = RoutineUseCase(routineRepository: repository)
+            viewModel.apply(.ingectDependencies(useCase))
         }
         .navigationTitle("Create Routine")
         

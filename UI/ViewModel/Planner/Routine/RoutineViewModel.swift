@@ -13,21 +13,22 @@ final class RoutineViewModel: ViewModelProtocol {
     
     enum Intent {
         case deleteRoutine(RoutineDB)
-        case insertModelContext(ModelContext)
+        case ingectDependencies(RoutineUseCaseProtocol)
         case showEditView(RoutineDB)
     }
     
-    private let dbManager = DBManager()
+    private var useCase: RoutineUseCaseProtocol?
+    
     var cancellables: Set<AnyCancellable> = []
     @Published var selectedRoutine: RoutineDB?
     
     func apply(_ intent: Intent) {
         switch intent {
         case .deleteRoutine(let routine):
-            dbManager.deleteItem(routine)
+            useCase?.deleteRoutine(routine)
             
-        case .insertModelContext(let modelContext):
-            dbManager.modelContext = modelContext
+        case .ingectDependencies(let useCase):
+            self.useCase = useCase
             
         case .showEditView(let routine):
             selectedRoutine = routine
