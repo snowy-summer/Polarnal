@@ -1,5 +1,5 @@
 //
-//  ExpendedTodoCellViewModel.swift
+//  TodoContentCellViewModel.swift
 //  Polarnal
 //
 //  Created by 최승범 on 12/12/24.
@@ -9,17 +9,17 @@ import Foundation
 import SwiftData
 import Combine
 
-final class ExpandedTodoCellViewModel: ViewModelProtocol {
+final class TodoContentCellViewModel: ViewModelProtocol {
     
     enum Intent {
-        case insertModelContext(ModelContext)
+        case ingectDependencies(useCase: TodoUseCaseProtocol)
         case todoDoneToggle
     }
     
     @Published var todo: TodoDB
     @Published var todoContent: String
     
-    private let dbManager = DBManager()
+    private var todoUseCase: TodoUseCaseProtocol?
     var cancellables: Set<AnyCancellable> = []
     
     init(todo: TodoDB) {
@@ -30,12 +30,12 @@ final class ExpandedTodoCellViewModel: ViewModelProtocol {
     
     func apply(_ intent: Intent) {
         switch intent {
-        case .insertModelContext(let modelContext):
-            dbManager.modelContext = modelContext
+        case .ingectDependencies(let useCase):
+            todoUseCase = useCase
             
         case .todoDoneToggle:
             todo.isDone.toggle()
-            dbManager.addItem(todo)
+            todoUseCase?.addTodo(todo)
         }
     }
     
@@ -47,7 +47,7 @@ final class ExpandedTodoCellViewModel: ViewModelProtocol {
                 guard let self else { return }
                 if text != todo.content {
                     todo.content = text
-                    dbManager.addItem(todo)
+                    todoUseCase?.addTodo(todo)
                 }
             }
             .store(in: &cancellables)

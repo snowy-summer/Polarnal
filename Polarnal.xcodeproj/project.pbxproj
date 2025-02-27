@@ -112,6 +112,10 @@
 				Planner/Calendar/CalendarUseCaseProtocol.swift,
 				Planner/DDay/DDayUseCase.swift,
 				Planner/DDay/DDayUseCaseProtocol.swift,
+				Planner/EventCategory/EventCategoryUseCase.swift,
+				Planner/EventCategory/EventCategoryUseCaseProtocol.swift,
+				Planner/Todo/TodoUseCase.swift,
+				Planner/Todo/TodoUseCaseProtocol.swift,
 			);
 			target = 6B790F9A2CFEA3080000AC03 /* Polarnal */;
 		};
@@ -122,6 +126,10 @@
 				Repository/Planner/DDay/DDayRepositoryProtocol.swift,
 				Repository/Planner/Event/EventRepository.swift,
 				Repository/Planner/Event/EventRepositoryProtocol.swift,
+				Repository/Planner/EventCategory/EventCategoryRepository.swift,
+				Repository/Planner/EventCategory/EventCategoryRepositoryProtocol.swift,
+				Repository/Planner/Todo/TodoRepository.swift,
+				Repository/Planner/Todo/TodoRepositoryProtocol.swift,
 			);
 			target = 6B790F9A2CFEA3080000AC03 /* Polarnal */;
 		};
@@ -213,9 +221,7 @@
 				View/Ipad/Planner/PlannerTypeView/DDayView/DDayView.swift,
 				View/Ipad/Planner/PlannerTypeView/PlannerTypeListView.swift,
 				View/Ipad/Planner/PlannerTypeView/RoutineView/RoutineView.swift,
-				View/Ipad/Planner/PlannerTypeView/TodoView/ExpendedTodoFolderCell.swift,
 				View/Ipad/Planner/PlannerTypeView/TodoView/TodoCell.swift,
-				View/Ipad/Planner/PlannerTypeView/TodoView/TodoFolderCell.swift,
 				View/Ipad/Planner/PlannerTypeView/TodoView/TodoView.swift,
 				View/Ipad/Planner/PlannerView.swift,
 				View/Ipad/Planner/Sheet/AddDDay/AddDDayView.swift,
@@ -285,7 +291,7 @@
 				ViewModel/Planner/PlannerViewModel.swift,
 				ViewModel/Planner/Routine/RoutineCellViewModel.swift,
 				ViewModel/Planner/Routine/RoutineViewModel.swift,
-				ViewModel/Planner/Todo/ExpendedTodoCellViewModel.swift,
+				ViewModel/Planner/Todo/TodoContentCellViewModel.swift,
 				ViewModel/Planner/Todo/TodoFolderViewModel.swift,
 				ViewModel/Planner/Todo/TodoViewModel.swift,
 				ViewModel/SideBar/SideTabBarViewModel.swift,

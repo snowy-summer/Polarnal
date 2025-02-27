@@ -9,5 +9,5 @@ import Foundation
 import SwiftData
 
 protocol EventRepositoryProtocol {
-    func fetchEvents(for date: Date) -> [EventDB]
+    func fetchEvents() -> [EventDB]
 }

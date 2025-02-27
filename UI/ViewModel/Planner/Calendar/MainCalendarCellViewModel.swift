@@ -58,7 +58,7 @@ final class MainCalendarCellViewModel: ViewModelProtocol {
         switch intent {
         case .ingectDependencies(let useCase):
             calendarEventUseCase = useCase
-            eventList = calendarEventUseCase!.eventRepository.fetchEvents(for: dateValue.date)
+            eventList = calendarEventUseCase!.fetchEvents(for: dateValue.date)
             
         }
     }

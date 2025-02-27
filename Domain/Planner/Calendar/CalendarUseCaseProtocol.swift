@@ -16,6 +16,6 @@ protocol CalendarDateUseCaseProtocol {
 
 //Event 관련 처리
 protocol CalendarEventUseCaseProtocol {
-    var eventRepository: EventRepositoryProtocol { get }
+    func fetchEvents(for date: Date) -> [EventDB]
     func isToday(date: Date) -> Bool
 }

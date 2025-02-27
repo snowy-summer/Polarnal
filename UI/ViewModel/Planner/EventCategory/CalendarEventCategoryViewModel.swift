@@ -14,23 +14,23 @@ final class CalendarEventCategoryViewModel: ViewModelProtocol {
     enum Intent {
         case deleteEventCategory(EventCategoryDB)
         case editEventCategory(EventCategoryDB)
-        case insertDB(ModelContext)
+        case ingectDependencies(useCase: EventCategoryUseCase)
     }
     
-    private let dbManager = DBManager()
+    private var useCase: EventCategoryUseCaseProtocol?
     @Published var isShowEditEventCategoryView: EventCategoryDB?
     var cancellables: Set<AnyCancellable> = []
     
     func apply(_ intent: Intent) {
         switch intent {
         case .deleteEventCategory(let category):
-            dbManager.deleteItem(category)
+            useCase?.deleteEventCategory(category)
             
         case .editEventCategory(let category):
             isShowEditEventCategoryView = category
             
-        case .insertDB(let modelContext):
-            dbManager.modelContext = modelContext
+        case .ingectDependencies(let useCase):
+            self.useCase = useCase
         }
     }
     

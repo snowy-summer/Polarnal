@@ -87,17 +87,20 @@ struct TodoCell: View {
             
         }
         .onAppear {
-            viewModel.apply(.insertModelContext(modelContext))
+            let repository = TodoRepository(modelContext: modelContext)
+            let useCase = TodoUseCase(todoRepository: repository)
+            viewModel.apply(.ingectDependencies(useCase: useCase))
             viewModel.apply(.viewSetting)
         }
     }
 }
 
 struct TodoContentCell: View {
-    @ObservedObject var viewModel: ExpandedTodoCellViewModel
+    @Environment(\.modelContext) var modelContext
+    @ObservedObject var viewModel: TodoContentCellViewModel
     
     init(todo: TodoDB) {
-        self.viewModel = ExpandedTodoCellViewModel(todo: todo)
+        self.viewModel = TodoContentCellViewModel(todo: todo)
     }
     
     var body: some View {
@@ -126,5 +129,10 @@ struct TodoContentCell: View {
             
         }
         .padding()
+        .onAppear {
+            let repository = TodoRepository(modelContext: modelContext)
+            let useCase = TodoUseCase(todoRepository: repository)
+            viewModel.apply(.ingectDependencies(useCase: useCase))
+        }
     }
 }

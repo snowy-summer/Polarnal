@@ -7,28 +7,29 @@
 
 import Foundation
 import Combine
-import SwiftData
 
 final class TodoViewModel: ViewModelProtocol {
     
     enum Intent {
         case deleteTodoFolder(TodoFolderDB)
-        case insertModelContext(ModelContext)
+        case ingectDependencies(useCase: TodoUseCaseProtocol)
         case selectFolder(TodoFolderDB)
         case clearSelectedFolder
     }
     
-    private let dbManager = DBManager()
+    private var todoUseCase: TodoUseCaseProtocol?
+    
     var cancellables: Set<AnyCancellable> = []
     @Published var selectedFolder: TodoFolderDB?
+    
     
     func apply(_ intent: Intent) {
         switch intent {
         case .deleteTodoFolder(let todoFolderDB):
-            dbManager.deleteItem(todoFolderDB)
+            todoUseCase?.deleteTodoFolder(todoFolderDB)
             
-        case .insertModelContext(let modelContext):
-            dbManager.modelContext = modelContext
+        case .ingectDependencies(let useCase):
+            todoUseCase = useCase
         
         case .selectFolder(let folder):
             selectedFolder = folder
@@ -39,3 +40,4 @@ final class TodoViewModel: ViewModelProtocol {
     }
     
 }
+

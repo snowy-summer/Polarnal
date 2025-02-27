@@ -1,14 +1,14 @@
 //
-//  DDayRepository.swift
+//  EventCategoryRepository.swift
 //  Polarnal
 //
-//  Created by 최승범 on 2/26/25.
+//  Created by 최승범 on 2/27/25.
 //
 
 import Foundation
 import SwiftData
 
-final class DDayRepository: DDayRepositoryProtocol {
+final class EventCategoryRepository: EventCategoryRepositoryProtocol {
     
     private let dbManager: DBManager
     private let modelContext: ModelContext
@@ -19,11 +19,7 @@ final class DDayRepository: DDayRepositoryProtocol {
         self.dbManager.modelContext = modelContext
     }
     
-    func fetchDDay() -> [DDayDB] {
-        return dbManager.fetchItems(ofType: DDayDB.self)
-    }
-    
-    func deleteDDay(_ DDay: DDayDB) {
-        dbManager.deleteItem(DDay)
+    func deleteEventCategory(_ category: EventCategoryDB) {
+        dbManager.deleteItem(category)
     }
 }

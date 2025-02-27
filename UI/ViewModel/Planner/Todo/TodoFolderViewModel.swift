@@ -12,46 +12,38 @@ import Combine
 final class TodoFolderCellViewModel: ViewModelProtocol {
     
     enum Intent {
-        case insertModelContext(ModelContext)
+        case ingectDependencies(useCase: TodoUseCaseProtocol)
         case viewSetting
         case addTodo
         case deleteTodo(TodoDB)
     }
     
-    private let dbManager = DBManager()
+    private var todoUseCase: TodoUseCaseProtocol?
     var cancellables: Set<AnyCancellable> = []
     let todofolder: TodoFolderDB
     @Published var todoList: [TodoDB]
     
     init(folder: TodoFolderDB) {
         self.todofolder = folder
-        self.todoList = dbManager.fetchItems(ofType: TodoDB.self).filter { todo in
-            todo.folder == folder
-        }
+        self.todoList = todoUseCase?.fetchTodoList(folderID: folder.id) ?? []
     }
     
     func apply(_ intent: Intent) {
         
         switch intent {
         case .viewSetting:
-            todoList = dbManager.fetchItems(ofType: TodoDB.self).filter { todo in
-                todo.folder == todofolder
-            }
+            todoList = todoUseCase?.fetchTodoList(folderID: todofolder.id) ?? []
             
-        case .insertModelContext(let modelContext):
-            dbManager.modelContext = modelContext
+        case .ingectDependencies(let useCase):
+            todoUseCase = useCase
             
         case .addTodo:
-            dbManager.addItem(TodoDB(content: "", folder: todofolder))
-            todoList = dbManager.fetchItems(ofType: TodoDB.self).filter { todo in
-                todo.folder == todofolder
-            }
+            todoUseCase?.addTodo(TodoDB(content: "", folder: todofolder))
+            todoList = todoUseCase?.fetchTodoList(folderID: todofolder.id) ?? []
             
         case .deleteTodo(let todo):
-            dbManager.deleteItem(todo)
-            todoList = dbManager.fetchItems(ofType: TodoDB.self).filter { todo in
-                todo.folder == todofolder
-            }
+            todoUseCase?.deleteTodo(todo)
+            todoList = todoUseCase?.fetchTodoList(folderID: todofolder.id) ?? []
         }
         
     }

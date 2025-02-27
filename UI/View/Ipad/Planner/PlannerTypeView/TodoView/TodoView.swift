@@ -18,52 +18,42 @@ struct TodoView: View {
     
     var body: some View {
         
-        ZStack {
-            if let folder = viewModel.selectedFolder {
-                ExpandedFolderView(todoFolder: folder,
-                                   animation: animation) {
-                    withAnimation(.easeInOut(duration: 0.5)) {
-                        viewModel.apply(.clearSelectedFolder)
-                    }
-                }
-            } else {
-                GeometryReader { geometry in
-                    let availableWidth = geometry.size.width
+        GeometryReader { geometry in
+            let availableWidth = geometry.size.width
 #if os(macOS)
             let columnCount = max(1, Int(availableWidth / 400))
 #else
             let columnCount = 3
 #endif
-                    let columns = Array(repeating: gridItems,
-                                        count: columnCount)
-                    ScrollView {
-                        LazyVGrid(columns: columns, spacing: 16) {
-                            ForEach(todoFolderList,
-                                    id: \.id) { todoFolder in
-                                TodoCell(todoFolder: todoFolder)
-                                .background(Color.customGray6)
-                                .frame(height: 400)
-                                .clipShape(RoundedRectangle(cornerRadius: 12))
-                                .shadow(radius: 5, x: 2, y:2)
-                                .contextMenu {
-                                    Button(role: .destructive, action: {
-                                        viewModel.apply(.deleteTodoFolder(todoFolder))
-                                    }) {
-                                        Label("Delete", systemImage: "trash")
-                                    }
+            let columns = Array(repeating: gridItems,
+                                count: columnCount)
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 16) {
+                    ForEach(todoFolderList,
+                            id: \.id) { todoFolder in
+                        TodoCell(todoFolder: todoFolder)
+                            .background(Color.customGray6)
+                            .frame(height: 400)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .shadow(radius: 5, x: 2, y:2)
+                            .contextMenu {
+                                Button(role: .destructive, action: {
+                                    viewModel.apply(.deleteTodoFolder(todoFolder))
+                                }) {
+                                    Label("Delete", systemImage: "trash")
                                 }
-                                .padding()
                             }
-                            
-                        }
+                            .padding()
                     }
+                    
                 }
-                
-                
             }
         }
+        
         .onAppear {
-            viewModel.apply(.insertModelContext(modelContext))
+            let repository = TodoRepository(modelContext: modelContext)
+            let useCase = TodoUseCase(todoRepository: repository)
+            viewModel.apply(.ingectDependencies(useCase: useCase))
         }
     }
 }

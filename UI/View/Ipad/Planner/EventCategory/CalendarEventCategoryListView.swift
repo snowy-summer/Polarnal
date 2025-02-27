@@ -44,7 +44,9 @@ struct CalendarEventCategoryListView: View {
             }
         })
         .onAppear {
-            viewModel.apply(.insertDB(modelContext))
+            let repository = EventCategoryRepository(modelContext: modelContext)
+            let useCase = EventCategoryUseCase(eventCategoryRepository: repository)
+            viewModel.apply(.ingectDependencies(useCase: useCase))
         }
     }
     
