@@ -58,6 +58,7 @@ struct AddDDayView: View {
                             .background(Color.customGray5)
                             .clipShape(RoundedRectangle(cornerRadius: 12))
                         })
+                        .tint(Color.normalText)
                         
                         Button(action: {
                             viewModel.apply(.selectDPlus)
@@ -81,6 +82,7 @@ struct AddDDayView: View {
                             .background(Color.customGray5)
                             .clipShape(RoundedRectangle(cornerRadius: 12))
                         })
+                        .tint(Color.normalText)
                     }
                     .padding()
                 }

@@ -9,8 +9,8 @@ import Foundation
 
 enum TabType: CaseIterable {
     case planner
-    case diary
-    case travelPlanner
+//    case diary
+//    case travelPlanner
     case setting
     
     var iconText: String {
@@ -18,11 +18,11 @@ enum TabType: CaseIterable {
         case .planner:
             return "calendar"
             
-        case .diary:
-            return "book.closed.fill"
-            
-        case .travelPlanner:
-            return "airplane.departure"
+//        case .diary:
+//            return "book.closed.fill"
+//            
+//        case .travelPlanner:
+//            return "airplane.departure"
             
         case .setting:
             return "gearshape.fill"

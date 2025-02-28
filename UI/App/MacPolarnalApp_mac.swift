@@ -24,17 +24,16 @@ struct MacPolarnalApp: App {
                 PlannerView(sideTabBarViewModel: sideTabBarViewModel)
                     .preferredColorScheme(isDarkMode ? .dark : .light)
                     .environment(\.locale, .init(identifier: locale))
-                EmptyView()
-            case .diary:
-                DiaryView(sideTabBarViewModel: sideTabBarViewModel)
-                    .preferredColorScheme(isDarkMode ? .dark : .light)
-                    .environment(\.locale, .init(identifier: locale))
-                
-            case .travelPlanner:
-                //                                TravelDashboard(sideTabBarViewModel: sideTabBarViewModel)
-                //                                    .preferredColorScheme(isDarkMode ? .dark : .light)
-                //                                    .environment(\.locale, .init(identifier: locale))
-                EmptyView()
+//            case .diary:
+//                DiaryView(sideTabBarViewModel: sideTabBarViewModel)
+//                    .preferredColorScheme(isDarkMode ? .dark : .light)
+//                    .environment(\.locale, .init(identifier: locale))
+//                
+//            case .travelPlanner:
+//                //                                TravelDashboard(sideTabBarViewModel: sideTabBarViewModel)
+//                //                                    .preferredColorScheme(isDarkMode ? .dark : .light)
+//                //                                    .environment(\.locale, .init(identifier: locale))
+//                EmptyView()
             case .setting:
                 AppSettingView(sideTabBarViewModel: sideTabBarViewModel)
                     .preferredColorScheme(isDarkMode ? .dark : .light)

@@ -32,20 +32,23 @@ struct PolarnalApp: App {
                     PlannerView(sideTabBarViewModel: sideTabBarViewModel)
                         .preferredColorScheme(isDarkMode ? .dark : .light)
                         .environment(\.locale, .init(identifier: locale))
-                case .diary:
-                    DiaryView(stateViewModel: diaryStateViewModel,
-                              uiViewModel: DiaryUIViewModel(),
-                              folderViewModel: FolderListViewModel(),
-                              noteViewModel: NoteListViewModel(),
-                              sideTabBarViewModel: sideTabBarViewModel)
-                    .preferredColorScheme(isDarkMode ? .dark : .light)
-                    .environment(\.locale, .init(identifier: locale))
-                    
-                case .travelPlanner:
-                    TravelDashboard(sideTabBarViewModel: sideTabBarViewModel)
-                        .preferredColorScheme(isDarkMode ? .dark : .light)
-                        .environment(\.locale, .init(identifier: locale))
-                    
+                        .onAppear {
+                            LocalNotificationManager.shared.requestAuthorization()
+                        }
+//                case .diary:
+//                    DiaryView(stateViewModel: diaryStateViewModel,
+//                              uiViewModel: DiaryUIViewModel(),
+//                              folderViewModel: FolderListViewModel(),
+//                              noteViewModel: NoteListViewModel(),
+//                              sideTabBarViewModel: sideTabBarViewModel)
+//                    .preferredColorScheme(isDarkMode ? .dark : .light)
+//                    .environment(\.locale, .init(identifier: locale))
+//                    
+//                case .travelPlanner:
+//                    TravelDashboard(sideTabBarViewModel: sideTabBarViewModel)
+//                        .preferredColorScheme(isDarkMode ? .dark : .light)
+//                        .environment(\.locale, .init(identifier: locale))
+//                    
                 case .setting:
                     AppSettingView(sideTabBarViewModel: sideTabBarViewModel)
                         .preferredColorScheme(isDarkMode ? .dark : .light)

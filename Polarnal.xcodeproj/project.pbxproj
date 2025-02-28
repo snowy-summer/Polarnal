@@ -37,9 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6B790F9B2CFEA3080000AC03 /* Polarnal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Polarnal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B790F9B2CFEA3080000AC03 /* CoreBrick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreBrick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B790FAE2CFEA33B0000AC03 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		6B91291A2D50A758005C85D2 /* MacPolarnal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacPolarnal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B91291A2D50A758005C85D2 /* CoreBrick_Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreBrick_Mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B91292C2D50A75A005C85D2 /* MacPolarnalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacPolarnalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B9129362D50A75A005C85D2 /* MacPolarnalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacPolarnalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD9CE552D598F9A00674C10 /* Polarnal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Polarnal.entitlements; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 				Planner/Todo/TodoUseCase.swift,
 				Planner/Todo/TodoUseCaseProtocol.swift,
 			);
-			target = 6B790F9A2CFEA3080000AC03 /* Polarnal */;
+			target = 6B790F9A2CFEA3080000AC03 /* CoreBrick */;
 		};
 		6B92FC312D6F39B400E68E0E /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -89,7 +89,7 @@
 				Repository/Planner/Todo/TodoRepository.swift,
 				Repository/Planner/Todo/TodoRepositoryProtocol.swift,
 			);
-			target = 6B790F9A2CFEA3080000AC03 /* Polarnal */;
+			target = 6B790F9A2CFEA3080000AC03 /* CoreBrick */;
 		};
 		6B92FC9F2D71463100E68E0E /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -147,7 +147,7 @@
 				View/Ipad/TravelPlanner/TravelDashboard/TravelTodo/TravelTodoMiniView.swift,
 				View/Ipad/TravelPlanner/TravelDashboard/TravelTodo/TravelTodoMiniViewModel.swift,
 			);
-			target = 6B9129192D50A758005C85D2 /* MacPolarnal */;
+			target = 6B9129192D50A758005C85D2 /* CoreBrick_Mac */;
 		};
 		6BE975BB2D6DDF58009C9C8D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -159,10 +159,11 @@
 				Utils/DateManager/DateManager.swift,
 				Utils/LocaleFileManager/LocaleFileManager.swift,
 				Utils/LocaleFileManager/StorageManager.swift,
+				Utils/LocalNotificationManager/LocalNotificationManager.swift,
 				Utils/LogManager/LogManager.swift,
 				Utils/MapSearchManager/MapSearchManager.swift,
 			);
-			target = 6B790F9A2CFEA3080000AC03 /* Polarnal */;
+			target = 6B790F9A2CFEA3080000AC03 /* CoreBrick */;
 		};
 		6BE975BD2D6DDF77009C9C8D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -175,7 +176,7 @@
 				Localizable.xcstrings,
 				MonthCase.swift,
 			);
-			target = 6B790F9A2CFEA3080000AC03 /* Polarnal */;
+			target = 6B790F9A2CFEA3080000AC03 /* CoreBrick */;
 		};
 		6BF08B972D6DDC47002D7015 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -276,7 +277,7 @@
 				ViewModel/SideBar/SideTabBarViewModel.swift,
 				ViewModel/SideBar/TabTye.swift,
 			);
-			target = 6B790F9A2CFEA3080000AC03 /* Polarnal */;
+			target = 6B790F9A2CFEA3080000AC03 /* CoreBrick */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -355,8 +356,8 @@
 		6B790F9C2CFEA3080000AC03 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6B790F9B2CFEA3080000AC03 /* Polarnal.app */,
-				6B91291A2D50A758005C85D2 /* MacPolarnal.app */,
+				6B790F9B2CFEA3080000AC03 /* CoreBrick.app */,
+				6B91291A2D50A758005C85D2 /* CoreBrick_Mac.app */,
 				6B91292C2D50A75A005C85D2 /* MacPolarnalTests.xctest */,
 				6B9129362D50A75A005C85D2 /* MacPolarnalUITests.xctest */,
 				6BF08B052D655580002D7015 /* PolarnalTests.xctest */,
@@ -374,9 +375,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6B790F9A2CFEA3080000AC03 /* Polarnal */ = {
+		6B790F9A2CFEA3080000AC03 /* CoreBrick */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6B790FAB2CFEA3090000AC03 /* Build configuration list for PBXNativeTarget "Polarnal" */;
+			buildConfigurationList = 6B790FAB2CFEA3090000AC03 /* Build configuration list for PBXNativeTarget "CoreBrick" */;
 			buildPhases = (
 				6B790F972CFEA3080000AC03 /* Sources */,
 				6B790F982CFEA3080000AC03 /* Frameworks */,
@@ -386,14 +387,14 @@
 			);
 			dependencies = (
 			);
-			name = Polarnal;
+			name = CoreBrick;
 			productName = Polarnal;
-			productReference = 6B790F9B2CFEA3080000AC03 /* Polarnal.app */;
+			productReference = 6B790F9B2CFEA3080000AC03 /* CoreBrick.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6B9129192D50A758005C85D2 /* MacPolarnal */ = {
+		6B9129192D50A758005C85D2 /* CoreBrick_Mac */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6B91293E2D50A75A005C85D2 /* Build configuration list for PBXNativeTarget "MacPolarnal" */;
+			buildConfigurationList = 6B91293E2D50A75A005C85D2 /* Build configuration list for PBXNativeTarget "CoreBrick_Mac" */;
 			buildPhases = (
 				6B9129162D50A758005C85D2 /* Sources */,
 				6B9129172D50A758005C85D2 /* Frameworks */,
@@ -411,12 +412,12 @@
 				6BF08B2B2D6DA94A002D7015 /* Domain */,
 				6BF08B2C2D6DA96A002D7015 /* Data */,
 			);
-			name = MacPolarnal;
+			name = CoreBrick_Mac;
 			packageProductDependencies = (
 				6B9129A72D50B3FA005C85D2 /* EnumHelper */,
 			);
 			productName = MacPolarnal;
-			productReference = 6B91291A2D50A758005C85D2 /* MacPolarnal.app */;
+			productReference = 6B91291A2D50A758005C85D2 /* CoreBrick_Mac.app */;
 			productType = "com.apple.product-type.application";
 		};
 		6B91292B2D50A75A005C85D2 /* MacPolarnalTests */ = {
@@ -536,8 +537,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6B790F9A2CFEA3080000AC03 /* Polarnal */,
-				6B9129192D50A758005C85D2 /* MacPolarnal */,
+				6B790F9A2CFEA3080000AC03 /* CoreBrick */,
+				6B9129192D50A758005C85D2 /* CoreBrick_Mac */,
 				6B91292B2D50A75A005C85D2 /* MacPolarnalTests */,
 				6B9129352D50A75A005C85D2 /* MacPolarnalUITests */,
 				6BF08B042D655580002D7015 /* PolarnalTests */,
@@ -625,17 +626,17 @@
 /* Begin PBXTargetDependency section */
 		6B91292E2D50A75A005C85D2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6B9129192D50A758005C85D2 /* MacPolarnal */;
+			target = 6B9129192D50A758005C85D2 /* CoreBrick_Mac */;
 			targetProxy = 6B91292D2D50A75A005C85D2 /* PBXContainerItemProxy */;
 		};
 		6B9129382D50A75A005C85D2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6B9129192D50A758005C85D2 /* MacPolarnal */;
+			target = 6B9129192D50A758005C85D2 /* CoreBrick_Mac */;
 			targetProxy = 6B9129372D50A75A005C85D2 /* PBXContainerItemProxy */;
 		};
 		6BF08B0A2D655580002D7015 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6B790F9A2CFEA3080000AC03 /* Polarnal */;
+			target = 6B790F9A2CFEA3080000AC03 /* CoreBrick */;
 			targetProxy = 6BF08B092D655580002D7015 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -773,11 +774,13 @@
 				DEVELOPMENT_TEAM = F8Q3Y446GH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = CoreBrick;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -808,11 +811,13 @@
 				DEVELOPMENT_TEAM = F8Q3Y446GH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = CoreBrick;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -845,6 +850,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = CoreBrick;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -873,6 +880,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = CoreBrick;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1012,7 +1021,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6B790FAB2CFEA3090000AC03 /* Build configuration list for PBXNativeTarget "Polarnal" */ = {
+		6B790FAB2CFEA3090000AC03 /* Build configuration list for PBXNativeTarget "CoreBrick" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6B790FAC2CFEA3090000AC03 /* Debug */,
@@ -1021,7 +1030,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6B91293E2D50A75A005C85D2 /* Build configuration list for PBXNativeTarget "MacPolarnal" */ = {
+		6B91293E2D50A75A005C85D2 /* Build configuration list for PBXNativeTarget "CoreBrick_Mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6B91293F2D50A75A005C85D2 /* Debug */,
