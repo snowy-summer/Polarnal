@@ -7,48 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B37A7782D06842700239987 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7772D06842700239987 /* DateManager.swift */; };
-		6B37A7872D08514400239987 /* EvnentDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7862D08514400239987 /* EvnentDB.swift */; };
-		6B37A7A92D0AA49900239987 /* DDayDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7A82D0AA49900239987 /* DDayDB.swift */; };
-		6B37A7AB2D0AA4B500239987 /* TodoDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7AA2D0AA4B500239987 /* TodoDB.swift */; };
-		6B37A7D22D0FEDCB00239987 /* TravelPlanDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7D12D0FEDCB00239987 /* TravelPlanDB.swift */; };
-		6B37A7DB2D100E9C00239987 /* TravelCostType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7DA2D100E9C00239987 /* TravelCostType.swift */; };
 		6B790FAF2CFEA33C0000AC03 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6B790FAE2CFEA33B0000AC03 /* .gitignore */; };
-		6B790FB72CFEA4430000AC03 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FB62CFEA4430000AC03 /* LogManager.swift */; };
-		6B790FB92CFEA4830000AC03 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FB82CFEA4830000AC03 /* DBManager.swift */; };
-		6B790FBC2CFEA4F40000AC03 /* FolderDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FBB2CFEA4F40000AC03 /* FolderDB.swift */; };
-		6B790FBE2CFEA50A0000AC03 /* NoteDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FBD2CFEA50A0000AC03 /* NoteDB.swift */; };
-		6B9129152D4F8EA3005C85D2 /* LocaleFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9129142D4F8EA3005C85D2 /* LocaleFileManager.swift */; };
-		6B91294A2D50A842005C85D2 /* LocaleFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9129142D4F8EA3005C85D2 /* LocaleFileManager.swift */; };
-		6B91294B2D50A842005C85D2 /* CostFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5042D1579E700A066E9 /* CostFormatter.swift */; };
-		6B91294C2D50A842005C85D2 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7772D06842700239987 /* DateManager.swift */; };
-		6B91294D2D50A842005C85D2 /* MapSearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE52D2D2BD32C00A066E9 /* MapSearchManager.swift */; };
-		6B91294E2D50A842005C85D2 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FB62CFEA4430000AC03 /* LogManager.swift */; };
-		6B9129572D50A86D005C85D2 /* EvnentDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7862D08514400239987 /* EvnentDB.swift */; };
-		6B9129582D50A86D005C85D2 /* FolderDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FBB2CFEA4F40000AC03 /* FolderDB.swift */; };
-		6B9129592D50A86D005C85D2 /* CurrencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE6A6A12D13ABDC00931E7B /* CurrencyType.swift */; };
-		6B91295A2D50A86D005C85D2 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FB82CFEA4830000AC03 /* DBManager.swift */; };
-		6B91295B2D50A86D005C85D2 /* TravelCostType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7DA2D100E9C00239987 /* TravelCostType.swift */; };
-		6B91295C2D50A86D005C85D2 /* TodoDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7AA2D0AA4B500239987 /* TodoDB.swift */; };
-		6B91295D2D50A86D005C85D2 /* TravelDocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE50B2D18F38E00A066E9 /* TravelDocumentType.swift */; };
-		6B91295E2D50A86D005C85D2 /* NoteDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FBD2CFEA50A0000AC03 /* NoteDB.swift */; };
-		6B91295F2D50A86D005C85D2 /* TravelDestinationFolderDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE51D2D290FA500A066E9 /* TravelDestinationFolderDB.swift */; };
-		6B9129602D50A86D005C85D2 /* TravelPlanDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7D12D0FEDCB00239987 /* TravelPlanDB.swift */; };
-		6B9129612D50A86D005C85D2 /* DDayDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7A82D0AA49900239987 /* DDayDB.swift */; };
 		6B9129A82D50B3FA005C85D2 /* EnumHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 6B9129A72D50B3FA005C85D2 /* EnumHelper */; };
-		6B9798962D5AFBD5000EB795 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9798952D5AFBD5000EB795 /* StorageManager.swift */; };
-		6B9798972D5AFBD5000EB795 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9798952D5AFBD5000EB795 /* StorageManager.swift */; };
 		6B9F61B52D3E621D00875186 /* EnumHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 6B9F61B42D3E621D00875186 /* EnumHelper */; };
-		6BDAE5052D1579E700A066E9 /* CostFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE5042D1579E700A066E9 /* CostFormatter.swift */; };
-		6BDAE50C2D18F38E00A066E9 /* TravelDocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE50B2D18F38E00A066E9 /* TravelDocumentType.swift */; };
-		6BDAE51E2D290FA500A066E9 /* TravelDestinationFolderDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE51D2D290FA500A066E9 /* TravelDestinationFolderDB.swift */; };
-		6BDAE52E2D2BD32C00A066E9 /* MapSearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAE52D2D2BD32C00A066E9 /* MapSearchManager.swift */; };
-		6BE6A6A22D13ABDC00931E7B /* CurrencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE6A6A12D13ABDC00931E7B /* CurrencyType.swift */; };
-		6BF08AFF2D655070002D7015 /* RoutineDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF08AFE2D655070002D7015 /* RoutineDB.swift */; };
-		6BF08B002D655070002D7015 /* RoutineDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF08AFE2D655070002D7015 /* RoutineDB.swift */; };
-		6BF08B262D66C6F0002D7015 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37A7772D06842700239987 /* DateManager.swift */; };
-		6BF08B272D66C93E002D7015 /* RoutineDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF08AFE2D655070002D7015 /* RoutineDB.swift */; };
-		6BF08B282D66CAF5002D7015 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B790FB62CFEA4430000AC03 /* LogManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,30 +37,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6B37A7772D06842700239987 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
-		6B37A7862D08514400239987 /* EvnentDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvnentDB.swift; sourceTree = "<group>"; };
-		6B37A7A82D0AA49900239987 /* DDayDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayDB.swift; sourceTree = "<group>"; };
-		6B37A7AA2D0AA4B500239987 /* TodoDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDB.swift; sourceTree = "<group>"; };
-		6B37A7D12D0FEDCB00239987 /* TravelPlanDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlanDB.swift; sourceTree = "<group>"; };
-		6B37A7DA2D100E9C00239987 /* TravelCostType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelCostType.swift; sourceTree = "<group>"; };
 		6B790F9B2CFEA3080000AC03 /* Polarnal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Polarnal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B790FAE2CFEA33B0000AC03 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		6B790FB62CFEA4430000AC03 /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
-		6B790FB82CFEA4830000AC03 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
-		6B790FBB2CFEA4F40000AC03 /* FolderDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDB.swift; sourceTree = "<group>"; };
-		6B790FBD2CFEA50A0000AC03 /* NoteDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDB.swift; sourceTree = "<group>"; };
-		6B9129142D4F8EA3005C85D2 /* LocaleFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleFileManager.swift; sourceTree = "<group>"; };
 		6B91291A2D50A758005C85D2 /* MacPolarnal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacPolarnal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B91292C2D50A75A005C85D2 /* MacPolarnalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacPolarnalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B9129362D50A75A005C85D2 /* MacPolarnalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacPolarnalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6B9798952D5AFBD5000EB795 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		6BD9CE552D598F9A00674C10 /* Polarnal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Polarnal.entitlements; sourceTree = "<group>"; };
-		6BDAE5042D1579E700A066E9 /* CostFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostFormatter.swift; sourceTree = "<group>"; };
-		6BDAE50B2D18F38E00A066E9 /* TravelDocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDocumentType.swift; sourceTree = "<group>"; };
-		6BDAE51D2D290FA500A066E9 /* TravelDestinationFolderDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDestinationFolderDB.swift; sourceTree = "<group>"; };
-		6BDAE52D2D2BD32C00A066E9 /* MapSearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchManager.swift; sourceTree = "<group>"; };
-		6BE6A6A12D13ABDC00931E7B /* CurrencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyType.swift; sourceTree = "<group>"; };
-		6BF08AFE2D655070002D7015 /* RoutineDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineDB.swift; sourceTree = "<group>"; };
 		6BF08B052D655580002D7015 /* PolarnalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PolarnalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -123,6 +66,18 @@
 		6B92FC312D6F39B400E68E0E /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				DB/DBManager.swift,
+				DB/DBModel/CalendarPlanner/DDayDB.swift,
+				DB/DBModel/CalendarPlanner/EvnentDB.swift,
+				DB/DBModel/CalendarPlanner/TodoDB.swift,
+				DB/DBModel/Diary/FolderDB.swift,
+				DB/DBModel/Diary/NoteDB.swift,
+				DB/DBModel/Diary/RoutineDB.swift,
+				DB/DBModel/Travel/TravelDestinationFolderDB.swift,
+				DB/DBModel/Travel/TravelPlanDB.swift,
+				DB/DBModel/Travel/Type/CurrencyType.swift,
+				DB/DBModel/Travel/Type/TravelCostType.swift,
+				DB/DBModel/Travel/Type/TravelDocumentType.swift,
 				Repository/Planner/DDay/DDayRepository.swift,
 				Repository/Planner/DDay/DDayRepositoryProtocol.swift,
 				Repository/Planner/Event/EventRepository.swift,
@@ -135,6 +90,21 @@
 				Repository/Planner/Todo/TodoRepositoryProtocol.swift,
 			);
 			target = 6B790F9A2CFEA3080000AC03 /* Polarnal */;
+		};
+		6B92FC9F2D71463100E68E0E /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				DB/DBModel/Diary/RoutineDB.swift,
+			);
+			target = 6BF08B042D655580002D7015 /* PolarnalTests */;
+		};
+		6B92FCBB2D71463F00E68E0E /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Utils/DateManager/DateManager.swift,
+				Utils/LogManager/LogManager.swift,
+			);
+			target = 6BF08B042D655580002D7015 /* PolarnalTests */;
 		};
 		6BE975512D6DDD4F009C9C8D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -185,6 +155,12 @@
 				"Extension/Color+Extension.swift",
 				"Extension/Date+Extension.swift",
 				"Extension/View+Extension.swift",
+				Utils/CostFormatter/CostFormatter.swift,
+				Utils/DateManager/DateManager.swift,
+				Utils/LocaleFileManager/LocaleFileManager.swift,
+				Utils/LocaleFileManager/StorageManager.swift,
+				Utils/LogManager/LogManager.swift,
+				Utils/MapSearchManager/MapSearchManager.swift,
 			);
 			target = 6B790F9A2CFEA3080000AC03 /* Polarnal */;
 		};
@@ -308,12 +284,12 @@
 		6B91291B2D50A758005C85D2 /* MacPolarnal */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MacPolarnal; sourceTree = "<group>"; };
 		6B91292F2D50A75A005C85D2 /* MacPolarnalTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MacPolarnalTests; sourceTree = "<group>"; };
 		6B9129392D50A75A005C85D2 /* MacPolarnalUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MacPolarnalUITests; sourceTree = "<group>"; };
-		6BE975B02D6DDF45009C9C8D /* Support */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (6BE975BB2D6DDF58009C9C8D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Support; sourceTree = "<group>"; };
+		6BE975B02D6DDF45009C9C8D /* Support */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (6BE975BB2D6DDF58009C9C8D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 6B92FCBB2D71463F00E68E0E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Support; sourceTree = "<group>"; };
 		6BE975BC2D6DDF6A009C9C8D /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (6BE975BD2D6DDF77009C9C8D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
 		6BF08B062D655580002D7015 /* PolarnalTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = PolarnalTests; sourceTree = "<group>"; };
 		6BF08B292D6DA932002D7015 /* UI */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (6BF08B972D6DDC47002D7015 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 6BE975512D6DDD4F009C9C8D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = UI; sourceTree = "<group>"; };
 		6BF08B2B2D6DA94A002D7015 /* Domain */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (6B92FC1D2D6F295400E68E0E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Domain; sourceTree = "<group>"; };
-		6BF08B2C2D6DA96A002D7015 /* Data */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (6B92FC312D6F39B400E68E0E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Data; sourceTree = "<group>"; };
+		6BF08B2C2D6DA96A002D7015 /* Data */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (6B92FC312D6F39B400E68E0E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 6B92FC9F2D71463100E68E0E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Data; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -357,54 +333,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6B37A7762D06841700239987 /* DateManager */ = {
-			isa = PBXGroup;
-			children = (
-				6B37A7772D06842700239987 /* DateManager.swift */,
-			);
-			path = DateManager;
-			sourceTree = "<group>";
-		};
-		6B37A7842D0850EA00239987 /* Diary */ = {
-			isa = PBXGroup;
-			children = (
-				6B790FBB2CFEA4F40000AC03 /* FolderDB.swift */,
-				6B790FBD2CFEA50A0000AC03 /* NoteDB.swift */,
-				6BF08AFE2D655070002D7015 /* RoutineDB.swift */,
-			);
-			path = Diary;
-			sourceTree = "<group>";
-		};
-		6B37A7852D0850F600239987 /* CalendarPlanner */ = {
-			isa = PBXGroup;
-			children = (
-				6B37A7862D08514400239987 /* EvnentDB.swift */,
-				6B37A7A82D0AA49900239987 /* DDayDB.swift */,
-				6B37A7AA2D0AA4B500239987 /* TodoDB.swift */,
-			);
-			path = CalendarPlanner;
-			sourceTree = "<group>";
-		};
-		6B37A7D02D0FEDB700239987 /* Travel */ = {
-			isa = PBXGroup;
-			children = (
-				6B37A7D12D0FEDCB00239987 /* TravelPlanDB.swift */,
-				6BDAE51D2D290FA500A066E9 /* TravelDestinationFolderDB.swift */,
-				6B37A7D72D100E6B00239987 /* Type */,
-			);
-			path = Travel;
-			sourceTree = "<group>";
-		};
-		6B37A7D72D100E6B00239987 /* Type */ = {
-			isa = PBXGroup;
-			children = (
-				6B37A7DA2D100E9C00239987 /* TravelCostType.swift */,
-				6BE6A6A12D13ABDC00931E7B /* CurrencyType.swift */,
-				6BDAE50B2D18F38E00A066E9 /* TravelDocumentType.swift */,
-			);
-			path = Type;
-			sourceTree = "<group>";
-		};
 		6B790F922CFEA3080000AC03 = {
 			isa = PBXGroup;
 			children = (
@@ -415,7 +343,6 @@
 				6BF08B2C2D6DA96A002D7015 /* Data */,
 				6BD9CE552D598F9A00674C10 /* Polarnal.entitlements */,
 				6B790FAE2CFEA33B0000AC03 /* .gitignore */,
-				6B9129652D50A980005C85D2 /* Shared */,
 				6B91291B2D50A758005C85D2 /* MacPolarnal */,
 				6B91292F2D50A75A005C85D2 /* MacPolarnalTests */,
 				6B9129392D50A75A005C85D2 /* MacPolarnalUITests */,
@@ -437,84 +364,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6B790FB32CFEA4150000AC03 /* DB */ = {
-			isa = PBXGroup;
-			children = (
-				6B790FB82CFEA4830000AC03 /* DBManager.swift */,
-				6B790FBA2CFEA4D40000AC03 /* DBModel */,
-			);
-			path = DB;
-			sourceTree = "<group>";
-		};
-		6B790FB42CFEA4270000AC03 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				6B9129692D50AABA005C85D2 /* LocaleFileManager */,
-				6BDAE52C2D2BD31700A066E9 /* MapSearchManager */,
-				6BDAE5032D1579CC00A066E9 /* CostFormatter */,
-				6B37A7762D06841700239987 /* DateManager */,
-				6B790FB52CFEA4320000AC03 /* LogManager */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		6B790FB52CFEA4320000AC03 /* LogManager */ = {
-			isa = PBXGroup;
-			children = (
-				6B790FB62CFEA4430000AC03 /* LogManager.swift */,
-			);
-			path = LogManager;
-			sourceTree = "<group>";
-		};
-		6B790FBA2CFEA4D40000AC03 /* DBModel */ = {
-			isa = PBXGroup;
-			children = (
-				6B37A7D02D0FEDB700239987 /* Travel */,
-				6B37A7852D0850F600239987 /* CalendarPlanner */,
-				6B37A7842D0850EA00239987 /* Diary */,
-			);
-			path = DBModel;
-			sourceTree = "<group>";
-		};
-		6B9129652D50A980005C85D2 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				6B790FB32CFEA4150000AC03 /* DB */,
-				6B790FB42CFEA4270000AC03 /* Utils */,
-			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
-		6B9129692D50AABA005C85D2 /* LocaleFileManager */ = {
-			isa = PBXGroup;
-			children = (
-				6B9129142D4F8EA3005C85D2 /* LocaleFileManager.swift */,
-				6B9798952D5AFBD5000EB795 /* StorageManager.swift */,
-			);
-			path = LocaleFileManager;
-			sourceTree = "<group>";
-		};
 		6B9129A62D50B3F9005C85D2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6BDAE5032D1579CC00A066E9 /* CostFormatter */ = {
-			isa = PBXGroup;
-			children = (
-				6BDAE5042D1579E700A066E9 /* CostFormatter.swift */,
-			);
-			path = CostFormatter;
-			sourceTree = "<group>";
-		};
-		6BDAE52C2D2BD31700A066E9 /* MapSearchManager */ = {
-			isa = PBXGroup;
-			children = (
-				6BDAE52D2D2BD32C00A066E9 /* MapSearchManager.swift */,
-			);
-			path = MapSearchManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -735,24 +589,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B790FB92CFEA4830000AC03 /* DBManager.swift in Sources */,
-				6B9798972D5AFBD5000EB795 /* StorageManager.swift in Sources */,
-				6BE6A6A22D13ABDC00931E7B /* CurrencyType.swift in Sources */,
-				6BDAE50C2D18F38E00A066E9 /* TravelDocumentType.swift in Sources */,
-				6B37A7782D06842700239987 /* DateManager.swift in Sources */,
-				6B790FBC2CFEA4F40000AC03 /* FolderDB.swift in Sources */,
-				6B37A7872D08514400239987 /* EvnentDB.swift in Sources */,
-				6B790FB72CFEA4430000AC03 /* LogManager.swift in Sources */,
-				6BDAE51E2D290FA500A066E9 /* TravelDestinationFolderDB.swift in Sources */,
-				6B37A7AB2D0AA4B500239987 /* TodoDB.swift in Sources */,
-				6B37A7DB2D100E9C00239987 /* TravelCostType.swift in Sources */,
-				6B37A7A92D0AA49900239987 /* DDayDB.swift in Sources */,
-				6B9129152D4F8EA3005C85D2 /* LocaleFileManager.swift in Sources */,
-				6BDAE5052D1579E700A066E9 /* CostFormatter.swift in Sources */,
-				6BDAE52E2D2BD32C00A066E9 /* MapSearchManager.swift in Sources */,
-				6B790FBE2CFEA50A0000AC03 /* NoteDB.swift in Sources */,
-				6B37A7D22D0FEDCB00239987 /* TravelPlanDB.swift in Sources */,
-				6BF08B002D655070002D7015 /* RoutineDB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -760,24 +596,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B9129572D50A86D005C85D2 /* EvnentDB.swift in Sources */,
-				6B9129582D50A86D005C85D2 /* FolderDB.swift in Sources */,
-				6B9129592D50A86D005C85D2 /* CurrencyType.swift in Sources */,
-				6B91295A2D50A86D005C85D2 /* DBManager.swift in Sources */,
-				6B91295B2D50A86D005C85D2 /* TravelCostType.swift in Sources */,
-				6B91295C2D50A86D005C85D2 /* TodoDB.swift in Sources */,
-				6B91295D2D50A86D005C85D2 /* TravelDocumentType.swift in Sources */,
-				6B91295E2D50A86D005C85D2 /* NoteDB.swift in Sources */,
-				6B9798962D5AFBD5000EB795 /* StorageManager.swift in Sources */,
-				6BF08AFF2D655070002D7015 /* RoutineDB.swift in Sources */,
-				6B91295F2D50A86D005C85D2 /* TravelDestinationFolderDB.swift in Sources */,
-				6B9129602D50A86D005C85D2 /* TravelPlanDB.swift in Sources */,
-				6B9129612D50A86D005C85D2 /* DDayDB.swift in Sources */,
-				6B91294A2D50A842005C85D2 /* LocaleFileManager.swift in Sources */,
-				6B91294B2D50A842005C85D2 /* CostFormatter.swift in Sources */,
-				6B91294C2D50A842005C85D2 /* DateManager.swift in Sources */,
-				6B91294D2D50A842005C85D2 /* MapSearchManager.swift in Sources */,
-				6B91294E2D50A842005C85D2 /* LogManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -799,9 +617,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BF08B282D66CAF5002D7015 /* LogManager.swift in Sources */,
-				6BF08B262D66C6F0002D7015 /* DateManager.swift in Sources */,
-				6BF08B272D66C93E002D7015 /* RoutineDB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

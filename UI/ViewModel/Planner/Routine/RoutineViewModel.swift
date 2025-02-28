@@ -20,6 +20,7 @@ final class RoutineViewModel: ViewModelProtocol {
     private var useCase: RoutineUseCaseProtocol?
     
     var cancellables: Set<AnyCancellable> = []
+    @Published var routineList: [RoutineDB] = []
     @Published var selectedRoutine: RoutineDB?
     
     func apply(_ intent: Intent) {
@@ -29,7 +30,9 @@ final class RoutineViewModel: ViewModelProtocol {
             
         case .ingectDependencies(let useCase):
             self.useCase = useCase
-            
+            let list = useCase.fetchRoutineList()
+            routineList = list.map { useCase.sortRoutine($0) }
+                
         case .showEditView(let routine):
             selectedRoutine = routine
         }

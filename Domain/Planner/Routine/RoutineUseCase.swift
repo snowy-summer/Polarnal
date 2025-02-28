@@ -11,6 +11,8 @@ protocol RoutineUseCaseProtocol {
     func saveRoutine(_ routine: RoutineDB)
     func deleteRoutine(_ routine: RoutineDB)
     func fetchRoutine(_ routineID: UUID) -> RoutineDB?
+    func sortRoutine(_ routine: RoutineDB) -> RoutineDB
+    func fetchRoutineList() -> [RoutineDB]
     func doneTodayRoutine(_ routine: RoutineDB)
     func isDoneDisabled(routineDB: RoutineDB) -> Bool
 }
@@ -47,6 +49,15 @@ final class RoutineUseCase: RoutineUseCaseProtocol {
         routine.routineItems?.sort { $0.date < $1.date }
         
         return routine
+    }
+    
+    func sortRoutine(_ routine: RoutineDB) -> RoutineDB {
+        routine.routineItems?.sort { $0.date < $1.date }
+        return routine
+    }
+    
+    func fetchRoutineList() -> [RoutineDB] {
+        routineRepository.fetchRoutineList()
     }
     
     func isDoneDisabled(routineDB: RoutineDB) -> Bool {

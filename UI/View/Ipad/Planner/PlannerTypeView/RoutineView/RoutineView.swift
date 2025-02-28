@@ -10,7 +10,6 @@ import SwiftData
 
 struct RoutineView: View {
     @Environment(\.modelContext) var modelContext
-    @Query var routineList: [RoutineDB]
     
     @StateObject private var viewModel: RoutineViewModel = RoutineViewModel()
     private let gridItems = GridItem(.flexible(), spacing: 16)
@@ -28,7 +27,7 @@ struct RoutineView: View {
             
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 16) {
-                    ForEach(routineList, id: \.id) { routine in
+                    ForEach(viewModel.routineList, id: \.id) { routine in
                         let repository = RoutineRepository(modelContext: modelContext)
                         let useCase = RoutineUseCase(routineRepository: repository)
                         let routineCellViewModel = RoutineCellViewModel(routine: routine,
@@ -112,9 +111,6 @@ struct RoutineCell: View {
             .padding(.vertical)
             
             
-        }
-        .onAppear {
-            viewModel.apply(.sortRoutine)
         }
         
     }

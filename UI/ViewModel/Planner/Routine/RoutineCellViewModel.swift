@@ -13,7 +13,7 @@ final class RoutineCellViewModel: ViewModelProtocol {
     
     enum Intent {
         case doenTodayRoutine
-        case sortRoutine
+//        case sortRoutine
     }
     
     private var useCase: RoutineUseCaseProtocol
@@ -66,11 +66,11 @@ final class RoutineCellViewModel: ViewModelProtocol {
         switch intent {
         case .doenTodayRoutine:
             useCase.doneTodayRoutine(routineDB)
-            routineDB.routineItems?.sort { $0.date < $1.date }
+//            routineDB.routineItems?.sort { $0.date < $1.date }
             
-        case .sortRoutine:
-            routineDB.routineItems?.sort { $0.date < $1.date }
+//        case .sortRoutine:
+//            routineDB.routineItems?.sort { $0.date < $1.date }
         }
     }
-    
+
 }
