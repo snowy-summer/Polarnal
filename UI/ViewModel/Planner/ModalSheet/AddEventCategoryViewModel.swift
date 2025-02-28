@@ -20,10 +20,6 @@ final class AddEventCategoryViewModel: ViewModelProtocol {
             self.eventCategory = eventCategory
             categoryTitle = eventCategory.title
             categoryColor = Color(hex: eventCategory.colorCode)
-//            categoryColor = Color(red: eventCategory.color.red,
-//                                  green: eventCategory.color.green,
-//                                  blue: eventCategory.color.blue,
-//                                  opacity: eventCategory.color.alpha)
         } else {
             categoryTitle = ""
             categoryColor = .blue
@@ -31,11 +27,9 @@ final class AddEventCategoryViewModel: ViewModelProtocol {
     }
     
     enum Intent {
-        
         case selectColor(Color)
         case saveCategory
         case insertModelContext(ModelContext)
-        
     }
     
     private let dbManager = DBManager()

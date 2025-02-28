@@ -23,7 +23,7 @@ final class RoutineCellViewModel: ViewModelProtocol {
     @Published var routineDB: RoutineDB
     var streakCount: Int {
         guard let items = routineDB.routineItems else { return 0 }
-        return items.reversed().prefix { $0.isDone }.count
+        return items.prefix { $0.isDone }.count
     }
     
     var isDoneDisabled: Bool {
