@@ -37,6 +37,7 @@ struct AddRoutineView: View {
                 notificationView()
                     .background(Color.customGray6)
                     .cornerRadius(12)
+                    .padding(.horizontal)
                 
             }
         }
