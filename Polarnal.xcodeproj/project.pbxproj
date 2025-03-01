@@ -57,6 +57,7 @@
 				Planner/DDay/DDayUseCaseProtocol.swift,
 				Planner/EventCategory/EventCategoryUseCase.swift,
 				Planner/EventCategory/EventCategoryUseCaseProtocol.swift,
+				Planner/Routine/RoutineNotificationUseCase.swift,
 				Planner/Routine/RoutineUseCase.swift,
 				Planner/Todo/TodoUseCase.swift,
 				Planner/Todo/TodoUseCaseProtocol.swift,

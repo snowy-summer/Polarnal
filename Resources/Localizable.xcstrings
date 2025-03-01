@@ -401,6 +401,9 @@
         }
       }
     },
+    "Notification" : {
+
+    },
     "Nov" : {
       "extractionState" : "manual",
       "localizations" : {

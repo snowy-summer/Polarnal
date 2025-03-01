@@ -45,14 +45,15 @@ final class LocalNotificationManager {
         }
     }
     
-    func scheduleNotification(identifier: String,
-                              title: String,
-                              body: String,
-                              date: Date) {
+    func scheduleWeeklyNotification(identifier: String,
+                                    title: String,
+                                    body: String,
+                                    time: Date,
+                                    weekDay: Int) {
         let center = UNUserNotificationCenter.current()
         
-        // 권한 확인
-        center.getNotificationSettings { settings in
+        center.getNotificationSettings {[weak self] settings in
+            guard let self else { return }
             guard settings.authorizationStatus == .authorized else {
                 LogManager.log("알림 권한이 허용되지 않음")
                 return
@@ -62,22 +63,44 @@ final class LocalNotificationManager {
             content.title = title
             content.body = body
             content.sound = .default
-            content.badge = 1
+//            content.badge = 1
             
-            let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
-            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+            let calendar = Calendar.current
+            var nextDateComponents = calendar.dateComponents([.hour, .minute], from: time)
+            nextDateComponents.weekday = weekDay
             
+            let trigger = UNCalendarNotificationTrigger(dateMatching: nextDateComponents, repeats: true)
             let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
             
             center.add(request) { error in
                 if let error = error {
                     LogManager.log("알림 등록 실패: \(error.localizedDescription)")
-                    print("알림 등록 실패: \(error.localizedDescription)")
                 } else {
                     LogManager.log("알림 등록 성공: \(identifier)")
                 }
             }
         }
+    }
+
+    /// 현재 날짜로부터 가장 가까운 특정 요일의 날짜 반환
+    private func getNextWeekdayDate(weekday: Int, time: Date) -> Date? {
+        let calendar = Calendar.current
+        let now = Date()
+        
+        var components = calendar.dateComponents([.hour, .minute], from: time)
+        components.weekday = weekday
+
+        for i in 0..<7 {
+            if let nextDate = calendar.date(byAdding: .day, value: i, to: now),
+               calendar.component(.weekday, from: nextDate) == weekday {
+                components.year = calendar.component(.year, from: nextDate)
+                components.month = calendar.component(.month, from: nextDate)
+                components.day = calendar.component(.day, from: nextDate)
+                return calendar.date(from: components)
+            }
+        }
+        
+        return nil
     }
     
     func removeAllNotifications() {

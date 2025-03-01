@@ -17,7 +17,7 @@ final class AddRoutineViewModel: ViewModelProtocol {
     @Published var startDate: Date = Date()
     @Published var routineColor: Color = .mint
     @Published var isPushEnabled: Bool = false
-    @Published var pushTime: Date?
+    @Published var notificationTime: Date = Date()
     var saveDisabled: Bool {
         if routineName.isEmpty { return true }
         if repeatDays.isEmpty { return true }
@@ -26,7 +26,9 @@ final class AddRoutineViewModel: ViewModelProtocol {
     
     private var routineDB: RoutineDB?
     
-    init(routine: RoutineDB?) {
+    init(routine: RoutineDB?,
+         notificationUseCase: RoutineNotificationUseCaseProtocol = RoutineNotificationUseCase()) {
+        self.notificationUseCase = notificationUseCase
         if let routine {
             self.routineDB = routine
             routineName = routine.name
@@ -35,7 +37,7 @@ final class AddRoutineViewModel: ViewModelProtocol {
             startDate = routine.startDate
             routineColor = Color(hex: routine.colorCode)
             isPushEnabled = routine.isPushEnabled
-            pushTime = routine.pushTime
+            notificationTime = routine.pushTime ?? Date()
         } else {
             routineName = ""
             startDate = Date()
@@ -43,7 +45,7 @@ final class AddRoutineViewModel: ViewModelProtocol {
             repeatInterval = 1
             routineColor = .mint
             isPushEnabled = false
-            pushTime = nil
+            notificationTime = Date()
         }
     }
     
@@ -56,6 +58,7 @@ final class AddRoutineViewModel: ViewModelProtocol {
     }
     
     private var useCase: RoutineUseCaseProtocol?
+    private let notificationUseCase: RoutineNotificationUseCaseProtocol
     var cancellables = Set<AnyCancellable>()
     
     func apply(_ intent: Intent) {
@@ -73,7 +76,12 @@ final class AddRoutineViewModel: ViewModelProtocol {
                 routineDB?.repeatInterval = repeatInterval
                 routineDB?.colorCode = hexCode
                 routineDB?.isPushEnabled = isPushEnabled
-                routineDB?.pushTime = pushTime
+                routineDB?.pushTime = notificationTime
+                
+                if isPushEnabled {
+                    notificationUseCase.scheduleRoutineNotification(for: routineDB!)
+                }
+                
                 useCase?.saveRoutine(routineDB!)
             } else {
                 let routine = RoutineDB(name: routineName,
@@ -83,7 +91,12 @@ final class AddRoutineViewModel: ViewModelProtocol {
                                         routineItems: [],
                                         colorCode: hexCode,
                                         isPushEnabled: isPushEnabled,
-                                        pushTime: pushTime)
+                                        pushTime: notificationTime)
+                
+                if isPushEnabled {
+                    notificationUseCase.scheduleRoutineNotification(for: routine)
+                }
+                
                 useCase?.saveRoutine(routine)
             }
             

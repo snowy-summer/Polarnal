@@ -146,6 +146,3 @@ struct RoutineCell: View {
     
 }
 
-#Preview {
-    RoutineView()
-}

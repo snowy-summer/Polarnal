@@ -34,6 +34,10 @@ struct AddRoutineView: View {
                     .background(Color.customGray6)
                     .cornerRadius(12)
                 
+                notificationView()
+                    .background(Color.customGray6)
+                    .cornerRadius(12)
+                
             }
             .padding(.horizontal, 40)
         }
@@ -71,7 +75,7 @@ struct AddRoutineView: View {
         VStack {
             HStack {
                 Text("Select days")
-                    .font(.title2)
+                    .font(.title3)
                     .bold()
                 Spacer()
             }
@@ -111,9 +115,27 @@ struct AddRoutineView: View {
         }
     }
     
-}
-
-#Preview {
-    AddRoutineView(viewModel: AddRoutineViewModel(routine: nil))
+    private func notificationView() -> some View {
+        VStack {
+            HStack {
+                Image(systemName: "bell")
+                    .foregroundColor(Color.gray)
+                Text("Notification")
+                    .font(.title3)
+                    .bold()
+                Toggle(isOn: $viewModel.isPushEnabled) {
+                    
+                }
+            }
+            
+            if viewModel.isPushEnabled {
+                Divider()
+                
+                DatePicker("", selection: $viewModel.notificationTime, displayedComponents: .hourAndMinute)
+            }
+        }
+        .padding()
+    }
+    
 }
 #endif

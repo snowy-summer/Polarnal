@@ -94,17 +94,6 @@ struct AddDDayView: View {
                 VStack {
                     Toggle(isOn: $viewModel.showCategory) {
                         HStack {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 12)
-                                    .fill(Color.customGray5)
-                                    .frame(width: 50,
-                                           height: 50)
-                                
-                                Image(systemName: "star.fill")
-                                    .resizable()
-                                    .frame(width: 28,
-                                           height: 28)
-                            }
                             
                             Text("카테고리")
                                 .font(.title2)

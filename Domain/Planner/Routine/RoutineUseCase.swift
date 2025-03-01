@@ -30,10 +30,6 @@ final class RoutineUseCase: RoutineUseCaseProtocol {
         if routine.routineItems!.isEmpty {
             let routineitem = createRoutineItems(routine)
             routine.routineItems?.append(contentsOf: routineitem)
-            
-            routineitem.forEach {
-                print(dateManager.getDateString(date: $0.date))
-            }
         }
         
         routineRepository.addRoutine(routine)
@@ -93,11 +89,11 @@ final class RoutineUseCase: RoutineUseCaseProtocol {
     /// 완료 후 1일 추가
     func doneTodayRoutine(_ routineDB: RoutineDB) {
         
-        let routineItem = routineDB.routineItems?.first {
+        let routineItemIndex = routineDB.routineItems?.firstIndex {
             dateManager.getDateString(date: $0.date) == dateManager.getDateString(date: Date())
         }
-        
-        routineItem?.isDone = true
+        guard let routineItemIndex else { return }
+        routineDB.routineItems?[routineItemIndex].isDone = true
         
         guard let lastRoutineDate = routineDB.routineItems?.last?.date else { return }
         let nextDate = lastRoutineDate

@@ -171,7 +171,8 @@ struct PlannerView: View {
                         NavigationStack {
                             switch type {
                             case .add:
-                                AddRoutineView(viewModel: AddRoutineViewModel(routine: nil))
+                                AddRoutineView(viewModel: AddRoutineViewModel(routine: nil,
+                                                                              notificationUseCase: RoutineNotificationUseCase()))
                             default:
                                 EmptyView()
                             }

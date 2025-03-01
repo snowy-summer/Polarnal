@@ -19,26 +19,26 @@ struct AddDDayCell: View {
         HStack {
             ZStack {
 #if os(macOS)
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(Color.customGray5)
-                    .frame(width: 32,
-                           height: 32)
-                
-                Image(systemName: type.icon)
-                    .resizable()
-                    .frame(width: 20,
-                           height: 20)
+//                RoundedRectangle(cornerRadius: 8)
+//                    .fill(Color.customGray5)
+//                    .frame(width: 32,
+//                           height: 32)
+//                
+//                Image(systemName: type.icon)
+//                    .resizable()
+//                    .frame(width: 20,
+//                           height: 20)
                 #else
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(Color.customGray5)
-                    .frame(width: 50,
-                           height: 50)
-                
-                Image(systemName: type.icon)
-                    .resizable()
-                    .frame(width: 28,
-                           height: 28)
-                
+//                RoundedRectangle(cornerRadius: 12)
+//                    .fill(Color.customGray5)
+//                    .frame(width: 50,
+//                           height: 50)
+//                
+//                Image(systemName: type.icon)
+//                    .resizable()
+//                    .frame(width: 28,
+//                           height: 28)
+//                
 #endif
             }
             
