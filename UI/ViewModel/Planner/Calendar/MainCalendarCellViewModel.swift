@@ -52,6 +52,7 @@ final class MainCalendarCellViewModel: ViewModelProtocol {
     
     enum Intent {
         case ingectDependencies(useCase: CalendarEventUseCaseProtocol)
+        case deleteEvent(EventDB)
     }
     
     func apply(_ intent: Intent) {
@@ -59,6 +60,11 @@ final class MainCalendarCellViewModel: ViewModelProtocol {
         case .ingectDependencies(let useCase):
             calendarEventUseCase = useCase
             eventList = calendarEventUseCase!.fetchEvents(for: dateValue.date)
+            
+        case .deleteEvent(let event):
+            guard let useCase = calendarEventUseCase else { return }
+            useCase.deleteEvent(event)
+            eventList = useCase.fetchEvents(for: dateValue.date)
             
         }
     }

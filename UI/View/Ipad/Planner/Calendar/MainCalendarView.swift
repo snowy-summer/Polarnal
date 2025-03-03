@@ -133,6 +133,13 @@ struct MainCalendarContentView: View {
                             }
                             .frame(maxWidth: .infinity)
                             .padding(.horizontal, 4)
+                            .contextMenu {
+                                Button(role: .destructive) {
+                                    viewModel.apply(.deleteEvent(event))
+                                } label: {
+                                    Label("삭제", systemImage: "trash")
+                                }
+                            }
                         }
                     }
                 }

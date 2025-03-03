@@ -18,4 +18,5 @@ protocol CalendarDateUseCaseProtocol {
 protocol CalendarEventUseCaseProtocol {
     func fetchEvents(for date: Date) -> [EventDB]
     func isToday(date: Date) -> Bool
+    func deleteEvent(_ event: EventDB)
 }

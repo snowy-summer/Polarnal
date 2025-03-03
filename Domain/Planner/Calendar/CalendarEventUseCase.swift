@@ -32,5 +32,8 @@ final class CalendarEventUseCase: CalendarEventUseCaseProtocol {
         }
     }
     
+    func deleteEvent(_ event: EventDB) {
+        eventRepository.deleteEvent(event)
+    }
     
 }

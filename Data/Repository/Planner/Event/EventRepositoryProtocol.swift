@@ -10,4 +10,5 @@ import SwiftData
 
 protocol EventRepositoryProtocol {
     func fetchEvents() -> [EventDB]
+    func deleteEvent(_ event: EventDB)
 }

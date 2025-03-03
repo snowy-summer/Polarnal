@@ -22,5 +22,9 @@ final class EventRepository: EventRepositoryProtocol {
     func fetchEvents() -> [EventDB] {
         return dbManager.fetchItems(ofType: EventDB.self)
     }
+    
+    func deleteEvent(_ event: EventDB) {
+        dbManager.deleteItem(event)
+    }
 }
 
