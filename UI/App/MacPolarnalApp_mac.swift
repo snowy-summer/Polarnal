@@ -24,10 +24,10 @@ struct MacPolarnalApp: App {
                 PlannerView(sideTabBarViewModel: sideTabBarViewModel)
                     .preferredColorScheme(isDarkMode ? .dark : .light)
                     .environment(\.locale, .init(identifier: locale))
-//            case .diary:
-//                DiaryView(sideTabBarViewModel: sideTabBarViewModel)
-//                    .preferredColorScheme(isDarkMode ? .dark : .light)
-//                    .environment(\.locale, .init(identifier: locale))
+            case .diary:
+                DiaryView(sideTabBarViewModel: sideTabBarViewModel)
+                    .preferredColorScheme(isDarkMode ? .dark : .light)
+                    .environment(\.locale, .init(identifier: locale))
 //                
 //            case .travelPlanner:
 //                //                                TravelDashboard(sideTabBarViewModel: sideTabBarViewModel)

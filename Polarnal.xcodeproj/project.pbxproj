@@ -39,7 +39,7 @@
 /* Begin PBXFileReference section */
 		6B790F9B2CFEA3080000AC03 /* CoreBrick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreBrick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B790FAE2CFEA33B0000AC03 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		6B91291A2D50A758005C85D2 /* CoreBrick_Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreBrick_Mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B91291A2D50A758005C85D2 /* CoreBrickDesktop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreBrickDesktop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B91292C2D50A75A005C85D2 /* MacPolarnalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacPolarnalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B9129362D50A75A005C85D2 /* MacPolarnalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacPolarnalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD9CE552D598F9A00674C10 /* Polarnal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Polarnal.entitlements; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 				View/Ipad/TravelPlanner/TravelDashboard/TravelTodo/TravelTodoMiniView.swift,
 				View/Ipad/TravelPlanner/TravelDashboard/TravelTodo/TravelTodoMiniViewModel.swift,
 			);
-			target = 6B9129192D50A758005C85D2 /* CoreBrick_Mac */;
+			target = 6B9129192D50A758005C85D2 /* CoreBrickDesktop */;
 		};
 		6BE975BB2D6DDF58009C9C8D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -358,7 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				6B790F9B2CFEA3080000AC03 /* CoreBrick.app */,
-				6B91291A2D50A758005C85D2 /* CoreBrick_Mac.app */,
+				6B91291A2D50A758005C85D2 /* CoreBrickDesktop.app */,
 				6B91292C2D50A75A005C85D2 /* MacPolarnalTests.xctest */,
 				6B9129362D50A75A005C85D2 /* MacPolarnalUITests.xctest */,
 				6BF08B052D655580002D7015 /* PolarnalTests.xctest */,
@@ -396,9 +396,9 @@
 			productReference = 6B790F9B2CFEA3080000AC03 /* CoreBrick.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6B9129192D50A758005C85D2 /* CoreBrick_Mac */ = {
+		6B9129192D50A758005C85D2 /* CoreBrickDesktop */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6B91293E2D50A75A005C85D2 /* Build configuration list for PBXNativeTarget "CoreBrick_Mac" */;
+			buildConfigurationList = 6B91293E2D50A75A005C85D2 /* Build configuration list for PBXNativeTarget "CoreBrickDesktop" */;
 			buildPhases = (
 				6B9129162D50A758005C85D2 /* Sources */,
 				6B9129172D50A758005C85D2 /* Frameworks */,
@@ -416,12 +416,12 @@
 				6BF08B2B2D6DA94A002D7015 /* Domain */,
 				6BF08B2C2D6DA96A002D7015 /* Data */,
 			);
-			name = CoreBrick_Mac;
+			name = CoreBrickDesktop;
 			packageProductDependencies = (
 				6B9129A72D50B3FA005C85D2 /* EnumHelper */,
 			);
 			productName = MacPolarnal;
-			productReference = 6B91291A2D50A758005C85D2 /* CoreBrick_Mac.app */;
+			productReference = 6B91291A2D50A758005C85D2 /* CoreBrickDesktop.app */;
 			productType = "com.apple.product-type.application";
 		};
 		6B91292B2D50A75A005C85D2 /* MacPolarnalTests */ = {
@@ -542,7 +542,7 @@
 			projectRoot = "";
 			targets = (
 				6B790F9A2CFEA3080000AC03 /* CoreBrick */,
-				6B9129192D50A758005C85D2 /* CoreBrick_Mac */,
+				6B9129192D50A758005C85D2 /* CoreBrickDesktop */,
 				6B91292B2D50A75A005C85D2 /* MacPolarnalTests */,
 				6B9129352D50A75A005C85D2 /* MacPolarnalUITests */,
 				6BF08B042D655580002D7015 /* PolarnalTests */,
@@ -630,12 +630,12 @@
 /* Begin PBXTargetDependency section */
 		6B91292E2D50A75A005C85D2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6B9129192D50A758005C85D2 /* CoreBrick_Mac */;
+			target = 6B9129192D50A758005C85D2 /* CoreBrickDesktop */;
 			targetProxy = 6B91292D2D50A75A005C85D2 /* PBXContainerItemProxy */;
 		};
 		6B9129382D50A75A005C85D2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6B9129192D50A758005C85D2 /* CoreBrick_Mac */;
+			target = 6B9129192D50A758005C85D2 /* CoreBrickDesktop */;
 			targetProxy = 6B9129372D50A75A005C85D2 /* PBXContainerItemProxy */;
 		};
 		6BF08B0A2D655580002D7015 /* PBXTargetDependency */ = {
@@ -774,7 +774,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Polarnal.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = F8Q3Y446GH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -790,7 +790,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = beom.Polarnal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = NO;
@@ -811,7 +811,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Polarnal.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = F8Q3Y446GH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -827,7 +827,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = beom.Polarnal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = NO;
@@ -849,7 +849,7 @@
 				CODE_SIGN_ENTITLEMENTS = MacPolarnal/MacPolarnal.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = F8Q3Y446GH;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -862,7 +862,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = beom.Polarnal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -879,7 +879,7 @@
 				CODE_SIGN_ENTITLEMENTS = MacPolarnal/MacPolarnal.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = F8Q3Y446GH;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -892,7 +892,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = beom.Polarnal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1034,7 +1034,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6B91293E2D50A75A005C85D2 /* Build configuration list for PBXNativeTarget "CoreBrick_Mac" */ = {
+		6B91293E2D50A75A005C85D2 /* Build configuration list for PBXNativeTarget "CoreBrickDesktop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6B91293F2D50A75A005C85D2 /* Debug */,
